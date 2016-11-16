@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+  <CustomTask enabled="true" groupname="SQL Base" taskname="ClearOrphanedBLGs" type="Utility" point="Startup" wait="No" cmd="ClearOrphanedBLGs.cmd %appname% &quot;%output_path%&quot; &gt; &quot;%internal_output_name%.OUT&quot; 2&gt;&amp;1" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Windows Hotfix List" type="Utility" point="Startup" wait="No" cmd="powershell.exe -ExecutionPolicy Bypass .\SqlBaseUtil.ps1 GetWindowsHotfix  &gt; &quot;%output_name%.OUT&quot; 2&gt;&amp;1" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="TraceFlagHelperProcs" type="TSQL_Script" point="Startup" wait="Yes" cmd="TraceFlagHelperProcs.tem" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="RestoreTraceFlagOrigValues" type="TSQL_Command" point="Shutdown" wait="No" cmd="EXEC tempdb.dbo.sp_diag_trace_flag_restore '%appname%'" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Power Plan" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="cscript.exe PowerPlan.VBS &gt; &quot;%output_name%.txt&quot;  2&gt;&amp;1" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Errorlog_All" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="collecterrorlog.cmd  %server_instance% &gt; &quot;%output_name%.TXT&quot; 2&gt;&amp;1" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="MiscPssdiagInfo" type="TSQL_Script" point="Startup" wait="OnlyOnShutdown" cmd="MiscPssdiagInfo.sql" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Errorlog.0" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="collecterrorlog.cmd  %server_instance% 0 &gt; &quot;%output_name%.TXT&quot; 2&gt;&amp;1" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Errorlog.1" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="collecterrorlog.cmd  %server_instance% 1 &gt; &quot;%output_name%.TXT&quot; 2&gt;&amp;1" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Errorlog.2" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="collecterrorlog.cmd  %server_instance% 2 &gt; &quot;%output_name%.TXT&quot; 2&gt;&amp;1" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Errorlog.3" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="collecterrorlog.cmd  %server_instance% 3 &gt; &quot;%output_name%.TXT&quot; 2&gt;&amp;1" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Errorlog.4" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="collecterrorlog.cmd  %server_instance% 4 &gt; &quot;%output_name%.TXT&quot; 2&gt;&amp;1" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Errorlog.5" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="collecterrorlog.cmd  %server_instance% 5 &gt; &quot;%output_name%.TXT&quot; 2&gt;&amp;1" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Errorlog.6" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="collecterrorlog.cmd  %server_instance% 6 &gt; &quot;%output_name%.TXT&quot; 2&gt;&amp;1" pollinginterval="0" />
+  <!--CustomTask enabled="true" groupname="SQL Base" taskname="Windows 2012 or R2 cluster log" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="powershell -command &quot;&amp; {get-clusterlog -Timespan 10080  -Destination &apos;%output_path%&apos;}&quot;"  pollinginterval="0" /-->
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Windows 2008 or R2 cluster log" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="powershell -command &quot;&amp; {cluster log /g /Span:10080 /Copy:&apos;%output_path%&apos;}&quot;"  pollinginterval="0" />
+</CustomTasks>

@@ -1,0 +1,769 @@
+<DiagMgr>
+  <Versions>
+    <Version name="9"  />
+    <Version name="10"  />
+    <Version name="11"  />
+    <Version name="12"  />
+    <Version name="13"  />
+  </Versions>
+  <Features>
+    <Feature name="AS" enabled="true"/>
+    <Feature name="SQL" enabled="true"/>
+  </Features>
+  
+  <Scenarios>
+     <DiagTemplate name="GeneralPerf" friendlyname="General Performance" target="file"  DefaultChecked="false">
+              <Features>
+               <Feature name="SQL" enabled="true"/> 
+               <Feature name="AS" enabled="false"/>
+              </Features>
+              <Scenarios>
+                <DiagTemplate name="GeneralPerf" enabled="false"/>
+                <DiagTemplate name="DetailedPerf" enabled="true"/>
+                <DiagTemplate name="Replay" enabled="true"/>
+              </Scenarios>
+            <Versions>
+              <Version name="9" enabled="true"/>
+              <Version name="10" enabled="true"/>
+              <Version name="11" enabled="true"/>
+              <Version name="12" enabled="true"/>
+              <Version name="13" enabled="true"/>
+            </Versions>
+
+     </DiagTemplate>
+     <DiagTemplate name="LightPerf" friendlyname="Light Performance" target="file"  DefaultChecked="true">
+                     <Features>
+               <Feature name="SQL" enabled="true"/> 
+               <Feature name="AS" enabled="false"/>
+              </Features>
+              <Scenarios>
+                <DiagTemplate name="GeneralPerf" enabled="false"/>
+                <DiagTemplate name="DetailedPerf" enabled="true"/>
+                <DiagTemplate name="Replay" enabled="true"/>
+              </Scenarios>
+            <Versions>
+              <Version name="9" enabled="true"/>
+              <Version name="10" enabled="true"/>
+              <Version name="11" enabled="true"/>
+              <Version name="12" enabled="true"/>
+              <Version name="13" enabled="true"/>
+            </Versions>
+
+     </DiagTemplate>
+     <DiagTemplate name="DetailedPerf" friendlyname="Detailed Performance" target="file" DefaultChecked="false">
+                     <Features>
+               <Feature name="SQL" enabled="true"/> 
+               <Feature name="AS" enabled="false"/>
+              </Features>
+              <Scenarios>
+                <DiagTemplate name="GeneralPerf" enabled="false"/>
+                <DiagTemplate name="DetailedPerf" enabled="true"/>
+                <DiagTemplate name="Replay" enabled="true"/>
+              </Scenarios>
+            <Versions>
+              <Version name="9" enabled="true"/>
+              <Version name="10" enabled="true"/>
+              <Version name="11" enabled="true"/>
+              <Version name="12" enabled="true"/>
+              <Version name="13" enabled="true"/>
+            </Versions>
+
+     </DiagTemplate>
+     <DiagTemplate name="Replay" friendlyname="Replay" target="file"  DefaultChecked="false">
+                     <Features>
+               <Feature name="SQL" enabled="true"/> 
+               <Feature name="AS" enabled="false"/>
+              </Features>
+              <Scenarios>
+                <DiagTemplate name="GeneralPerf" enabled="false"/>
+                <DiagTemplate name="DetailedPerf" enabled="true"/>
+                <DiagTemplate name="Replay" enabled="true"/>
+              </Scenarios>
+            <Versions>
+              <Version name="9" enabled="true"/>
+              <Version name="10" enabled="true"/>
+              <Version name="11" enabled="true"/>
+              <Version name="12" enabled="true"/>
+              <Version name="13" enabled="true"/>
+            </Versions>
+
+     </DiagTemplate>
+     <DiagTemplate name="SpinLock" friendlyname="Spinlock" target="file"  DefaultChecked="false">
+                     <Features>
+               <Feature name="SQL" enabled="true"/> 
+               <Feature name="AS" enabled="false"/>
+              </Features>
+              <Scenarios>
+                <DiagTemplate name="GeneralPerf" enabled="false"/>
+                <DiagTemplate name="DetailedPerf" enabled="true"/>
+                <DiagTemplate name="Replay" enabled="true"/>
+              </Scenarios>
+            <Versions>
+              <Version name="9" enabled="true"/>
+              <Version name="10" enabled="true"/>
+              <Version name="11" enabled="true"/>
+              <Version name="12" enabled="true"/>
+              <Version name="13" enabled="true"/>
+            </Versions>
+
+     </DiagTemplate>
+     <DiagTemplate name="QueryPerf" friendlyname="Query Perf (Waits Exec Plan)"  target="file" DefaultChecked="false">
+                     <Features>
+               <Feature name="SQL" enabled="true"/> 
+               <Feature name="AS" enabled="false"/>
+              </Features>
+              <Scenarios>
+                <DiagTemplate name="GeneralPerf" enabled="false"/>
+                <DiagTemplate name="DetailedPerf" enabled="true"/>
+                <DiagTemplate name="Replay" enabled="true"/>
+              </Scenarios>
+            <Versions>
+              <Version name="9" enabled="true"/>
+              <Version name="10" enabled="true"/>
+              <Version name="11" enabled="true"/>
+              <Version name="12" enabled="true"/>
+              <Version name="13" enabled="true"/>
+            </Versions>
+
+     </DiagTemplate>
+     
+  </Scenarios>
+  <events>
+   <GlobalActions>
+     <!-- some events like existing_connection complains too many actions count-->
+     <!--action package="package0" name="collect_cpu_cycle_time" /-->
+     <!--action package="package0" name="collect_current_thread_id" /-->
+     <action package="package0" name="event_sequence" />
+     <action package="sqlserver" name="client_app_name" />
+     <action package="sqlserver" name="client_hostname" />
+     <action package="sqlserver" name="client_pid" />
+     <action package="sqlserver" name="database_id" />
+     <action package="sqlserver" name="database_name" />
+     <action package="sqlserver" name="is_system" />
+     <action package="sqlserver" name="nt_username" />
+     <action package="sqlserver" name="query_hash" />
+     <action package="sqlserver" name="request_id" />
+     <action package="sqlserver" name="server_principal_name" />
+     <action package="sqlserver" name="session_server_principal_name" />
+     <action package="sqlserver" name="session_id" />
+     <action package="sqlserver" name="session_nt_username" />
+     <action package="sqlserver" name="sql_text" />
+     <action package="sqlserver" name="transaction_id" />
+     <action package="sqlserver" name="username" />
+   </GlobalActions>
+   <CompOps>
+     <CompOp Name="=" Value="=" FriendlyName="=" CanApplyNum="true"  IsSpecial="false"></CompOp>
+     <CompOp Name="&gt;="  FriendlyName="&gt;=" CanApplyNum="true"  IsSpecial="false"></CompOp>
+     <CompOp Name="&gt;"  FriendlyName="&gt;" CanApplyNum="true" IsSpecial="false"></CompOp>
+     <CompOp Name="&lt;="  FriendlyName="&lt;=" CanApplyNum="true" IsSpecial="false"></CompOp>
+     <CompOp Name="&lt;"  FriendlyName="&lt;" CanApplyNum="true" IsSpecial="false"></CompOp>
+     <CompOp Name="&lt;&gt;"  FriendlyName="&lt;&gt;"  CanApplyNum="true" IsSpecial="false"></CompOp>
+     <CompOp Name="sqlserver.like_i_sql_unicode_string"  FriendlyName="like"  CanApplyNum="false" IsSpecial="true"  CompValueHint="%%"></CompOp>
+     
+   </CompOps>
+   <filters>
+     <filter package="" name="cpu_time" friendlyname="cpu_time" IsNum="true">      </filter>
+     <filter package="sqlserver" name="database_name"  friendlyname="database_name" IsNum="false">
+      </filter>
+     <filter package="" name="duration" friendlyname="duration" IsNum="true">        </filter>
+     <filter package="sqlserver" name="sql_text"  friendlyname="sql_text" IsNum="false"/>
+     <filter package="" name="logical_reads" friendlyname="logical_reads" IsNum="true"/>
+     <filter package="" name="logical_reads" friendlyname="logical_reads" IsNum="true"/>
+     <filter package="" name="type" friendlyname="spinlock_type" IsNum="true">
+       <choice  name="SOS_RW" key="245" version="12"/>
+       <choice  name="LOCK_HASH" key="129" version="12"/>
+       <choice  name="SOS_CACHESTORE" key="241" version="12"/>
+       <choice  name="SOS_CACHESTORE" key="-1" version="11"/>
+     </filter>
+   </filters>
+   <EventTemplates>
+     <EventTemplate name="GeneralPerf" friendlyname="General Performance" target="file"  version="11" DefaultChecked="false"/>
+     <EventTemplate name="LightPerf" friendlyname="Light Performance" target="file" version="11" DefaultChecked="true" />
+     <EventTemplate name="DetailedPerf" friendlyname="Detailed Performance" target="file" version="11" DefaultChecked="false" />
+     <EventTemplate name="Replay" friendlyname="Replay" target="file" version="11" DefaultChecked="false" />
+     <EventTemplate name="SpinLock" friendlyname="Spinlock" target="file" version="11" DefaultChecked="false" />
+     <EventTemplate name="QueryPerf" friendlyname="Query Perf (Waits Exec Plan)"  target="file" version="11" DefaultChecked="false"/>
+   
+   </EventTemplates>
+   
+   
+<category name="Access_Methods">
+   <event package="sqlserver" name="parallel_scan_range_created"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="parallel_scan_range_returned"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="parallel_scan_readahead_advance"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="parallel_scan_readahead_fixup"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="parallel_scan_resume_range_generation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="parallel_scan_stuck_read_ahead"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="parallel_scan_upper_level_readahead"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="parallel_scan_wait_for_work"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="ioaff_node_summary"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" /> 
+  <event package="sqlserver" name="ioaff_scan_end"   version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" /> 
+  <event package="sqlserver" name="ioaff_scan_start"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" /> 
+  <event package="sqlserver" name="ioaff_scan_worker_end"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" /> 
+  <event package="sqlserver" name="ioaff_scan_worker_start"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" /> 
+
+</category>
+
+
+<category name="Broker">
+  <event package="sqlserver" name="broker_activation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_activation_stored_procedure_invoked"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_activation_task_aborted"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_activation_task_limit_reached"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_activation_task_started"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_conversation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_conversation_group"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_corrupted_message"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_dialog_transmission_body_dequeue"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_dialog_transmission_body_enqueue"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_dialog_transmission_queue_dequeue"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_dialog_transmission_queue_enqueue"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_forwarded_message_dropped"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_forwarded_message_sent"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_message_classify"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_message_undeliverable"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_mirrored_route_state_changed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_queue_activation_alert"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_queue_false"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_remote_message_acknowledgement"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="broker_transmission_exception"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+</category>
+
+<category name="CLR">
+  <event package="sqlserver" name="assembly_load"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  
+</category>
+
+<category name="Cursor">
+  <event package="sqlserver" name="cursor_close"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_execute"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_implicit_conversion"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="false" />
+  <event package="sqlserver" name="cursor_manager_cached_cursor_added"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_manager_cached_cursor_removed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_manager_cursor_begin"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_manager_cursor_cache_attempt"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_manager_cursor_cache_hit"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_manager_cursor_end"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_manager_cursor_memory_usage"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_manager_cursor_plan_begin"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_manager_cursor_plan_end"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_manager_cursor_worktable_use_begin"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_manager_cursor_worktable_use_end"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_open"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_prepare"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="cursor_recompile"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="false" />
+  <event package="sqlserver" name="cursor_unprepare"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+</category>
+
+<category name="Database">
+  <event package="sqlserver" name="persist_last_value_for_sequence"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="page_split"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="constant_page_corruption_detected"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="catalog_metadata_cache_entry_added"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="catalog_metadata_cache_entry_pinned"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="catalog_metadata_cache_entry_removed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="catalog_metadata_cache_entry_unpinned"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="catalog_metadata_cache_hit"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="database_attached"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="database_created"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="database_detached"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="database_file_size_change"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="database_mirroring_state_change"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="database_started"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="database_stopped"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+  <event package="sqlserver" name="checkpoint_begin"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="checkpoint_end"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="database_uncontained_usage"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_backup_restore_throughput"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_bulk_copy_rows"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_bulk_copy_throughput"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_bulk_insert_rows"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_bulk_insert_throughput"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_data_file_size_changed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_dbcc_logical_scan"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_log_cache_hit"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_log_cache_read"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_log_file_size_changed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_log_file_used_size_changed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_log_flush"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_log_flush_wait"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_log_growth"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="false" />
+  <event package="sqlserver" name="databases_log_shrink"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="false" />
+  <event package="sqlserver" name="databases_log_truncation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="databases_shrink_data_movement"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+  <event package="sqlserver" name="metadata_agent_catalog_updated"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_agent_lock_object"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_cache_add"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_cache_flush"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_cache_hit"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_cache_miss"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_cache_update"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_cache_vlr_posted"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_clone_transition"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_create_global_temp_object"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_create_local_temp_object"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_delete_global_temp_object"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_delete_local_temp_object"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_initiate_lock_object"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_initiate_unlock_object"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_lock_object"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_manager_catalog_deleted"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_manager_catalog_inserted"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_manager_catalog_updated"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_manager_lock_object"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_unlock_object"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="metadata_version_update"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+</category>
+
+   <category name="Deadlock_Monitor">
+     <event package="sqlserver" name="xml_deadlock_report"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+   </category>
+<category name="Errors">
+  <event package="sqlserver" name="execution_warning"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="hash_warning"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="exchange_spill"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="bitmap_warning"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="batch_hash_table_build_bailout"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="cpu_threshold_exceeded"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="database_suspect_data_page"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="blocked_process_report"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="additional_memory_grant"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="background_job_error"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="attention"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="error_reported"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="missing_join_predicate"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="errorlog_written"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="filestream_file_io_failure"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="missing_column_statistics"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="sort_warning"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+
+</category>
+<category name="Execution">
+
+  <event package="sqlserver" name="xquery_static_type"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="prepare_sql"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="unprepare_sql"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="rpc_completed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="true" GeneralPerf="true" DetailedPerf="true" Replay="true">
+    <eventfields>
+      <field name="duration" AutoInclude="true" IsNum="true"/>
+      <field name="cpu_time" AutoInclude="true"  IsNum="true"/>
+      <field name="row_count" AutoInclude="true" IsNum="true"/>
+      <field name="logical_reads" AutoInclude="true" IsNum="true"/>
+      <field name="writes" AutoInclude="true" IsNum="true" />
+      <field name="collect_data_stream" AutoInclude="false" IsNum="false"/>
+    </eventfields>
+         
+         </event>
+  <event package="sqlserver" name="rpc_starting"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="degree_of_parallelism"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="expression_compile_stop_batch_processing"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="auto_stats"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="false" />
+  <event package="sqlserver" name="exec_prepared_sql"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="column_store_object_pool_hit"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="column_store_object_pool_miss"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="plan_cache_cache_attempt"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="plan_cache_cache_hit"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="plan_guide_successful"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="plan_guide_unsuccessful"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+
+  <event package="sqlserver" name="query_cache_removal_statistics"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_driver_aggregate_rows_affected_enter"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_driver_aggregate_rows_affected_exit"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_driver_aggregate_statistics_profile_enter"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_driver_aggregate_statistics_profile_exit"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_driver_received_activation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_driver_received_rows_affected"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_driver_received_statistics_profile"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_driver_sent_activation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_driver_sent_rows_affected"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_driver_sent_statistics_profile"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_post_compilation_showplan"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+  <event package="sqlserver" name="query_post_execution_showplan"    version="11"  SpinLock="false" QueryPerf="true" LightPerf="false" GeneralPerf="false" DetailedPerf="true" Replay="false" >
+    <eventfields>
+      <field name="collect_database_name" AutoInclude="false" IsNum="false"/>
+
+    </eventfields>
+    
+  </event>/>
+  
+  <event package="sqlserver" name="query_pre_execution_showplan"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_rpc_server_cache_flush"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_rpc_server_collection_cache_hit"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_rpc_server_collection_cache_insert"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_rpc_server_collection_cache_miss"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_rpc_server_collection_cache_remove"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_rpc_server_collection_create"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_rpc_server_runtime_cache_hit"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_rpc_server_runtime_cache_insert"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_rpc_server_runtime_cache_miss"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_rpc_server_runtime_cache_remove"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_rpc_server_runtime_create"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="query_rx_send_activation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+  <event package="sqlserver" name="sp_cache_hit"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="sp_cache_insert"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="sp_cache_miss"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="sp_cache_remove"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="sp_statement_completed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="true" Replay="false" />
+  <event package="sqlserver" name="sp_statement_starting"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="true" Replay="false" />
+  <event package="sqlserver" name="sql_batch_completed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="true" GeneralPerf="true" DetailedPerf="true" Replay="true" >
+    <eventfields>
+      <field name="duration" AutoInclude="true" IsNum="true"/>
+      <field name="cpu_time" AutoInclude="true"  IsNum="true"/>
+      <field name="row_count" AutoInclude="true" IsNum="true"/>
+      <field name="logical_reads" AutoInclude="true" IsNum="true"/>
+      <field name="writes" AutoInclude="true" IsNum="true" />
+      <field name="collect_batch_text" AutoInclude="false" IsNum="false"/>
+    </eventfields>
+
+
+
+  </event>/>
+  <event package="sqlserver" name="sql_batch_starting"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="sql_statement_completed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="true" Replay="false" />
+  <event package="sqlserver" name="sql_statement_plan_received"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="sql_statement_plan_shipped"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="sql_statement_recompile"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="sql_statement_starting"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="true" Replay="false" />
+  <event package="sqlserver" name="filestream_file_io_request"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="filestream_file_io_response"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="module_end"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="module_start"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="uncached_sql_batch_statistics"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+</category>
+
+<category name="Filetable">
+  <event package="filestream" name="filetable_application_error"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="filestream" name="filetable_file_io_request"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="filestream" name="filetable_file_io_response"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="filestream" name="filetable_nso_kill"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="filestream" name="filetable_nso_operation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="filestream" name="filetable_store_database_operation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="filestream" name="filetable_store_enumerate_getitem"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="filestream" name="filetable_store_item_get"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="filestream" name="filetable_store_item_modify"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="filestream" name="filetable_store_item_moverename"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="filestream" name="filetable_store_operation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="filestream" name="filetable_store_table_operation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+</category>
+<category name="Fulltext">
+  <event package="sqlserver" name="full_text_crawl_started"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="full_text_crawl_stopped"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="fulltext_query_exec_stats"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="fulltext_query_recompile"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="fulltext_reorganize_progress"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="fulltext_reorganize_start"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="fulltext_semantic_document_language"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+</category>
+<category name="Hadr">
+  <event package="sqlserver" name="hadr_ddl_failover_execution_state"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="hadr_undo_of_redo_log_scan"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+</category>
+<category name="Index">
+  <event package="sqlserver" name="index_build_extents_allocation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="scan_started"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="scan_stopped"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="progress_report_online_index_operation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+</category>
+<category name="IO">
+  <event package="sqlserver" name="long_io_detected"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="file_read"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="file_read_completed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="file_write_completed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="file_written"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="physical_page_read"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="physical_page_write"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+</category>
+   <category name="latch">
+     <event package="sqlserver" name="latch_demoted"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+     <event package="sqlserver" name="latch_promoted"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+     <event package="sqlserver" name="latch_suspend_begin"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+     <event package="sqlserver" name="latch_suspend_end"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+     <event package="sqlserver" name="latch_suspend_warning"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+   </category>
+<category name="Lock">
+  <event package="sqlserver" name="locks_lock_waits"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="lock_acquired"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="lock_cancel"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="lock_deadlock"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="false" />
+  <event package="sqlserver" name="lock_deadlock_chain"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="lock_escalation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="false" />
+  <event package="sqlserver" name="lock_redo_blocked"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="lock_released"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="lock_timeout"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="false" />
+  <event package="sqlserver" name="lock_timeout_greater_than_0"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+</category>
+<category name="Memory">
+  <event package="sqlserver" name="memory_manager_database_cache_memory"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="memory_manager_free_memory"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="memory_manager_reserved_server_memory"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="memory_manager_stolen_server_memory"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="memory_manager_target_server_memory"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="memory_manager_total_server_memory"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="memory_node_database_node_memory"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="memory_node_foreign_node_memory"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="memory_node_free_node_memory"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="memory_node_stolen_node_memory"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="memory_node_target_node_memory"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="memory_node_total_node_memory"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="server_memory_change"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+
+</category>
+
+
+<category name="OLEDB">
+  <event package="sqlserver" name="oledb_call"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="oledb_data_read"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="oledb_error"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="oledb_provider_information"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="oledb_query_interface"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+</category>
+
+<category name="Scheduling">
+  <event package="sqlos" name="scheduler_monitor_deadlock_ring_buffer_recorded"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlos" name="scheduler_monitor_non_yielding_ring_buffer_recorded"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlos" name="wait_info"    version="11"  SpinLock="false" QueryPerf="true" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlos" name="wait_info_external"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+
+</category>
+
+<category name="Server">
+  <event package="sqlserver" name="deprecation_announcement"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="deprecation_final_support"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="buffer_manager_database_pages"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="buffer_manager_page_life_expectancy"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="page_compression_attempt_failed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="page_reference_tracker"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="trace_flag_changed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="server_start_stop"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="buffer_manager_target_pages"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="buffer_node_database_pages"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="buffer_node_page_life_expectancy"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+</category>
+
+
+<category name="Session">
+  <event package="sqlserver" name="qn_dynamics"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="qn_parameter_table"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="qn_subscription"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="qn_template"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="session_mgr_event_notification_received"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="session_mgr_work_item_dequeued"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="session_mgr_work_item_end_execution"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="session_mgr_work_item_enqueued"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="session_mgr_work_item_start_execution"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="object_altered"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="object_created"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="object_deleted"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="login"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true">
+    
+    <eventfields>
+      <field name="collect_options_text" AutoInclude="false" IsNum="false"/>
+
+    </eventfields>
+
+
+  </event> />
+  <event package="sqlserver" name="logout"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="preconnect_completed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="preconnect_starting"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="existing_connection"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true">
+
+    <eventfields>
+      <field name="collect_options_text" AutoInclude="false" IsNum="false"/>
+      <field name="collect_database_name" AutoInclude="false" IsNum="false"/>
+    </eventfields>
+
+
+  </event> />
+</category>
+
+
+   <category name="Spinlock">
+     <event package="sqlos" name="spinlock_backoff"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+     <event package="sqlos" name="spinlock_backoff_warning"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+   </category>
+<category name="Storage_Management">
+  <event package="sqlserver" name="extent_activation_cache_overflow"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+</category>
+
+
+<category name="Transactions">
+  <event package="sqlserver" name="sql_transaction"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="dtc_transaction"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="true" DetailedPerf="true" Replay="true" />
+  <event package="sqlserver" name="promote_tran_completed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="promote_tran_starting"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="rollback_tran_completed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="rollback_tran_starting"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="begin_tran_completed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="begin_tran_starting"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="database_transaction_begin"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="database_transaction_end"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="commit_tran_completed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="commit_tran_starting"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="save_tran_completed"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <event package="sqlserver" name="save_tran_starting"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+</category>
+
+ 
+<category name="Unclassified">
+
+</category>
+
+
+ </events>
+
+
+   <ProfilerEvents>
+     
+       <EventType name="Broker">
+              <Features>
+               <Feature name="SQL" enabled="true"/> 
+               <Feature name="AS" enabled="false"/>
+              </Features>
+              <Scenarios>
+                <DiagTemplate name="GeneralPerf" enabled="false"/>
+                <DiagTemplate name="DetailedPerf" enabled="true"/>
+                <DiagTemplate name="Replay" enabled="true"/>
+              </Scenarios>
+            <Versions>
+              <Version name="9" enabled="true"/>
+              <Version name="10" enabled="true"/>
+              <Version name="11" enabled="true"/>
+              <Version name="12" enabled="true"/>
+              <Version name="13" enabled="true"/>
+            </Versions>
+
+         <Event name="Broker:Activation" id="163"> 
+              <Features>
+               <Feature name="SQL" enabled="true"/> 
+               <Feature name="AS" enabled="false"/>
+              </Features>
+              <Scenarios>
+                <DiagTemplate name="GeneralPerf" enabled="false"/>
+                <DiagTemplate name="DetailedPerf" enabled="true"/>
+                <DiagTemplate name="Replay" enabled="true"/>
+              </Scenarios>
+            <Versions>
+              <Version name="9" enabled="true"/>
+              <Version name="10" enabled="true"/>
+              <Version name="11" enabled="true"/>
+              <Version name="12" enabled="true"/>
+              <Version name="13" enabled="true"/>
+            </Versions>
+
+           
+         </Event>
+         
+         <Event name="Broker:Connection"  id="138">
+              <Features>
+               <Feature name="SQL" enabled="true"/> 
+               <Feature name="AS" enabled="false"/>
+              </Features>
+              <Scenarios>
+                <DiagTemplate name="GeneralPerf" enabled="false"/>
+                <DiagTemplate name="DetailedPerf" enabled="true"/>
+                <DiagTemplate name="Replay" enabled="true"/>
+              </Scenarios>
+            <Versions>
+              <Version name="9" enabled="true"/>
+              <Version name="10" enabled="true"/>
+              <Version name="11" enabled="true"/>
+              <Version name="12" enabled="true"/>
+              <Version name="13" enabled="true"/>
+            </Versions>
+
+           
+         </Event>
+         <Event name="Broker:Conversation"  id="124"> 
+              <Features>
+               <Feature name="SQL" enabled="true"/> 
+               <Feature name="AS" enabled="false"/>
+              </Features>
+              <Scenarios>
+                <DiagTemplate name="GeneralPerf" enabled="false"/>
+                <DiagTemplate name="DetailedPerf" enabled="true"/>
+                <DiagTemplate name="Replay" enabled="true"/>
+              </Scenarios>
+            <Versions>
+              <Version name="9" enabled="true"/>
+              <Version name="10" enabled="true"/>
+              <Version name="11" enabled="true"/>
+              <Version name="12" enabled="true"/>
+              <Version name="13" enabled="true"/>
+            </Versions>
+           
+         
+         </Event>
+         
+         <Event name="Broker:Conversation Group" enabled="false" id="136">
+               <Features>
+               <Feature name="SQL" enabled="true"/> 
+               <Feature name="AS" enabled="false"/>
+              </Features>
+              <Scenarios>
+                <DiagTemplate name="GeneralPerf" enabled="false"/>
+                <DiagTemplate name="DetailedPerf" enabled="true"/>
+                <DiagTemplate name="Replay" enabled="true"/>
+              </Scenarios>
+            <Versions>
+              <Version name="9" enabled="true"/>
+              <Version name="10" enabled="true"/>
+              <Version name="11" enabled="true"/>
+              <Version name="12" enabled="true"/>
+              <Version name="13" enabled="true"/>
+            </Versions>
+           
+
+         
+         </Event>
+         <Event name="Broker:Corrupted Message" enabled="true" id="161" />
+         <Event name="Broker:Forwarded Message Dropped" enabled="true" id="140" />
+         <Event name="Broker:Forwarded Message Sent" enabled="false" id="139" />
+         <Event name="Broker:Message Classify" enabled="false" id="141" />
+         <Event name="Broker:Message Undeliverable" enabled="true" id="160" />
+         <Event name="Broker:Mirrored Route State Changed" enabled="false" id="144" />
+         <Event name="Broker:Queue Disabled" enabled="false" id="143" />
+         <Event name="Broker:Remote Message Acknowledgement" enabled="false" id="149" />
+         <Event name="Broker:Transmission" enabled="false" id="142" />
+       </EventType>
+       <EventType name="CLR" enabled="true">
+         <Event name="Assembly Load" enabled="true" id="196" />
+       </EventType>
+       <EventType name="Cursors" enabled="true">
+         <Event name="CursorClose" enabled="true" id="78" />
+         <Event name="CursorExecute" enabled="true" id="74" />
+         <Event name="CursorImplicitConversion" enabled="true" id="76" />
+         <Event name="CursorOpen" enabled="true" id="53" />
+         <Event name="CursorPrepare" enabled="true" id="70" />
+         <Event name="CursorRecompile" enabled="true" id="75" />
+         <Event name="CursorUnprepare" enabled="true" id="77" />
+       </EventType>
+       <EventType name="Database">
+         <Event name="Data File Auto Grow" enabled="true" id="92" />
+         <Event name="Data File Auto Shrink" enabled="true" id="94" />
+         <Event name="Database Mirroring Connection" enabled="false" id="151" />
+         <Event name="Database Mirroring State Change" enabled="true" id="167" />
+         <Event name="Log File Auto Grow" enabled="true" id="93" />
+         <Event name="Log File Auto Shrink" enabled="true" id="95" />
+       </EventType>
+       <EventType name="Deprecation" enabled="false">
+         <Event name="Deprecation Announcement" enabled="false" id="125" />
+         <Event name="Deprecation Final Support" enabled="false" id="126" />
+       </EventType>
+   
+   </ProfilerEvents>
+   
+
+  </DiagMgr>

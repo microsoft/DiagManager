@@ -1,0 +1,4 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+  <CustomTask enabled="true" groupname="Service Broker" taskname="Service Broker" type="TSQL_Script" point="Shutdown" wait="No" cmd="SSB_pssdiag.sql" />
+</CustomTasks>

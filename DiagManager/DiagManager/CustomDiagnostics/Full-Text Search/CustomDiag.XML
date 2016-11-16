@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+	<CustomTask enabled="true" groupname="Full Text Search" taskname="FTS Config" type="TSQL_Script" point="Startup" wait="OnlyOnShutdown" cmd="FTS_Collector.sql" />
+	<CustomTask enabled="true" groupname="Full Text Search" taskname="Reg_Services_MSSearch" type="Reg_Query" point="Startup" wait="OnlyOnShutdown" cmd="HKLM\SYSTEM\CurrentControlSet\Services\MSSEARCH" />
+	<CustomTask enabled="true" groupname="Full Text Search" taskname="Reg_Services_MSSGatherer" type="Reg_Query" point="Startup" wait="OnlyOnShutdown" cmd="HKLM\SYSTEM\CurrentControlSet\Services\MSSGatherer" />
+	<CustomTask enabled="true" groupname="Full Text Search" taskname="Reg_Services_MSSGTHRSVC" type="Reg_Query" point="Startup" wait="OnlyOnShutdown" cmd="HKLM\SYSTEM\CurrentControlSet\Services\MSSGTHRSVC" />
+	<CustomTask enabled="true" groupname="Full Text Search" taskname="SearchSetup.log" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="copy /Y &quot;%TEMP%\SearchSetup.log&quot; &quot;%output_name%.LOG&quot; &gt; NUL 2&gt;&amp;1" />
+	<CustomTask enabled="true" groupname="Full Text Search" taskname="Reg_Software_Microsoft_Search" type="Reg_Query" point="Startup" wait="OnlyOnShutdown" cmd="HKLM\SOFTWARE\Microsoft\Search" />
+	<CustomTask enabled="true" groupname="Full Text Search" taskname="copy setup files" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="multicopy.cmd &quot;%windir%\sqlsp*.log&quot; &quot;%output_path%%server%__SetupLogs_&quot;" />
+	<CustomTask enabled="true" groupname="Full Text Search" taskname="copy sp setup files" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="multicopy.cmd &quot;%windir%\sqlsp*.log&quot; &quot;%output_path%%server%__SetupLogs_&quot;" />
+</CustomTasks>

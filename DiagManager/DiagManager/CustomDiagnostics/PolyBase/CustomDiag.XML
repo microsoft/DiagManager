@@ -1,0 +1,7 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+  
+  <CustomTask enabled="true" groupname="PolyBase" taskname="PolyBase DMVs" type="TSQL_Script" point="Shutdown" wait="OnlyOnShutdown" cmd="PolyBase.SQL" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="PolyBase" taskname="PolyBase Log Copy" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="MultiCopy.cmd &quot;%sspath%Log\Polybase\*.*&quot; &quot;%output_name%_&quot;" />
+  
+ </CustomTasks>
