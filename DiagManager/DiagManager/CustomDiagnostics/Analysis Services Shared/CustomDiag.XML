@@ -1,4 +1,0 @@
-<?xml version="1.0" standalone="yes"?>
-<CustomTasks>
-  <CustomTask enabled="true" groupname="Analysis Services Shared" taskname="AS General Diagnostics" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="ASConfigInfo.exe /outputpath %output_path%" pollinginterval="0" />
-</CustomTasks>

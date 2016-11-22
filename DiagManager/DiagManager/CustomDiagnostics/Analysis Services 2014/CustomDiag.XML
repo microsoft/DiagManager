@@ -1,6 +1,0 @@
-<?xml version="1.0" standalone="yes"?>
-<CustomTasks>
-  <CustomTask enabled="true" groupname="AS" taskname="Trace Start" type="Utility" point="Startup" wait="NO" cmd="ASTrace START &quot;ASSERVERINSTANCE&quot; %appname% &quot;%cfgfile%&quot; 350 &quot;%output_path%ASTraceFileName_sp_trace_as.trc&quot; &gt; &quot;%internal_output_name%_AS.start.log&quot; 2&gt;&amp;1" />
-  <CustomTask enabled="true" groupname="AS" taskname="Trace Stop" type="Utility" point="Shutdown" wait="Yes" cmd="ASTrace STOP &quot;ASSERVERINSTANCE&quot; %appname% &gt; &quot;%internal_output_name%_AS.stop.log&quot; 2&gt;&amp;1" />
-
-</CustomTasks>

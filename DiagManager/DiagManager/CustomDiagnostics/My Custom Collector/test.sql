@@ -1,1 +1,0 @@
-print 'you can print any TSQL commands in this file and pssdiag will run it'
