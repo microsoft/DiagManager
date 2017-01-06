@@ -1,0 +1,1 @@
+ostress.exe -Sjackli2014\sql14a -E -n100 -r100 -Q"select @@version" 

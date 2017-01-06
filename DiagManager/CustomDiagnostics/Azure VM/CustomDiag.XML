@@ -1,0 +1,4 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+  <CustomTask enabled="true" groupname="Azure VM" taskname="Azure VM Util" type="Utility" point="Startup" wait="No" cmd="powershell.exe -ExecutionPolicy Bypass .\AzureVMUtil.ps1  &gt; &quot;%output_name%.OUT&quot; 2&gt;&amp;1" />
+</CustomTasks>

@@ -1,0 +1,4 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+   <CustomTask enabled="true" groupname="SQL Memory Error" taskname="SQL Memory Error" type="TSQL_Script" point="Startup" wait="No" cmd="SQL_Server_Mem_Stats.sql" pollinginterval="0" />
+</CustomTasks>

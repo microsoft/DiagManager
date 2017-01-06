@@ -1,0 +1,2956 @@
+﻿<TraceEvents>
+  <EventType name="Broker">
+    <Event name="Broker:Activation" id="163">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Broker:Connection" id="138">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Broker:Conversation" id="124">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Broker:Conversation Group" id="136">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Broker:Corrupted Message" id="161">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Broker:Forwarded Message Dropped" id="140">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Broker:Forwarded Message Sent" id="139">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Broker:Message Classify" id="141">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Broker:Message Undeliverable" id="160">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Broker:Mirrored Route State Changed" id="144">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Broker:Queue Disabled" id="143">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Broker:Remote Message Acknowledgement" id="149">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Broker:Transmission" id="142">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="CLR">
+    <Event name="Assembly Load" id="196">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Cursors">
+    <Event name="CursorClose" id="78">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="CursorExecute" id="74">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="CursorImplicitConversion" id="76">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="CursorOpen" id="53">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="CursorPrepare" id="70">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="CursorRecompile" id="75">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="CursorUnprepare" id="77">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Database">
+    <Event name="Data File Auto Grow" id="92">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Data File Auto Shrink" id="94">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Database Mirroring Connection" id="151">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Database Mirroring State Change" id="167">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Log File Auto Grow" id="93">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Log File Auto Shrink" id="95">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Deprecation">
+    <Event name="Deprecation Announcement" id="125">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Deprecation Final Support" id="126">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Errors and Warnings">
+    <Event name="Attention" id="16">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Background Job Error" id="193">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Bitmap Warning" id="212">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Blocked process report" id="137">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="CPU threshold exceeded" id="214">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Database Suspect Data Page" id="213">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="ErrorLog" id="22">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="EventLog" id="21">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Exception" id="33">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Exchange Spill Event" id="127">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Execution Warnings" id="67">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Hash Warning" id="55">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Missing Column Statistics" id="79">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Missing Join Predicate" id="80">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Sort Warnings" id="69">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="User Error Message" id="162">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Full text">
+    <Event name="FT:Crawl Aborted" id="157">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="FT:Crawl Started" id="155">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="FT:Crawl Stopped" id="156">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Locks">
+    <Event name="Deadlock graph" id="148">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Lock:Acquired" id="24">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Lock:Cancel" id="26">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Lock:Deadlock" id="25">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Lock:Deadlock Chain" id="59">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Lock:Escalation" id="60">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Lock:Released" id="23">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Lock:Timeout" id="27">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Lock:Timeout (timeout > 0)" id="189">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Objects">
+    <Event name="Object:Altered" id="164">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Object:Created" id="46">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Object:Deleted" id="47">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="OLEDB">
+    <Event name="OLEDB Call Event" id="119">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="OLEDB DataRead Event" id="121">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="OLEDB Errors" id="61">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="OLEDB Provider Information" id="194">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="OLEDB QueryInterface Event" id="120">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Performance">
+    <Event name="Auto Stats" id="58">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Degree of Parallelism" id="28">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Performance statistics" id="165">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Plan Guide Successful" id="217">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Plan Guide Unsuccessful" id="218">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Showplan All" id="97">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Showplan All For Query Compile" id="169">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Showplan Statistics Profile" id="98">
+      <Scenarios>
+        
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Showplan Text" id="96">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Showplan Text (Unencoded)" id="68">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Showplan XML" id="122">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Showplan XML For Query Compile" id="168">
+      <Scenarios>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Showplan XML Statistics Profile" id="146">
+      <Scenarios>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SQL:FullTextQuery" id="123">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Progress Report">
+    <Event name="Progress Report: Online Index Operation" id="190">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Query Notifications">
+    <Event name="QN: Dynamics" id="202">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="QN: Parameter table" id="200">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="QN: Subscription" id="199">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="QN: Scenario" id="201">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Scans">
+    <Event name="Scan:Started" id="51">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Scan:Stopped" id="52">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Security Audit">
+    <Event name="Audit Add DB User Event" id="109">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Add Login to Server Role Event" id="108">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Add Member to DB Role Event" id="110">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Add Role Event" id="111">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Addlogin Event" id="104">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit App Role Change Password Event" id="112">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Backup/Restore Event" id="115">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Broker Conversation" id="158">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Broker Login" id="159">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Change Audit Event" id="117">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Change Database Owner" id="152">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Database Management Event" id="128">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Database Mirroring Login" id="154">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Database Object Access Event" id="180">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Database Object GDR Event" id="172">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Database Object Management Event" id="129">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Database Object Take Ownership Event" id="135">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Database Operation Event" id="178">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Database Principal Impersonation Event" id="133">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Database Principal Management Event" id="130">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Database Scope GDR Event" id="102">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit DBCC Event" id="116">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Fulltext" id="235">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Login" id="14">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Login Change Password Event" id="107">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Login Change Property Event" id="106">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Login Failed" id="20">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Login GDR Event" id="105">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Logout" id="15">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Object Derived Permission Event" id="118">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Schema Object Access Event" id="114">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Schema Object GDR Event" id="103">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Schema Object Management Event" id="131">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Schema Object Take Ownership Event" id="153">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Server Alter Trace Event" id="175">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Server Object GDR Event" id="171">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Server Object Management Event" id="176">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Server Object Take Ownership Event" id="134">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Server Operation Event" id="173">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Server Principal Impersonation Event" id="132">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Server Principal Management Event" id="177">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Server Scope GDR Event" id="170">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Server Starts And Stops" id="18">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Audit Statement Permission Event" id="113">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Server">
+    <Event name="Mount Tape" id="195">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Server Memory Change" id="81">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Trace File Close" id="150">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Sessions">
+    <Event name="ExistingConnection" id="17">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="PreConnect:Completed" id="216">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="PreConnect:Starting" id="215">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Stored Procedures">
+    <Event name="RPC Output Parameter" id="100">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="RPC:Completed" id="10">
+      <Scenarios>
+        <Scenario name="LightPerf" enabled="true"/>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="RPC:Starting" id="11">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SP:CacheHit" id="38">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SP:CacheInsert" id="35">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SP:CacheMiss" id="34">
+      <Scenarios>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SP:CacheRemove" id="36">
+      <Scenarios>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SP:Completed" id="43">
+      <Scenarios>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SP:Recompile" id="37">
+      <Scenarios>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SP:Starting" id="42">
+      <Scenarios>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SP:StmtCompleted" id="45">
+      <Scenarios>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SP:StmtStarting" id="44">
+      <Scenarios>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="Transactions">
+    <Event name="DTCTransaction" id="19">
+      <Scenarios>
+        
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SQLTransaction" id="50">
+      <Scenarios>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="TM: Begin Tran completed" id="182">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="TM: Begin Tran starting" id="181">
+      <Scenarios>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="TM: Commit Tran completed" id="186">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="TM: Commit Tran starting" id="185">
+      <Scenarios>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="TM: Promote Tran completed" id="184">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="TM: Promote Tran starting" id="183">
+      <Scenarios>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="TM: Rollback Tran completed" id="188">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="TM: Rollback Tran starting" id="187">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="TM: Save Tran completed" id="192">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="TM: Save Tran starting" id="191">
+      <Scenarios>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="TransactionLog" id="54">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="TSQL">
+    <Event name="Exec Prepared SQL" id="72">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Prepare SQL" id="71">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SQL:BatchCompleted" id="12">
+      <Scenarios>
+        <Scenario name="LightPerf" enabled="true"/>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SQL:BatchStarting" id="13">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SQL:StmtCompleted" id="41">
+      <Scenarios>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SQL:StmtRecompile" id="166">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="SQL:StmtStarting" id="40">
+      <Scenarios>
+        <Scenario name="DetailedPerf" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="Unprepare SQL" id="73">
+      <Scenarios>
+        <Scenario name="GeneralPerf" enabled="true"/>
+        <Scenario name="DetailedPerf" enabled="true"/>
+        <Scenario name="Replay" enabled="true"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="XQuery Static Type" id="198">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+  <EventType name="User configurable">
+    <Event name="UserConfigurable:0" id="82">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="UserConfigurable:1" id="83">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="UserConfigurable:2" id="84">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="UserConfigurable:3" id="85">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="UserConfigurable:4" id="86">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="UserConfigurable:5" id="87">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="UserConfigurable:6" id="88">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="UserConfigurable:7" id="89">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="UserConfigurable:8" id="90">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+    <Event name="UserConfigurable:9" id="91">
+      <Scenarios>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="9" enabled="true"/>
+        <Version name="10" enabled="true"/>
+        <Version name="10.50" enabled="true"/>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </Event>
+  </EventType>
+</TraceEvents>

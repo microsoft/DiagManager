@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CustomTasks>
+    <CustomTask enabled="true" groupname="XEvent " taskname="Creating Event Session" type="TSQL_Script" point="Startup" wait="Yes" cmd="pssdiag_xevent.sql" />
+    <CustomTask enabled="true" groupname="XEvent " taskname="Add File Target" type="TSQL_Command" point="Startup" wait="Yes" cmd="alter EVENT SESSION [pssdiag_xevent] ON SERVER   ADD TARGET package0.event_file(SET filename=N'%output_path%%server%_%instance%_pssdiag_xevent.xel', max_file_size=(1024x), max_rollover_files=(5x));" />
+    <CustomTask enabled="true" groupname="XEvent " taskname="Starting Event Session" type="TSQL_Command" point="Startup" wait="No" cmd="ALTER EVENT SESSION [pssdiag_xevent]  ON SERVER STATE = start;" />
+    <CustomTask enabled="true" groupname="XEvent " taskname="Stopping Event Session" type="TSQL_Command" point="Shutdown" wait="No" cmd="ALTER EVENT SESSION [pssdiag_xevent]  ON SERVER STATE = stop;DROP EVENT SESSION [pssdiag_xevent] ON SERVER;" />
+</CustomTasks>

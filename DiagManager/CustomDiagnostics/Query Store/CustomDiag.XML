@@ -1,0 +1,4 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+  <CustomTask enabled="true" groupname="Query Store" taskname="Query Store DMV" type="TSQL_Script" point="Shutdown" wait="OnlyOnShutdown" cmd="Query Store.sql" pollinginterval="0" />
+</CustomTasks>

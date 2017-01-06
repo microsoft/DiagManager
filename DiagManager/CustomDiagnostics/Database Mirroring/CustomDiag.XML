@@ -1,0 +1,4 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+  <CustomTask enabled="true" groupname="Database Mirroring" taskname="get_dbmirroringinfo" type="VB_Script" point="Startup" wait="OnlyOnShutdown" cmd="get_dbmirroringinfo.vbs %server_instance% &quot;%output_path%&quot; &gt; &quot;%internal_output_name%.TXT&quot; 2&gt;&amp;1" />
+</CustomTasks>

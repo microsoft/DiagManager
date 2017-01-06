@@ -1,0 +1,3844 @@
+<XEvents>
+	<category name="Access_Methods">
+		<event package="sqlserver" name="ioaff_node_summary">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="ioaff_scan_end">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="ioaff_scan_start">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="ioaff_scan_worker_end">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="ioaff_scan_worker_start">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="parallel_scan_range_created">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="parallel_scan_range_returned">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="parallel_scan_readahead_advance">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="parallel_scan_readahead_fixup">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="parallel_scan_resume_range_generation">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="parallel_scan_stuck_read_ahead">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="parallel_scan_upper_level_readahead">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="parallel_scan_wait_for_work">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Broker">
+		<event package="sqlserver" name="broker_activation">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_activation_stored_procedure_invoked">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_activation_task_aborted">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_activation_task_limit_reached">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_activation_task_started">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_conversation">
+      <Scenarios>
+        <Scenario name="ServiceBroker" enabled="True"/>
+      </Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_conversation_group">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_corrupted_message">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_dialog_transmission_body_dequeue">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_dialog_transmission_body_enqueue">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_dialog_transmission_queue_dequeue">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_dialog_transmission_queue_enqueue">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_forwarded_message_dropped">
+      <Scenarios>
+        <Scenario name="ServiceBroker" enabled="True"/>
+      </Scenarios>
+      <Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_forwarded_message_sent">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_message_classify">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_message_undeliverable">
+      <Scenarios>
+        <Scenario name="ServiceBroker" enabled="True"/>
+      </Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_mirrored_route_state_changed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_queue_activation_alert">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_queue_false">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_remote_message_acknowledgement">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="broker_transmission_exception">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="CLR">
+		<event package="sqlserver" name="assembly_load">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Cursor">
+		<event package="sqlserver" name="cursor_close">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_execute">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_implicit_conversion">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_manager_cached_cursor_added">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_manager_cached_cursor_removed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_manager_cursor_begin">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_manager_cursor_cache_attempt">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_manager_cursor_cache_hit">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_manager_cursor_end">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_manager_cursor_memory_usage">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_manager_cursor_plan_begin">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_manager_cursor_plan_end">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_manager_cursor_worktable_use_begin">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_manager_cursor_worktable_use_end">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_open">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_prepare">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_recompile">
+    <Scenarios>
+      <!-- can't use it because RML expects cursor_type and xevent doesn't have it-->	
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cursor_unprepare">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Database">
+		<event package="sqlserver" name="catalog_metadata_cache_entry_added">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="catalog_metadata_cache_entry_pinned">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="catalog_metadata_cache_entry_removed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="catalog_metadata_cache_entry_unpinned">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="catalog_metadata_cache_hit">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="checkpoint_begin">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="checkpoint_end">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="constant_page_corruption_detected">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="database_attached">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="database_created">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="database_detached">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="database_file_size_change">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="database_mirroring_state_change">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="database_started">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="database_stopped">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="database_uncontained_usage">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_backup_restore_throughput">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_bulk_copy_rows">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_bulk_copy_throughput">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_bulk_insert_rows">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_bulk_insert_throughput">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_data_file_size_changed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_dbcc_logical_scan">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_log_cache_hit">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_log_cache_read">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_log_file_size_changed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_log_file_used_size_changed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_log_flush">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_log_flush_wait">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_log_growth">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_log_shrink">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_log_truncation">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="databases_shrink_data_movement">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_agent_catalog_updated">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_agent_lock_object">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_cache_add">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_cache_flush">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_cache_hit">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_cache_miss">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_cache_update">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_cache_vlr_posted">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_clone_transition">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_create_global_temp_object">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_create_local_temp_object">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_delete_global_temp_object">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_delete_local_temp_object">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_initiate_lock_object">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_initiate_unlock_object">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_lock_object">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_manager_catalog_deleted">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_manager_catalog_inserted">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_manager_catalog_updated">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_manager_lock_object">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_unlock_object">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="metadata_version_update">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="page_split">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="persist_last_value_for_sequence">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Deadlock_Monitor">
+		<event package="sqlserver" name="xml_deadlock_report">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Errors">
+		<event package="sqlserver" name="additional_memory_grant">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="attention">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="background_job_error">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="batch_hash_table_build_bailout">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="bitmap_warning">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="blocked_process_report">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="cpu_threshold_exceeded">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="database_suspect_data_page">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="error_reported">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+      
+		</event>
+		<event package="sqlserver" name="errorlog_written">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="exchange_spill">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="execution_warning">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="filestream_file_io_failure">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="hash_warning">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="missing_column_statistics">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+      
+      <eventfields>
+        <field name="collect_column_list" AutoInclude="false" IsNum="false"/>
+      </eventfields>  
+  		</event>
+		<event package="sqlserver" name="missing_join_predicate">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sort_warning">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Execution">
+		<event package="sqlserver" name="auto_stats">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="column_store_object_pool_hit">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="column_store_object_pool_miss">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="degree_of_parallelism">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="exec_prepared_sql">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="expression_compile_stop_batch_processing">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="filestream_file_io_request">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="filestream_file_io_response">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="module_end">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="module_start">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="plan_cache_cache_attempt">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="plan_cache_cache_hit">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="plan_guide_successful">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="plan_guide_unsuccessful">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="prepare_sql">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_cache_removal_statistics">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_driver_aggregate_rows_affected_enter">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_driver_aggregate_rows_affected_exit">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_driver_aggregate_statistics_profile_enter">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_driver_aggregate_statistics_profile_exit">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_driver_received_activation">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_driver_received_rows_affected">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_driver_received_statistics_profile">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_driver_sent_activation">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_driver_sent_rows_affected">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_driver_sent_statistics_profile">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_post_compilation_showplan">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+
+    <event package="sqlserver" name="query_memory_grant_usage">
+      <Scenarios>
+        <Scenario name="Memory" enabled="True"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </event>
+    
+		<event package="sqlserver" name="query_post_execution_showplan">
+		<Scenarios>
+			<Scenario name="DetailedPerf" enabled="True"/>
+      <Scenario name="QueryPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+    
+		<event package="sqlserver" name="query_pre_execution_showplan">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_rpc_server_cache_flush">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_rpc_server_collection_cache_hit">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_rpc_server_collection_cache_insert">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_rpc_server_collection_cache_miss">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_rpc_server_collection_cache_remove">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_rpc_server_collection_create">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_rpc_server_runtime_cache_hit">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_rpc_server_runtime_cache_insert">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_rpc_server_runtime_cache_miss">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_rpc_server_runtime_cache_remove">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_rpc_server_runtime_create">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="query_rx_send_activation">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="rpc_completed">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+      <Scenario name="LightPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+      <eventfields>
+        <field name="duration" AutoInclude="true" IsNum="true"/>
+        <field name="cpu_time" AutoInclude="true"  IsNum="true"/>
+        <field name="row_count" AutoInclude="true" IsNum="true"/>
+        <field name="logical_reads" AutoInclude="true" IsNum="true"/>
+        <field name="writes" AutoInclude="true" IsNum="true" />
+        <field name="collect_data_stream" AutoInclude="false" IsNum="false"/>
+      </eventfields>
+
+    </event>
+		<event package="sqlserver" name="rpc_starting">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sp_cache_hit">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sp_cache_insert">
+      <eventfields>
+        <field name="object_name" AutoInclude="false" IsNum="true"/>
+        
+      </eventfields>
+      <Scenarios>
+
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sp_cache_miss">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sp_cache_remove">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sp_statement_completed">
+		<Scenarios>
+			<Scenario name="DetailedPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sp_statement_starting">
+		<Scenarios>
+			<Scenario name="DetailedPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sql_batch_completed">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+      <Scenario name="LightPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+    <eventfields>
+        <field name="duration" AutoInclude="true" IsNum="true"/>
+        <field name="cpu_time" AutoInclude="true"  IsNum="true"/>
+        <field name="row_count" AutoInclude="true" IsNum="true"/>
+        <field name="logical_reads" AutoInclude="true" IsNum="true"/>
+        <field name="writes" AutoInclude="true" IsNum="true" />
+        <field name="collect_batch_text" AutoInclude="false" IsNum="false"/>
+    </eventfields>
+      
+		</event>
+		<event package="sqlserver" name="sql_batch_starting">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sql_statement_completed">
+		<Scenarios>
+			<Scenario name="DetailedPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sql_statement_plan_received">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sql_statement_plan_shipped">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sql_statement_recompile">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sql_statement_starting">
+		<Scenarios>
+			<Scenario name="DetailedPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="uncached_sql_batch_statistics">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="unprepare_sql">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="xquery_static_type">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Filetable">
+		<event package="filestream" name="filetable_application_error">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="filestream" name="filetable_file_io_request">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="filestream" name="filetable_file_io_response">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="filestream" name="filetable_nso_kill">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="filestream" name="filetable_nso_operation">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="filestream" name="filetable_store_database_operation">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="filestream" name="filetable_store_enumerate_getitem">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="filestream" name="filetable_store_item_get">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="filestream" name="filetable_store_item_modify">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="filestream" name="filetable_store_item_moverename">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="filestream" name="filetable_store_operation">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="filestream" name="filetable_store_table_operation">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Fulltext">
+		<event package="sqlserver" name="full_text_crawl_started">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="full_text_crawl_stopped">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="fulltext_query_exec_stats">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="fulltext_query_recompile">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="fulltext_reorganize_progress">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="fulltext_reorganize_start">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="fulltext_semantic_document_language">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Hadr">
+		<event package="sqlserver" name="hadr_ddl_failover_execution_state">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="hadr_undo_of_redo_log_scan">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Index">
+		<event package="sqlserver" name="index_build_extents_allocation">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="progress_report_online_index_operation">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="scan_started">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="scan_stopped">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="IO">
+		<event package="sqlserver" name="file_read">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="file_read_completed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="file_write_completed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="file_written">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="long_io_detected">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="physical_page_read">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="physical_page_write">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="latch">
+		<event package="sqlserver" name="latch_demoted">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="latch_promoted">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="latch_suspend_begin">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="latch_suspend_end">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="latch_suspend_warning">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Lock">
+		<event package="sqlserver" name="lock_acquired">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="lock_cancel">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="lock_deadlock">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="lock_deadlock_chain">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="lock_escalation">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="lock_redo_blocked">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="lock_released">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="lock_timeout">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="lock_timeout_greater_than_0">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="locks_lock_waits">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Memory">
+		<event package="sqlserver" name="memory_manager_database_cache_memory">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="memory_manager_free_memory">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="memory_manager_reserved_server_memory">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="memory_manager_stolen_server_memory">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="memory_manager_target_server_memory">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="memory_manager_total_server_memory">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="memory_node_database_node_memory">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="memory_node_foreign_node_memory">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="memory_node_free_node_memory">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="memory_node_stolen_node_memory">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="memory_node_target_node_memory">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="memory_node_total_node_memory">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="server_memory_change">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="OLEDB">
+		<event package="sqlserver" name="oledb_call">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="oledb_data_read">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="oledb_error">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="oledb_provider_information">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="oledb_query_interface">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Scheduling">
+		<event package="sqlos" name="scheduler_monitor_deadlock_ring_buffer_recorded">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlos" name="scheduler_monitor_non_yielding_ring_buffer_recorded">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlos" name="wait_info">
+      <Scenarios>
+        <Scenario name="QueryPerf" enabled="True"/>
+      </Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlos" name="wait_info_external">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Server">
+		<event package="sqlserver" name="buffer_manager_database_pages">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="buffer_manager_page_life_expectancy">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="buffer_manager_target_pages">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="buffer_node_database_pages">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="buffer_node_page_life_expectancy">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="deprecation_announcement">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="deprecation_final_support">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="page_compression_attempt_failed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="page_reference_tracker">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="server_start_stop">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="trace_flag_changed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Session">
+		<event package="sqlserver" name="existing_connection">
+      <eventfields>
+        <field name="collect_database_name" AutoInclude="false" IsNum="true"/>
+      </eventfields>
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="login">
+      <eventfields>
+        <field name="collect_options_text" AutoInclude="false" IsNum="true"/>
+
+      </eventfields>
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="logout">
+		<Scenarios>
+			<Scenario name="GeneralPerf" enabled="True"/>
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="object_altered">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="object_created">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="object_deleted">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="preconnect_completed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="preconnect_starting">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="qn_dynamics">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="qn_parameter_table">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="qn_subscription">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="qn_template">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="session_mgr_event_notification_received">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="session_mgr_work_item_dequeued">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="session_mgr_work_item_end_execution">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="session_mgr_work_item_enqueued">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="session_mgr_work_item_start_execution">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Spinlock">
+		<event package="sqlos" name="spinlock_backoff">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlos" name="spinlock_backoff_warning">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Storage_Management">
+		<event package="sqlserver" name="extent_activation_cache_overflow">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+	<category name="Transactions">
+		<event package="sqlserver" name="begin_tran_completed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="begin_tran_starting">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="commit_tran_completed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="commit_tran_starting">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="database_transaction_begin">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="database_transaction_end">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="dtc_transaction">
+		<Scenarios>
+			
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="promote_tran_completed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="promote_tran_starting">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="rollback_tran_completed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="rollback_tran_starting">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="save_tran_completed">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="save_tran_starting">
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+		<event package="sqlserver" name="sql_transaction">
+		<Scenarios>
+			
+			<Scenario name="DetailedPerf" enabled="True"/>
+			<Scenario name="Replay" enabled="True"/>
+		</Scenarios>
+		<Features>
+			<Feature name="SQL" enabled="true"/>
+		</Features>
+		<Versions>
+			<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+		</Versions>
+		</event>
+	</category>
+
+
+  <category name="In-Memory OLTP">
+
+    <event package="sqlserver" name="after_natively_compiled_proc_entry_removal_on_drop">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+
+    </event>
+    <event package="sqlserver" name="before_natively_compiled_proc_entry_removal_on_drop">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+
+    </event>
+    <event package="sqlserver" name="natively_compiled_proc_execution_started">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+      <Scenarios>
+        <Scenario name="In-Memory OLTP" enabled="True"/>
+      </Scenarios>
+
+    </event>
+    <event package="sqlserver" name="natively_compiled_proc_slow_parameter_passing">
+
+    </event>
+    <event package="sqlserver" name="xtp_create_procedure">
+
+    </event>
+    <event package="sqlserver" name="xtp_create_table">
+
+    </event>
+    <event package="sqlserver" name="xtp_db_page_allocation_allowed">
+
+    </event>
+    <event package="sqlserver" name="xtp_db_page_allocation_disallowed">
+
+    </event>
+    <event package="sqlserver" name="xtp_deploy_done">
+
+    </event>
+    <event package="sqlserver" name="xtp_matgen">
+
+    </event>
+    <event package="sqlserver" name="xtp_offline_checkpoint_scan_start">
+
+    </event>
+    <event package="sqlserver" name="xtp_offline_checkpoint_scan_stop">
+
+    </event>
+    <event package="sqlserver" name="xtp_recover_done">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="13" enabled="true"/>
+      </Versions>
+
+    </event>
+    <event package="sqlserver" name="xtp_recover_table">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="13" enabled="true"/>
+      </Versions>
+
+    </event>
+    <event package="sqlserver" name="xtp_storage_table_create">
+
+    </event>
+
+    <event package="sqlserver" name="xtp_alter_table">
+      <Scenarios>
+        <Scenario name="In-Memory OLTP" enabled="True"/>
+      </Scenarios>
+
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </event>
+
+    
+    <event package="XtpCompile" name="cgen">
+
+    </event>
+    <event package="XtpCompile" name="invoke_cl">
+
+    </event>
+    <event package="XtpCompile" name="mat_export">
+
+    </event>
+    <event package="XtpCompile" name="pitgen_procs">
+
+    </event>
+    <event package="XtpCompile" name="pitgen_tables">
+
+    </event>
+    <event package="XtpEngine" name="after_changestatetx_event">
+
+    </event>
+    <event package="XtpEngine" name="alloctx_event">
+
+    </event>
+    <event package="XtpEngine" name="attempt_committx_event">
+
+    </event>
+    <event package="XtpEngine" name="before_changestatetx_event">
+
+    </event>
+    <event package="XtpEngine" name="dependency_acquiredtx_event">
+
+    </event>
+    <event package="XtpEngine" name="endts_acquiredtx_event">
+
+    </event>
+    <event package="XtpEngine" name="gc_base_generation_evaluation">
+
+    </event>
+    <event package="XtpEngine" name="gc_base_generation_updated">
+      <Scenarios>
+        <Scenario name="In-Memory OLTP" enabled="True"/>
+      </Scenarios>
+
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </event>
+    <event package="XtpEngine" name="gc_cycle_completed">
+      <Scenarios>
+        <Scenario name="In-Memory OLTP" enabled="True"/>
+      </Scenarios>
+
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </event>
+    <event package="XtpEngine" name="gc_notification">
+      <Scenarios>
+        <Scenario name="In-Memory OLTP" enabled="True"/>
+      </Scenarios>
+
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </event>
+    <event package="XtpEngine" name="redo_single_hk_record">
+
+    </event>
+    <event package="XtpEngine" name="trace_add_delta_filter_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_add_duplicate_delta_filter">
+
+    </event>
+    <event package="XtpEngine" name="trace_adding_tx_filter">
+
+    </event>
+    <event package="XtpEngine" name="trace_begin_close_ckpt_processing">
+
+    </event>
+    <event package="XtpEngine" name="trace_cfd_entry_deleted">
+
+    </event>
+    <event package="XtpEngine" name="trace_cfd_rows_created">
+
+    </event>
+    <event package="XtpEngine" name="trace_cfdtable_dump">
+
+    </event>
+    <event package="XtpEngine" name="trace_cfp_handles_opened">
+
+    </event>
+    <event package="XtpEngine" name="trace_cfp_removed_from_freelist">
+
+    </event>
+    <event package="XtpEngine" name="trace_checkpoint_file_flush">
+
+    </event>
+    <event package="XtpEngine" name="trace_checkpoint_load_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_checkpoint_write_io">
+
+    </event>
+    <event package="XtpEngine" name="trace_checksum_validation_succeeded">
+
+    </event>
+    <event package="XtpEngine" name="trace_ckpt_close_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_ckpt_close_signaled">
+
+    </event>
+    <event package="XtpEngine" name="trace_ckpt_closed">
+
+    </event>
+    <event package="XtpEngine" name="trace_ckpt_load_thread_stats">
+
+    </event>
+    <event package="XtpEngine" name="trace_ckpt_mrt_dump">
+
+    </event>
+    <event package="XtpEngine" name="trace_ckpt_serialization_state_dump">
+
+    </event>
+    <event package="XtpEngine" name="trace_ckpt_stream_io_stats">
+
+    </event>
+    <event package="XtpEngine" name="trace_close_file_log_rec_created">
+
+    </event>
+    <event package="XtpEngine" name="trace_data_file_pages_txs">
+
+    </event>
+    <event package="XtpEngine" name="trace_data_from_page_deserialized">
+
+    </event>
+    <event package="XtpEngine" name="trace_data_row_modified">
+
+    </event>
+    <event package="XtpEngine" name="trace_delete_cfd_rows_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_delete_DeletedObjectTable_row_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_delete_merged_source_file">
+
+    </event>
+    <event package="XtpEngine" name="trace_delete_mrtrow_for_target_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_delta_entry_skipped">
+
+    </event>
+    <event package="XtpEngine" name="trace_delta_file_future_count_rows_pages_update">
+
+    </event>
+    <event package="XtpEngine" name="trace_delta_file_lastgood_count_rows_pages_update">
+
+    </event>
+    <event package="XtpEngine" name="trace_delta_file_pages_txs">
+
+    </event>
+    <event package="XtpEngine" name="trace_delta_file_processed">
+
+    </event>
+    <event package="XtpEngine" name="trace_delta_file_set_clean_or_dirty">
+
+    </event>
+    <event package="XtpEngine" name="trace_delta_filter_removed">
+
+    </event>
+    <event package="XtpEngine" name="trace_delta_watermark_removed">
+
+    </event>
+    <event package="XtpEngine" name="trace_delta_watermark_updated">
+
+    </event>
+    <event package="XtpEngine" name="trace_deserialize_chained_records">
+
+    </event>
+    <event package="XtpEngine" name="trace_deserialize_data_from_page_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_deserialize_source_delta_file_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_dump_cfd_row">
+
+    </event>
+    <event package="XtpEngine" name="trace_dump_mrt_row">
+
+    </event>
+    <event package="XtpEngine" name="trace_file_close_skipped">
+
+    </event>
+    <event package="XtpEngine" name="trace_file_skipped">
+
+    </event>
+    <event package="XtpEngine" name="trace_file_skipped_with_tx_range">
+
+    </event>
+    <event package="XtpEngine" name="trace_first_page_header_flushed">
+
+    </event>
+    <event package="XtpEngine" name="trace_flush_io_operation_for_delta_file">
+
+    </event>
+    <event package="XtpEngine" name="trace_flush_skipped_for_closed_data_file">
+
+    </event>
+    <event package="XtpEngine" name="trace_future_count_pages_update">
+
+    </event>
+    <event package="XtpEngine" name="trace_initial_merge">
+
+    </event>
+    <event package="XtpEngine" name="trace_insert_DeletedObjectTable_row_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_intialize_worker_file_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_mark_data_file_closed">
+
+    </event>
+    <event package="XtpEngine" name="trace_merge_cancelled">
+
+    </event>
+    <event package="XtpEngine" name="trace_merge_complete_log_rec_ignored">
+
+    </event>
+    <event package="XtpEngine" name="trace_merge_complete_log_rec_processed">
+
+    </event>
+    <event package="XtpEngine" name="trace_mrt_dump">
+
+    </event>
+    <event package="XtpEngine" name="trace_mrt_row_inplace_update">
+
+    </event>
+    <event package="XtpEngine" name="trace_mrtrow_not_found">
+
+    </event>
+    <event package="XtpEngine" name="trace_new_delta_watermark_inserted">
+
+    </event>
+    <event package="XtpEngine" name="trace_offline_process_stale_merge_item">
+
+    </event>
+    <event package="XtpEngine" name="trace_pending_tx">
+
+    </event>
+    <event package="XtpEngine" name="trace_populate_storage_array">
+
+    </event>
+    <event package="XtpEngine" name="trace_post_writefile">
+
+    </event>
+    <event package="XtpEngine" name="trace_process_file_close_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_process_merge_complete_log_record">
+
+    </event>
+    <event package="XtpEngine" name="trace_process_merge_request">
+
+    </event>
+    <event package="XtpEngine" name="trace_process_source_file">
+
+    </event>
+    <event package="XtpEngine" name="trace_process_target_file">
+
+    </event>
+    <event package="XtpEngine" name="trace_queue_merge_work_item">
+
+    </event>
+    <event package="XtpEngine" name="trace_recovered_existing_file">
+
+    </event>
+    <event package="XtpEngine" name="trace_resyncing_state_of_file">
+
+    </event>
+    <event package="XtpEngine" name="trace_serialization_object_cleaned">
+
+    </event>
+    <event package="XtpEngine" name="trace_serialize_abort_transaction_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_serialize_tx_begin">
+
+    </event>
+    <event package="XtpEngine" name="trace_serialize_tx_end">
+
+    </event>
+    <event package="XtpEngine" name="trace_serialized_delta_rows_to_file">
+
+    </event>
+    <event package="XtpEngine" name="trace_source_file_load_stats">
+
+    </event>
+    <event package="XtpEngine" name="trace_storage_refreshed_for_file">
+
+    </event>
+    <event package="XtpEngine" name="trace_uninitialize_file">
+
+    </event>
+    <event package="XtpEngine" name="trace_wrote_delta_watermark">
+
+    </event>
+    <event package="XtpEngine" name="waiting_for_dependenciestx_event">
+
+    </event>
+    <event package="XtpEngine" name="xtp_before_create_log_record">
+
+    </event>
+    <event package="XtpEngine" name="xtp_checkpoint_file_flush">
+
+    </event>
+    <event package="XtpEngine" name="xtp_checkpoint_file_flush_complete">
+
+    </event>
+    <event package="XtpEngine" name="xtp_checkpoint_file_read">
+
+    </event>
+    <event package="XtpEngine" name="xtp_checkpoint_worker_active_log">
+
+    </event>
+    <event package="XtpEngine" name="xtp_checkpoint_worker_started">
+
+    </event>
+    <event package="XtpEngine" name="xtp_checkpoint_worker_stopped">
+
+    </event>
+    <event package="XtpEngine" name="xtp_checkpoint_write_io">
+
+    </event>
+    <event package="XtpEngine" name="xtp_complete_checkpoint">
+
+    </event>
+    <event package="XtpEngine" name="xtp_create_log_record">
+
+    </event>
+    <event package="XtpEngine" name="xtp_delta_marked_dirty">
+
+    </event>
+    <event package="XtpEngine" name="xtp_merge_complete_log_record">
+
+    </event>
+    <event package="XtpEngine" name="xtp_merge_log_complete_log_record">
+
+    </event>
+    <event package="XtpEngine" name="xtp_merge_process_log_record">
+
+    </event>
+    <event package="XtpEngine" name="xtp_merge_request_log_record">
+
+    </event>
+    <event package="XtpEngine" name="xtp_merge_request_started">
+
+    </event>
+    <event package="XtpEngine" name="xtp_root_deserialized">
+
+    </event>
+    <event package="XtpEngine" name="xtp_root_serialized">
+
+    </event>
+    <event package="XtpRuntime" name="bind_md">
+
+    </event>
+    <event package="XtpRuntime" name="bind_tables">
+
+    </event>
+    <event package="XtpRuntime" name="create_table">
+
+    </event>
+    <event package="XtpRuntime" name="deserialize_md">
+
+    </event>
+    <event package="XtpRuntime" name="load_dll">
+
+    </event>
+    <event package="XtpRuntime" name="recover_done">
+
+    </event>
+    <event package="XtpRuntime" name="recover_table">
+
+    </event>
+    <event package="XtpRuntime" name="serialize_md">
+
+    </event>
+    <event package="XtpRuntime" name="unload_dll">
+
+    </event>
+    
+    
+  </category>
+
+  
+
+  <category name="StretchDB">
+    <event package="sqlserver" name="remote_data_archive_table_ddl">
+      <Scenarios>
+        <Scenario name="StretchDB" enabled="True"/>
+      </Scenarios>
+
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        
+        <Version name="13" enabled="true"/>
+      </Versions>
+    </event>
+    
+  </category>
+  
+  <category name="Unclassified">
+	</category>
+  
+</XEvents>
+
