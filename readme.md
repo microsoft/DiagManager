@@ -7,7 +7,7 @@ Pssdiag/Sqldiag Manager is a graphic interface that provides customization capab
 #### **What's New**
 
 This version support SQL Server 2016 as well previous versions
-for more information see [What's new wiki](.//wiki/What's-New)
+for more information see [What's new wiki](What's New)
 
 #### **Requirements**
 
