@@ -1,37 +1,35 @@
 ## What is Pssdiag/Sqldiag Manager?
-
 Pssdiag/Sqldiag Manager is a graphic interface that provides customization capabilities to collect data for SQL Server using sqldiag collector engine. The data collected can be used by [SQL Nexus tool](http://sqlnexus.codeplex.com/)  which help you troubleshoot SQL Server performance problems.  This is the same tool Microsoft SQL Server support engineers use to for data collection to troubleshoot customer's performance problems.
 
-## Release 13.0.1600.32
+## Current Release
+ Build 13.0.1600.32
 
 #### **What's New**
-
 This version support SQL Server 2016 as well previous versions
-for more information see [What's new wiki](What's New)
+[More in wiki...](https://github.com/Microsoft/DiagManager/wiki/What's-New)
 
 #### **Requirements**
-
 1. Diag Manager requirements
-  - Windows 7 or above (32 or 64 bit)
-  - .NET framework 2.0 installed
+  - Windows 7 or Windows 10 (32 or 64 bit)
+  - .NET 4.5 
 2. Data collection
   - The collector can only run on a machine that has SQL Server with targeted version (either client tools only or full version) installed
 
-#### **Training Videos**
+### **Installation**
+Download it from release tab or [Click here](https://github.com/Microsoft/DiagManager/files/690279/DiagManager13.0.1600.32.zip) to download.  Source files are also included in the release tab.
+### **Known Issues**
+[see known issues wiki](Known Issues)
 
-1. [Downloading and Installing Diag Manager](http://youtu.be/y15KV8rxPN8)
-2. [Configuring and customizing pssdiag packages using Diag Manager](http://youtu.be/QqaFnQIDhw4)
-3. [Running pssdiag package](http://youtu.be/uF1yJYLcQTU)
-4. [PSSDIAG performance considerations](http://youtu.be/zW6sZJERuhY)
+## **How to use DiagManager**
+[See getting started wiki](https://github.com/Microsoft/DiagManager/wiki/Getting-Started)
 
 ## How it works
-
 This tool lets you customize what you want to collect and then let you create a data collection package. You extract the package and run SQLdiag data collector engine on the SQL Server you are troubleshooting.
 
 ## Feature Highlights
 
 1. **Powerful data collection capabilities: ** The tool relies on SQLdiag collector engine to provide collection of perfmon, profiler trace, msinfo32, errorlogs, Windows event logs, TSQL script output and registry exports.
-2. **Default templates** : You can choose SQL Server version and platform (32 bit or 64 bit). The tool will automatically choose a default template for the combination. This will have default set of perfmon counters, profiler traces.
+2. **Default templates/scenarios** : You can choose SQL Server version and platform (32 bit or 64 bit). The tool will automatically choose a default template for the combination. This will have default set of perfmon counters, profiler traces.
 3. **Shipped with ready to use Custom collectors** :  Most commonly used [custom collectors](http://diagmanager.codeplex.com/wikipage?title=Custom%20Collector)include SQL Server 2005, 2008 or 2008 R2 performance collector.
 4. **Customization/Extensibility: ** You can customize what perfmon and profiler trace events you want to collect.   Additionally, you can create your own custom collectors with TSQL Scripts, batch files and utilities.   See [customization guide](http://diagmanager.codeplex.com/wikipage?title=Creating%20Custom%20Collectors).
 5. **Packaging:** With a single click of save, the tool will package all your files into a single cab so that you can ship to the machine where you intend to run on.
@@ -39,22 +37,28 @@ This tool lets you customize what you want to collect and then let you create a 
 
 ## Common Tasks
 
-1. [Step-by-step tasks](http://diagmanager.codeplex.com/wikipage?title=Step%20by%20Step%20tasks):  This page tells you how to use the tool including installation, configuration and running the tool
-2. [Collecting Data for SQL Nexus](http://diagmanager.codeplex.com/wikipage?title=Collecting%20Data%20for%20SQL%20Nexus).
-3. [Customization guide](http://diagmanager.codeplex.com/wikipage?title=Creating%20Custom%20Collectors):  This page tells you how you can create you own custom collector to use in addition to default collectors shipped.
+1. [Gettting Started](https://github.com/Microsoft/DiagManager/wiki/Getting-Started):  This page tells you how to use the tool including installation, configuration and running the tool
+2. [Customization guide](http://diagmanager.codeplex.com/wikipage?title=Creating%20Custom%20Collectors):  This page tells you how you can create you own custom collector to use in addition to default collectors shipped.
 4. [Frequently Asked Questions (FAQ](http://diagmanager.codeplex.com/wikipage?title=FAQ)):  This page will answer most commonly asked questions.
-5. [Common Issues](http://diagmanager.codeplex.com/wikipage?title=COMMON_ISSUES):  this page will document most commonly encoutered issues and errors
+5. [Common Issues](https://github.com/Microsoft/DiagManager/wiki/Known-Issues):  this page will document most commonly encoutered issues and errors
 
-## Requirement/Supported Versions
 
-1. Requirements of this configuration tool:
-  - .NET framework 2.0 (SQL Server 2005 and 2008 install this by default).  This tool can be easily compiled to target .NET framework version beyond 2.0.  We target 2.0 to minimize .NET framework installation because 2005, 2008 and 2008 R2 all install .NET framework 2.0.
-  - Operating system: Windows 2003 Server/XP and above
-2. Requirement of running data collection package:
-  - The final data collection package generated by this configuration tool needs to run on a machine that has target SQL Server installed.  For example, if you have configured a package for an SQL Server 2008 instance, it can only run on a machine which SQL Server 2008 is installed.
-3. Supported Versions
-  - SQL Server 2005
-  - SQL Server 2008
-  - SQL Server 2008 R2
-  - For SQL Server 2012
-  - SQL Server 2014
+
+## License Agreement
+
+Microsoft Public License (Ms-PL) <br/>
+This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.<br/>
+1. Definitions<br/>
+The terms "reproduce," "reproduction," "derivative works," and "distribution" have the same meaning here as under U.S. copyright law.<br/>
+A "contribution" is the original software, or any additions or changes to the software.<br/>
+A "contributor" is any person that distributes its contribution under this license.<br/>
+"Licensed patents" are a contributor's patent claims that read directly on its contribution.<br/>
+2. Grant of Rights<br/>
+(A) Copyright Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free copyright license to reproduce its contribution, prepare derivative works of its contribution, and distribute its contribution or any derivative works that you create.<br/>
+(B) Patent Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free license under its licensed patents to make, have made, use, sell, offer for sale, import, and/or otherwise dispose of its contribution in the software or derivative works of the contribution in the software.<br/>
+3. Conditions and Limitations<br/>
+(A) No Trademark License- This license does not grant you rights to use any contributors' name, logo, or trademarks.<br/>
+(B) If you bring a patent claim against any contributor over patents that you claim are infringed by the software, your patent license from such contributor to the software ends automatically.<br/>
+(C) If you distribute any portion of the software, you must retain all copyright, patent, trademark, and attribution notices that are present in the software.<br/>
+(D) If you distribute any portion of the software in source code form, you may do so only under this license by including a complete copy of this license with your distribution. If you distribute any portion of the software in compiled or object code form, you may only do so under a license that complies with this license.<br/>
+(E) The software is licensed "as-is." You bear the risk of using it. The contributors give no express warranties, guarantees or conditions. You may have additional consumer rights under your local laws which this license cannot change. To the extent permitted under your local laws, the contributors exclude the implied warranties of merchantability, fitness for a particular purpose and non-infringement. <br/>
