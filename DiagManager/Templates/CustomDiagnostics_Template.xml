@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <CustomDiagnostics>
 
   <CustomGroup name="Analysis Services Shared" enabled="true">
@@ -391,7 +391,35 @@
     </Versions>
   </CustomGroup> />
 
+  <CustomGroup name="Change Data Capture" enabled="true">
+    <Scenarios>
 
+    </Scenarios>
+    <Features>
+      <Feature name="SQL" enabled="true"/>
+    </Features>
+    <Versions>
+      <Version name="10.50" enabled="true"/>
+      <Version name="11" enabled="true"/>
+      <Version name="12" enabled="true"/>
+      <Version name="13" enabled="true"/>
+    </Versions>
+  </CustomGroup> />
+
+  <CustomGroup name="Replication Metadata Collector" enabled="true">
+    <Scenarios>
+
+    </Scenarios>
+    <Features>
+      <Feature name="SQL" enabled="true"/>
+    </Features>
+    <Versions>
+      <Version name="10.50" enabled="true"/>
+      <Version name="11" enabled="true"/>
+      <Version name="12" enabled="true"/>
+      <Version name="13" enabled="true"/>
+    </Versions>
+  </CustomGroup> />
 
 
 </CustomDiagnostics>
