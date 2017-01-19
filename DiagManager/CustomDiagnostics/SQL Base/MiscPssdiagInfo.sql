@@ -443,6 +443,8 @@ print '--profiler trace summary--'
 SELECT traceid, property, CONVERT (varchar(1024), value) AS value FROM :: fn_trace_getinfo(default)
 
 go
+--we need the space for import
+print ''
 print '--trace event details--'
       select trace_id,
             status,
