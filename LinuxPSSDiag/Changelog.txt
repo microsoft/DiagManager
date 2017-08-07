@@ -1,0 +1,33 @@
+#Changes Added on 3/17
+- Retry logic for SA login/password - 3 times
+- Integrated SQL Performance counter collection interval
+- naming convetion, all OS perf counters .perf, some of the machinelogs now .info files to prevent nexus from having to process them.
+- all collectors start with collect_
+- split pssdiag.conf into pssdiag.conf ( collector) and pssdiagimport.conf ( for import settings), get both of them in output
+- Static collector to just collect log files 
+- Printed warning about collectors running in background
+#Changes 3/20
+- Fully qualified sqlcmd path due to issues running under sudo-
+#Changes 3/22
+- Changed retry logic for commands
+- Changed bzip2 extension
+#Changes 5/10
+- Added custom collector, follows my_custom_collector prefix to all SQL files
+- Made Change for custom XE path to go to output folder
+#Change 5/19
+- Add detection for previous run of pssdiag and not allow multiple concurrent runs
+#Change 5/23
+- Add pssdiag_xevent_start.template and then perform replacement on copied file
+- rename .conf files and *collector.sh files
+- change xel file permission to help tar
+#Change 7/09
+- implement dump collector
+- implement sql log folder collections
+- implement logic to iterate container
+- implement collection from multiple instances on same machine
+#Change 7/12
+- implement detection of custom port and log folder
+#Change 8/5
+- Docker mapped ports
+- Revereted custom log folder due to bug
+- Modified conf, readme, stopcollector, moved sql_connect to helper functions
