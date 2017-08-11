@@ -12,6 +12,9 @@ Steps to configure and start data collection:
       drwxr-xr-x    2 root root    6 Aug  4 15:31 pssdiag
 
 2. Copy the pssdiag.tar.gz into the linux box in a folder  /pssdiag
+   cd /pssdiag
+   curl -L https://github.com/Microsoft/DiagManager/releases/download/LinuxRel170810/pssdiag.tar | tar x
+  
 3. Extract the files as follows in that folder created
 	[denzilr@sqlredhat pssdiag]$ tar -xvf pssdiag.tar
 
