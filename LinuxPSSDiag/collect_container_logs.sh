@@ -25,7 +25,7 @@ mkdir -p $outputdir/log
 
 	else
 	# we need to iterate through all containers
-		dockerid_col=$(docker ps -q --filter ancestor=microsoft/mssql-server-linux)
+		dockerid_col=$(docker ps | grep 'microsoft/mssql-server-linux' | awk '{ print $1 }')
 		for dockerid in $dockerid_col;
 		do
 			dockername=$(docker inspect -f "{{.Name}}" $dockerid)

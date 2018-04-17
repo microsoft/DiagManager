@@ -14,13 +14,13 @@ OS_COUNTERS_INTERVAL=15
 COLLECT_OS_LOGS=YES
 
 # Collect setup related files
-COLLECT_SETUP_LOGS=NO
+#COLLECT_SETUP_LOGS=NO
 
 # Collect OS HA related OS files and logs
-COLLECT_OS_HA_LOGS=NO
+#COLLECT_OS_HA_LOGS=NO
 
 # Collect OS security, encryption and AD files and logs
-COLLECT_OS_SEC_AD_LOGS=NO
+#COLLECT_OS_SEC_AD_LOGS=NO
 
 #########################
 # SECTION FOR SQL SERVER
@@ -39,6 +39,10 @@ COLLECT_SQL_LOGS=YES
 # Collects SQL Server Dump Files - Note output can be fairly large depending on the number of dumps
 COLLECT_SQL_DUMPS=NO
 
+# Specify the authentication mode to use for connecting to SQL instance
+# Valid values : SQL / AD
+#SQL_CONNECT_AUTH_MODE=SQL
+
 # Collects snapshots of sys.dm_os_performance_counters. Specify YES or NO
 # Interval is in seconds
 COLLECT_SQL_COUNTERS=YES
@@ -48,16 +52,16 @@ SQL_COUNTERS_INTERVAL=15
 COLLECT_PERFSTATS=YES
 
 # Configured for batch completed and RPC completed only. Specify YES or NO. If you want to change XE collected, change pssdiag_xevent.sql
-COLLECT_EXTENDED_EVENTS=NO
+COLLECT_EXTENDED_EVENTS=YES
 
 # Collects various memory related DMVS. Specify YES or NO.
-COLLECT_SQL_MEM_STATS=NO
+COLLECT_SQL_MEM_STATS=YES
 
 # Collects SQL related HA logs
-COLLECT_SQL_HA_LOGS=NO
+#COLLECT_SQL_HA_LOGS=NO
 
 # Collects SQL security, encryption and AD related settings and log
-COLLECT_SQL_SEC_AD_LOGS=NO
+#COLLECT_SQL_SEC_AD_LOGS=NO
 
 # If you want any other custom collection, set this to YES and change the my_custom_collector.sql file to include your queries.
 CUSTOM_COLLECTOR=NO

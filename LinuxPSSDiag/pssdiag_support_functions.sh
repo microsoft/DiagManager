@@ -42,41 +42,48 @@ get_docker_mapped_port()
 {
                
    dockername=$(docker inspect -f "{{.Name}}" $dockerid | tail -c +2)
-   echo "collecting sql scripts from container : $dockername"
+   echo "collecting information from sql container instance : $dockername"
    SQL_LISTEN_PORT=$(get_sql_listen_port "container_instance" "2" $dockerid)
    #dynamically build?
    inspectcmd="docker inspect --format='{{(index (index .HostConfig.PortBindings \""
    inspectcmd+=$SQL_LISTEN_PORT
    inspectcmd+="/tcp\") 0).HostPort}}' $dockerid"
    dockerport=`eval $inspectcmd`
-   echo "${dockerport}"
-
+   # echo "${dockerport}"
 }
 
 sql_connect()
 {
-MAX_ATTEMPTS=3
-attempt_num=1
-sqlconnect=0
+	echo "Testing SQL Connectivity for ${1} with name ${2} and port ${3}"
+	MAX_ATTEMPTS=3
+	attempt_num=1
+	sqlconnect=0
 
-while [ $attempt_num -le $MAX_ATTEMPTS ]
-do
-        #prompt for credentials for SQL authentication
-        read -r -p "    Enter SQL UserName: " sqluser
-        read -s -r -p " Enter User Password: " pass
-        echo ""
-        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -Q"select @@version" 2>&1 >/dev/null
-        if [[ $? -eq 0 ]]; then
-           sqlconnect=1
-           echo "       SQL Connectivity test suceeded..."
-           break
-        else
-          echo "        Login Attempt failed - Attempt ${attempt_num} of ${MAX_ATTEMPTS}, Please try again"
+	sqlservicestatus="unknown"
+	if [[ "${1}" == "host_instance" ]]; then
+		systemctl is-active mssql-server >/dev/null 2>&1 && sqlservicestatus="active" || sqlservicestatus="unknown"
+		if [[ "${sqlservicestatus}" != "active" ]]; then
+			return $sqlconnect
+		fi
+	fi
 
-        fi
-        attempt_num=$(( attempt_num + 1 ))
-done
-return $sqlconnect
+	while [ $attempt_num -le $MAX_ATTEMPTS ]
+	do
+        	#prompt for credentials for SQL authentication
+	        read -r -p "        Enter SQL UserName: " sqluser
+	        read -s -r -p "        Enter User Password: " pass
+	        echo ""
+	        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -Q"select @@version" 2>&1 >/dev/null
+	        if [[ $? -eq 0 ]]; then
+	        	sqlconnect=1
+	        	echo "        SQL Connectivity test suceeded..."
+	        	break
+	        else
+        		echo "        Login Attempt failed - Attempt ${attempt_num} of ${MAX_ATTEMPTS}, Please try again"
+	        fi
+        	attempt_num=$(( attempt_num + 1 ))
+	done
+	return $sqlconnect
 }
 
 

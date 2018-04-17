@@ -9,8 +9,8 @@ if [[ -f $CONFIG_FILE ]]; then
 fi
 
 # Specify the defaults here if not specified in config file.
-COLLECT_CONTAINER=${COLLECT_CONTAINER:-"ALL"}
-COLLECT_HOST=${COLLECT_HOST:-"YES"}
+COLLECT_CONTAINER=${COLLECT_CONTAINER:-"NO"}
+COLLECT_HOST_SQL_INSTANCE=${COLLECT_HOST_SQL_INSTANCE:-"NO"}
 
 if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
 # we need to collect dumps from containers
@@ -29,7 +29,7 @@ dumplocation="/var/opt/mssql/log"
 		docker exec $dockerid sh -c "rm -f /tmp/sql_dumps.tar"
         else
         # we need to iterate through all containers
-                dockerid_col=$(docker ps -q --filter ancestor=microsoft/mssql-server-linux)
+                dockerid_col=$(docker ps | grep 'microsoft/mssql-server-linux' | awk '{ print $1 }')
                 for dockerid in $dockerid_col;
                 do
                         dockername=$(docker inspect -f "{{.Name}}" $dockerid | tail -c +2)
@@ -41,7 +41,7 @@ dumplocation="/var/opt/mssql/log"
         fi
 fi
 
-if [[ "$COLLECT_HOST" = "YES" ]]; then
+if [[ "$COLLECT_HOST_SQL_INSTANCE" = "YES" ]]; then
 # we need to collect dumps from host instance
 	dumplocation=`cat /var/opt/mssql/mssql.conf | grep "filelocation.defaultdumpdir" | awk -F' = ' '{ print $2 }'`
 	if [ -z $dumplocation ]

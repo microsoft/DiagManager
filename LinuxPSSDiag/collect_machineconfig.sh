@@ -31,16 +31,24 @@ function capture_system_info()
     capture_system_info_command "OS release" "cat /etc/os-release"
     capture_system_info_command "Processor Information" "lscpu"
     capture_system_info_command "Processor Mapping Information" "lscpu -e"
+    capture_system_info_command "Processor topology" "cat /proc/cpuinfo"
     capture_system_info_command "Disk Information" "lsblk -o NAME,MAJ:MIN,FSTYPE,MOUNTPOINT,PARTLABEL,SIZE,ALIGNMENT,PHY-SEC,LOG-SEC,MIN-IO,OPT-IO,ROTA,TYPE,RQ-SIZE,LABEL,MODEL,REV,VENDOR" 
     capture_system_info_command "Disk Space Information" "df -TH"
     capture_system_info_command "Free Memory" "free -m"
     capture_system_info_command "System memory information" "cat /proc/meminfo"
+    capture_system_info_command "VMA max count" "cat /proc/sys/vm/max_map_count"
+    [ -f /usr/sbin/dpkg ] && capture_system_info_command "System package list" "dpkg -l"
+    [ -f /usr/bin/yum ] && capture_system_info_command "System package list" "yum list installed"
+    capture_system_info_command "Driver List" "lsmod"
+    capture_system_info_command "Netowk IP configuration" "ifconfig -a"
+
+}
+
+function capture_process_info()
+{
     capture_system_info_command "Command line" "cat /proc/$pid/cmdline"
     capture_system_info_command "VMA count" "cat /proc/$pid/maps | wc -l"
-    capture_system_info_command "VMA max count" "cat /proc/sys/vm/max_map_count"
-    capture_system_info_command "Netowk IP configuration" "ifconfig -a"
     capture_system_info_command "Process limits" "cat /proc/$pid/limits"
-    capture_system_info_command "Processor topology" "cat /proc/cpuinfo"
     capture_system_info_command "Process mounts" "cat /proc/$pid/mountinfo"
     capture_system_info_command "Process statistics" "cat /proc/$pid/stat"
     capture_system_info_command "Process status" "cat /proc/$pid/status"
@@ -50,11 +58,8 @@ function capture_system_info()
     capture_system_info_command "Process scheduler information" "cat /proc/$pid/sched"
     capture_system_info_command "Process handle information" "hash lsof && lsof -p $pid -O -o"
     capture_system_info_command "Process environment variables" "cat /proc/$pid/environ | tr '\0' '\n' | grep -v 'PASSWORD'"
-    [ -f /usr/sbin/dpkg ] && capture_system_info_command "System package list" "dpkg -l"
-    [ -f /usr/bin/yum ] && capture_system_info_command "System package list" "yum list installed"
-    capture_system_info_command "Driver List" "lsmod"
-
 }
+
 
 if [[ -d "$1" ]] ; then
 	output_dir="$1"
@@ -68,15 +73,24 @@ else
 fi
 
 infolog_filename=$output_dir/${HOSTNAME}_machineconfig.info
-printf "Collecting Machine configuration... output file: %s \n" "$infolog_filename"
-
-
-#assumption one SQL instance, last spawned process is the right one.
-pid=`pgrep sqlservr -n`
-
+echo "Collecting Machine configuration..."
 
 # Capture basic system information
-#
- capture_system_info
- ps -efaHjf >> $output_dir/${HOSTNAME}_processlist.info
+capture_system_info
+ps -efaHjf >> $output_dir/${HOSTNAME}_processlist.info
+
+# loop through each sql process and get its process information
+if pgrep -x "sqlservr" > /dev/null 2>&1
+then
+	for pid in $(pgrep 'sqlservr'); do
+		echo "Collecting sqlservr process configuration... PID = ${pid}"
+		capture_process_info
+	done
+else
+	echo "No sqlservr process present to collect information..."
+fi
+
+
+
+
 

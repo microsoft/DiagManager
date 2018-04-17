@@ -18,11 +18,11 @@ linuxdistro=`sudo cat /etc/os-release | grep -i '^ID=' | head -n1 | awk -F'=' '{
 # Tar command zips all log files specified, to add any other log files add to end of the command.
 case $linuxdistro in
    "ubuntu" | "debian")
-	sudo sh -c 'tar -cjvf "$0/syslogs_$1.tar.bz2" $2/syslog* $2/kern* $2/auth*.*' "$outputdir" "$NOW" "$SYSLOGPATH"
+	sh -c 'tar -cjvf "$0/$3_syslogs_$1.tar.bz2" $2/syslog* $2/kern* $2/auth*.*' "$outputdir" "$NOW" "$SYSLOGPATH" "$HOSTNAME"
 	;;
 
   "rhel" | "centos")
-	sudo sh -c 'tar -cjvf "$0/syslogs_$1.tar.bz2" $2/message* $2/cron* $2/secure* $2/boot.log $2/yum.log' "$outputdir" "$NOW" "$SYSLOGPATH"
+	sh -c 'tar -cjvf "$0/$3_syslogs_$1.tar.bz2" $2/message* $2/cron* $2/secure* $2/boot.log $2/yum.log' "$outputdir" "$NOW" "$SYSLOGPATH" "$HOSTNAME"
 
        ;;
  *) ;;
