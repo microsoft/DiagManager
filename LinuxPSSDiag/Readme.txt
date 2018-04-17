@@ -31,7 +31,7 @@ Steps to configure and start data collection using PSSDIAG:
 2. Copy the pssdiag.tar to the folder /pssdiag. The Microsoft engineer might provide this tar file to you.
    If you do not have the pssdiag.tar file, you can obtain using the following commands:
       cd /pssdiag
-      curl -L https://github.com/Microsoft/DiagManager/releases/download/LinuxRel170810/pssdiag.tar | tar x
+      curl -L https://github.com/Microsoft/DiagManager/releases/download/LinuxRel180417/pssdiag.tar | tar x
    Make sure to use the latest release that is available.
 
 3. Extract the contents of the tar using the following command:
