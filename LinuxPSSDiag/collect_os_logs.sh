@@ -8,8 +8,8 @@ outputdir=$PWD/output
 
 echo "Collecting dmesg log, journalctl, system logs..."
 dmesg > $outputdir/${HOSTNAME}_dmesg.txt
-journalctl | tail -n1000 > $output_dir/${HOSTNAME}_journalctl.tail.txt
-journalctl -u mssql-server > $output_dir/${HOSTNAME}_journalctl.sql.txt
+journalctl | tail -n1000 > $outputdir/${HOSTNAME}_journalctl.tail.txt
+journalctl -u mssql-server > $outputdir/${HOSTNAME}_journalctl.sql.txt
 
 
 # this is required to figure out version of distro so that System log files are collected appropriately in the following case statement
