@@ -189,6 +189,7 @@ PRINT ''
 select 
 database_name=cast(drcs.database_name as varchar(30)), 
 drs.database_id,
+drs.group_database_id,
 drs.group_id,
 drs.replica_id,
 drs.is_local,
