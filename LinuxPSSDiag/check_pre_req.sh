@@ -64,6 +64,11 @@ else
         check_sysstat="1"
 fi
 
+# check if lsof is present and warn about it, this is used for process data collection in machine config scripts
+if ( !( hash lsof 2>/dev/null ) ); then
+	echo -e "\x1B[31m       The program lsof is not installed on this system and is used for the data collection, will continue without this... \x1B[0m"
+fi
+
 # now ask the user what they want to do if any program is absent
 if (( ("$check_sqlcmd" == "0") || ( "$check_iotop" == "0" ) || ( "$check_sysstat" == "0" ) )); then
 	echo -e "	If you do not have all the required programs installed data collection will not be reliable and complete! \x1B[0m"

@@ -12,6 +12,7 @@ Pre-requisites to run the Data collection:
 - There are several Linux commands and utilities used for data collection. Here are the important ones:
   - systat ( sudo yum install sysstat / sudo apt-get install sysstat ) (https://github.com/sysstat/sysstat)
   - iotop  ( sudo yum install iotop / sudo apt-get install iotop )
+  - lsof   ( sudo yum install lsof / sudo apt-get install lsof )
   - sqlcmd ( https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools )
 When you launch the PSSDIAG utility it checks for these pre-requisites and warns you about missing commands or utilities.
 If you do not have all these utilities and commands then we will be able to collect only portions of the diagnostic logs and may end up in inconclusive results.
@@ -31,7 +32,7 @@ Steps to configure and start data collection using PSSDIAG:
 2. Copy the pssdiag.tar to the folder /pssdiag. The Microsoft engineer might provide this tar file to you.
    If you do not have the pssdiag.tar file, you can obtain using the following commands:
       cd /pssdiag
-      curl -L https://github.com/Microsoft/DiagManager/releases/download/LinuxRel180417/pssdiag.tar | tar x
+      curl -L https://github.com/Microsoft/DiagManager/releases/download/LinuxRel190225/pssdiag.tar | tar x
    Make sure to use the latest release that is available.
 
 3. Extract the contents of the tar using the following command:

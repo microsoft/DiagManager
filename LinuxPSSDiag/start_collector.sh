@@ -29,7 +29,7 @@ sql_collect_counters()
                 #Start sql performance counter script as a background job
                 #Replace Interval with SED
                 sed -i'' -e"2s/.*/SET @SQL_COUNTER_INTERVAL = $SQL_COUNTERS_INTERVAL/g" SQL_Performance_Counters.sql
-                echo "	Starting SQL Performance counter  script as a background job.... "
+                echo "	Starting SQL Performance counter script as a background job.... "
                 `/opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"SQL_Performance_Counters.sql" -o"$outputdir/${1}_SQL_Performance_Counters.out"` &
                 mypid=$!
                 printf "%s\n" "$mypid" >> $outputdir/stoppids_sql_collectors.txt
@@ -48,8 +48,8 @@ sql_collect_config()
 sql_collect_memstats()
 {
         if [[ $COLLECT_SQL_MEM_STATS == [Yy][eE][sS] ]] ; then
-                #Start SQL Memory Status  script as a background job
-                echo "	Starting SQL Memory Status  script as a background job.... "
+                #Start SQL Memory Status script as a background job
+                echo "	Starting SQL Memory Status script as a background job.... "
                 `/opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"SQL_Mem_Stats.sql" -o"$outputdir/${1}_SQL_Mem_Stats_Output.out"` &
                 mypid=$!
                 printf "%s\n" "$mypid" >> $outputdir/stoppids_sql_collectors.txt
@@ -62,7 +62,7 @@ sql_collect_custom()
 {
         if [[ $CUSTOM_COLLECTOR == [Yy][eE][sS] ]] ; then
                 #Start Custom Collector  scripts as a background job
-                echo "	Starting SQL Custom Collector Scripts  as a background job.... "
+                echo "	Starting SQL Custom Collector Scripts as a background job.... "
                 for filename in my_custom_collector*.sql; do
                    `/opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"${filename}" -o"$outputdir/${1}_${filename}_Output.out"` &
                     mypid=$!
@@ -79,13 +79,30 @@ sql_collect_xevent()
         if [[ $COLLECT_EXTENDED_EVENTS == [Yy][eE][sS]  ]]; then
                 echo "	Starting SQL Extended Events collection...  "
                 /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"pssdiag_xevent.sql" -o"$outputdir/${1}_pssdiag_xevent.out"
-                cp -f ./pssdiag_xevent_start.template ./pssdiag_xevent_start.sql
+                cp -f ./${EXTENDED_EVENT_TEMPLATE}.template ./pssdiag_xevent_start.sql
 		if [[ "$2" == "host_instance" ]]; then
 	                sed -i "s|##XeFileName##|${outputdir}/${1}_pssdiag_xevent.xel|" pssdiag_xevent_start.sql
 		else
                         sed -i "s|##XeFileName##|/var/opt/mssql/log/${1}_pssdiag_xevent.xel|" pssdiag_xevent_start.sql
 		fi
                 /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"pssdiag_xevent_start.sql" -o"$outputdir/${1}_pssdiag_xevent_start.out"
+        fi
+}
+
+sql_collect_trace()
+{
+        #start any SQL trace collection if defined? 
+        if [[ $COLLECT_SQL_TRACE == [Yy][eE][sS]  ]]; then
+		echo "	Creating helper stored procedures in tempdb from MSDiagprocs.sql"
+		/opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"MSDiagProcs.sql" -o"$outputdir/${1}_MSDiagprocs.out"
+                echo "	Starting SQL trace collection...  "
+                cp -f ./${SQL_TRACE_TEMPLATE}.template ./pssdiag_trace_start.sql
+		if [[ "$2" == "host_instance" ]]; then
+			sed -i "s|##TraceFileName##|${outputdir}/${1}_pssdiag_trace|" pssdiag_trace_start.sql
+		else
+			sed -i "s|##TraceFileName##|/var/opt/mssql/log/${1}_pssdiag_trace|" pssdiag_trace_start.sql
+		fi
+		/opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"pssdiag_trace_start.sql" -o"$outputdir/${1}_pssdiag_trace_start.out"
         fi
 }
 
@@ -136,6 +153,9 @@ COLLECT_OS_COUNTERS=${COLLECT_OS_COUNTERS:-"NO"}
 OS_COUNTERS_INTERVAL=${OS_COUNTERS_INTERVAL:=-"15"}
 COLLECT_PERFSTATS=${COLLECT_PERFSTATS:-"NO"}
 COLLECT_EXTENDED_EVENTS=${COLLECT_EXTENDED_EVENTS:-"NO"}
+EXTENDED_EVENT_TEMPLATE=${EXTENDED_EVENT_TEMPLATE:-"pssdiag_xevent_light"}
+COLLECT_SQL_TRACE=${COLLECT_SQL_TRACE:-"NO"}
+SQL_TRACE_TEMPLATE=${SQL_TRACE_TEMPLATE:-"pssdiag_trace_light"}
 COLLECT_SQL_COUNTERS=${COLLECT_SQL_COUNTERS:-"NO"}
 SQL_COUNTERS_INTERVAL=${SQL_COUNTERS_INTERVAL:-"15"}
 COLLECT_SQL_MEM_STATS=${COLLECT_SQL_MEM_STATS:-"NO"}
@@ -207,7 +227,7 @@ if [[ $COLLECT_OS_COUNTERS == [Yy][eE][sS] ]] ; then
         (
         bash  ./collect_process_stats.sh $OS_COUNTERS_INTERVAL &
         )
-        echo "	Starting network stats  collector as a background job..."
+        echo "	Starting network stats collector as a background job..."
         (
         bash  ./collect_network_stats.sh $OS_COUNTERS_INTERVAL &
         )
@@ -232,6 +252,7 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" == "YES" ]];then
 		sql_collect_memstats "${HOSTNAME}"
 		sql_collect_custom "${HOSTNAME}"
 		sql_collect_xevent "${HOSTNAME}" "host_instance"
+		sql_collect_trace "${HOSTNAME}" "host_instance"
 	fi
 fi
 
@@ -253,6 +274,7 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
 	                sql_collect_memstats "${dockername}"
         	        sql_collect_custom "${dockername}"
                 	sql_collect_xevent "${dockername}" "container_instance"
+			sql_collect_trace "${dockername}" "container_instance"
 	        fi
 	# we finished processing the requested container
         else
@@ -273,6 +295,7 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
 	                        sql_collect_memstats "${dockername}"
         	                sql_collect_custom "${dockername}"
                 	        sql_collect_xevent "${dockername}" "container_instance"
+				sql_collect_trace "${dockername}" "container_instance"
 	                fi
                 done;
         # we finished processing all the container
