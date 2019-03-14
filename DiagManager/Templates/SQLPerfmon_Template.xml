@@ -3990,19 +3990,6 @@
 			<Version name="13" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
-		<PerfmonCounter name="\Copy Read Hits %">
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
 		<PerfmonCounter name="\Copy Reads/sec">
 		<Features>
 			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
@@ -4043,32 +4030,6 @@
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Data Map Hits %">
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\Data Map Hits %">
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\Data Map Pins/sec">
 		<Features>
 			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
 		</Features>
@@ -4185,33 +4146,7 @@
 			<Version name="13" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
-		<PerfmonCounter name="\MDL Read Hits %">
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
 		<PerfmonCounter name="\MDL Reads/sec">
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\Pin Read Hits %">
 		<Features>
 			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
 		</Features>
@@ -10267,24 +10202,6 @@
 	</PerfmonObject>
 	<PerfmonObject name="\Memory">
 		<PerfmonCounter name="\% Committed Bytes In Use">
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\% Committed Bytes In Use">
-		<Scenarios>
-			<Scenario name="All" enabled="true"/>
-			<Scenario name="DetailedPerf" enabled="true"/>
-			<Scenario name="Replay" enabled="true"/>
-		</Scenarios>
 		<Features>
 			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
 		</Features>
@@ -16685,24 +16602,6 @@
 			<Version name="13" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
-		<PerfmonCounter name="\Log Send Queue">
-		<Scenarios>
-			<Scenario name="All" enabled="true"/>
-			<Scenario name="DetailedPerf" enabled="true"/>
-			<Scenario name="Replay" enabled="true"/>
-		</Scenarios>
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
 		<PerfmonCounter name="\Mirrored Write Transactions/sec">
 		<Scenarios>
 			<Scenario name="All" enabled="true"/>
@@ -18606,24 +18505,6 @@
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Temp Tables Creation Rate">
-		<Scenarios>
-			<Scenario name="All" enabled="true"/>
-			<Scenario name="DetailedPerf" enabled="true"/>
-			<Scenario name="Replay" enabled="true"/>
-		</Scenarios>
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\Temp Tables For Destruction">
 		<Scenarios>
 			<Scenario name="All" enabled="true"/>
 			<Scenario name="DetailedPerf" enabled="true"/>
@@ -24226,32 +24107,6 @@
 			<Version name="13" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
-		<PerfmonCounter name="\% Usage">
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\% Usage Peak">
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
 		<PerfmonCounter name="\% Usage Peak">
 		<Features>
 			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
@@ -24268,32 +24123,6 @@
 	</PerfmonObject>
 	<PerfmonObject name="\Paging File(_Total)">
 		<PerfmonCounter name="\% Usage">
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\% Usage">
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\% Usage Peak">
 		<Features>
 			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
 		</Features>
@@ -31930,19 +31759,6 @@
 		</PerfmonCounter>
 	</PerfmonObject>
 	<PerfmonObject name="\System">
-		<PerfmonCounter name="\% Registry Quota In Use">
-		<Features>
-			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
 		<PerfmonCounter name="\% Registry Quota In Use">
 		<Features>
 			<Feature name="SQL" enabled="true"/> <Feature name="AS" enabled="true"/>
