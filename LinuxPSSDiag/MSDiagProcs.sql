@@ -515,9 +515,9 @@ PRINT CONVERT (varchar, GETDATE(), 109)
 SELECT * FROM master.dbo.sysperfinfo
 PRINT ''
 
-PRINT '-> NET START'
-EXEC master.dbo.xp_cmdshell 'NET START'
-PRINT ''
+--PRINT '-> NET START'
+--EXEC master.dbo.xp_cmdshell 'NET START'
+--PRINT ''
 
 DECLARE @IsFullTextInstalled int
 PRINT '-> Full-text information'
@@ -2069,9 +2069,9 @@ END
 
 
 -- Delete the file if it exists
-DECLARE @cmd varchar(8000)
-SET @cmd='DEL '+@FileName
-EXEC master..xp_cmdshell @cmd
+--DECLARE @cmd varchar(8000)
+--SET @cmd='DEL '+@FileName
+--EXEC master..xp_cmdshell @cmd
 
 -- Configure the queue to write to a file
 PRINT 'The new trace output file name is : '+@FileName+'.'
@@ -2280,10 +2280,10 @@ END
 IF @FileName IS NULL SELECT @FileName = 'c:\TEMP\tsqltrace_' + CONVERT(CHAR(8),getdate(),112) + REPLACE(CONVERT(varchar(15),getdate(),114),':','')
 
 -- Delete the file if it exists
-DECLARE @cmd varchar(8000)
-SET @cmd='DEL '+@FileName+'.trc'
-SET @cmd=REPLACE(@cmd,'sp_trace','*')  -- Delete all trace files so that SQL Server's rollover functionality works
-EXEC master..xp_cmdshell @cmd
+--DECLARE @cmd varchar(8000)
+--SET @cmd='DEL '+@FileName+'.trc'
+--SET @cmd=REPLACE(@cmd,'sp_trace','*')  -- Delete all trace files so that SQL Server's rollover functionality works
+--EXEC master..xp_cmdshell @cmd
 
 -- Check for proper permissions
 -- This check is only valid if xp_cmdshell and SQL Server are running under the same account
@@ -2644,12 +2644,12 @@ IF @FileName IS NULL SELECT @FileName = 'c:\TEMP\tsqltrace_' + CONVERT(CHAR(8),g
 -- Delete the file if it exists
 
 -- Ensure xp_cmdshell is enabled before we try this
-if (select value from sys.sysconfigures WHERE config=16390)=1 BEGIN
-	DECLARE @cmd varchar(8000)
-	SET @cmd='DEL '+@FileName+'.trc'
-	SET @cmd=REPLACE(@cmd,'sp_trace','*')  -- Delete all trace files so that SQL Server's rollover functionality works
-	EXEC master..xp_cmdshell @cmd
-END
+--if (select value from sys.sysconfigures WHERE config=16390)=1 BEGIN
+--	DECLARE @cmd varchar(8000)
+--	SET @cmd='DEL '+@FileName+'.trc'
+--	SET @cmd=REPLACE(@cmd,'sp_trace','*')  -- Delete all trace files so that SQL Server's rollover functionality works
+--	EXEC master..xp_cmdshell @cmd
+--END
 
 -- First try accessing the output folder 
 DECLARE @outputfolder varchar(255)
@@ -3354,16 +3354,16 @@ WHILE (@Stop=0) BEGIN
   SET @i=@i+1
   IF (@OutputDir IS NOT NULL) AND (@i>@NumFiles) BEGIN -- Get rid of extra files
 
-    CREATE TABLE #files (fname varchar(255) NULL)
+    --CREATE TABLE #files (fname varchar(255) NULL)
 
-    INSERT #files
-    EXEC master..xp_cmdshell @OutputDirCmd
+    --INSERT #files
+    --EXEC master..xp_cmdshell @OutputDirCmd
 
-    SELECT TOP 1 @DelCmd='DEL '+@OutputDir+fname FROM #files WHERE fname IS NOT NULL ORDER BY fname
-    IF @@ROWCOUNT<>0
-      EXEC master..xp_cmdshell @DelCmd, no_output
+    --SELECT TOP 1 @DelCmd='DEL '+@OutputDir+fname FROM #files WHERE fname IS NOT NULL ORDER BY fname
+    --IF @@ROWCOUNT<>0
+    --  EXEC master..xp_cmdshell @DelCmd, no_output
 
-    DROP TABLE #files
+    --DROP TABLE #files
 
   END
 	  IF @PauseBetweenRuns IS NOT NULL -- Do pause between runs delay
@@ -4020,265 +4020,6 @@ else
   print '8 No Waittypes: ' + convert(varchar(26), @time, 121) + ' ' + convert(varchar(12), datediff(ms,@time,getdate())) + ' ' + ISNULL (@@servername,'(null)')
 GO    
 
--- Pre-SP3
-/*
-PRINT ''
-RAISERROR ('===== Creating sp_blocker_pss08 (pre-SP3)', 0, 1) WITH NOWAIT
-GO
-create proc sp_blocker_pss08 (@latch int = 0, @fast int = 1, @appname sysname='SQLDIAG')
-as 
-if is_member('sysadmin')=0 begin
-  print 'Must be a member of the sysadmin group in order to run this procedure'
-  return
-end
---version 14
-set nocount on
-declare @spid varchar(6)
-declare @blocked varchar(6)
-declare @time datetime
-declare @time2 datetime
-
-set @time = getdate()
-declare @probclients table(spid smallint, ecid smallint, blocked smallint, waittype binary(2), dbid smallint, ignore_app tinyint, primary key (blocked, spid, ecid))
-insert @probclients select spid, ecid, blocked, waittype, dbid, case when convert(varchar(128),hostname) = @appname then 1 else 0 end from master..sysprocesses where blocked!=0 or waittype != 0x0000
-
-if exists (select spid from @probclients where ignore_app != 1 or waittype != 0x020B)
-begin
-   set @time2 = getdate()
-   print ''
-   print '8 Start time: ' + convert(varchar(26), @time, 121) + ' ' + convert(varchar(12), datediff(ms,@time,@time2))
-
-   insert @probclients select distinct blocked, 0, 0, 0x0000, 0, 0 from @probclients
-      where blocked not in (select spid from @probclients) and blocked != 0
-
-   if (@fast = 1)
-   begin
-      print ''
-      print 'SYSPROCESSES ' + ISNULL (@@servername,'(null)') + ' ' + str(@@microsoftversion)
-
-      select spid, status, blocked, open_tran, waitresource, waittype, 
-         waittime, cmd, lastwaittype, cpu, physical_io,
-         memusage,last_batch=convert(varchar(26), last_batch,121),
-         login_time=convert(varchar(26), login_time,121), net_address,
-         net_library, dbid, ecid, kpid, hostname, hostprocess,
-         loginame, program_name, nt_domain, nt_username, uid, sid
-      from master..sysprocesses
-      where blocked!=0 or waittype != 0x0000
-         or spid in (select blocked from @probclients where blocked != 0)
-         or spid in (select spid from @probclients where waittype != 0x0000)
-
-      print 'ESP ' + convert(varchar(12), datediff(ms,@time2,getdate())) 
-
-      print ''
-      print 'SYSPROC FIRST PASS'
-      select spid, ecid, waittype from @probclients where waittype != 0x0000
-
-      if exists(select blocked from @probclients where blocked != 0)
-      begin
-         print 'Blocking via locks at ' + convert(varchar(26), @time, 121)
-         print ''
-         print 'SPIDs at the head of blocking chains'
-         select spid from @probclients
-            where blocked = 0 and spid in (select blocked from @probclients where spid != 0)
-         if @latch = 0
-         begin
-            print 'SYSLOCKINFO'
-            select @time2 = getdate()
-
-            select spid = convert (smallint, req_spid),
-               ecid = convert (smallint, req_ecid),
-               rsc_dbid As dbid,
-               rsc_objid As ObjId,
-               rsc_indid As IndId,
-               Type = case rsc_type when 1 then 'NUL'
-                                    when 2 then 'DB'
-                                    when 3 then 'FIL'
-                                    when 4 then 'IDX'
-                                    when 5 then 'TAB'
-                                    when 6 then 'PAG'
-                                    when 7 then 'KEY'
-                                    when 8 then 'EXT'
-                                    when 9 then 'RID'
-                                    when 10 then 'APP' end,
-               Resource = substring (rsc_text, 1, 16),
-               Mode = case req_mode + 1 when 1 then NULL
-                                        when 2 then 'Sch-S'
-                                        when 3 then 'Sch-M'
-                                        when 4 then 'S'
-                                        when 5 then 'U'
-                                        when 6 then 'X'
-                                        when 7 then 'IS'
-                                        when 8 then 'IU'
-                                        when 9 then 'IX'
-                                        when 10 then 'SIU'
-                                        when 11 then 'SIX'
-                                        when 12 then 'UIX'
-                                        when 13 then 'BU'
-                                        when 14 then 'RangeS-S'
-                                        when 15 then 'RangeS-U'
-                                        when 16 then 'RangeIn-Null'
-                                        when 17 then 'RangeIn-S'
-                                        when 18 then 'RangeIn-U'
-                                        when 19 then 'RangeIn-X'
-                                        when 20 then 'RangeX-S'
-                                        when 21 then 'RangeX-U'
-                                        when 22 then 'RangeX-X'end,
-               Status = case req_status when 1 then 'GRANT'
-                                        when 2 then 'CNVT'
-                                        when 3 then 'WAIT' end,
-               req_transactionID As TransID, req_transactionUOW As TransUOW
-            from master.dbo.syslockinfo s,
-               @probclients p
-            where p.spid = s.req_spid
-
-            print 'ESL ' + convert(varchar(12), datediff(ms,@time2,getdate())) 
-         end -- latch not set
-      end
-      else
-         print 'No blocking via locks at ' + convert(varchar(26), @time, 121)
-      print ''
-   end  -- fast set
-
-   else  
-   begin  -- Fast not set
-      print ''
-      print 'SYSPROCESSES ' + ISNULL (@@servername,'(null)') + ' ' + str(@@microsoftversion)
-
-      select spid, status, blocked, open_tran, waitresource, waittype, 
-         waittime, cmd, lastwaittype, cpu, physical_io,
-         memusage,last_batch=convert(varchar(26), last_batch,121),
-         login_time=convert(varchar(26), login_time,121), net_address,
-         net_library, dbid, ecid, kpid, hostname, hostprocess,
-         loginame, program_name, nt_domain, nt_username, uid, sid
-      from master..sysprocesses
-
-      print 'ESP ' + convert(varchar(12), datediff(ms,@time2,getdate())) 
-
-      print ''
-      print 'SYSPROC FIRST PASS'
-      select spid, ecid, waittype from @probclients where waittype != 0x0000
-
-      if exists(select blocked from @probclients where blocked != 0)
-      begin
-         print 'Blocking via locks at ' + convert(varchar(26), @time, 121)
-         print ''
-         print 'SPIDs at the head of blocking chains'
-         select spid from @probclients
-         where blocked = 0 and spid in (select blocked from @probclients where spid != 0)
-         if @latch = 0
-         begin
-            print 'SYSLOCKINFO'
-            select @time2 = getdate()
-
-            select spid = convert (smallint, req_spid),
-               ecid = convert (smallint, req_ecid),
-               rsc_dbid As dbid,
-               rsc_objid As ObjId,
-               rsc_indid As IndId,
-               Type = case rsc_type when 1 then 'NUL'
-                                    when 2 then 'DB'
-                                    when 3 then 'FIL'
-                                    when 4 then 'IDX'
-                                    when 5 then 'TAB'
-                                    when 6 then 'PAG'
-                                    when 7 then 'KEY'
-                                    when 8 then 'EXT'
-                                    when 9 then 'RID'
-                                    when 10 then 'APP' end,
-               Resource = substring (rsc_text, 1, 16),
-               Mode = case req_mode + 1 when 1 then NULL
-                                        when 2 then 'Sch-S'
-                                        when 3 then 'Sch-M'
-                                        when 4 then 'S'
-                                        when 5 then 'U'
-                                        when 6 then 'X'
-                                        when 7 then 'IS'
-                                        when 8 then 'IU'
-                                        when 9 then 'IX'
-                                        when 10 then 'SIU'
-                                        when 11 then 'SIX'
-                                        when 12 then 'UIX'
-                                        when 13 then 'BU'
-                                        when 14 then 'RangeS-S'
-                                        when 15 then 'RangeS-U'
-                                        when 16 then 'RangeIn-Null'
-                                        when 17 then 'RangeIn-S'
-                                        when 18 then 'RangeIn-U'
-                                        when 19 then 'RangeIn-X'
-                                        when 20 then 'RangeX-S'
-                                        when 21 then 'RangeX-U'
-                                        when 22 then 'RangeX-X'end,
-               Status = case req_status when 1 then 'GRANT'
-                                        when 2 then 'CNVT'
-                                        when 3 then 'WAIT' end,
-               req_transactionID As TransID, req_transactionUOW As TransUOW
-            from master.dbo.syslockinfo
-
-            print 'ESL ' + convert(varchar(12), datediff(ms,@time2,getdate())) 
-         end -- latch not set
-      end
-      else
-        print 'No blocking via locks at ' + convert(varchar(26), @time, 121)
-      print ''
-   end -- Fast not set
-
-   print 'DBCC SQLPERF(WAITSTATS)'
-   dbcc sqlperf(waitstats)
-
-   Print ''
-   Print '*********************************************************************'
-   Print 'Print out DBCC Input buffer for all blocked or blocking spids.'
-   Print '*********************************************************************'
-
-   declare ibuffer cursor fast_forward for
-   select cast (spid as varchar(6)) as spid, cast (blocked as varchar(6)) as blocked
-   from @probclients
-   where (spid <> @@spid) and 
-      ((blocked!=0 or (waittype != 0x0000 and ignore_app = 0))
-      or spid in (select blocked from @probclients where blocked != 0))
-   open ibuffer
-   fetch next from ibuffer into @spid, @blocked
-   while (@@fetch_status != -1)
-   begin
-      print ''
-      print 'DBCC INPUTBUFFER FOR SPID ' + @spid
-      exec ('dbcc inputbuffer (' + @spid + ')')
-
-      fetch next from ibuffer into @spid, @blocked
-   end
-   deallocate ibuffer
-
-   Print ''
-   Print '*******************************************************************************'
-   Print 'Print out DBCC OPENTRAN for active databases for all blocked or blocking spids.'
-   Print '*******************************************************************************'
-   declare ibuffer cursor fast_forward for
-   select distinct cast (dbid as varchar(6)) from @probclients
-   where dbid != 0
-   open ibuffer
-   fetch next from ibuffer into @spid
-   while (@@fetch_status != -1)
-   begin
-      print ''
-      print 'DBCC OPENTRAN FOR DBID ' + @spid
-      exec ('dbcc opentran (' + @spid + ')')
-      print ''
-      if @spid = '2' select @blocked = 'Y'
-      fetch next from ibuffer into @spid
-   end
-   deallocate ibuffer
-   if @blocked != 'Y' 
-   begin
-      print ''
-      print 'DBCC OPENTRAN FOR tempdb database'
-      exec ('dbcc opentran (tempdb)')
-   end
-
-   print 'End time: ' + convert(varchar(26), getdate(), 121)
-end -- All
-else
-  print '8 No Waittypes: ' + convert(varchar(26), @time, 121) + ' ' + convert(varchar(12), datediff(ms,@time,getdate())) + ' ' + ISNULL (@@servername,'(null)')
-  */
 GO    
 IF (CHARINDEX('8.00.',@@VERSION)<>0) AND (OBJECT_ID('dbo.sp_blocker_pss08') IS NULL)
 	RAISERROR('Error creating sp_blocker_pss08',16,127)

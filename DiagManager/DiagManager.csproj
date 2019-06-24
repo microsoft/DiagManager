@@ -58,10 +58,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>5308D71E065CEF5AFA4B8447163DFAD94A609E06</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>B2F21C7AEE57113F89E97E21077C3BD06F7E95FA</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>DiagManager_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>DiagManager_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -77,6 +77,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>PssdiagConfig.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>DiagManager_1_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -363,7 +369,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="DiagManagerCodeMap.dgml" />
-    <None Include="DiagManager_TemporaryKey.pfx" />
+    <None Include="DiagManager_1_TemporaryKey.pfx" />
     <Content Include="Pristine\pssdiagAS.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
