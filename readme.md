@@ -15,7 +15,7 @@ This version support SQL Server 2017 and 2019, along with adding various updates
   - The collector can only run on a machine that has SQL Server with targeted version (either client tools only or full version) installed
 
 ### **Installation**
-Download it from release tab or [Click here](https://github.com/Microsoft/DiagManager/files/690279/DiagManager13.0.1600.32.zip) to download.  Source files are also included in the release tab.
+Download it from release tab or [Click here](https://github.com/microsoft/DiagManager/releases/download/Win15.0.0001.12/DiagManager_15.0.0001.12.zip) to download.  Source files are also included in the release tab.
 ### **Known Issues**
 [see known issues wiki](Known Issues)
 
