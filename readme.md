@@ -2,11 +2,10 @@
 Pssdiag/Sqldiag Manager is a graphic interface that provides customization capabilities to collect data for SQL Server using sqldiag collector engine. The data collected can be used by [SQL Nexus tool](http://sqlnexus.codeplex.com/)  which help you troubleshoot SQL Server performance problems.  This is the same tool Microsoft SQL Server support engineers use to for data collection to troubleshoot customer's performance problems.
 
 ## Current Release
- Build 13.0.1600.32
+ Build 15.0.0001.12
 
 #### **What's New**
-This version support SQL Server 2016 as well previous versions
-[More in wiki...](https://github.com/Microsoft/DiagManager/wiki/What's-New)
+This version support SQL Server 2017 and 2019, along with adding various updates. 
 
 #### **Requirements**
 1. Diag Manager requirements
@@ -16,7 +15,7 @@ This version support SQL Server 2016 as well previous versions
   - The collector can only run on a machine that has SQL Server with targeted version (either client tools only or full version) installed
 
 ### **Installation**
-Download it from release tab or [Click here](https://github.com/Microsoft/DiagManager/files/690279/DiagManager13.0.1600.32.zip) to download.  Source files are also included in the release tab.
+Download it from release tab or [Click here](https://github.com/microsoft/DiagManager/releases/download/Win15.0.0001.12/DiagManager_15.0.0001.12.zip) to download.  Source files are also included in the release tab.
 ### **Known Issues**
 [see known issues wiki](Known Issues)
 

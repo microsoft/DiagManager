@@ -95,18 +95,20 @@
   </CustomGroup> />
 
 
-  <CustomGroup name="Azure VM" enabled="true">
+  <CustomGroup name="Azure VM" enabled="false">
     <Scenarios>
-      <Scenario name="AzureVM" enabled="true"/>
+      <Scenario name="AzureVM" enabled="false"/>
     </Scenarios>
     <Features>
-      <Feature name="SQL" enabled="true"/>
+      <Feature name="SQL" enabled="false"/>
     </Features>
     <Versions>
       <Version name="10.50" enabled="true"/>
       <Version name="11" enabled="true"/>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -122,6 +124,26 @@
       <Version name="11" enabled="true"/>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
+    </Versions>
+  </CustomGroup> />
+
+
+
+  <CustomGroup name="CMemThread" enabled="false">
+    <Scenarios>
+      <Scenario name="All" enabled="false"/>
+    </Scenarios>
+    <Features>
+      <Feature name="SQL" enabled="true"/>
+    </Features>
+    <Versions>
+      <Version name="11" enabled="true"/>
+      <Version name="12" enabled="true"/>
+      <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -129,7 +151,7 @@
 
   <CustomGroup name="Database Mirroring" enabled="true">
     <Scenarios>
-      
+
     </Scenarios>
     <Features>
       <Feature name="SQL" enabled="true"/>
@@ -139,13 +161,15 @@
       <Version name="11" enabled="true"/>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
 
   <CustomGroup name="Full-Text Search" enabled="true">
     <Scenarios>
-      
+
     </Scenarios>
     <Features>
       <Feature name="SQL" enabled="true"/>
@@ -155,6 +179,8 @@
       <Version name="11" enabled="true"/>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -170,9 +196,11 @@
     <Versions>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
-  
+
 
   <CustomGroup name="In-Memory OLTP" enabled="true">
     <Scenarios>
@@ -184,6 +212,8 @@
     <Versions>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -192,18 +222,20 @@
       <Scenario name="StretchDB" enabled="true"/>
     </Scenarios>
     <Features>
-      
-      
+
+
       <Feature name="SQL" enabled="true"/>
     </Features>
     <Versions>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
-    
+
   </CustomGroup> />
 
 
-  
+
 
   <CustomGroup name="MSInfo" enabled="true">
     <Scenarios>
@@ -233,6 +265,8 @@
       <Version name="11" enabled="true"/>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -274,13 +308,15 @@
       <Scenario name="DetailedPerf" enabled="true"/>
       <Scenario name="Replay" enabled="true"/>
     </Scenarios>
-    
+
     <Features>
       <Feature name="SQL" enabled="true"/>
     </Features>
     <Versions>
       <Version name="12" enabled="false"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -300,6 +336,8 @@
       <Version name="11" enabled="true"/>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
 
   </CustomGroup> />
@@ -333,9 +371,35 @@
       <Version name="11" enabled="true"/>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
 
   </CustomGroup> />
+
+
+
+  <CustomGroup name="Tempdb Space and Latching" enabled="true">
+    <Scenarios>
+
+    </Scenarios>
+    <Features>
+      <Feature name="SQL" enabled="true"/>
+    </Features>
+    <Versions>
+      <Version name="9" enabled="true"/>
+      <Version name="10" enabled="true"/>
+      <Version name="10.50" enabled="true"/>
+      <Version name="11" enabled="true"/>
+      <Version name="12" enabled="true"/>
+      <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
+    </Versions>
+
+  </CustomGroup> />
+
+
 
 
 
@@ -356,6 +420,8 @@
       <Version name="11" enabled="true"/>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
 
   </CustomGroup> />
@@ -372,6 +438,8 @@
     </Features>
     <Versions>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
 
   </CustomGroup> />
@@ -388,6 +456,8 @@
       <Version name="11" enabled="true"/>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -403,6 +473,8 @@
       <Version name="11" enabled="true"/>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -418,9 +490,10 @@
       <Version name="11" enabled="true"/>
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
 
 </CustomDiagnostics>
-  
