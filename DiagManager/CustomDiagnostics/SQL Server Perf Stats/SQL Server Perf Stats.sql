@@ -703,7 +703,7 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
   /* Resultset #12: dm_os_nodes */
   PRINT ''
   RAISERROR ('-- sys.dm_os_nodes --', 0, 1) WITH NOWAIT;
-  SELECT /*qry12*/ CONVERT (varchar(30), @runtime, 126) as 'runtime', node_id, memory_object_address, memory_clerk_address, io_completion_worker_address, memory_node_id, cpu_affinity_mask, online_scheduler_count, idle_scheduler_count, active_worker_count, avg_load_balance, timer_task_affinity_mask, permanent_task_affinity_mask, resource_monitor_state, online_scheduler_mask, processor_group, node_state_desc FROM sys.dm_os_nodes
+  SELECT /*qry12*/ CONVERT (varchar(30), @runtime, 126) as 'runtime', node_id, memory_object_address, memory_clerk_address, io_completion_worker_address, memory_node_id, cpu_affinity_mask, online_scheduler_count, idle_scheduler_count, active_worker_count, avg_load_balance, timer_task_affinity_mask, permanent_task_affinity_mask, resource_monitor_state,/* online_scheduler_mask,*/ /*processor_group,*/ node_state_desc FROM sys.dm_os_nodes
 
 
   /* Resultset #13: dm_os_memory_nodes 
@@ -1039,8 +1039,28 @@ AS
 begin
 	exec sp_perf_stats12 @appname, @runtime, @prevruntime, @IsLite
 end
-
 go
+IF OBJECT_ID ('sp_perf_stats14','P') IS NOT NULL
+   DROP PROCEDURE sp_perf_stats14
+GO
+go
+CREATE PROCEDURE sp_perf_stats14 @appname sysname='PSSDIAG', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
+AS 
+begin
+	exec sp_perf_stats13 @appname, @runtime, @prevruntime, @IsLite
+end
+go
+IF OBJECT_ID ('sp_perf_stats15','P') IS NOT NULL
+   DROP PROCEDURE sp_perf_stats15
+GO
+go
+CREATE PROCEDURE sp_perf_stats15 @appname sysname='PSSDIAG', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
+AS 
+begin
+	exec sp_perf_stats14 @appname, @runtime, @prevruntime, @IsLite
+end
+go
+
 IF OBJECT_ID ('sp_perf_stats_infrequent10','P') IS NOT NULL
    DROP PROCEDURE sp_perf_stats_infrequent10
 GO
@@ -1082,6 +1102,28 @@ begin
 end
 
 go
+IF OBJECT_ID ('sp_perf_stats_infrequent14','P') IS NOT NULL
+   DROP PROCEDURE sp_perf_stats_infrequent14
+GO
+CREATE PROCEDURE sp_perf_stats_infrequent14 @runtime datetime, @prevruntime datetime, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
+ AS 
+begin
+	exec sp_perf_stats_infrequent13 @runtime, @prevruntime, @firstrun, @IsLite
+end
+
+go
+IF OBJECT_ID ('sp_perf_stats_infrequent15','P') IS NOT NULL
+   DROP PROCEDURE sp_perf_stats_infrequent15
+GO
+CREATE PROCEDURE sp_perf_stats_infrequent15 @runtime datetime, @prevruntime datetime, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
+ AS 
+begin
+	exec sp_perf_stats_infrequent14 @runtime, @prevruntime, @firstrun, @IsLite
+end
+
+go
+
+
 
 IF OBJECT_ID ('sp_perf_stats_reallyinfrequent10','P') IS NOT NULL
    DROP PROCEDURE sp_perf_stats_reallyinfrequent10
@@ -1130,8 +1172,29 @@ end
 
 go
 
+IF OBJECT_ID ('sp_perf_stats_reallyinfrequent14','P') IS NOT NULL
+   DROP PROCEDURE sp_perf_stats_reallyinfrequent14
+GO
+CREATE PROCEDURE sp_perf_stats_reallyinfrequent14 @runtime datetime, @firstrun int = 0 , @IsLite bit =0 
+AS 
+begin
+	exec sp_perf_stats_reallyinfrequent13 @runtime, @firstrun , @IsLite
+end
+
+
 go
 
+IF OBJECT_ID ('sp_perf_stats_reallyinfrequent15','P') IS NOT NULL
+   DROP PROCEDURE sp_perf_stats_reallyinfrequent15
+GO
+CREATE PROCEDURE sp_perf_stats_reallyinfrequent15 @runtime datetime, @firstrun int = 0 , @IsLite bit =0 
+AS 
+begin
+	exec sp_perf_stats_reallyinfrequent14 @runtime, @firstrun , @IsLite
+end
+
+
+go
 
 
 
