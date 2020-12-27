@@ -6,24 +6,11 @@ This utility was created by Microsoft engineers to assist with diagnostic log co
 This utility is a collection of shell scripts as well as TSQL scripts that collect various data points of interest for a troubleshooting scenario.
 As you can imagine there are various pre-requisites to be able to perform this data collection in a reliable manner.
 
-Pre-requisites to run the Data collection:
-- You need to be able to launch these scripts with elevated permissions using the sudo command and privileges since many data points require elevated permissions.
-- You need to be able to connect to the SQL Server instance using sysadmin logins
-- There are several Linux commands and utilities used for data collection. Here are the important ones:
-  - systat ( sudo yum install sysstat / sudo apt-get install sysstat ) (https://github.com/sysstat/sysstat)
-  - iotop  ( sudo yum install iotop / sudo apt-get install iotop )
-  - lsof   ( sudo yum install lsof / sudo apt-get install lsof )
-  - sqlcmd ( https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools )
-When you launch the PSSDIAG utility it checks for these pre-requisites and warns you about missing commands or utilities.
-If you do not have all these utilities and commands then we will be able to collect only portions of the diagnostic logs and may end up in inconclusive results.
-Depending upon your Linux operating system you might have to register the system with the operating system vendor to install all the required utilities.
-Consult with your system administrator to help you with these tasks.
-
 You can run only a single copy of PSSDIAG utility on a system. If you attempt to launch the second instance, it will provide you with warnings and exit.
 All the scripts are tested against bash shell. Please launch the start and stop collector explicitly using /bin/bash
 This utility can collect information and logs for SQL Server instances that are installed as host instance or as container instances.
 
-Steps to configure and start data collection using PSSDIAG:
+Steps to configure and start data collection using PSSDIAG, you will need to (exec -it) into the mssql-server container under the primary master pod and perform the below steps
 1. Create a folder to store the collected information (for example: /mnt/data/pssdiag). 
    If you are capturing extended events, this folder hierarchy needs r+x on the whole structure.
    Specifically on RHEL the /home/user folder does not have x permissions for all. 
