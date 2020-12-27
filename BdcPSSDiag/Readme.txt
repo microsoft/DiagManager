@@ -19,8 +19,10 @@ Steps to configure and start data collection using PSSDIAG, you will need to (ex
 
 2. Copy the pssdiag.tar to the folder /pssdiag. The Microsoft engineer might provide this tar file to you.
    If you do not have the pssdiag.tar file, you can obtain using the following commands:
+   
       cd /var/opt/mssql/data/pssdiag
       sudo curl -L https://github.com/Microsoft/DiagManager/releases/download/BdcRel20201227/pssdiag.tar | sudo tar x
+   
    Make sure to use the latest release that is available.
 
 3. Using the command [ls -l] you can verify the files and you will see a collection of files with .sh, .scn, .conf and .sql files. The important ones we will be using to launch the data collection are shown below:
@@ -30,6 +32,7 @@ Steps to configure and start data collection using PSSDIAG, you will need to (ex
 	-rwxrwxr-x 1 username groupname   5748 Dec 27 05:29 stop_collector.sh
         
    In this folder, if any of the .sh files do not have the x attribute, please execute the following command to set the required attributes:
+   
       chmod a+x *.sh
 
 4. For each log collection scenario, there are specific information points that need to be collected. To simplify things, we created scenario files like sql_perf.scn and static_collect.scn to specify all logs configuration aspects. These scenario files will provide directives to the utility on what specific logs and data points need to be captured. You can open the .scn files using the cat command or vi editor and make necessary adjustments as you see fit. You will notice that each scenario file contains sections for OS and SQL log collections.
@@ -88,6 +91,5 @@ Steps to configure and start data collection using PSSDIAG, you will need to (ex
 		***Data collected is in the file output_master-0_12_27_2020_17_13.tar.bz2 ***
 
 8. Please upload this zip file to the engineer you are working with. It is a compressed archive of the /output directory which has all the diagnostic logs.
-
 
 

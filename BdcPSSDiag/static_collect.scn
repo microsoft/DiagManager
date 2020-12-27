@@ -3,15 +3,18 @@
 ###############################
 
 # Collects Operating System Configuration, values are YES or NO
-COLLECT_OS_CONFIG=YES
+# BDC: NOTE: do not Change the Value - Keep it as NO
+COLLECT_OS_CONFIG=NO
 
 # Collects OS level counters (iostat,mpstats,cpustat,etc). Specify YES or NO
 # Interval of collection is in seconds
+# BDC: NOTE: do not Change the Value - Keep it as NO
 COLLECT_OS_COUNTERS=NO
 OS_COUNTERS_INTERVAL=15
 
 # Collect OS log files
-COLLECT_OS_LOGS=YES
+# BDC: NOTE: do not Change the Value - Keep it as NO
+COLLECT_OS_LOGS=NO
 
 # Collect setup related files
 #COLLECT_SETUP_LOGS=NO
