@@ -28,4 +28,4 @@ journalctl -u mssql-server > $output_dir/${HOSTNAME}_journalctl.sql.txt
 #        ;;
 #  *) ;;
 
-esac
+# esac
