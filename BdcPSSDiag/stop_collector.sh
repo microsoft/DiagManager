@@ -110,7 +110,8 @@ COLLECT_SQL_HA_LOGS=${COLLECT_SQL_HA_LOGS:-"NO"}
 #collect basic machine configuration
 if [[ $COLLECT_OS_CONFIG == "YES" ]] ; then
         ./collect_machineconfig.sh
-        ./collect_container_info.sh
+        # ignore_bdc: skipping Container collection info
+        # ./collect_container_info.sh
 fi
 
 #gather os logs from host
