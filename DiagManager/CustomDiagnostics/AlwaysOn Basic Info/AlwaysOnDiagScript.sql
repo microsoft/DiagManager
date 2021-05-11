@@ -364,3 +364,4 @@ SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
 
 DROP TABLE #AOHealth
 DROP TABLE #error_reported
+
