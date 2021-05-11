@@ -9,17 +9,19 @@ PRINT '==========================='
 PRINT 'Database Mirroring Endpoint'
 PRINT '==========================='
 PRINT ''
-select name=cast(name as varchar(30)),
-endpoint_id, principal_id, 
-protocol_desc=cast(protocol_desc as varchar(20)),
-type_desc=cast(type_desc as varchar(30)),
-state_desc=cast(state_desc as varchar(20)),
-is_admin_endpoint,
-role_desc=cast(role_desc as varchar(30)),
+select name=cast(p.name as varchar(30)),
+p.endpoint_id, p.principal_id, 
+protocol_desc=cast(p.protocol_desc as varchar(20)),
+type_desc=cast(p.type_desc as varchar(30)),
+hadr_endpoint_port  = e.port,
+state_desc=cast(p.state_desc as varchar(20)),
+p.is_admin_endpoint,
+role_desc=cast(p.role_desc as varchar(30)),
 is_encryption_enabled,
 connection_auth_desc=cast(connection_auth_desc as varchar(30)),
 encryption_algorithm_desc=cast(encryption_algorithm_desc as varchar(20))
-from sys.database_mirroring_endpoints
+from sys.database_mirroring_endpoints  as p  inner join
+sys.tcp_endpoints as e on e.endpoint_id = p.endpoint_id
 
 PRINT ''
 
@@ -189,6 +191,7 @@ PRINT ''
 select 
 database_name=cast(drcs.database_name as varchar(30)), 
 drs.database_id,
+drs.group_database_id,
 drs.group_id,
 drs.replica_id,
 drs.is_local,
