@@ -10,7 +10,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\# of Exceps Thrown / sec">
@@ -23,7 +24,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\# of Filters / sec">
@@ -36,7 +38,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\# of Finallys / sec">
@@ -49,7 +52,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Throw To Catch Depth / sec">
@@ -62,7 +66,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -77,7 +82,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\# of marshalling">
@@ -90,7 +96,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\# of Stubs">
@@ -103,7 +110,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\# of TLB exports / sec">
@@ -116,7 +124,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\# of TLB imports / sec">
@@ -129,7 +138,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -144,7 +154,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\# of Methods Jitted">
@@ -157,7 +168,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\% Time in Jit">
@@ -170,7 +182,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IL Bytes Jitted / sec">
@@ -183,7 +196,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Standard Jit Failures">
@@ -196,7 +210,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Total # of IL Bytes Jitted">
@@ -209,7 +224,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -224,7 +240,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Assembly Search Length">
@@ -237,7 +254,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/>
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Bytes in Loader Heap">
@@ -250,7 +268,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Current AppDomains">
@@ -263,7 +282,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Current Assemblies">
@@ -276,7 +296,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Current Classes Loaded">
@@ -289,7 +310,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/>
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rate of App Domains unloaded">
@@ -302,7 +324,8 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> 
+			<Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rate of AppDomains">

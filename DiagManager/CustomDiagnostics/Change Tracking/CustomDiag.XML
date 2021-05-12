@@ -1,5 +1,5 @@
 <?xml version="1.0" standalone="yes"?>
 <CustomTasks>
-  <CustomTask enabled="true" groupname="Change Tracking" taskname="Change Tracking" type="TSQL_Script" point="Startup" wait="No" cmd="Change_Tracking.sql" pollinginterval="0" />
-  <CustomTask enabled="true" groupname="Change Tracking" taskname="Change Tracking" type="TSQL_Script" point="Shutdown" wait="Yes" cmd="Change_Tracking.sql" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="Change Tracking" taskname="Change_Tracking.sql" type="TSQL_Script" point="Startup" wait="Yes" cmd="Change_Tracking.sql" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="Change Tracking" taskname="Change_Tracking.sql" type="TSQL_Script" point="Shutdown" wait="OnlyOnShutdown" cmd="Change_Tracking.sql" pollinginterval="0" />
 </CustomTasks>

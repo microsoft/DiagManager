@@ -1,5 +1,5 @@
 <?xml version="1.0" standalone="yes"?>
 <CustomTasks>
-  <CustomTask enabled="true" groupname="Change Data Capture" taskname="Change Data Capture" type="TSQL_Script" point="Startup" wait="No" cmd="ChangeDataCapture.sql" pollinginterval="0" />
-  <CustomTask enabled="true" groupname="Change Data Capture" taskname="Change Data Capture" type="TSQL_Script" point="Shutdown" wait="Yes" cmd="ChangeDataCapture.sql" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="Change Data Capture" taskname="ChangeDataCapture.sql" type="TSQL_Script" point="Startup" wait="Yes" cmd="ChangeDataCapture.sql" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="Change Data Capture" taskname="ChangeDataCapture.sql" type="TSQL_Script" point="Shutdown" wait="OnlyOnShutdown" cmd="ChangeDataCapture.sql" pollinginterval="0" />
 </CustomTasks>
