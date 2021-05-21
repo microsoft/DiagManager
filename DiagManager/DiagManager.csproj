@@ -241,16 +241,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\enumprocs.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="CustomDiagnostics\PsslooksAlive\LooksAliveBatch.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CustomDiagnostics\PsslooksAlive\Readme.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\WAITFOR.EXE">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CustomDiagnostics\Query Store\CustomDiag.XML">
@@ -319,40 +313,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />
-    <Content Include="Pristine\10.50\i386\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\10.50\ia64\sqldiag_internal.exe" />
-    <Content Include="Pristine\10.50\x64\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\10\i386\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\10\ia64\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\10\x64\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\11\i386\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\11\ia64\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\11\x64\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\12\i386\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\12\x64\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\15\x64\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Pristine\DiagUtil.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -369,48 +329,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Pristine\tail.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\14\x64\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x64\mfc120u.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x64\msvcp120.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x64\msvcp120d.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x64\msvcr120.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x64\msvcr120d.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x64\perfctrl.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x64\sqldiag_internal.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x64\xperf.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x86\mfc120u.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x86\msvcp120.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x86\msvcp120d.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x86\msvcr120.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x86\msvcr120d.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="fmDiagManager.resx">
@@ -573,18 +491,6 @@
     <Content Include="Pristine\SetSqlEnvVariables.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pristine\10.50\i386\sqldiag.rll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\10.50\x64\sqldiag.rll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\10\i386\sqldiag.rll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\10\x64\sqldiag.rll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="DiagManager_5_2020_Key.pfx" />
     <None Include="DiagManager_TemporaryKey.pfx" />
     <None Include="packages.config" />
@@ -628,9 +534,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CustomDiagnostics\SQL Base\MiscPssdiagInfo.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\x86\sqldiag_internal.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="pssdiag.ico" />
@@ -2471,10 +2374,25 @@
     </PublishFile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Pristine\10.50\i386\" />
+    <Folder Include="Pristine\10.50\ia64\" />
+    <Folder Include="Pristine\10.50\x64\" />
+    <Folder Include="Pristine\10\i386\" />
+    <Folder Include="Pristine\10\ia64\" />
+    <Folder Include="Pristine\10\x64\" />
+    <Folder Include="Pristine\11\i386\" />
+    <Folder Include="Pristine\11\ia64\" />
+    <Folder Include="Pristine\11\x64\" />
+    <Folder Include="Pristine\12\i386\" />
+    <Folder Include="Pristine\12\x64\" />
+    <Folder Include="Pristine\14\x64\" />
+    <Folder Include="Pristine\15\x64\" />
     <Folder Include="Pristine\9\i386\" />
     <Folder Include="Pristine\9\ia64\" />
     <Folder Include="Pristine\9\x64\" />
     <Folder Include="Pristine\ia64\" />
+    <Folder Include="Pristine\x64\" />
+    <Folder Include="Pristine\x86\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -77,7 +77,7 @@ namespace PssdiagConfig
                 DiagRuntime.MainForm = this;
 
 
-                string build = "Internal";
+                string build = "";
 
                 //Removing dependency on sqldiag_internal
                 //Need to remove after testing
@@ -87,7 +87,7 @@ namespace PssdiagConfig
                     build = "Public";
                 }
                 */
-                this.Text = this.Text + " (" + Application.ProductVersion + "-" + build +  ")";
+                this.Text = this.Text + " (" + Application.ProductVersion + "" + build +  ")";
 
 
                 //setting up defaults when form is being loaded
