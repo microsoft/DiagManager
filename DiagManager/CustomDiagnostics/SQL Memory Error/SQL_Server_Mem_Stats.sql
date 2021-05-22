@@ -235,13 +235,13 @@ begin
 end
 else
 begin
-  set @sqlmemobj =
+	set @sqlmemobj =
 	'SELECT CONVERT (varchar(30), @runtime, 121) as runtime,  ' + 
-	  'SUM (pages_in_bytes) AS ''total_bytes_used'', type  ' + 
+	  'SUM (CONVERT(bigint, pages_in_bytes)) AS ''total_bytes_used'', type  ' + 
 	'FROM sys.dm_os_memory_objects ' + 
 	'GROUP BY type  ' + 
-	'HAVING SUM (pages_in_bytes) >= (1024*1024) ' + 
-	'ORDER BY SUM (pages_in_bytes) DESC '
+	'HAVING SUM (CONVERT(bigint,pages_in_bytes)) >= (1024*1024) ' + 
+	'ORDER BY SUM (CONVERT(bigint,pages_in_bytes)) DESC '
 	
 end
 exec sp_executesql @sqlmemobj, N'@runtime datetime', @runtime
