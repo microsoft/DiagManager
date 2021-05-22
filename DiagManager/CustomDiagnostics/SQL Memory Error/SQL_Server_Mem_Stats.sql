@@ -235,7 +235,7 @@ begin
 end
 else
 begin
-  set @sqlmemobj =
+	set @sqlmemobj =
 	'SELECT CONVERT (varchar(30), @runtime, 121) as runtime,  ' + 
 	  'SUM (CONVERT(bigint, pages_in_bytes)) AS ''total_bytes_used'', type  ' + 
 	'FROM sys.dm_os_memory_objects ' + 
