@@ -4,5 +4,5 @@
  <CustomTask enabled="true" groupname="SQL Server Perf Stats" taskname="Perf Stats Snapshot" type="TSQL_Script" point="Startup" wait="OnlyOnShutdown" cmd="SQL Server Perf Stats Snapshot.sql" pollinginterval="0" />
   <CustomTask enabled="true" groupname="SQL Server Perf Stats" taskname="Perf Stats Snapshot" type="TSQL_Script" point="shutdown" wait="OnlyOnShutdown" cmd="SQL Server Perf Stats Snapshot.sql" pollinginterval="0" />
   <!-- CustomTask enabled="true" groupname="SQL Server Perf Stats" taskname="Top CPU Query Show Plan XML" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="TopCPUQueryShowPlanXML.bat 5 %output_name% %server_instance%" pollinginterval="0" /-->
-  <CustomTask enabled="true" groupname="SQL Server Perf Stats" taskname="Top CPU Query Show Plan XML at shutdown" type="Utility" point="shutdown" wait="Yes" cmd="TopCPUQueryShowPlanXML.bat 5 %output_name% %server_instance%" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="SQL Server Perf Stats" taskname="Top CPU Query Show Plan XML" type="Utility" point="shutdown" wait="Yes" cmd="TopCPUQueryShowPlanXML.bat 5 %output_name% %server_instance%" pollinginterval="0" />
 </CustomTasks>
