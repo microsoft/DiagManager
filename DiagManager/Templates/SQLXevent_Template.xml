@@ -3860,7 +3860,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="hadr_capture_filestream_wait">
@@ -3880,7 +3879,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -3902,7 +3900,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="hadr_capture_vlfheader">
@@ -3922,7 +3919,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -3944,7 +3940,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="hadr_db_commit_mgr_harden">
@@ -3964,7 +3959,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -3986,7 +3980,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="hadr_log_block_decompression">
@@ -4006,7 +3999,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -4028,7 +4020,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="hadr_log_block_send_complete">
@@ -4048,7 +4039,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -4070,7 +4060,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="hadr_receive_harden_lsn_message">
@@ -4090,7 +4079,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -4112,7 +4100,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="hadr_transport_flow_control_action">
@@ -4132,7 +4119,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -4154,7 +4140,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="hadr_transport_dump_message">
@@ -4174,7 +4159,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -4196,7 +4180,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="log_flush_start">
@@ -4216,7 +4199,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -4238,7 +4220,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="recovery_unit_harden_log_timestamps">
@@ -4258,7 +4239,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -4280,7 +4260,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="ucs" name="ucs_connection_recv_io">
@@ -4300,7 +4279,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -4322,7 +4300,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="ucs" name="ucs_connection_send_io">
@@ -4342,7 +4319,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -4364,7 +4340,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="file_write_enqueued">
@@ -4384,7 +4359,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -4406,7 +4380,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="hadr_apply_vlfheader">
@@ -4426,7 +4399,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -4448,7 +4420,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="hadr_db_commit_mgr_harden_still_waiting">
@@ -4468,7 +4439,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
@@ -4490,7 +4460,6 @@
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
         <action package="sqlos" name="worker_address" />
-        <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
     <event package="sqlserver" name="hadr_filestream_processed_block">
@@ -4510,7 +4479,6 @@
       <eventactions>
         <action package="package0" name="callstack" />
         <action package="sqlos" name="task_address" />
-        <action package="sqlos" name="worker_address" />
         <action package="sqlos" name="worker_address" />
       </eventactions>
     </event>
