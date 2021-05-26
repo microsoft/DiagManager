@@ -1,8 +1,5 @@
 <?xml version="1.0" standalone="yes"?>
 <CustomTasks>
-  <CustomTask enabled="true" groupname="AO_Basic" taskname="AOInfo" type="TSQL_Script" point="Startup" wait="OnlyOnShutdown" cmd="AlwaysOnDiagScript.sql" />
-  <CustomTask enabled="true" groupname="AO_Basic" taskname="SysHealth_XEL" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="MultiCopy.cmd &quot;%sspath%Log\System_Health*.xel&quot; &quot;%output_name%_&quot;" />
-  <CustomTask enabled="true" groupname="AO_Basic" taskname="AO_XEL" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="MultiCopy.cmd &quot;%sspath%Log\AlwaysOn*.xel&quot; &quot;%output_name%_&quot;" />
-  <CustomTask enabled="true" groupname="AO_Basic" taskname="SQLDIAG_XEL" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="MultiCopy.cmd &quot;%sspath%Log\*SQLDIAG*.xel&quot; &quot;%output_name%_&quot;" />
-  <CustomTask enabled="true" groupname="AO_Basic" taskname="ClusterLogs" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="AlwaysOnGetClusterLogs.cmd %output_path%" />
+  <CustomTask enabled="true" groupname="AlwaysOnAGs" taskname="AGConfig_Info" type="TSQL_Script" point="Startup" wait="OnlyOnShutdown" cmd="AlwaysOnDiagScript.sql" />
+  <CustomTask enabled="true" groupname="AlwaysOnAGs" taskname="AlwaysOnHealth_XEL" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="MultiCopy.cmd &quot;%sspath%Log\AlwaysOn*.xel&quot; &quot;%output_name%_&quot;" />
 </CustomTasks>
