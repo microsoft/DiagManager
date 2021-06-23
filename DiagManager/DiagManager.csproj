@@ -485,8 +485,6 @@
     <Content Include="Pristine\SetSqlEnvVariables.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="DiagManager_5_2020_Key.pfx" />
-    <None Include="DiagManager_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Pristine\DiagUtil.exe.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
