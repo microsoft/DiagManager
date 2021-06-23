@@ -41,8 +41,8 @@ using System.Text;
 using System.IO;
 using System.IO.Compression;
 using PssdiagConfig;
-using ICSharpCode.SharpZipLib.GZip;
-using ICSharpCode.SharpZipLib.Tar;
+//using ICSharpCode.SharpZipLib.GZip;
+//using ICSharpCode.SharpZipLib.Tar;
 
 
 namespace PssdiagConfig
@@ -387,40 +387,40 @@ namespace PssdiagConfig
 
         }
 
+        //this was intended for possible TAR file use, but we don't need it or was ever used. This was intended to use a Nuget package ICSharpCode.SharpZipLib;
+        //private void MakeTar(string SourceDirectoryName, string TarFileName)
+        //{
+        //    Stream oStream = File.Create(TarFileName);
+        //    string[] files = Directory.GetFiles(SourceDirectoryName);
+        //    TarOutputStream OutputStream = new TarOutputStream(oStream);
 
-        private void MakeTar(string SourceDirectoryName, string TarFileName)
-        {
-            Stream oStream = File.Create(TarFileName);
-            string[] files = Directory.GetFiles(SourceDirectoryName);
-            TarOutputStream OutputStream = new TarOutputStream(oStream);
-            
-            foreach (string file in files)
-            {
-                using (Stream inputStream = File.OpenRead(file))
-                {
-                    string tarName = Path.GetFileName(file);
-                    long fileSize = inputStream.Length;
-                    TarEntry entry = TarEntry.CreateTarEntry(tarName);
-                    entry.Size = inputStream.Length;
-                    OutputStream.PutNextEntry(entry);
+        //    foreach (string file in files)
+        //    {
+        //        using (Stream inputStream = File.OpenRead(file))
+        //        {
+        //            string tarName = Path.GetFileName(file);
+        //            long fileSize = inputStream.Length;
+        //            TarEntry entry = TarEntry.CreateTarEntry(tarName);
+        //            entry.Size = inputStream.Length;
+        //            OutputStream.PutNextEntry(entry);
 
-                    byte[] Buffer = new byte[1024 * 1024];
-                    while (true)
-                    {
-                        int bytesRead = inputStream.Read(Buffer, 0, Buffer.Length);
-                        if (bytesRead <= 0)
-                        {
-                            break;
-                        }
-                        OutputStream.Write(Buffer, 0, bytesRead);
-                    }
-                }
-                OutputStream.CloseEntry();
-            }
+        //            byte[] Buffer = new byte[1024 * 1024];
+        //            while (true)
+        //            {
+        //                int bytesRead = inputStream.Read(Buffer, 0, Buffer.Length);
+        //                if (bytesRead <= 0)
+        //                {
+        //                    break;
+        //                }
+        //                OutputStream.Write(Buffer, 0, bytesRead);
+        //            }
+        //        }
+        //        OutputStream.CloseEntry();
+        //    }
 
-            OutputStream.Close();
+        //    OutputStream.Close();
 
-        }
-        
+        //}
+
     }
-  }
+}
