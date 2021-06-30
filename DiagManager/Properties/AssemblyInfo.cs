@@ -45,7 +45,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft Product Support")]
 [assembly: AssemblyProduct("Pssdiag & Sqldiag Configuration Manager")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("Microsoft Product Support")]
 [assembly: AssemblyCulture("")]
 
@@ -67,5 +67,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("15.0.0001.12")]
-[assembly: AssemblyFileVersion("15.0.0001.12")]
+[assembly: AssemblyVersion("15.21.06.23")]
+[assembly: AssemblyFileVersion("15.21.06.23")]

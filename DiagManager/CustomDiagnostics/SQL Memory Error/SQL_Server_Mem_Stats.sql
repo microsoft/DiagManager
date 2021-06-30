@@ -18,13 +18,13 @@ GO
 perf mem stats snapshot
 
 ********************************************************************/
-IF OBJECT_ID ('sp_mem_stats_grants','P') IS NOT NULL
-   DROP PROCEDURE sp_mem_stats_grants
+IF OBJECT_ID ('sp_mem_stats_grants_mem_script','P') IS NOT NULL
+   DROP PROCEDURE sp_mem_stats_grants_mem_script
 GO
-
-CREATE PROCEDURE sp_mem_stats_grants @runtime datetime , @lastruntime datetime =null
+--2017-01-10 changed query text be at statement level
+CREATE PROCEDURE sp_mem_stats_grants_mem_script @runtime datetime , @lastruntime datetime =null
 as
-print '-- query execution memory --'
+print '-- query execution memory mem_script--'
 SELECT    CONVERT (varchar(30), @runtime, 121) as runtime, 
 		r.session_id
          , r.blocking_session_id
@@ -37,7 +37,8 @@ SELECT    CONVERT (varchar(30), @runtime, 121) as runtime,
          , wait_time
          , wait_type
          , r.command
-         , ltrim(rtrim(replace(replace (substring (q.text, 1, 1000), char(10), ' '), char(13), ' '))) [text]
+		, ltrim(rtrim(replace(replace (substring (SUBSTRING(q.text,r.statement_start_offset/2 +1,  (CASE WHEN r.statement_end_offset = -1  THEN LEN(CONVERT(nvarchar(max), q.text)) * 2   ELSE r.statement_end_offset end -   r.statement_start_offset   )/2 ) , 1, 1000), char(10), ' '), char(13), ' '))) [text]
+         --, ltrim(rtrim(replace(replace (substring (q.text, 1, 1000), char(10), ' '), char(13), ' '))) [text]
          --, REPLACE (REPLACE (SUBSTRING (q.[text] COLLATE Latin1_General_BIN, CHARINDEX (''CREATE '', SUBSTRING (q.[text] COLLATE Latin1_General_BIN, 1, 1000)), 50), CHAR(10), '' ''), CHAR(13), '' '')
          --, q.TEXT  --Full SQL Text
          , s.login_time
@@ -92,6 +93,7 @@ SELECT    CONVERT (varchar(30), @runtime, 121) as runtime,
          , rs.waiter_count --Number of queries waiting for grants to be satisfied.
          , rs.timeout_error_count --Total number of time-out errors since server startup. NULL for the small-query resource semaphore.
          , rs.forced_grant_count --Total number of forced minimum-memory grants since server startup. NULL for the small-query resource semaphore.
+		 , object_name (q.objectid, q.dbid) 'Object_Name'
 FROM     sys.dm_exec_requests r
          JOIN sys.dm_exec_connections c
            ON r.connection_id = c.connection_id
@@ -233,13 +235,13 @@ begin
 end
 else
 begin
-  set @sqlmemobj =
+	set @sqlmemobj =
 	'SELECT CONVERT (varchar(30), @runtime, 121) as runtime,  ' + 
-	  'SUM (pages_in_bytes) AS ''total_bytes_used'', type  ' + 
+	  'SUM (CONVERT(bigint, pages_in_bytes)) AS ''total_bytes_used'', type  ' + 
 	'FROM sys.dm_os_memory_objects ' + 
 	'GROUP BY type  ' + 
-	'HAVING SUM (pages_in_bytes) >= (1024*1024) ' + 
-	'ORDER BY SUM (pages_in_bytes) DESC '
+	'HAVING SUM (CONVERT(bigint,pages_in_bytes)) >= (1024*1024) ' + 
+	'ORDER BY SUM (CONVERT(bigint,pages_in_bytes)) DESC '
 	
 end
 exec sp_executesql @sqlmemobj, N'@runtime datetime', @runtime
@@ -296,7 +298,7 @@ go
 CREATE PROCEDURE sp_mem_stats9  @runtime datetime , @lastruntime datetime =null
 AS 
 begin
-	exec sp_mem_stats_grants @runtime, @lastruntime
+	exec sp_mem_stats_grants_mem_script @runtime, @lastruntime
 	exec sp_mem_stats_proccache @runtime, @lastruntime
 	exec sp_mem_stats_general @runtime, @lastruntime
 end
@@ -347,7 +349,27 @@ begin
 end
 go
 
+IF OBJECT_ID ('sp_mem_stats14','P') IS NOT NULL
+   DROP PROCEDURE sp_mem_stats14
+GO
+go
+CREATE PROCEDURE sp_mem_stats14  @runtime datetime , @lastruntime datetime =null
+AS 
+begin
+	exec sp_mem_stats13  @runtime, @lastruntime
+end
+go
 
+IF OBJECT_ID ('sp_mem_stats15','P') IS NOT NULL
+   DROP PROCEDURE sp_mem_stats15
+GO
+go
+CREATE PROCEDURE sp_mem_stats15  @runtime datetime , @lastruntime datetime =null
+AS 
+begin
+	exec sp_mem_stats14  @runtime, @lastruntime
+end
+go	       
 
 IF OBJECT_ID ('sp_Run_MemStats','P') IS NOT NULL
    DROP PROCEDURE sp_Run_MemStats

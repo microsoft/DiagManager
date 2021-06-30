@@ -1,10 +1,9 @@
 /*
-Author:		tzakir@microsoft.com
 Purpose:	Change Tracking Script for PSSDiag
-Date:		11/30/216
+Date:		1/3/2020
 Note:		
-Version:	1.0 
-Change List:
+Version:	1.3
+Change List: Added CT_oject_id and cleanup_version_commit_time
 */
 
 
@@ -23,6 +22,7 @@ select @@servername as 'ServerName'
 PRINT '-- CT enabled databases --' 
 SELECT
 	db.name AS change_tracking_db,
+	ct.database_id,
 	is_auto_cleanup_on,
 	retention_period,
 	retention_period_units_desc
@@ -64,18 +64,24 @@ BEGIN
 				ctt.is_track_columns_updated_on,
 				ctt.begin_version /*when CT was enabled, or table was truncated */,
 				ctt.min_valid_version /*syncing applications should only expect data on or after this version */ ,
-				ctt.cleanup_version /*cleanup may have removed data up to this version */
+				ctt.cleanup_version /*cleanup may have removed data up to this version */,
+				dtc.commit_time as cleanup_version_commit_time /*Cleanup version commit_time*/
 				FROM [' + @dbname + '].sys.change_tracking_tables AS ctt
 				JOIN [' + @dbname + '].sys.objects AS so on
 				ctt.[object_id]=so.[object_id]
 				JOIN sys.schemas AS sc on
-				so.schema_id=sc.schema_id;');
+				so.schema_id=sc.schema_id
+				JOIN [' + @dbname + '].sys.dm_tran_commit_table dtc on
+				ctt.cleanup_version = dtc.commit_ts;');
+
 
 		PRINT ''
 		PRINT 'Committed transactions in the commit_table --'
 		EXEC ('SELECT
 				count(*) AS number_commits,
+				MIN(commit_ts) AS minimum_commit_ts,
 				MIN(commit_time) AS minimum_commit_time,
+				MAX(commit_ts) AS maximum_commit_ts,
 				MAX(commit_time) AS maximum_commit_time
 				FROM [' + @dbname + '].sys.dm_tran_commit_table;');	
 	
@@ -84,6 +90,7 @@ BEGIN
 		EXEC ('
 			select sct1.name as CT_schema,
 			sot1.name as CT_table,
+			sot1.object_id as CT_oject_id,
 			ps1.row_count as CT_rows,
 			ps1.used_page_count*8./1024. as CT_used_MB,
 			sct2.name as tracked_schema,
@@ -106,6 +113,9 @@ BEGIN
 				and ps2.index_id in (0,1)
 			WHERE it.internal_type IN (209, 210)
 			order by 4 desc ;');	
+
+		PRINT 'Get the Safe and Hardened Cleanup version. Run on 2014 Sp2 / 2016 Sp1 and above--'
+		EXEC ( '[' + @dbname + ']..sp_flush_commit_table_on_demand 1;');
 
 
 		PRINT ''

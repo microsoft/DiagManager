@@ -487,7 +487,7 @@ GO
 IF OBJECT_ID ('sp_perf_stats_infrequent','P') IS NOT NULL
    DROP PROCEDURE sp_perf_stats_infrequent
 GO
-CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime datetime, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit = 0
+CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime datetime, @prevmsticks bigint, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit = 0
  AS 
  
   SET NOCOUNT ON
@@ -605,9 +605,9 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
     FROM (
       SELECT timestamp, CONVERT (xml, record) AS 'record' 
       FROM sys.dm_os_ring_buffers 
-      WHERE ring_buffer_type = 'RING_BUFFER_SCHEDULER_MONITOR'
-        AND record LIKE '%<SystemHealth>%'
-		and [timestamp] > @lastmsticks) AS t
+      WHERE [timestamp] > @prevmsticks
+        AND ring_buffer_type = 'RING_BUFFER_SCHEDULER_MONITOR'
+		and record LIKE '%<SystemHealth>%') AS t
     ORDER BY record.value('(Record/@id)[1]', 'int') 
    
    RAISERROR (' ', 0, 1) WITH NOWAIT;
@@ -786,16 +786,16 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
 		CONVERT (varchar(23), DATEADD (ms, -1 * (@msticks - [timestamp]), @mstickstime), 126) AS EventTime, 
 		[record] 
       FROM sys.dm_os_ring_buffers 
-      WHERE ring_buffer_type in (''RING_BUFFER_CONNECTIVITY'',''RING_BUFFER_SECURITY_ERROR'')
-        AND [timestamp] > @lastmsticks 
+      WHERE [timestamp] > @prevmsticks 
+        AND ring_buffer_type in (''RING_BUFFER_CONNECTIVITY'',''RING_BUFFER_SECURITY_ERROR'')
       ORDER BY [timestamp]'
 
-  EXEC sp_executesql @sql, N'@runtime datetime, @lastmsticks bigint, @msticks bigint, @mstickstime datetime', @runtime = @runtime, @lastmsticks = @lastmsticks, @msticks = @msticks, @mstickstime = @mstickstime
+  EXEC sp_executesql @sql, N'@runtime datetime, @prevmsticks bigint, @msticks bigint, @mstickstime datetime', @runtime = @runtime, @prevmsticks = @prevmsticks, @msticks = @msticks, @mstickstime = @mstickstime
 
 
   RAISERROR (' ', 0, 1) WITH NOWAIT;
   SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
-  SET @lastmsticks = @msticks
+  --SET @lastmsticks = @msticks		
   IF @queryduration > @qrydurationwarnthreshold
     PRINT 'DebugPrint: perfstats2 qry18 - ' + CONVERT (varchar, @queryduration) + 'ms' + CHAR(13) + CHAR(10)
 
@@ -860,6 +860,36 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
   SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
   IF @queryduration > @qrydurationwarnthreshold
     PRINT 'DebugPrint: perfstats2 qry22 - ' + CONVERT (varchar, @queryduration) + 'ms' + CHAR(13) + CHAR(10)
+
+  /* Resultset #23:  dm_os_ring_buffers for security cache
+  ** return all rows on first run and then after only new rows in later runs */
+	IF (CONVERT(smallint,SERVERPROPERTY ('ProductMajorVersion')) < 15)
+		PRINT '' -- we do not capture this information for versions lower than SQL 2019
+	ELSE
+		BEGIN
+			PRINT ''
+			RAISERROR ('-- dm_os_ring_buffers_sec_cache --', 0, 1) WITH NOWAIT;
+			SET @querystarttime = GETDATE()
+
+			SET @sql = '
+				SELECT /*' + @procname + ':23*/  
+					CONVERT (varchar(30), @runtime, 126) AS runtime, 
+					CONVERT (varchar(23), DATEADD (ms, -1 * (@msticks - [timestamp]), @mstickstime), 126) AS EventTime, 
+					[record] 
+				  FROM sys.dm_os_ring_buffers 
+				  WHERE [timestamp] > @prevmsticks 
+					AND ring_buffer_type in (''RING_BUFFER_SECURITY_CACHE'')
+				  ORDER BY [timestamp]'
+
+			EXEC sp_executesql @sql, N'@runtime datetime, @prevmsticks bigint, @msticks bigint, @mstickstime datetime', @runtime = @runtime, @prevmsticks = @prevmsticks, @msticks = @msticks, @mstickstime = @mstickstime
+
+
+			RAISERROR (' ', 0, 1) WITH NOWAIT;
+			SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
+			IF @queryduration > @qrydurationwarnthreshold
+				PRINT 'DebugPrint: perfstats2 qry23 - ' + CONVERT (varchar, @queryduration) + 'ms' + CHAR(13) + CHAR(10)
+		END
+	SET @lastmsticks = @msticks	-- Note that this is used by multiple ring buffer queries in this proc so be careful where you position this
 
   /* Raise a diagnostic message if we use more CPU than normal (a typical execution uses <200ms) */
   DECLARE @cpu_time bigint, @elapsed_time bigint
@@ -1064,20 +1094,20 @@ go
 IF OBJECT_ID ('sp_perf_stats_infrequent10','P') IS NOT NULL
    DROP PROCEDURE sp_perf_stats_infrequent10
 GO
-CREATE PROCEDURE sp_perf_stats_infrequent10 @runtime datetime, @prevruntime datetime, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
+CREATE PROCEDURE sp_perf_stats_infrequent10 @runtime datetime, @prevruntime datetime, @prevmsticks bigint, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
  AS 
 begin
-	exec sp_perf_stats_infrequent @runtime, @prevruntime, @firstrun, @IsLite
+	exec sp_perf_stats_infrequent @runtime, @prevruntime, @prevmsticks, @lastmsticks output, @firstrun, @IsLite
 end
 go
 
 IF OBJECT_ID ('sp_perf_stats_infrequent11','P') IS NOT NULL
    DROP PROCEDURE sp_perf_stats_infrequent11
 GO
-CREATE PROCEDURE sp_perf_stats_infrequent11 @runtime datetime, @prevruntime datetime, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
+CREATE PROCEDURE sp_perf_stats_infrequent11 @runtime datetime, @prevruntime datetime, @prevmsticks bigint, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
  AS 
 begin
-	exec sp_perf_stats_infrequent10 @runtime, @prevruntime, @firstrun, @IsLite
+	exec sp_perf_stats_infrequent10 @runtime, @prevruntime, @prevmsticks, @lastmsticks output, @firstrun, @IsLite
 end
 
 go
@@ -1085,40 +1115,40 @@ go
 IF OBJECT_ID ('sp_perf_stats_infrequent12','P') IS NOT NULL
    DROP PROCEDURE sp_perf_stats_infrequent12
 GO
-CREATE PROCEDURE sp_perf_stats_infrequent12 @runtime datetime, @prevruntime datetime, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
+CREATE PROCEDURE sp_perf_stats_infrequent12 @runtime datetime, @prevruntime datetime, @prevmsticks bigint, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
  AS 
 begin
-	exec sp_perf_stats_infrequent11 @runtime, @prevruntime, @firstrun, @IsLite
+	exec sp_perf_stats_infrequent11 @runtime, @prevruntime, @prevmsticks, @lastmsticks output, @firstrun, @IsLite
 end
 go
 
 IF OBJECT_ID ('sp_perf_stats_infrequent13','P') IS NOT NULL
    DROP PROCEDURE sp_perf_stats_infrequent13
 GO
-CREATE PROCEDURE sp_perf_stats_infrequent13 @runtime datetime, @prevruntime datetime, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
+CREATE PROCEDURE sp_perf_stats_infrequent13 @runtime datetime, @prevruntime datetime, @prevmsticks bigint, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
  AS 
 begin
-	exec sp_perf_stats_infrequent12 @runtime, @prevruntime, @firstrun, @IsLite
+	exec sp_perf_stats_infrequent12 @runtime, @prevruntime, @prevmsticks, @lastmsticks output, @firstrun, @IsLite
 end
 
 go
 IF OBJECT_ID ('sp_perf_stats_infrequent14','P') IS NOT NULL
    DROP PROCEDURE sp_perf_stats_infrequent14
 GO
-CREATE PROCEDURE sp_perf_stats_infrequent14 @runtime datetime, @prevruntime datetime, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
+CREATE PROCEDURE sp_perf_stats_infrequent14 @runtime datetime, @prevruntime datetime, @prevmsticks bigint, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
  AS 
 begin
-	exec sp_perf_stats_infrequent13 @runtime, @prevruntime, @firstrun, @IsLite
+	exec sp_perf_stats_infrequent13 @runtime, @prevruntime, @prevmsticks, @lastmsticks output, @firstrun, @IsLite
 end
 
 go
 IF OBJECT_ID ('sp_perf_stats_infrequent15','P') IS NOT NULL
    DROP PROCEDURE sp_perf_stats_infrequent15
 GO
-CREATE PROCEDURE sp_perf_stats_infrequent15 @runtime datetime, @prevruntime datetime, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
+CREATE PROCEDURE sp_perf_stats_infrequent15 @runtime datetime, @prevruntime datetime, @prevmsticks bigint, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
  AS 
 begin
-	exec sp_perf_stats_infrequent14 @runtime, @prevruntime, @firstrun, @IsLite
+	exec sp_perf_stats_infrequent14 @runtime, @prevruntime, @prevmsticks, @lastmsticks output, @firstrun, @IsLite
 end
 
 go
@@ -1233,6 +1263,7 @@ DECLARE @prevruntime datetime
 DECLARE @previnfreqruntime datetime
 DECLARE @prevreallyinfreqruntime datetime
 DECLARE @lastmsticks bigint = 0
+DECLARE @prevmsticks bigint = 0
 
 SELECT @prevruntime = sqlserver_start_time from sys.dm_os_sys_info
 print 'Start SQLServer time: ' + convert(varchar(23), @prevruntime, 126)
@@ -1244,7 +1275,7 @@ DECLARE @servermajorversion nvarchar(2)
 SET @servermajorversion = REPLACE (LEFT (CONVERT (varchar, SERVERPROPERTY ('ProductVersion')), 2), '.', '')
 declare @sp_perf_stats_ver sysname, @sp_perf_stats_reallyinfrequent_ver sysname, @sp_perf_stats_infrequent_ver sysname
 set @sp_perf_stats_ver = 'sp_perf_stats' + @servermajorversion
-set @sp_perf_stats_infrequent_ver = 'sp_perf_stats_infrequent' + @servermajorversion
+set @sp_perf_stats_infrequent_ver = 'sp_perf_stats_infrequent' -- + @servermajorversion
 set @sp_perf_stats_reallyinfrequent_ver = 'sp_perf_stats_reallyinfrequent' + @servermajorversion
 
 
@@ -1264,8 +1295,8 @@ set @sp_perf_stats_reallyinfrequent_ver = 'sp_perf_stats_reallyinfrequent' + @se
     -- Collect sp_perf_stats_infrequent approximately every minute
     if DATEDIFF(SECOND, @previnfreqruntime,GETDATE()) > 59
     BEGIN
-      EXEC @sp_perf_stats_infrequent_ver  @runtime = @runtime, @prevruntime = @previnfreqruntime, @lastmsticks = @lastmsticks output, @firstrun = @firstrun,  @IsLite=@IsLite
-
+      EXEC @sp_perf_stats_infrequent_ver  @runtime = @runtime, @prevruntime = @previnfreqruntime, @prevmsticks = @prevmsticks, @lastmsticks = @lastmsticks output, @firstrun = @firstrun,  @IsLite=@IsLite
+	  SET @prevmsticks = @lastmsticks
 	  SET @previnfreqruntime = @runtime
     END
 
