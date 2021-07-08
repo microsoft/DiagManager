@@ -1,0 +1,4 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+  <CustomTask enabled="true" groupname="Replication" taskname="Collect Replication Metadata" type="TSQL_Script" point="Startup" wait="OnlyOnShutdown" cmd="Repl_Metadata_Collector.sql" pollinginterval="0" />
+</CustomTasks>

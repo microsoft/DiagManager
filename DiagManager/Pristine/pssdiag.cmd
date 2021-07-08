@@ -42,7 +42,7 @@ goto eof
 
 :Register
 
- %diagEXE% /R "/O%launchdir%output" "/I%launchdir%pssdiag.xml" "%2" "%3" "%4" "%5" "%6" "%7"
+  %diagEXE% /R "/O%launchdir%output" "/I%launchdir%pssdiag.xml" %1 %2 %3 %4 %5 %6 %7 %8 %9
 
 goto EOF
 

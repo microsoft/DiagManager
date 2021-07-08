@@ -1,0 +1,8 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+  
+  
+  <CustomTask enabled="false" groupname="CMethread " taskname="Start CMemthread" type="TSQL_Script" point="Startup" wait="Yes" cmd="CMemthread.sql" />
+  <CustomTask enabled="false" groupname="CMethread" taskname="stop CMethoread" type="TSQL_Command" point="Shutdown" wait="No" cmd="alter event session CMemthread on server state = stop" />
+  
+</CustomTasks>

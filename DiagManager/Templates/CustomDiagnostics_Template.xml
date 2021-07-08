@@ -1,98 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <CustomDiagnostics>
-
-  <CustomGroup name="Analysis Services Shared" enabled="true">
-    <Scenarios>
-      <Scenario name="ASTabPerf" enabled="true"/>
-      <Scenario name="ASGeneral" enabled="true"/>
-      <Scenario name="ASMDPerf" enabled="true"/>
-    </Scenarios>
-    <Features>
-      <Feature name="AS" enabled="true"/>
-    </Features>
-    <Versions>
-      <Version name="9" enabled="true"/>
-      <Version name="10" enabled="true"/>
-      <Version name="10.50" enabled="true"/>
-      <Version name="11" enabled="true"/>
-      <Version name="12" enabled="true"/>
-      <Version name="13" enabled="true"/>
-    </Versions>
-  </CustomGroup> />
-
-
-  <CustomGroup name="Analysis Services 2008" enabled="true">
-    <Scenarios>
-      <Scenario name="ASTabPerf" enabled="true"/>
-      <Scenario name="ASGeneral" enabled="true"/>
-      <Scenario name="ASMDPerf" enabled="true"/>
-    </Scenarios>
-    <Features>
-      <Feature name="AS" enabled="true"/>
-    </Features>
-    <Versions>
-      <Version name="10" enabled="true"/>
-    </Versions>
-  </CustomGroup> />
-
-  <CustomGroup name="Analysis Services 2008 R2" enabled="true">
-    <Scenarios>
-      <Scenario name="ASTabPerf" enabled="true"/>
-      <Scenario name="ASGeneral" enabled="true"/>
-      <Scenario name="ASMDPerf" enabled="true"/>
-    </Scenarios>
-    <Features>
-      <Feature name="AS" enabled="true"/>
-    </Features>
-    <Versions>
-      <Version name="10.50" enabled="true"/>
-    </Versions>
-  </CustomGroup> />
-
-
-  <CustomGroup name="Analysis Services 2012" enabled="true">
-    <Scenarios>
-      <Scenario name="ASTabPerf" enabled="true"/>
-      <Scenario name="ASGeneral" enabled="true"/>
-      <Scenario name="ASMDPerf" enabled="true"/>
-    </Scenarios>
-    <Features>
-      <Feature name="AS" enabled="true"/>
-    </Features>
-    <Versions>
-      <Version name="11" enabled="true"/>
-    </Versions>
-  </CustomGroup> />
-
-
-  <CustomGroup name="Analysis Services 2014" enabled="true">
-    <Scenarios>
-      <Scenario name="ASTabPerf" enabled="true"/>
-      <Scenario name="ASGeneral" enabled="true"/>
-      <Scenario name="ASMDPerf" enabled="true"/>
-    </Scenarios>
-    <Features>
-      <Feature name="AS" enabled="true"/>
-    </Features>
-    <Versions>
-      <Version name="12" enabled="true"/>
-    </Versions>
-  </CustomGroup> />
-
-
-  <CustomGroup name="Analysis Services 2016" enabled="true">
-    <Scenarios>
-      <Scenario name="ASTabPerf" enabled="true"/>
-      <Scenario name="ASGeneral" enabled="true"/>
-      <Scenario name="ASMDPerf" enabled="true"/>
-    </Scenarios>
-    <Features>
-      <Feature name="AS" enabled="true"/>
-    </Features>
-    <Versions>
-      <Version name="13" enabled="true"/>
-    </Versions>
-  </CustomGroup> />
+  
 
 
   <CustomGroup name="Azure VM" enabled="false">
@@ -108,7 +16,7 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -125,7 +33,7 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -143,7 +51,7 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -151,7 +59,7 @@
 
   <CustomGroup name="Database Mirroring" enabled="true">
     <Scenarios>
-
+      
     </Scenarios>
     <Features>
       <Feature name="SQL" enabled="true"/>
@@ -162,14 +70,14 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
 
   <CustomGroup name="Full-Text Search" enabled="true">
     <Scenarios>
-
+      
     </Scenarios>
     <Features>
       <Feature name="SQL" enabled="true"/>
@@ -180,7 +88,7 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -197,10 +105,10 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
-
+  
 
   <CustomGroup name="In-Memory OLTP" enabled="true">
     <Scenarios>
@@ -213,7 +121,7 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -222,20 +130,20 @@
       <Scenario name="StretchDB" enabled="true"/>
     </Scenarios>
     <Features>
-
-
+      
+      
       <Feature name="SQL" enabled="true"/>
     </Features>
     <Versions>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
-
+    
   </CustomGroup> />
 
 
-
+  
 
   <CustomGroup name="MSInfo" enabled="true">
     <Scenarios>
@@ -243,7 +151,7 @@
     </Scenarios>
     <Features>
 
-      <Feature name="AS" enabled="true"/>
+      
       <Feature name="SQL" enabled="true"/>
     </Features>
     <Versions>
@@ -266,7 +174,7 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -303,12 +211,12 @@
   <CustomGroup name="Query Store" enabled="true">
 
     <Scenarios>
-      <Scenario name="LightPerf" enabled="true"/>
-      <Scenario name="GeneralPerf" enabled="true"/>
-      <Scenario name="DetailedPerf" enabled="true"/>
-      <Scenario name="Replay" enabled="true"/>
+      <Scenario name="LightPerf" enabled="false"/>
+      <Scenario name="GeneralPerf" enabled="false"/>
+      <Scenario name="DetailedPerf" enabled="false"/>
+      <Scenario name="Replay" enabled="false"/>
     </Scenarios>
-
+    
     <Features>
       <Feature name="SQL" enabled="true"/>
     </Features>
@@ -316,7 +224,7 @@
       <Version name="12" enabled="false"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -337,7 +245,7 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
 
   </CustomGroup> />
@@ -372,7 +280,7 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
 
   </CustomGroup> />
@@ -381,7 +289,7 @@
 
   <CustomGroup name="Tempdb Space and Latching" enabled="true">
     <Scenarios>
-
+      
     </Scenarios>
     <Features>
       <Feature name="SQL" enabled="true"/>
@@ -394,14 +302,11 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
 
   </CustomGroup> />
-
-
-
-
+ 
 
   <CustomGroup name="SQL Server Perf Stats" enabled="true">
     <Scenarios>
@@ -421,14 +326,10 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
 
-  </CustomGroup> />
-
-
-
-
+  </CustomGroup> /> 
   <CustomGroup name="PolyBase" enabled="true">
     <Scenarios>
       <Scenario name="PolyBase" enabled="true"/>
@@ -439,7 +340,7 @@
     <Versions>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
 
   </CustomGroup> />
@@ -457,7 +358,7 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -474,11 +375,11 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
-  <CustomGroup name="Replication Metadata Collector" enabled="true">
+  <CustomGroup name="Replication" enabled="true">
     <Scenarios>
 
     </Scenarios>
@@ -491,9 +392,29 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-      <Version name="15" enabled="true"/>
+	  <Version name="15" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
+  
+<CustomGroup name="SQL Server High CPU Perf Stats" enabled="true">
+  <Scenarios>
+    <Scenario name="LightPerf" enabled="true"/>
+    <Scenario name="GeneralPerf" enabled="true"/>
+    <Scenario name="DetailedPerf" enabled="true"/>
+  </Scenarios>
+  <Features>
+    <Feature name="SQL" enabled="true"/>
+  </Features>
+  <Versions>
+    <Version name="10.50" enabled="false"/>
+    <Version name="11" enabled="false"/>
+    <Version name="12" enabled="false"/>
+    <Version name="13" enabled="true"/>
+    <Version name="14" enabled="true"/> 
+    <Version name="15" enabled="true"/>
+  </Versions>
+</CustomGroup> />
 
 </CustomDiagnostics>
+  

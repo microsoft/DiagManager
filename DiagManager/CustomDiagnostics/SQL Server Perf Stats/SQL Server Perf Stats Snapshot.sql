@@ -258,7 +258,9 @@ begin
 	print ''
 
 
-	
+	print '-- server_times --'
+	select CONVERT (varchar(30), getdate(), 126) as server_time, CONVERT (varchar(30), getutcdate(), 126)  utc_time, DATEDIFF(hh, getdate(), getutcdate()) time_delta_hours
+
 	/*
 	this takes too long for large machines
 		PRINT '-- High Compile Queries --';

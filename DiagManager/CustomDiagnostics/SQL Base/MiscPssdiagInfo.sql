@@ -48,6 +48,8 @@ insert into #summary select 'number of active profiler traces',count(*) 'cnt' fr
 insert into #summary select 'suser_name() default database name',default_database_name from sys.server_principals where name = SUSER_NAME()
 
 insert into #summary select  'VISIBLEONLINE_SCHEDULER_COUNT' PropertyName, count (*) PropertValue from sys.dm_os_schedulers where status='VISIBLE ONLINE'
+insert into #summary select 'UTCOffset_in_Hours' PropertyName, cast( datediff (MINUTE, getutcdate(), getdate()) / 60.0 as decimal(10,2)) PropertyValue
+
 
 declare @cpu_ticks bigint
 select @cpu_ticks = cpu_ticks from sys.dm_os_sys_info
@@ -430,6 +432,11 @@ print '-- sys.dm_database_encryption_keys --'
 select database_id, encryption_state from sys.dm_database_encryption_keys
 print ''
 
+go
+
+print '-- sys.dm_tran_persistent_version_store_stats --'
+select * From sys.dm_tran_persistent_version_store_stats
+print ''
 go
 /*
 --windows version from @@version
