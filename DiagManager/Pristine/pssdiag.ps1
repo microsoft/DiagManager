@@ -203,12 +203,16 @@ function main
     }
 
 
+    # 3-- to start pssdiag service, do "sqldiag.exe START
+    # 4-- to stop pssdiag service, do "sqldiag.exe STOP"
+
 
     [string] $argument_list = $lv_I + " " + $lv_O  + " " + $lv_P + " " + $lv_N + " " + $lv_M + " " + $lv_Q + " " + $lv_C + " " + $lv_G `
     + " " + $lv_R + " " + $lv_U  + " " + $lv_A  + " " + $lv_L  + " " + $lv_X + " " + $lv_B + " " + $lv_E + " " + $lv_T
 
     Write-Host "Argument list = $argument_list"
 
+    # launch the sqldiag.exe process
     Start-Process -FilePath SQLDiag.exe -ArgumentList $argument_list -WindowStyle Normal
 }
 
