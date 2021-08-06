@@ -39,7 +39,16 @@ param
     [switch] $L,
 
     [Parameter(Position=12,Mandatory=$false)]
-    [switch] $X
+    [switch] $X,
+
+    [Parameter(Position=13,Mandatory=$false)]
+    [string] $B = [string]::Empty,
+
+    [Parameter(Position=14,Mandatory=$false)]
+    [string] $E = [string]::Empty,
+
+    [Parameter(Position=15,Mandatory=$false)]
+    [string] $T = [string]::Empty
 )
 
 
@@ -161,14 +170,42 @@ function main
 
     
     # [/B [+]YYYYMMDD_HH:MM:SS] = specifies the date/time to begin collecting data; "+" specifies a relative time
+
+    if ([string]::IsNullOrWhiteSpace($B))
+    {
+        $lv_B = ""
+    }
+    else 
+    {
+        $lv_B = "/B " + $B
+    }
     
     # [/E [+]YYYYMMDD_HH:MM:SS]  = specifies the date/time to end data collection; "+" specifies a relative time
     
+    if ([string]::IsNullOrWhiteSpace($E))
+    {
+        $lv_E = ""
+    }
+    else 
+    {
+        $lv_E = "/E " + $E
+    }
+
     # [/T {tcp[,port]|np|lpc|via}] = connects to sql server using the specified protocol
+
+    if ([string]::IsNullOrWhiteSpace($T))
+    {
+        $lv_T = ""
+    }
+    else 
+    {
+        $lv_T = "/T " + $T
+    }
+
 
 
     [string] $argument_list = $lv_I + " " + $lv_O  + " " + $lv_P + " " + $lv_N + " " + $lv_M + " " + $lv_Q + " " + $lv_C + " " + $lv_G `
-    + " " + $lv_R + " " + $lv_U  + " " + $lv_A  + " " + $lv_L  + " " + $lv_X
+    + " " + $lv_R + " " + $lv_U  + " " + $lv_A  + " " + $lv_L  + " " + $lv_X + " " + $lv_B + " " + $lv_E + " " + $lv_T
 
     Write-Host "Argument list = $argument_list"
 
