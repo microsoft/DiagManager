@@ -5,6 +5,8 @@ param
     [Parameter(Position = 0)]
     [string] $ServiceState = "",
 
+    [Parameter(ParameterSetName = 'Config',Mandatory=$false)]
+    [switch] $help,
 
     [Parameter(ParameterSetName = 'Config',HelpMessage='/I xml_config_file',Mandatory=$false)]
     [string] $I = "pssdiag.xml",
@@ -52,21 +54,44 @@ param
     [string] $E = [string]::Empty,
 
     [Parameter(ParameterSetName = 'Config',Mandatory=$false)]
-    [string] $T = [string]::Empty
+    [string] $T = [string]::Empty,
+
+    [Parameter(ParameterSetName = 'Config',Mandatory=$false)]
+    [switch] $DebugOn
+
+
 )
+
+
+. ./Confirm-FileAttributes.ps1
 
 
 function main 
 {
-    Write-Host "ServiceState = $ServiceState"
+
+    [bool] $debug_on = $false
+
+    if ($DebugOn -eq $true)
+    {
+        $debug_on = $true
+    }
+
+    $validFileAttributes = Confirm-FileAttributes $debug_on
+        if (-not($validFileAttributes)){
+            Write-Host "File attribute validation FAILED. Exiting..." -ForegroundColor Red
+            return
+        }
+        
+    
 
     [string] $argument_list = ""
 
     if ($ServiceState -iin "stop", "start", "stop_abort", "/U")
     {
+        Write-Host "ServiceState = $ServiceState"
         $argument_list = $ServiceState    
     }
-    elseif ($ServiceState -iin "--?", "/?", "?", "--help", "-help") 
+    elseif (($ServiceState -iin "--?", "/?", "?", "--help", "help") -or ($help -eq $true))
     {
         Write-Host " [-I cfgfile] = sets the configuration file, typically either pssdiag.xml or sqldiag.xml.`n"`
         "[-O outputpath] = sets the output folder.  Defaults to startupfolder\SQLDIAG (if the folder does not exist, the collector will attempt to create it) `n" `
@@ -84,6 +109,8 @@ function main
         "[-B [+]YYYYMMDD_HH:MM:SS] = specifies the date/time to begin collecting data; "+HH:MM:SS" specifies a relative time `n" `
         "[-E [+]YYYYMMDD_HH:MM:SS]  = specifies the date/time to end data collection; "+HH:MM:SS" specifies a relative time `n" `
         "[-T {tcp[,port]|np|lpc|via}] = connects to sql server using the specified protocol `n" `
+        "[-Debug] = print some verbose messages for debugging where appropriate `n" `
+        "[START], [STOP], [STOP_ABORT] = service commands for a registered (-R) SQLDIAG service `n" `
         ""        -ForegroundColor Green
 
         exit
