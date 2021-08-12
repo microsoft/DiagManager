@@ -30,6 +30,8 @@ function Confirm-FileAttributes
 
     Write-Host "Validating attributes for non-Powershell script files"
 
+
+
     $validAttributes = $true #this will be set to $false if any mismatch is found, then returned to caller
 
     $expectedFileAttributes = @(
@@ -46,7 +48,6 @@ function Confirm-FileAttributes
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "AEBBAB953A7187281EBCAE85FC38F3FCDBA600220FDFC3A29348626B394D2FC4E938065F1EF3375EB91A962F31572704E72814D76DB8264C35FFF01D55049BA2"; FileName = ".\ConnectivityTest.bat"; FileSize = 3746}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "7E794E2322F58933E8769FB680F3B232B3287EFAB71FF2D709273704BD578866E5A640FEBB935B9170570136C49905B52CD7BB7D4986D92D280B40B7F2F27C64"; FileName = ".\DefineCommonVars.cmd"; FileSize = 4321}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "99F853F56BD0253176F12678D25D1F564E3BD5C8E1432E669E3AF6126DD3169CAF2ECB6D3B03B08E65934B8BDD694B6C9708076FDFE003C293BA7346C8D58C3E"; FileName = ".\DefineSQLInstanceSetupPaths.cmd"; FileSize = 2410}
-        ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "82CCBA84B2085DA81CA87B28BFCD66F15640F676D913559AC9266243A44D6681D05CF1E4DCF369B2C1091F43BA11EE1A29448D1160D6B0A138E8E4B1E07FD395"; FileName = ".\DiagUtil.exe"; FileSize = 8704}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "710C24EC35021A35DC439BFFF59C2B98F3083A8273B4B430361656C2E264E9F7CDCF82F2916D2E8DF9CB1249CD9D403BF00B444FA360F34351CBBB9F7A2F514B"; FileName = ".\DoLooksAlive.bat"; FileSize = 7774}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "FC627ABB404C01F9E1EF8A533F8D607B1FFF22D94E4E89D2A124B396F572724B9004D1B3B52240E6D2B1917FD9A0519189E88688BC72575462143975AC6134FF"; FileName = ".\errorlogs.js"; FileSize = 7731}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "F3687C92E9B3100421728B9CF8B76481CA4163694ED2BC3E5410D7D35934EDC8A6638FB4C8AF01F8BF612BE8D14DEF09B96A688DE83C99038B99510B97DF1708"; FileName = ".\FTS_Collector.sql"; FileSize = 13804}
@@ -107,6 +108,7 @@ function Confirm-FileAttributes
     # files are kept opened until SQL LogScout terminates preventing changes to them
     [System.Collections.ArrayList]$Global:hashedFiles = [System.Collections.ArrayList]::new()
 
+
     foreach ($efa in $expectedFileAttributes) 
     {
         
@@ -114,39 +116,34 @@ function Confirm-FileAttributes
         {
             Write-Debug ("Attempting to open file with read sharing: " + $efa.FileName)
             
+            $cur_file = $efa.FileName
 
-
-            Write-Host (">>>>> " + $efa.FileName)
-            Write-Host (">>>>> " + $efa.Algorithm)
-            Write-Host (">>>>> " + $efa.Hash)
-            Write-Host (">>>>> " + $efa.FileSize)
-
-            if ((Test-Path -Path $$efa.FileName) -eq $true)
+            if ((Test-Path -Path $cur_file) -eq $true)
             {
-                #set to full path
-                $file_path = Convert-Path -Path $efa.FileName
-                $fs = [System.IO.File]::Open(
-                    $file_path, 
-                    [System.IO.FileMode]::Open,
-                    [System.IO.FileAccess]::Read,
-                    [System.IO.FileShare]::Read
-                    )
+                $fstream = [System.IO.File]::Open($efa.FileName, 
+                [System.IO.FileMode]::Open, 
+                [System.IO.FileAccess]::Read, 
+                [System.IO.FileShare]::Read)
+
+                
+                Write-Debug ("FileName opened = " + $fstream.Name)
             }
             else 
             {
                 Write-Debug ("File " + $efa.FileName + " not present")
                 Continue 
             }
-            Write-Host ">>>>>>>" $fs.Name
+            
 
             # open the file with read sharing and add to array
-            [void]$Global:hashedFiles.Add($fs)
+            [void]$Global:hashedFiles.Add($fstream)
             
 
         } catch {
             $validAttributes = $false
             Write-Host ("Error opening file with read sharing: " + $efa.FileName ) -ForegroundColor Red
             Write-Host $_ -ForegroundColor Red
+
             return $validAttributes
         }
 
@@ -209,8 +206,8 @@ function Confirm-FileAttributes
         }
 
         
-        $fs.Close()
-        $fs.Dispose()
+        $fstream.Close()
+        $fstream.Dispose()
 
 
     } #foreach
