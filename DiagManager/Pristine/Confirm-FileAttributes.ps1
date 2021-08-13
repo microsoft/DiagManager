@@ -106,9 +106,10 @@ function Confirm-FileAttributes
     # global array to keep a System.IO.FileStream object for each of the non-Powershell files
     # files are opened with Read sharing before being hashed
     # files are kept opened until SQL LogScout terminates preventing changes to them
-    [System.Collections.ArrayList]$Global:hashedFiles = [System.Collections.ArrayList]::new()
+    #[System.Collections.ArrayList]$Global:hashedFiles = [System.Collections.ArrayList]::new()
+    $Global:hashedFiles = New-Object -TypeName  System.Collections.ArrayList
 
-
+    
     foreach ($efa in $expectedFileAttributes) 
     {
         
@@ -120,7 +121,9 @@ function Confirm-FileAttributes
 
             if ((Test-Path -Path $cur_file) -eq $true)
             {
-                $fstream = [System.IO.File]::Open($efa.FileName, 
+                $cur_file = Convert-Path -Path $cur_file
+                
+                $fstream = [System.IO.File]::Open($cur_file, 
                 [System.IO.FileMode]::Open, 
                 [System.IO.FileAccess]::Read, 
                 [System.IO.FileShare]::Read)
