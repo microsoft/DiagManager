@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <CustomTasks>
   <CustomTask enabled="true" groupname="SQL Server High CPU Perf Stats" taskname="High CPU Perf Stats" type="TSQL_Script" point="Startup" wait="No" cmd="HighCPU_perfstats.sql" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="SQL Server High CPU Perf Stats" taskname="Stop Query_Thread_Profile XEvent Session" type="TSQL_Command" point="Shutdown" wait="No" cmd="ALTER EVENT SESSION [pssdiag_query_thread_profile] ON SERVER STATE = stop;DROP EVENT SESSION [pssdiag_query_thread_profile] ON SERVER;" pollinginterval="0" />
 </CustomTasks>

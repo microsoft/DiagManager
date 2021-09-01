@@ -116,7 +116,9 @@ begin
     ON SERVER
     STATE = START
 
-	-- HOW DO WE TURN OFF THE XEVENT WHEN DONE????
+	--TODO:
+	-- TURN OFF THE XEVENT WHEN DONE - how do we hide checkbox in the GUI
+	-- ALSO RUN BATCH SCRIPT TO GET PLANS 
 
     WHILE (1=1)
 	BEGIN
@@ -131,13 +133,24 @@ begin
     RAISERROR ('Version SQL 2016 SP1+ or 2017. Using Lightweight Profiling Ver2', 0, 1) WITH NOWAIT
     --dbcc traceoff (7412, -1)
 
-    select *
-    from sys.dm_exec_query_profiles
+    WHILE (1=1)
+	BEGIN
+        --query the DMV in a loop to compare the 
+		EXEC sp_perf_never_ending_query_snapshots @appname = 'PSSDIAG'
+        WAITFOR DELAY '00:00:10'
+    END
 
 end
 else if (@servermajorversion >= '15')
 begin
     RAISERROR ('Version SQL 2019. Using Lightweight Profiling Ver3 (enabled by default)', 0, 1) WITH NOWAIT
+
+	WHILE (1=1)
+	BEGIN
+        --query the DMV in a loop to compare the 
+		EXEC sp_perf_never_ending_query_snapshots @appname = 'PSSDIAG'
+        WAITFOR DELAY '00:00:10'
+    END
 end
 
 go

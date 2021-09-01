@@ -283,6 +283,7 @@
     <Content Include="CustomDiagnostics\SQL Server High CPU Perf Stats\HighCPU_perfstats.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="CustomDiagnostics\SQL Server High CPU Perf Stats\QueryNeverCompletes_perfstats.sql" />
     <Content Include="CustomDiagnostics\SQL Server Perf Stats\CustomDiag.XML">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
