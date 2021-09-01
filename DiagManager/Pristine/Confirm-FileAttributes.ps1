@@ -30,7 +30,7 @@ function Confirm-FileAttributes
 
     Write-Host "Validating attributes for non-Powershell script files"
 
-
+# TODO: deal with ManualStart, ManualStop and pssdiag_xevent.sql
 
     $validAttributes = $true #this will be set to $false if any mismatch is found, then returned to caller
 
