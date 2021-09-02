@@ -283,7 +283,9 @@
     <Content Include="CustomDiagnostics\SQL Server High CPU Perf Stats\HighCPU_perfstats.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CustomDiagnostics\SQL Server High CPU Perf Stats\QueryNeverCompletes_perfstats.sql" />
+    <Content Include="CustomDiagnostics\SQL Server High CPU Perf Stats\QueryNeverCompletes_perfstats.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="CustomDiagnostics\SQL Server Perf Stats\CustomDiag.XML">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -1431,6 +1433,16 @@
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="CustomDiagnostics\SQL Server High CPU Perf Stats\HighCPU_perfstats.sql">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="CustomDiagnostics\SQL Server High CPU Perf Stats\QueryNeverCompletes_perfstats.sql">
       <Visible>False</Visible>
       <Group>
       </Group>
