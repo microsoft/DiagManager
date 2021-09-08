@@ -25,18 +25,19 @@ BEGIN
 
 	
 	PRINT ''
-	RAISERROR ('--  neverending_query --', 0, 1) WITH NOWAIT
+	RAISERROR ('-- neverending_query --', 0, 1) WITH NOWAIT
 
            --query the DMV in a loop to compare the 
         SELECT CONVERT (varchar(30), @runtime, 126) as runtime,
             CONVERT (varchar(30), @runtime_utc, 126) as runtime_utc,
             qp.session_id,
-            text,
+            text as query_text,
             qp.physical_operator_name,
             qp.node_id,
             qp.row_count,
             qp.rewind_count,
-            qp.rebind_count, end_of_scan_count,
+            qp.rebind_count, 
+			qp.end_of_scan_count,
             qp.estimate_row_count,
             req.cpu_time,
             req.total_elapsed_time
