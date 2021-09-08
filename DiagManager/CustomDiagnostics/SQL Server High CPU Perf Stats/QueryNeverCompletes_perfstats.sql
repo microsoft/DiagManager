@@ -1,10 +1,10 @@
 use tempdb
 go
-IF OBJECT_ID ('sp_perf_never_ending_query_snapshots','P') IS NOT NULL
-   DROP PROCEDURE sp_perf_never_ending_query_snapshots
+IF OBJECT_ID ('dbo.sp_perf_never_ending_query_snapshots','P') IS NOT NULL
+   DROP PROCEDURE dbo.sp_perf_never_ending_query_snapshots
 GO
 
-CREATE PROCEDURE sp_perf_never_ending_query_snapshots @appname sysname='PSSDIAG'
+CREATE PROCEDURE dbo.sp_perf_never_ending_query_snapshots @appname sysname='PSSDIAG'
 AS
 SET NOCOUNT ON
 
@@ -64,7 +64,7 @@ GO
 
 
 
-IF OBJECT_ID ('sp_Run_NeverEndingQuery_Stats','P') IS NOT NULL
+IF OBJECT_ID ('dbo.sp_Run_NeverEndingQuery_Stats','P') IS NOT NULL
    DROP PROCEDURE dbo.sp_Run_NeverEndingQuery_Stats
 GO
 
@@ -135,7 +135,7 @@ begin
     WHILE (1=1)
 	BEGIN
         --query the DMV in a loop to compare the 
-		EXEC sp_perf_never_ending_query_snapshots @appname = 'PSSDIAG'
+		EXEC dbo.sp_perf_never_ending_query_snapshots @appname = 'PSSDIAG'
         WAITFOR DELAY '00:00:10'
     END
 
@@ -148,7 +148,7 @@ begin
 	WHILE (1=1)
 	BEGIN
         --query the DMV in a loop to compare the 
-		EXEC sp_perf_never_ending_query_snapshots @appname = 'PSSDIAG'
+		EXEC dbo.sp_perf_never_ending_query_snapshots @appname = 'PSSDIAG'
         WAITFOR DELAY '00:00:10'
     END
 end
@@ -156,6 +156,10 @@ end
 go
 exec dbo.sp_Run_NeverEndingQuery_Stats
 
+
+-- We found a bug where after a few minutes sys.dm_exec_query_profiles  stops showing ouptut for a very long running query . Or otherwise, we have to explicitly specify a session_id
+--select * FROM sys.dm_exec_query_profiles qp 
+--where session_id = 59
 
 
 	--TODO:
