@@ -44,4 +44,4 @@ This tool lets you customize what you want to collect and then let you create a 
 
 
 ## License Agreement
-see license.md
+see [License](https://github.com/microsoft/DiagManager/blob/master/license.md)
