@@ -160,6 +160,7 @@ exec dbo.sp_Run_NeverEndingQuery_Stats
 -- We found a bug where after a few minutes sys.dm_exec_query_profiles  stops showing ouptut for a very long running query . Or otherwise, we have to explicitly specify a session_id
 --select * FROM sys.dm_exec_query_profiles qp 
 --where session_id = 59
+--Test 2016 2017 and 2019 to make sure it is consistent
 
 
 	--TODO:
