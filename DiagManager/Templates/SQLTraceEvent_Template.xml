@@ -2650,6 +2650,7 @@
   <EventType name="TSQL">
     <Event name="Exec Prepared SQL" id="72">
       <Scenarios>
+        <Scenario name="Replay" enabled="true"/>
       </Scenarios>
       <Features>
         <Feature name="SQL" enabled="true"/>
