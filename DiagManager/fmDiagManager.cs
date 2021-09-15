@@ -475,7 +475,16 @@ namespace PssdiagConfig
             {
                 DestFullFileName = saveFileDialog1.FileName;
                 PackageMgr pckMgr = new PackageMgr(this.UserChoice, DestFullFileName);
+
+                //create a zip file
                 pckMgr.MakeZip();
+
+                //create a SHA hash for the zip file
+                string hashStr = pckMgr.ComputeFileHash(DestFullFileName);
+
+                string Instructions = "Send this text to the customer: REALLY REALLY REALLY LONG TEXT. ";
+                MessageBox.Show(Instructions+hashStr, "Instructions", MessageBoxButtons.OK);
+
             }
 
             

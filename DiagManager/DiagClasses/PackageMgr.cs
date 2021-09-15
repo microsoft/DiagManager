@@ -40,6 +40,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.IO.Compression;
+using System.Security.Cryptography;
 using PssdiagConfig;
 //using ICSharpCode.SharpZipLib.GZip;
 //using ICSharpCode.SharpZipLib.Tar;
@@ -252,8 +253,6 @@ namespace PssdiagConfig
 
                         }
 
-
-
                     }
                     else
                     {
@@ -422,5 +421,52 @@ namespace PssdiagConfig
 
         //}
 
+        public string ComputeFileHash (string filepath)
+        {
+            string hashString = "";
+
+            if (File.Exists(filepath))
+            {
+                // Initialize a SHA256 hash object.
+                using (SHA512 mySHA512 = SHA512.Create())
+                {
+                    // Compute and print the hash values for each file in directory.
+                    try
+                    {
+                        // Create a fileStream for the file.
+                        FileStream fileStream = File.OpenRead(filepath);
+                        // Be sure it's positioned to the beginning of the stream.
+                        fileStream.Position = 0;
+                        // Compute the hash of the fileStream.
+                        byte[] hashValue = mySHA512.ComputeHash(fileStream);
+
+                        //convert the byte value to a string and remove "-" inside of the string
+                        hashString += BitConverter.ToString(hashValue).Replace("-", ""); ;
+
+                        Logger.LogInfo($"The file hash value for '{filepath}' is: {hashString}");
+
+                        // Close the file.
+                        fileStream.Close();
+                    }
+                    catch (IOException e)
+                    {
+                        Logger.LogInfo($"I/O Exception: {e.Message}");
+                    }
+                    catch (UnauthorizedAccessException e)
+                    {
+                        Logger.LogInfo($"Access Exception: {e.Message}");
+                    }
+                }
+            }
+
+            else
+            {
+                Console.WriteLine("The file specified could not be found.");
+                hashString = "Failed to create hash because .zip file was not found. Examine the log for details";
+            }
+
+            return hashString;
+        }
+        
     }
 }
