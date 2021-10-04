@@ -480,10 +480,19 @@ namespace PssdiagConfig
                 pckMgr.MakeZip();
 
                 //create a SHA hash for the zip file
-                string hashStr = pckMgr.ComputeFileHash(DestFullFileName);
+                string hashStr;
 
-                string Instructions = "Send this text to the customer: REALLY REALLY REALLY LONG TEXT. ";
-                MessageBox.Show(Instructions+hashStr, "Instructions", MessageBoxButtons.OK);
+                var success = pckMgr.ComputeFileHash(DestFullFileName, out hashStr);
+                
+                //if file hash is successful, pop up email instructions to user; else tell user this failed
+                if (success == true && !hashStr.StartsWith("Failed to create hash") )
+                {
+                    pckMgr.PrepareEmail(hashStr);
+                }
+                else
+                {
+                    MessageBox.Show(hashStr, "Failed file hash", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
             }
 
