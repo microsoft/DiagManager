@@ -42,7 +42,7 @@ BEGIN
             req.cpu_time,
             req.total_elapsed_time
         FROM sys.dm_exec_query_profiles qp 
-		LEFT OUTER JOIN sys.dm_exec_requests req
+		RIGHT OUTER JOIN sys.dm_exec_requests req
 			ON qp.session_id = req.session_id
 		LEFT OUTER JOIN sys.dm_exec_sessions sess
 			on req.session_id = sess.session_id
@@ -51,7 +51,7 @@ BEGIN
 			AND ISNULL (sess.host_name, '') != @appname 
 			AND sess.is_user_process = 1 
 			AND req.cpu_time > @cpu_threshold_ms 
-        ORDER BY qp.node_id
+        ORDER BY qp.session_id, qp.node_id
 		--this is to prevent massive grants
 		OPTION (max_grant_percent = 3, MAXDOP 1)
     
