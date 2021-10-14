@@ -475,16 +475,16 @@ namespace PssdiagConfig
         } //end ComputeFileHash
 
 
-        public void PrepareEmail(string hashString)
+        public void PrepareEmail(string hashString, string filename)
         {
             try
             {
                 using (Process myProcess = new Process())
                 {
-                    //myProcess.StartInfo.FileName = @"mailto:?body=Hello%0AThis is your hash%0A%3Cb%3E" + hashString + @"%3C%2Fb%3E%0A";
-                    myProcess.StartInfo.FileName = @"mailto:?body=Hello%0AThis is your hash%0A%3Cb%3E" + hashString + @"%3C%2Fb%3E%20%0A%0A%0A%0A%22If%20you%20would%20like%20to%20check%20the%20hash....%0A%0Acertutil%0A%0A%0Acertutil%20-hashfile%20PATHFILE%20SHA512%0A%0A1.%0A%0A%0A%0A%0A2.%09Copy%20the%20.zip%20to%20the%20machine%20where%20SQL%20Server%20is%20running%20or%20active%20node%20if%20it%27s%20a%20cluster.%0A3.%09Extract%20the%20contents%20of%20the%20.zip%20file%20to%20a%20folder%20%28for%20example%20in%20D%3A%5Cpssd%29%0AThe%20folder%20must%20meet%20the%20following%20requirements%3A%0ASQL%20Server%20startup%20account%20has%20Full%20Control%20permission%20of%20this%20folder.%0AThe%20drive%20should%20be%20fast%20performing%20and%20NOT%20a%20network-mapped%20drive.%20Preferably%20a%20dedicated%20drive%2C%20different%20from%20the%20where%20databases%20reside%0A%20%09The%20drive%20has%20sufficient%20disk%20space%20for%20the%20PSSDIAG%20data%20%28run%20PSSDIAG%20for%201%20minute%20to%20estimate%20how%20much%20output%20data%20is%20generated%29.%0A4.%09Open%20an%20admin%20Command%20Prompt%20and%20go%20to%20the%20folder.%0Ad%3A%5C%3Ecd%20pssd%0A5.%09Run%20pssdiag.cmd%20from%20Command%20Prompt%0Ad%3A%5Cpssd%3Epssdiag.cmd%0A6.%09Wait%20for%20PSSDIAG%20to%20completely%20initialize.%20You%20will%20see%20a%20message%3A%20SQLDIAG%20Collection%20started.%20Press%20Ctrl%2BC%20to%20stop.%0A7.%09Re-create%20the%20problem%20that%20you%20want%20to%20trace%0A8.%09To%20stop%20PSSDIAG%2C%20press%20Ctrl%2BC%20once%20and%20wait%20for%20it%20to%20completely%20shutdown.%0A9.%09You%20will%20see%20messages%20like%20this%3A%0ASQLDIAG%20Ctrl%2BC%20pressed.%20Shutting%20down%20the%20collector%0A%09%09...%0ASQLDIAG%20Ending%20data%20collection.%20Please%20wait%20while%20the%20process%20shuts%20down%20and%20files%20are%20compressed%20%28this%20may%20take%20several%20minutes%29%0A%0ANote%3A%20You%20may%20be%20prompted%20to%20press%20%27Y%27%20to%20complete%20the%20batch%20shutdown.%0ATerminate%20batch%20job%20%28Y%2FN%29%3F%20y%0A10.%09Files%20are%20captured%20in%20%5Coutput%20directory.%20Zip%20and%20copy%20to%20a%20different%20machine%20for%20analysis.%20SQL%20Nexus%20can%20be%20used%20for%20performance%20analysis.%0A";
 
+                    myProcess.StartInfo.FileName = @"mailto:?body=Hello%2C%0A%0APlease%20find%20PSSDIAG%20instructions%20below%3A%0A%0A1.%20Download%20the%20" + filename + "%20%0A2.%20Optional%3A%20You%20can%20verify%20your%20downloaded%20file.%20See%20instructions%20below%0A3.%20Follow%20these%20instructions%20to%20run%3A%20https%3A%2F%2Faka.ms%2Frun-pssdiag%0A%0A%0AYou%20can%20verify%20the%20downloaded%20file%20by%20computing%20a%20SHA512%20hash%20of%20the%20file%2C%20and%20then%20compare%20to%20the%20hash%20provided%20below%3A%0A1.%20Run%20this%20command%20%28in%20Windows%20Command%20Prompt%29%0A%0A%20%20certutil%20-hashfile%20" + filename + "%20SHA512%0A%0A2.%20%20Compare%20result%20to%20this%3A%20%20" + hashString;
 
+                    
                     myProcess.Start();
                 }
             }
