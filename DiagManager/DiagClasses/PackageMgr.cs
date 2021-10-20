@@ -112,9 +112,34 @@ namespace PssdiagConfig
         private void MakeManualBatchFiles()
         {
 
+            if (m_output_instance_prefix == "%launchdir%output\\._*")
+            {
+                //WE SHOULD NOT EVEN BE CREATTING THE FILE . RETURN HERE
+                return;
+            }
 
-            StreamWriter ManualStart = File.CreateText(m_tempDirectory + @"\ManualStart.cmd");
-            StreamWriter ManualStop = File.CreateText(m_tempDirectory + @"\ManualStop.cmd");
+            StreamWriter ManualStart = File.CreateText(m_tempDirectory + @"\ManualStart.txt");
+            StreamWriter ManualStop = File.CreateText(m_tempDirectory + @"\ManualStop.txt");
+
+            ManualStart.WriteLine("REM PURPOSE: This file is for cases where execution of PSSDIAG does not work for some reason. It allows you to manually collect some base information.");
+            ManualStart.WriteLine("REM This includes Perfmon, Perfstat scripts and some other configuration information for the instance (sp_configure, sys.databses, etc)");
+            ManualStart.WriteLine("REM INSTRUCTIONS:");
+            ManualStart.WriteLine("REM 1. Rename the file to ManualStart.cmd (change the extension)");
+            ManualStart.WriteLine("REM 2. Rename the ManualStop.txt to ManualStop.cmd (change the extension)");
+            ManualStart.WriteLine("REM 3. Execute from a Command Prompt by running ManualStart.cmd");
+            ManualStart.WriteLine("REM 4. When ready to stop, execute ManualStop.cmd from another Command Prompt window");
+            ManualStart.WriteLine("REM 5. Find the collected data in the \\Output folder");
+            ManualStart.WriteLine("");
+
+            ManualStop.WriteLine("REM PURPOSE: This file is for cases where execution of PSSDIAG does not work for some reason. This file stops manual collection of base information.");
+            ManualStop.WriteLine("REM INSTRUCTIONS:");
+            ManualStop.WriteLine("REM 1. Rename the file to ManualStop.cmd (change the extension)");
+            ManualStop.WriteLine("REM 2. When ready to stop collection, execute ManualStop.cmd from a new Command Prompt window");
+            ManualStop.WriteLine("REM 3. Find the collected data in the \\Output folder");
+            ManualStop.WriteLine("");
+
+
+
             ManualStart.WriteLine("setlocal ENABLEEXTENSIONS");
             ManualStart.WriteLine("set LaunchDir=%~dp0");
 
@@ -123,7 +148,12 @@ namespace PssdiagConfig
 
             ManualStart.WriteLine("md \"%LaunchDir%\\output\\internal\"");
 
-            ManualStart.WriteLine(string.Format (SqlCmdTemplate, m_Server_Instance, m_output_instance_prefix + "_msdiagprocs.out", "-i\"" + m_input_prefix + "msdiagprocs.sql" + "\"" ));
+            //should check if m_Server_Instance = "." and replace with  System.Environment.MachineName - output files will be much better named
+            //need to test on a cluster and see if . does anything for VNN
+            //TODO: NEED TO EXCLUDE FROM HASH CALCULATION
+
+
+            ManualStart.WriteLine(string.Format(SqlCmdTemplate, m_Server_Instance, m_output_instance_prefix + "_msdiagprocs.out", "-i\"" + m_input_prefix + "msdiagprocs.sql" + "\""));
 
             //make manual profile collector
             if (m_userchoice[Res.CollectProfiler] == "true")
@@ -481,8 +511,6 @@ namespace PssdiagConfig
             {
                 using (Process myProcess = new Process())
                 {
-
-                    //myProcess.StartInfo.FileName = @"mailto:?body=Hello%2C%0A%0APlease%20find%20PSSDIAG%20instructions%20below%3A%0A%0A1.%20Download%20the%20" + filename + "%20%0A2.%20Optional%3A%20You%20can%20verify%20your%20downloaded%20file.%20See%20instructions%20below%0A3.%20Follow%20these%20instructions%20to%20run%3A%20https%3A%2F%2Faka.ms%2Frun-pssdiag%0A%0A%0AYou%20can%20verify%20the%20downloaded%20file%20by%20computing%20a%20SHA512%20hash%20of%20the%20file%2C%20and%20then%20compare%20to%20the%20hash%20provided%20below%3A%0A1.%20Run%20this%20command%20%28in%20Windows%20Command%20Prompt%29%0A%0A%20%20certutil%20-hashfile%20" + filename + "%20SHA512%0A%0A2.%20%20Compare%20result%20to%20this%3A%20%20" + hashString;
 
                     myProcess.StartInfo.FileName = @"mailto:?body=Hello%2C%0A%0APlease%20find%20PSSDIAG%20instructions%20below%3A%0A%0A1.%20Download%20the%20" + filename + @"%20%0A2.%20You%20can%20verify%20the%20downloaded%20file%20by%20computing%20a%20SHA512%20hash.%20See%20the%20instructions%20below%20%0A3.%20Follow%20these%20instructions%20to%20run%3A%20https%3A%2F%2Faka.ms%2Frun-pssdiag%20%0A%0A%0ATo%20verify%20the%20downloaded%20file%3A%0A1.%20Run%20this%20command%20in%20a%20Windows%20Command%20Prompt%20to%20compute%20a%20SHA512%20hash%20on%20it%0A%0A%20%20certutil%20-hashfile%20" + filename + " %20SHA512%20%0A%0A2.%20%20Compare%20result%20to%20this%3A%20%20" + hashString;
 
