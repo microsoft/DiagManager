@@ -475,12 +475,6 @@
     <Content Include="Pristine\WaitForExe.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pristine\xperf_cpu_start.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\xperf_cpu_stop.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Pristine\SetSqlEnvVariables.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
