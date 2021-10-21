@@ -83,7 +83,7 @@ namespace PssdiagConfig
 {
     public partial class fmSettings : Form
     {
-        private System.Drawing.Color BackgroundColor;
+        //private System.Drawing.Color BackgroundColor;
         public fmSettings()
         {
             InitializeComponent();
@@ -95,12 +95,9 @@ namespace PssdiagConfig
             DialogResult result = cDlg.ShowDialog();
             if (result == DialogResult.OK)
             {
-                Globals.UserPreferences.SetBackgroundColor(cDlg.Color);
+               // just change the label on the screen, save later
                 lblShowColor.BackColor = cDlg.Color;
-                BackgroundColor = cDlg.Color;
-                Util.ResetAllControlsBackColor(DiagRuntime.MainForm, cDlg.Color);
             }
-            
         }
 
         private void fmSettings_Load(object sender, EventArgs e)
@@ -147,6 +144,11 @@ namespace PssdiagConfig
         private void btnSave_Click(object sender, EventArgs e)
         {
             btnSave.Tag = "SaveCancel";
+            //get colors
+            Color myColor = lblShowColor.BackColor;
+            Globals.UserPreferences.SetBackgroundColor(myColor);
+            Util.ResetAllControlsBackColor(DiagRuntime.MainForm, myColor);
+            //go on saving
             Globals.UserPreferences.Save();
             DiagRuntime.MainForm.SetPreferences();
             fmSettings.ActiveForm.Close();
