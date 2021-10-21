@@ -112,9 +112,21 @@ namespace PssdiagConfig
 
         private void fmSettings_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Globals.UserPreferences.Save();
-            DiagRuntime.MainForm.SetPreferences();
-       
+            //if it wasnt the Cancel button, 
+            if (btnCancel.Tag.ToString() != "SaveCancel" && btnSave.Tag.ToString() != "SaveCancel")
+            {
+                if (e.CloseReason == CloseReason.UserClosing)
+                {
+                    DialogResult result = MessageBox.Show("Any changes will be lost. Do you really want to close?", "Do you want to close?", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.No)
+                    {
+                        btnCancel.Tag = "";
+                        btnSave.Tag = "";
+                        e.Cancel = true;
+                    }
+                }
+            }
+
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -130,6 +142,20 @@ namespace PssdiagConfig
         private void chkBoxCreateEmail_CheckedChanged(object sender, EventArgs e)
         {
             Globals.UserPreferences.SetCreateEmail(chkBoxCreateEmail.Checked);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            btnSave.Tag = "SaveCancel";
+            Globals.UserPreferences.Save();
+            DiagRuntime.MainForm.SetPreferences();
+            fmSettings.ActiveForm.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            btnCancel.Tag = "SaveCancel";
+            fmSettings.ActiveForm.Close();
         }
     }
 }
