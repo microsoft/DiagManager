@@ -481,22 +481,26 @@ namespace PssdiagConfig
                 //create a zip file
                 pckMgr.MakeZip();
 
-                //create a SHA hash for the zip file
-                string hashStr;
-
-                var success = pckMgr.ComputeFileHash(DestFullFileName, out hashStr);
-                
-                //if file hash is successful, pop up email instructions to user; else tell user this failed
-                if (success == true && !hashStr.StartsWith("Failed to create hash") )
+                //if we should create an email, get the hash then create the email
+                if (Globals.UserPreferences.CreateEmailChecked == true)
                 {
-                    pckMgr.PrepareEmail(hashStr, filename_only);
-                }
-                else
-                {
-                    MessageBox.Show(hashStr, "Failed file hash", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    //create a SHA hash for the zip file
+                    string hashStr;
 
-            }
+                    var success = pckMgr.ComputeFileHash(DestFullFileName, out hashStr);
+
+                    //if file hash is successful, pop up email instructions to user; else tell user this failed
+                    if (success == true && !hashStr.StartsWith("Failed to create hash"))
+                    {
+                        pckMgr.PrepareEmail(hashStr, filename_only);
+                    }
+                    else
+                    {
+                        MessageBox.Show(hashStr, "Failed file hash", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }//end email
+
+            }//end SaveSelection
 
             
 

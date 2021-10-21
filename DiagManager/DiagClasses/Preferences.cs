@@ -54,8 +54,8 @@ namespace PssdiagConfig
         public string DefaultPssdPath = @"c:\temp";
         static string userPreferenceFile = Globals.PssdiagAppData + @"\Diagmanager.user.preferences";
         public int Argb;
+        public bool CreateEmailChecked = true;
 
-        
         public Preferences()
         {
             /*
@@ -70,6 +70,10 @@ namespace PssdiagConfig
         public void SetBackgroundColor(System.Drawing.Color bkcolor)
         {
             Argb = bkcolor.ToArgb();
+        }
+        public void SetCreateEmail(bool CreateEmail)
+        {
+            CreateEmailChecked = CreateEmail;
         }
         public System.Drawing.Color GetBackgroundColor ()
         {

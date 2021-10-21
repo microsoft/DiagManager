@@ -107,6 +107,7 @@ namespace PssdiagConfig
         {
             lblShowColor.BackColor = Globals.UserPreferences.GetBackgroundColor();
             txtDefaultPssdPath.Text = Globals.UserPreferences.DefaultPssdPath;
+            chkBoxCreateEmail.Checked = Globals.UserPreferences.CreateEmailChecked;
         }
 
         private void fmSettings_FormClosing(object sender, FormClosingEventArgs e)
@@ -122,9 +123,13 @@ namespace PssdiagConfig
             Globals.UserPreferences = Preferences.Load();
             lblShowColor.BackColor = Globals.UserPreferences.GetBackgroundColor();
             txtDefaultPssdPath.Text = Globals.UserPreferences.DefaultPssdPath;
+            chkBoxCreateEmail.Checked = true;
             DiagRuntime.MainForm.SetPreferences();
-
         }
-        
+
+        private void chkBoxCreateEmail_CheckedChanged(object sender, EventArgs e)
+        {
+            Globals.UserPreferences.SetCreateEmail(chkBoxCreateEmail.Checked);
+        }
     }
 }
