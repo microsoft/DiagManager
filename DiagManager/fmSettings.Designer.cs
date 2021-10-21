@@ -171,7 +171,7 @@ namespace PssdiagConfig
             this.lblDefaultPath.Name = "lblDefaultPath";
             this.lblDefaultPath.Size = new System.Drawing.Size(120, 16);
             this.lblDefaultPath.TabIndex = 2;
-            this.lblDefaultPath.Text = "Default PSSD Path";
+            this.lblDefaultPath.Text = "Default PSSDIAG Path";
             // 
             // lblBkColor
             // 

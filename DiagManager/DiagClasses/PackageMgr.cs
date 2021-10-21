@@ -58,6 +58,8 @@ namespace PssdiagConfig
         string m_DestFileNameOnly;
         string m_tempDirectory = Globals.BuildDir;
         string m_Server_Instance;
+        string m_ServerName;
+        string m_Instance; 
         string m_output_prefix;
         string m_output_instance_prefix;
         string m_internal_output_instance_prefix;
@@ -76,17 +78,30 @@ namespace PssdiagConfig
             m_DestFullFileName = destFullFileName;
             m_DestPathNameOnly= Path.GetDirectoryName(destFullFileName);
             m_DestFileNameOnly = Path.GetFileName(destFullFileName);
-            m_Server_Instance = m_userchoice[Res.MachineName];
-            if (m_userchoice[Res.InstanceName].ToUpper() != "MSSQLSERVER")
+            m_ServerName = m_userchoice[Res.MachineName];
+            m_Instance = m_userchoice[Res.InstanceName];
+
+            //when user chose "." for server name, replace this with %servername% variable that will be assigned in the batch file
+            if (m_ServerName == ".")
             {
-                m_Server_Instance = m_Server_Instance + @"\" + m_userchoice[Res.InstanceName];
+                m_ServerName = "%servername%";
             }
 
-            m_output_prefix = @"%launchdir%output\" + m_userchoice[Res.MachineName];
-            m_output_instance_prefix = @"%launchdir%output\" + m_userchoice[Res.MachineName] + "_" + m_userchoice[Res.InstanceName];
-            m_internal_output_instance_prefix = @"%launchdir%output\internal\" + m_userchoice[Res.MachineName] + "_" + m_userchoice[Res.InstanceName];
-            m_AppName = "SQLDIAG_" + m_userchoice[Res.MachineName] + "_" +  m_userchoice[Res.InstanceName];
+            //build the default or named instances string
+            if (m_Instance.ToUpper() != "MSSQLSERVER")
+            {
+                m_Server_Instance = m_ServerName + @"\" + m_Instance;
+            }
+            else
+            {
+                m_Server_Instance = m_Instance;
+            }
 
+
+            m_output_prefix = @"%launchdir%output\" + m_ServerName;
+            m_output_instance_prefix = @"%launchdir%output\" + m_ServerName + "_" + m_Instance;
+            m_internal_output_instance_prefix = @"%launchdir%output\internal\" + m_ServerName + "_" + m_Instance;
+            m_AppName = "SQLDIAG_" + m_ServerName + "_" +  m_Instance;
 
         }
 
@@ -109,12 +124,14 @@ namespace PssdiagConfig
 
             return taskCmd.Replace(" %server_instance%", m_Server_Instance).Replace("%output_name%", OutputName).Replace("%output_internal_name%", OutputInternalName);
         }
+
+
         private void MakeManualBatchFiles()
         {
 
-            if (m_output_instance_prefix == "%launchdir%output\\._*")
+
+            if (m_Instance == "*")
             {
-                //WE SHOULD NOT EVEN BE CREATTING THE FILE . RETURN HERE
                 return;
             }
 
@@ -142,15 +159,18 @@ namespace PssdiagConfig
 
             ManualStart.WriteLine("setlocal ENABLEEXTENSIONS");
             ManualStart.WriteLine("set LaunchDir=%~dp0");
+            ManualStart.WriteLine("set servername=%computername%");
+
 
             ManualStop.WriteLine("setlocal ENABLEEXTENSIONS");
             ManualStop.WriteLine("set LaunchDir=%~dp0");
+            ManualStop.WriteLine("set servername=%computername%");
 
             ManualStart.WriteLine("md \"%LaunchDir%\\output\\internal\"");
 
-            //should check if m_Server_Instance = "." and replace with  System.Environment.MachineName - output files will be much better named
             //need to test on a cluster and see if . does anything for VNN
             //TODO: NEED TO EXCLUDE FROM HASH CALCULATION
+
 
 
             ManualStart.WriteLine(string.Format(SqlCmdTemplate, m_Server_Instance, m_output_instance_prefix + "_msdiagprocs.out", "-i\"" + m_input_prefix + "msdiagprocs.sql" + "\""));
