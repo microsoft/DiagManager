@@ -133,6 +133,49 @@ namespace PssdiagConfig
             node.Attributes.Append(attribEventLogCollectorStartup);
             node.Attributes.Append(attribEventLogCollectorShutdown);
 
+            XmlNode Eventlogs = doc.CreateNode(XmlNodeType.Element, "Eventlogs", "");
+            node.AppendChild(Eventlogs);
+
+
+            //create the application eventlog node with attributes
+            XmlNode EventLogTypeApp = doc.CreateNode(XmlNodeType.Element, "EventlogType", "");
+            Eventlogs.AppendChild(EventLogTypeApp);
+
+            XmlAttribute attribEventLogCollectorAppName = doc.CreateAttribute("name");
+            attribEventLogCollectorAppName.Value = "Application";
+            EventLogTypeApp.Attributes.Append(attribEventLogCollectorAppName);
+
+            XmlAttribute attribEventLogCollectorAppEnabled = doc.CreateAttribute("enabled");
+            attribEventLogCollectorAppEnabled.Value = "true";
+            EventLogTypeApp.Attributes.Append(attribEventLogCollectorAppEnabled);
+
+
+            //create the system eventlog node with attributes
+            XmlNode EventLogTypeSys = doc.CreateNode(XmlNodeType.Element, "EventlogType", "");
+            Eventlogs.AppendChild(EventLogTypeSys);
+
+            XmlAttribute attribEventLogCollectorSysName = doc.CreateAttribute("name");
+            attribEventLogCollectorSysName.Value = "System";
+            EventLogTypeSys.Attributes.Append(attribEventLogCollectorSysName);
+
+            XmlAttribute attribEventLogCollectorSysEnabled = doc.CreateAttribute("enabled");
+            attribEventLogCollectorSysEnabled.Value = "true";
+            EventLogTypeSys.Attributes.Append(attribEventLogCollectorSysEnabled);
+
+
+            //create the Security eventlog node with attributes
+            XmlNode EventLogTypeSec = doc.CreateNode(XmlNodeType.Element, "EventlogType", "");
+            Eventlogs.AppendChild(EventLogTypeSec);
+
+            XmlAttribute attribEventLogCollectorSecName = doc.CreateAttribute("name");
+            attribEventLogCollectorSecName.Value = "Security";
+            EventLogTypeSec.Attributes.Append(attribEventLogCollectorSecName);
+
+            XmlAttribute attribEventLogCollectorSecEnabled = doc.CreateAttribute("enabled");
+            attribEventLogCollectorSecEnabled.Value = "false";
+            EventLogTypeSec.Attributes.Append(attribEventLogCollectorSecEnabled);
+
+
 
         }
 
@@ -178,12 +221,14 @@ namespace PssdiagConfig
         //ds_Config/Collection/Machines/Machine/MachineCollectors/PerfmonCollector
         void SetMachineCollectors (XmlNode node)
         {
+            //create the EventLogCollector node and process children and attributes for it
             XmlNode EventLogCollectorNode = m_doc.CreateNode(XmlNodeType.Element, "EventlogCollector", "");
-            XmlNode PerfmonCollectorNode = m_doc.CreateNode(XmlNodeType.Element, "PerfmonCollector", "");
             node.AppendChild(EventLogCollectorNode);
-            node.AppendChild(PerfmonCollectorNode);
-
             SetEventLogCollector(EventLogCollectorNode);
+
+            //create the PerfmonCollector node and process children and attributes for it
+            XmlNode PerfmonCollectorNode = m_doc.CreateNode(XmlNodeType.Element, "PerfmonCollector", "");
+            node.AppendChild(PerfmonCollectorNode);
             SetPerfmonCollector(PerfmonCollectorNode);
 
 
