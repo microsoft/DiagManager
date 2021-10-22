@@ -30,8 +30,8 @@
     <MinimumRequiredVersion>13.1600.0.20</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
-    <ApplicationVersion>15.21.10.01</ApplicationVersion>
+    <ApplicationRevision>22</ApplicationRevision>
+    <ApplicationVersion>15.21.10.22</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -369,9 +369,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CustomDiagnostics\SQL Base\SQLBaseUtil.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\pssdiag.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CustomDiagnostics\SQL Server Perf Stats\TopCPUQueryShowPlanXML.bat">
@@ -1833,16 +1830,6 @@
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="Pristine\OutputCurTime.vbs">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="Pristine\pssdiag.cmd">
       <Visible>False</Visible>
       <Group>
       </Group>
