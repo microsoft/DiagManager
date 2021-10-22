@@ -39,7 +39,7 @@ function Confirm-FileAttributes
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "55B8B497973F9C0980C696A0599ECAF3401C4A02FBEBFDC78608CA3354AE01E1EA03508FB558AA4548EA74988C1BA9E5DFAE310F6D60A23B38D39B310A9A84A6"; FileName = ".\AutoUserDump.bat"; FileSize = 2829}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "41938EE0E0ADE87E0D26F88C28F8A70CC54D0AE8CA21657AD5F72918E364F4C3972F1C6C86267A79D39C2D418BF89A60AE2EA2EF9998084DFEA85F9DC8D61478"; FileName = ".\build.cmd"; FileSize = 609}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "4E2E0C0018B1AE4E6402D5D985B71E03E8AECBB9DA3145E63758343AEAC234E3D4988739CCE1AC034DDA7CE77482B27FB5C2A7A4E266E9C283F90593A1B562A2"; FileName = ".\ChangeDataCapture.sql"; FileSize = 4672}
-        ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "14191A35B305FDB25E8DC2ED5592BB7046E350EFA5039624440A8A0DC8BC9EC09EDA1CC1DC2D952CF94CC47D436B87149EBAAF1908AD9C9CB912586807E2A40C"; FileName = ".\Change_Tracking.sql"; FileSize = 4758}
+		,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "72B955257DD659BC09EDF3621F90BA2731BE817F02972F2AFBDE0BB374AFA43FA582C72B7A6562A2C4950F435FCD7019D5DC354449CD4667F33D55763007694F"; FileName = ".\Change_Tracking.sql"; FileSize = 5112}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "11B4EEDFBF689C718E5CE60A4F6B46A899E0E2C617E5311BAE8ED81FA702000FC7AE8E09DB796163C0B2B84DC621884EEA02D47999C04DA8F096F1164ABDB3AE"; FileName = ".\ClearOrphanedBLGs.cmd"; FileSize = 1085}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "BF6CF04DB43D9C41E34C12A81DFB6DE7D9187BA2EC89EF0AC5AE8BB842CD00EC1FBDCB7870249AE5F2A9950FE0FD85A3BE6275856504F49BF578A9693E49063C"; FileName = ".\CMemthread.sql"; FileSize = 461}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "75B822DAAED573CEC075EC39AF882FED3340B8809235AAB5DBFB5673008474DA8EF2B57ECC5F563668F8F526E24B22555B33F0D5167F5B83D7E16D41271F307A"; FileName = ".\collecterrorlog.cmd"; FileSize = 263}
@@ -80,7 +80,6 @@ function Confirm-FileAttributes
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "782D8FFD9E46AAEA7ED70A608A2BAD37E1FAB7DDF6A8FF6423A365B69F0CC2DEBA753EF1E0C897412B6C115DC23A472320AF1465AFE702E1ED91C8123CA1E36C"; FileName = ".\PowerPlan.VBS"; FileSize = 650}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "419373C05FAF27C08C92F3C93333567667B50D7322AAF910327E0F9D071016CF354644B925C30A19A13CCFEDF261834302F9115466C0D8DA81BC40674402025B"; FileName = ".\Profiler Traces.sql"; FileSize = 2415}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "24F73D287B548CEEE4D28F751AD27DB17B6B986B14D0976C54AD0E3B0CA438E39B0F587A85D9DC0AF8F875EA77CE9D4F041DC6CED3790ABE2A53FBDA9419A88A"; FileName = ".\pssdiag.cmd"; FileSize = 1448}
-        ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "28F4E794126C5F41F40D5E04D30EE4A683864CA43F99337F78313CA37F9E44FFD2D41B933BEBB7E13E49461E90E8EDF1199691DC553E654C83D9BEC964096048"; FileName = ".\pssdiag_xevent.sql"; FileSize = 32431}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "825C5281C6D1654A2E557814F751E7A50F6F525E9CF3529E4F1EDBE0FB68E42DC80517CD297CDE658540A6383EE54A2A5239ADFA994175274F8D96861C9F4DDB"; FileName = ".\Query Store.sql"; FileSize = 2589}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "4B7745C8EEB9BFE49AD89B481591F3FAA1FAC8B1D6909A8C43C091CED79F609E57274284CB23FADB14447979AC11A0427F379E1D509D7CA33BADF0F9D42F52CB"; FileName = ".\Repl_Metadata_Collector.sql"; FileSize = 50941}
         ,[PSCustomObject]@{Algorithm = "SHA512"; Hash = "902A5292AF20AD580AD196828C7EAA0E97E35308E919A4E1999F92C6486A09147690FF493752316613EDE36E41ACE5D743D9D52E69C4D678FEE1D6E03C11A4B9"; FileName = ".\rtrim.vbs"; FileSize = 423}
@@ -218,3 +217,54 @@ function Confirm-FileAttributes
     return $validAttributes
 }
 
+# use to calculate filehash values when files are changed
+
+function Get-FileAttributes(){
+<#
+    .SYNOPSIS
+        Display string for $expectedFileAttributes.
+    .DESCRIPTION
+        This is to be used only when some script is changed and we need to refresh the file attributes in Confirm-FileAttributes.ps1
+    .EXAMPLE
+        . .\Confirm-FileAttributes.ps1
+        Get-FileAttributes
+#>
+
+    [int]$fileCount = 0
+    [System.Text.StringBuilder]$sb = New-Object -TypeName System.Text.StringBuilder
+
+    [void]$sb.AppendLine("`$expectedFileAttributes = @(")
+    
+    foreach($file in (Get-ChildItem -Path . -File)){
+        
+        # Powershell files are signed, therefore no need to hash-compare them
+        # "Get-ChildItem -Exclude *.ps1 -File" yields zero results, therefore we skip .PS1 files with the following IF
+        if (".ps1" -ne $file.Extension){
+            
+            $fileCount++
+
+            # append TAB+space for first file (identation)
+            # append TAB+comma for 2nd file onwards
+            if($fileCount -gt 1){
+                [void]$sb.Append("`t,")
+            } else {
+                [void]$sb.Append("`t ")
+            }
+    
+            $fileHash = Get-FileHash -Algorithm SHA512 -Path $file.FullName
+
+            $algorithm = $fileHash.Algorithm
+            $hash = $fileHash.Hash
+            $fileName = ".\" + $file.Name
+            $fileSize = [string]$file.Length
+
+            [void]$sb.AppendLine("[PSCustomObject]@{Algorithm = `"$algorithm`"; Hash = `"$hash`"; FileName = `"$fileName`"; FileSize = $fileSize}")
+
+        }
+
+    }
+
+    [void]$sb.AppendLine(")")
+    
+    Write-Host $sb.ToString()
+}
