@@ -66,6 +66,32 @@ param
 . ./Confirm-FileAttributes.ps1
 
 
+
+function PrintHelp
+{
+	 Write-Host " [-I cfgfile] = sets the configuration file, typically either pssdiag.xml or sqldiag.xml.`n"`
+        "[-O outputpath] = sets the output folder.  Defaults to startupfolder\SQLDIAG (if the folder does not exist, the collector will attempt to create it) `n" `
+        "[-N #] = output folder management at startup #: 1 = overwrite (default), 2 = rename (format is OUTPUT_00001,...00002, etc.) `n" `
+        "[-P supportpath] = sets the support path folder.  Defaults to startupfolder if not specified `n" `
+        "[-M machine1 [machine2 machineN]|`@machinelistfile] = overrides the machines specified in the config file. When specifying more than one machine, separate each machine name with a space. "`@" specifies a machine list file `n" `
+        "[-Q]  = quiet mode -- supresses prompts (e.g., password prompts) `n" `
+        "[-C #] = file compression type: 0 = none (default), 1 = NTFS, 2 = CAB `n" `
+        "[-G]  = generic mode -- SQL Server connectivity checks are not enforced; machine enumeration includes all servers, not just SQL Servers `n" `
+        "[-R]  = registers the collector as a service `n" `
+        "[-U]  = unregisters the collector as a service `n" `
+        "[-A appname] = sets the application name.  If running as a service, this sets the service name `n" `
+        "[-L] = continuous mode -- automatically restarts when shutdown via -X or -E `n" `
+        "[-X] = snapshot mode -- takes a snapshot of all configured diagnostics and shuts down immediately `n" `
+        "[-B [+]YYYYMMDD_HH:MM:SS] = specifies the date/time to begin collecting data; "+HH:MM:SS" specifies a relative time `n" `
+        "[-E [+]YYYYMMDD_HH:MM:SS]  = specifies the date/time to end data collection; "+HH:MM:SS" specifies a relative time `n" `
+        "[-T {tcp[,port]|np|lpc|via}] = connects to sql server using the specified protocol `n" `
+        "[-Debug] = print some verbose messages for debugging where appropriate `n" `
+        "[START], [STOP], [STOP_ABORT] = service commands for a registered (-R) SQLDIAG service `n" `
+        ""        -ForegroundColor Green
+
+        exit
+}
+
 function main 
 {
 
@@ -91,29 +117,9 @@ function main
         Write-Host "ServiceState = $ServiceState"
         $argument_list = $ServiceState    
     }
-    elseif (($ServiceState -iin "--?", "/?", "?", "--help", "help") -or ($help -eq $true))
+    elseif (($ServiceState -iin "--?", "/?", "?", "--help", "help") -or ($help -eq $true) )
     {
-        Write-Host " [-I cfgfile] = sets the configuration file, typically either pssdiag.xml or sqldiag.xml.`n"`
-        "[-O outputpath] = sets the output folder.  Defaults to startupfolder\SQLDIAG (if the folder does not exist, the collector will attempt to create it) `n" `
-        "[-N #] = output folder management at startup #: 1 = overwrite (default), 2 = rename (format is OUTPUT_00001,...00002, etc.) `n" `
-        "[-P supportpath] = sets the support path folder.  Defaults to startupfolder if not specified `n" `
-        "[-M machine1 [machine2 machineN]|`@machinelistfile] = overrides the machines specified in the config file. When specifying more than one machine, separate each machine name with a space. "`@" specifies a machine list file `n" `
-        "[-Q]  = quiet mode -- supresses prompts (e.g., password prompts) `n" `
-        "[-C #] = file compression type: 0 = none (default), 1 = NTFS, 2 = CAB `n" `
-        "[-G]  = generic mode -- SQL Server connectivity checks are not enforced; machine enumeration includes all servers, not just SQL Servers `n" `
-        "[-R]  = registers the collector as a service `n" `
-        "[-U]  = unregisters the collector as a service `n" `
-        "[-A appname] = sets the application name.  If running as a service, this sets the service name `n" `
-        "[-L] = continuous mode -- automatically restarts when shutdown via -X or -E `n" `
-        "[-X] = snapshot mode -- takes a snapshot of all configured diagnostics and shuts down immediately `n" `
-        "[-B [+]YYYYMMDD_HH:MM:SS] = specifies the date/time to begin collecting data; "+HH:MM:SS" specifies a relative time `n" `
-        "[-E [+]YYYYMMDD_HH:MM:SS]  = specifies the date/time to end data collection; "+HH:MM:SS" specifies a relative time `n" `
-        "[-T {tcp[,port]|np|lpc|via}] = connects to sql server using the specified protocol `n" `
-        "[-Debug] = print some verbose messages for debugging where appropriate `n" `
-        "[START], [STOP], [STOP_ABORT] = service commands for a registered (-R) SQLDIAG service `n" `
-        ""        -ForegroundColor Green
-
-        exit
+        PrintHelp
     }
     else
     {
