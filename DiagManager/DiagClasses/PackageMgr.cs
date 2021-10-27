@@ -531,7 +531,14 @@ namespace PssdiagConfig
             {
                 using (Process myProcess = new Process())
                 {
+                    string emailHeaderHello = "";
+                    string emailBodyFileInstructions = "";
+                    string emailBodyHash = "";
+                    string emailBodyInstructions = "";
 
+
+
+                    myProcess.StartInfo.FileName = @"mailto:?body=Hello%2C%0A%0APlease%20find%20PSSDIAG%20instructions%20below%3A%0A%0A1.%20Download%20the%20" + filename + @"%20%0A2.%20You%20can%20verify%20the%20downloaded%20file%20by%20computing%20a%20SHA512%20hash.%20See%20the%20instructions%20below%20%0A3.%20Follow%20these%20instructions%20to%20run%3A%20https%3A%2F%2Faka.ms%2Frun-pssdiag%20%0A%0A%0ATo%20verify%20the%20downloaded%20file%3A%0A1.%20Run%20this%20command%20in%20a%20Windows%20Command%20Prompt%20to%20compute%20a%20SHA512%20hash%20on%20it%0A%0A%20%20certutil%20-hashfile%20" + filename + " %20SHA512%20%0A%0A2.%20%20Compare%20result%20to%20this%3A%20%20" + hashString;
                     myProcess.StartInfo.FileName = @"mailto:?body=Hello%2C%0A%0APlease%20find%20PSSDIAG%20instructions%20below%3A%0A%0A1.%20Download%20the%20" + filename + @"%20%0A2.%20You%20can%20verify%20the%20downloaded%20file%20by%20computing%20a%20SHA512%20hash.%20See%20the%20instructions%20below%20%0A3.%20Follow%20these%20instructions%20to%20run%3A%20https%3A%2F%2Faka.ms%2Frun-pssdiag%20%0A%0A%0ATo%20verify%20the%20downloaded%20file%3A%0A1.%20Run%20this%20command%20in%20a%20Windows%20Command%20Prompt%20to%20compute%20a%20SHA512%20hash%20on%20it%0A%0A%20%20certutil%20-hashfile%20" + filename + " %20SHA512%20%0A%0A2.%20%20Compare%20result%20to%20this%3A%20%20" + hashString;
 
                     myProcess.Start();
