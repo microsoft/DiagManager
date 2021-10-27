@@ -15,7 +15,7 @@ param
     [string] $O = "output",
 
     [Parameter(ParameterSetName = 'Config',Mandatory=$false)]
-    [string] $P =[string]::Empty,
+    [string] $P = "",
 
     [Parameter(ParameterSetName = 'Config',Mandatory=$false)]
     [string] $N = "1",
@@ -124,15 +124,10 @@ function main
         # [/O outputpath] = sets the output folder.  Defaults to startupfolder\SQLDIAG (if the folder does not exist, the collector will attempt to create it)
         $lv_O = "/O " + $O
         
-        # [/P supportpath] = sets the support path folder.  Defaults to startupfolder if not specified
-        if ([string]::IsNullOrWhiteSpace($P))
-        {
-            $lv_P = ""
-        }
-        else 
-        {
-            $lv_P = "/P " + $P    
-        }
+        # [/P supportpath] = sets the support path folder.   By default, /P is set to the folder where the SQLdiag executable resides. 
+		# The support folder contains SQLdiag support files, such as the XML configuration file, Transact-SQL scripts, and other files that the utility uses during diagnostics collection. 
+		# If you use this option to specify an alternate support files path, SQLdiag will automatically copy the support files it requires to the specified folder if they do not already exist.
+        $lv_P = "/P " + $P    
 
         # [/N #] = output folder management at startup #: 1 = overwrite (default), 2 = rename (format is OUTPUT_00001,...00002, etc.)
         $lv_N = "/N " + $N
