@@ -20,7 +20,7 @@ REM WinXP
 :MicrosoftWindowsXPVersion512600
 REM Win2003 Server
 :MicrosoftWindowsVersion523790
-CALL OutputCurTime.CMD
+CALL :OutputCurTime
 
 REM Determine the actual Program Files\Common Files directory in case we are 32-bit running in WoW64
 IF DEFINED CommonProgramW6432 (
@@ -33,7 +33,7 @@ ECHO Generating MSInfo32 report. CmdLine:
 ECHO    START /B /WAIT "" "%REAL_COMMONPROGRAMFILES:"=%\Microsoft Shared\MSInfo\MSInfo32.exe" /computer %SERVER% /report "%OUTPUTPATH:"=%%SERVER%_MSINFO32.TXT" /categories +SystemSummary+ResourcesConflicts+ResourcesIRQS+ComponentsNetwork+ComponentsStorage+ComponentsProblemDevices+SWEnvEnvVars+SWEnvNetConn+SWEnvServices+SWEnvProgramGroup+SWEnvStartupPrograms
 START /B /WAIT "" "%REAL_COMMONPROGRAMFILES:"=%\Microsoft Shared\MSInfo\MSInfo32.exe" /computer %SERVER% /report "%OUTPUTPATH:"=%%SERVER%_MSINFO32.TXT" /categories +SystemSummary+ResourcesConflicts+ResourcesIRQS+ComponentsNetwork+ComponentsStorage+ComponentsProblemDevices+SWEnvEnvVars+SWEnvNetConn+SWEnvServices+SWEnvProgramGroup+SWEnvStartupPrograms
 ECHO Done.
-CALL OutputCurTime.CMD
+CALL :OutputCurTime
 GOTO :eof
 
 
@@ -42,7 +42,7 @@ GOTO :eof
 REM -----------------------------
 :WindowsNTVersion40
 
-CALL OutputCurTime.CMD
+CALL :OutputCurTime
 ECHO Generating MSInfo32 report. CmdLine: 
 ECHO    START /B /WAIT WINMSD \\%SERVER% /a /f
 START /B /WAIT WINMSD \\%SERVER% /a /f
@@ -50,5 +50,11 @@ ECHO Moving WINMSD output to %OUTPUTPATH%. CmdLine:
 ECHO    MOVE "%SystemDrive%\%SERVER%.TXT" "%OUTPUTPATH:"=%%SERVER%_WINMSD.TXT"
 MOVE "%SystemDrive%\%SERVER%.TXT" "%OUTPUTPATH:"=%%SERVER%_WINMSD.TXT"
 ECHO Done.
-CALL OutputCurTime.CMD
+CALL :OutputCurTime
 GOTO :eof
+
+REM -- function to output current time
+
+:OutputCurTime
+echo Current_time: %time%
+EXIT /B 0
