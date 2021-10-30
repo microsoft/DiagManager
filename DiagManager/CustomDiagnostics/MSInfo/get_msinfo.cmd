@@ -29,9 +29,10 @@ IF DEFINED CommonProgramW6432 (
   SET REAL_COMMONPROGRAMFILES="%CommonProgramFiles%"
 )
 
-ECHO Generating MSInfo32 report. CmdLine: 
-ECHO    START /B /WAIT "" "%REAL_COMMONPROGRAMFILES:"=%\Microsoft Shared\MSInfo\MSInfo32.exe" /computer %SERVER% /report "%OUTPUTPATH:"=%%SERVER%_MSINFO32.TXT" /categories +SystemSummary+ResourcesConflicts+ResourcesIRQS+ComponentsNetwork+ComponentsStorage+ComponentsProblemDevices+SWEnvEnvVars+SWEnvNetConn+SWEnvServices+SWEnvProgramGroup+SWEnvStartupPrograms
-START /B /WAIT "" "%REAL_COMMONPROGRAMFILES:"=%\Microsoft Shared\MSInfo\MSInfo32.exe" /computer %SERVER% /report "%OUTPUTPATH:"=%%SERVER%_MSINFO32.TXT" /categories +SystemSummary+ResourcesConflicts+ResourcesIRQS+ComponentsNetwork+ComponentsStorage+ComponentsProblemDevices+SWEnvEnvVars+SWEnvNetConn+SWEnvServices+SWEnvProgramGroup+SWEnvStartupPrograms
+ECHO Generating Systeminfo report. CmdLine: 
+REM ECHO    START /B /WAIT "" "%REAL_COMMONPROGRAMFILES:"=%\Microsoft Shared\MSInfo\MSInfo32.exe" /computer %SERVER% /report "%OUTPUTPATH:"=%%SERVER%_MSINFO32.TXT" /categories +SystemSummary+ResourcesConflicts+ResourcesIRQS+ComponentsNetwork+ComponentsStorage+ComponentsProblemDevices+SWEnvEnvVars+SWEnvNetConn+SWEnvServices+SWEnvProgramGroup+SWEnvStartupPrograms
+REM START /B /WAIT "" "%REAL_COMMONPROGRAMFILES:"=%\Microsoft Shared\MSInfo\MSInfo32.exe" /computer %SERVER% /report "%OUTPUTPATH:"=%%SERVER%_MSINFO32.TXT" /categories +SystemSummary+ResourcesConflicts+ResourcesIRQS+ComponentsNetwork+ComponentsStorage+ComponentsProblemDevices+SWEnvEnvVars+SWEnvNetConn+SWEnvServices+SWEnvProgramGroup+SWEnvStartupPrograms
+START /B /WAIT "" systeminfo.exe /FO LIST > "%OUTPUTPATH:"=%%SERVER%_MSINFO32.TXT" 
 ECHO Done.
 CALL :OutputCurTime
 GOTO :eof
