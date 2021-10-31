@@ -342,6 +342,10 @@ function main
 	# locate the SQLDiag.exe path for this version of PSSDIAG
 	[string]$sqldiag_path = FindSQLDiag
 
+	#call diagutil.exe 1 for now until counter translation is implemented in this script
+	Write-Host "Executing: diagutil.exe 1"
+	Start-Process -FilePath "diagutil.exe" -ArgumentList "1" -WindowStyle Normal
+
     Write-Host "Executing:  $sqldiag_path $argument_list"
 
     # launch the sqldiag.exe process
