@@ -30,8 +30,8 @@
     <MinimumRequiredVersion>13.1600.0.20</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>22</ApplicationRevision>
-    <ApplicationVersion>15.21.10.22</ApplicationVersion>
+    <ApplicationRevision>29</ApplicationRevision>
+    <ApplicationVersion>15.21.10.29</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
