@@ -66,6 +66,61 @@ param
 . ./Confirm-FileAttributes.ps1
 
 
+function FindSQLDiag ()
+{
+
+    try
+    {
+        [bool]$is64bit = $false
+
+        [xml]$xmlDocument = Get-Content -Path .\pssdiag.xml
+        [string]$sqlver = $xmlDocument.dsConfig.Collection.Machines.Machine.Instances.Instance.ssver
+
+        if ($sqlver -eq "10.50")
+        {
+              $sqlver = "10"
+        }
+
+
+        [string]$plat = $xmlDocument.dsConfig.DiagMgrInfo.IntendedPlatform
+
+
+        [string] $x86Env = [Environment]::GetEnvironmentVariable( "CommonProgramFiles(x86)");
+
+
+         #[System.Environment]::Is64BitOperatingSystem
+
+        if ($x86Env -ne $null)
+        {
+            $is64bit = $true
+        }
+
+        $toolsRegStr = ("HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\" + $sqlver+"0\Tools\ClientSetup")
+        [string]$toolsbin = Get-ItemPropertyValue -Path $toolsRegStr -Name Path
+
+        $sqldiagPath = ($toolsbin + "sqldiag.exe")
+
+        if ((Test-Path -Path $sqldiagPath) -ne $true)
+        {
+            Write-Host "Unable to find 'sqldiag.exe' version: $($sqlver)0 on this machine.  Data collection will fail"
+
+        }
+        else
+        {
+            return $sqldiagPath
+        
+        }
+
+    }
+    catch 
+    {
+        Write-Host "Error occured in finding SQLDiag.exe:" $($PSItem.Exception.Message )
+    }
+
+}
+
+
+
 
 function PrintHelp
 {
@@ -284,11 +339,13 @@ function main
         
     }
 
+	# locate the SQLDiag.exe path for this version of PSSDIAG
+	[string]$sqldiag_path = FindSQLDiag
 
-    Write-Host "Executing:  sqldiag.exe $argument_list"
+    Write-Host "Executing:  $sqldiag_path $argument_list"
 
     # launch the sqldiag.exe process
-    Start-Process -FilePath SQLDiag.exe -ArgumentList $argument_list -WindowStyle Normal
+    Start-Process -FilePath $sqldiag_path -ArgumentList $argument_list -WindowStyle Normal
 }
 
 
