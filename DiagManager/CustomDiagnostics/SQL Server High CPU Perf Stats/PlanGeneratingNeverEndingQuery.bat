@@ -59,6 +59,6 @@ for /L %%y in (1,1, 3) do (
 	for /L %%x in (1,1, %cntr%) do (
 		bcp "select xmlplan from (SELECT TOP %cntr% ROW_NUMBER() OVER(ORDER BY (r.cpu_time) DESC) AS RowNumber, x.query_plan AS xmlplan, t.text AS sql_text FROM sys.dm_exec_requests AS r INNER JOIN sys.dm_exec_sessions AS s ON r.session_id = s.session_id CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) AS t CROSS APPLY sys.dm_exec_query_statistics_xml(r.session_id) AS x WHERE s.is_user_process = 1 AND r.cpu_time > 60000 ) as x WHERE RowNumber =%%x" queryout "%1_run%%y_plan%%x.sqlplan" -T -c -S %2
 	)
-	(echo %1 | findstr /i /c:"Startup" >nul) && (IF %%y LSS 3 (timeout 120)) || (GOTO Exit)
+	(echo %1 | findstr /i /c:"Startup" >nul) && (IF %%y LSS 3 (powershell -command "Start-Sleep -s 120")) || (GOTO Exit)
 )
 :Exit
