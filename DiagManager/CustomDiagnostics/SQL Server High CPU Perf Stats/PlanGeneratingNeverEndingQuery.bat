@@ -38,26 +38,25 @@ set query=!query!!NL!end
 set query=!query!!NL!waitfor delay '00:00:10'
 set query=!query!!NL!end
 
-
+for /L %%y in (1,1, 3) do (
 rem execute the query 
 sqlcmd -E -S%2 -Q"EXIT(!query!)"
 
 REM If query batch returned -1 it means, the batch "timed out", didn't find any long-running CPU-bound queries
-IF %ERRORLEVEL% EQU 78787878 (
+IF !ERRORLEVEL! EQU 78787878 (
 echo batch timeout out, no high-CPU queries found
 GOTO Exit
 )
 
 set /A cntr=0
 REM if the query batch returned more than 5 queries, we will only process 5, else use the actual number returned
-if %ERRORLEVEL% GTR 5 (
+if !ERRORLEVEL! GTR 5 (
 	set /a cntr=5
 ) else (
-	set /a cntr=%ERRORLEVEL%
+	set /a cntr=!ERRORLEVEL!
 )
-for /L %%y in (1,1, 3) do (
-	for /L %%x in (1,1, %cntr%) do (
-		bcp "select xmlplan from (SELECT TOP %cntr% ROW_NUMBER() OVER(ORDER BY (r.cpu_time) DESC) AS RowNumber, x.query_plan AS xmlplan, t.text AS sql_text FROM sys.dm_exec_requests AS r INNER JOIN sys.dm_exec_sessions AS s ON r.session_id = s.session_id CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) AS t CROSS APPLY sys.dm_exec_query_statistics_xml(r.session_id) AS x WHERE s.is_user_process = 1 AND r.cpu_time > 60000 ) as x WHERE RowNumber =%%x" queryout "%1_run%%y_plan%%x.sqlplan" -T -c -S %2
+	for /L %%x in (1,1, !cntr!) do (
+		bcp "select xmlplan from (SELECT TOP !cntr! ROW_NUMBER() OVER(ORDER BY (r.cpu_time) DESC) AS RowNumber, x.query_plan AS xmlplan, t.text AS sql_text FROM sys.dm_exec_requests AS r INNER JOIN sys.dm_exec_sessions AS s ON r.session_id = s.session_id CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) AS t CROSS APPLY sys.dm_exec_query_statistics_xml(r.session_id) AS x WHERE s.is_user_process = 1 AND r.cpu_time > 60000 ) as x WHERE RowNumber =%%x" queryout "%1_run%%y_plan%%x.sqlplan" -T -c -S %2
 	)
 	(echo %1 | findstr /i /c:"Startup" >nul) && (IF %%y LSS 3 (powershell -command "Start-Sleep -s 120")) || (GOTO Exit)
 )
