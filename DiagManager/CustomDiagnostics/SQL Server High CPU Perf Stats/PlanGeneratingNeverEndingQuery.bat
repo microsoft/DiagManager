@@ -24,7 +24,7 @@ set query=!query!!NL!SET NOCOUNT ON
 set query=!query!!NL!declare @starttime datetime = getdate(), @cnt int
 set query=!query!!NL!while (1=1)
 set query=!query!!NL!begin
-set query=!query!!NL!select @cnt = count(^*) from sys.dm_exec_requests r join sys.dm_exec_sessions s on r.session_id = s.session_id where s.is_user_process =1 and r.cpu_time ^> 60000
+set query=!query!!NL!select @cnt = count(^*) from sys.dm_exec_requests r join sys.dm_exec_sessions s on r.session_id = s.session_id CROSS APPLY sys.dm_exec_query_statistics_xml(r.session_id) AS x where s.is_user_process =1 and r.cpu_time ^> 60000
 set query=!query!!NL!if @cnt ^> 0
 set query=!query!!NL!begin
 set query=!query!!NL!select @cnt
