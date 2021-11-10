@@ -416,5 +416,28 @@
   </Versions>
 </CustomGroup> />
 
+
+<CustomGroup name="SQL Server CPU NeverEnding Query" enabled="true">
+  <Scenarios>
+    <Scenario name="LightPerf" enabled="false"/>
+    <Scenario name="GeneralPerf" enabled="false"/>
+    <Scenario name="DetailedPerf" enabled="false"/>
+  </Scenarios>
+  <Features>
+    <Feature name="SQL" enabled="true"/>
+  </Features>
+  <Versions>
+    <Version name="10.50" enabled="false"/>
+    <Version name="11" enabled="false"/>
+    <Version name="12" enabled="false"/>
+    <Version name="13" enabled="true"/>
+    <Version name="14" enabled="true"/>
+    <Version name="15" enabled="true"/>
+  </Versions>
+</CustomGroup> />
+
+
+
+
 </CustomDiagnostics>
   

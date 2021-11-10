@@ -1,8 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <CustomTasks>
 	<CustomTask enabled="true" groupname="SQL Server High CPU Perf Stats" taskname="High CPU Perf Stats" type="TSQL_Script" point="Startup" wait="No" cmd="HighCPU_perfstats.sql" pollinginterval="0" />
-	<CustomTask enabled="true" groupname="SQL Server High CPU Perf Stats" taskname="NeverEndingPlans" type="Utility" point="Shutdown" wait="No" cmd="PlanGeneratingNeverEndingQuery.bat %output_name% %server_instance%" pollinginterval="0" />
-	<CustomTask enabled="true" groupname="SQL Server High CPU Perf Stats" taskname="NeverEndingPlans" type="Utility" point="Startup" wait="No" cmd="PlanGeneratingNeverEndingQuery.bat %output_name% %server_instance%" pollinginterval="0" />
-	<CustomTask enabled="true" groupname="SQL Server High CPU Perf Stats" taskname="QueryNever Complets Stats" type="TSQL_Script" point="Startup" wait="No" cmd="QueryNeverCompletes_perfstats.sql" pollinginterval="0" />
-	<CustomTask enabled="true" groupname="SQL Server High CPU Perf Stats" taskname="Turn off TF7412: QueryProfiling" type="TSQL_Command" point="Shutdown" wait="Yes" cmd="IF (SELECT TOP 1 GLOBAL FROM tempdb.dbo.original_config_tf_7412 ORDER BY ID) = 0 BEGIN DBCC TRACEOFF (7412, -1) END DROP TABLE tempdb.dbo.original_config_tf_7412" pollinginterval="0" />
 </CustomTasks>

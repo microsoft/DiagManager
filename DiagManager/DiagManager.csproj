@@ -277,13 +277,16 @@
     <Content Include="CustomDiagnostics\SQL Memory Error\SQL_Server_Mem_Stats.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="CustomDiagnostics\SQL Server CPU NeverEnding Query\CustomDiag.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="CustomDiagnostics\SQL Server High CPU Perf Stats\CustomDiag.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CustomDiagnostics\SQL Server High CPU Perf Stats\HighCPU_perfstats.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CustomDiagnostics\SQL Server High CPU Perf Stats\QueryNeverCompletes_perfstats.sql">
+    <Content Include="CustomDiagnostics\SQL Server CPU NeverEnding Query\QueryNeverCompletes_perfstats.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CustomDiagnostics\SQL Server Perf Stats\CustomDiag.XML">
@@ -441,7 +444,7 @@
     <Content Include="CustomDiagnostics\PsslooksAlive\ConnectivityTest.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="CustomDiagnostics\SQL Server High CPU Perf Stats\PlanGeneratingNeverEndingQuery.bat">
+    <None Include="CustomDiagnostics\SQL Server CPU NeverEnding Query\PlanGeneratingNeverEndingQuery.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="CustomDiagnostics\Tempdb Space and Latching\readme.rtf">
