@@ -1428,6 +1428,26 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
+    <PublishFile Include="CustomDiagnostics\SQL Server CPU NeverEnding Query\CustomDiag.xml">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="CustomDiagnostics\SQL Server CPU NeverEnding Query\QueryNeverCompletes_perfstats.sql">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
     <PublishFile Include="CustomDiagnostics\SQL Server High CPU Perf Stats\CustomDiag.xml">
       <Visible>False</Visible>
       <Group>
