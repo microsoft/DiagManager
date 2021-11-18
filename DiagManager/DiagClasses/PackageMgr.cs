@@ -43,6 +43,7 @@ using System.IO.Compression;
 using System.Security.Cryptography;
 using System.Diagnostics;
 using PssdiagConfig;
+using System.Net;
 
 //using ICSharpCode.SharpZipLib.GZip;
 //using ICSharpCode.SharpZipLib.Tar;
@@ -71,7 +72,10 @@ namespace PssdiagConfig
         static string StopTraceTemplate = @"EXEC tempdb.dbo.sp_trace13 'OFF',@AppName='{0}',@TraceName='tsqltrace'";
         string m_input_prefix = @"%launchdir%\";
         string LogManName = "pssdiagperfmon";
-        //start  collecterrorlog.cmd jackli2014\sql16a 1 ^> "c:\temp\pssd\out5.txt" 2>&1 ^&^&exit
+        //start  collecterrorlog.cmd server\sql16a 1 ^> "c:\temp\pssd\out5.txt" 2>&1 ^&^&exit
+        
+
+
         public PackageMgr(UserSetting userchoice, string destFullFileName)
         {
             m_userchoice = userchoice;
@@ -435,7 +439,7 @@ namespace PssdiagConfig
 
             ZipFile.CreateFromDirectory(m_tempDirectory, m_DestFullFileName);
             //MakeTar(m_tempDirectory, m_DestFullFileName+".tar");
-
+            
         }
 
         //this was intended for possible TAR file use, but we don't need it or was ever used. This was intended to use a Nuget package ICSharpCode.SharpZipLib;
@@ -531,15 +535,34 @@ namespace PssdiagConfig
             {
                 using (Process myProcess = new Process())
                 {
-                    string emailHeaderHello = "";
-                    string emailBodyFileInstructions = "";
-                    string emailBodyHash = "";
-                    string emailBodyInstructions = "";
 
 
 
-                   // myProcess.StartInfo.FileName = @"mailto:?body=Hello%2C%0A%0APlease%20find%20PSSDIAG%20instructions%20below%3A%0A%0A1.%20Download%20the%20" + filename + @"%20%0A2.%20You%20can%20verify%20the%20downloaded%20file%20by%20computing%20a%20SHA512%20hash.%20See%20the%20instructions%20below%20%0A3.%20Follow%20these%20instructions%20to%20run%3A%20https%3A%2F%2Faka.ms%2Frun-pssdiag%20%0A%0A%0ATo%20verify%20the%20downloaded%20file%3A%0A1.%20Run%20this%20command%20in%20a%20Windows%20Command%20Prompt%20to%20compute%20a%20SHA512%20hash%20on%20it%0A%0A%20%20certutil%20-hashfile%20" + filename + " %20SHA512%20%0A%0A2.%20%20Compare%20result%20to%20this%3A%20%20" + hashString;
-                    myProcess.StartInfo.FileName = @"mailto:?body=Hello%2C%0A%0APlease%20find%20PSSDIAG%20instructions%20below%3A%0A%0A1.%20Download%20the%20" + filename + @"%20%0A2.%20You%20can%20verify%20the%20downloaded%20file%20by%20computing%20a%20SHA512%20hash.%20See%20the%20instructions%20below%20%0A3.%20Follow%20these%20instructions%20to%20run%3A%20https%3A%2F%2Faka.ms%2Frun-pssdiag%20%0A%0A%0ATo%20verify%20the%20downloaded%20file%3A%0A1.%20Run%20this%20command%20in%20a%20Windows%20Command%20Prompt%20to%20compute%20a%20SHA512%20hash%20on%20it%0A%0A%20%20certutil%20-hashfile%20" + filename + " %20SHA512%20%0A%0A2.%20%20Compare%20result%20to%20this%3A%20%20" + hashString;
+
+                    //construct the email body
+                    string emailBodyHello = "Hello, " + Environment.NewLine + Environment.NewLine + "Please follow these steps to run a PSSDIAG package:" + Environment.NewLine + Environment.NewLine +
+                                            "1. Download the " + filename + Environment.NewLine + Environment.NewLine;
+
+                    string emailBodyInstr = "2. You can optionally verify the downloaded file by computing a SHA512 hash. " + Environment.NewLine + Environment.NewLine +
+                                            "   a. Run this command in a Windows Command Prompt to compute a SHA512 hash on it " + Environment.NewLine + Environment.NewLine;
+
+                    string emailBodyCertU = "       certutil - hashfile " + filename + " SHA512 " + Environment.NewLine + Environment.NewLine;
+                    string emailBodyHash =  "   b. Compare result to this: " + ((hashString == null) ? "NULL" : hashString) + Environment.NewLine + Environment.NewLine + 
+                                            "3. Follow these instructions to run: https://aka.ms/run-pssdiag" + Environment.NewLine;
+
+
+                    string entireEmail = emailBodyHello + emailBodyInstr + emailBodyCertU + emailBodyHash;
+
+
+                    //append mailto:?body string to the email body so it automatically triggers a new email
+                    string encodedEmail = @"mailto:?body=" + WebUtility.UrlEncode(entireEmail);
+
+                    //since UrlEncode replaces spaces with + sings, but Outlook/email clients use %20 as a space, we need to replace one with the other
+                    encodedEmail = encodedEmail.Replace("+", "%20");
+
+
+                    myProcess.StartInfo.FileName = encodedEmail;
+                    //myProcess.StartInfo.FileName = @"mailto:?body=Hello%2C%0A%0APlease%20find%20PSSDIAG%20instructions%20below%3A%0A%0A1.%20Download%20the%20" + filename + @"%20%0A2.%20You%20can%20verify%20the%20downloaded%20file%20by%20computing%20a%20SHA512%20hash.%20See%20the%20instructions%20below%20%0A3.%20Follow%20these%20instructions%20to%20run%3A%20https%3A%2F%2Faka.ms%2Frun-pssdiag%20%0A%0A%0ATo%20verify%20the%20downloaded%20file%3A%0A1.%20Run%20this%20command%20in%20a%20Windows%20Command%20Prompt%20to%20compute%20a%20SHA512%20hash%20on%20it%0A%0A%20%20certutil%20-hashfile%20" + filename + " %20SHA512%20%0A%0A2.%20%20Compare%20result%20to%20this%3A%20%20" + hashString;
 
                     myProcess.Start();
                 }
