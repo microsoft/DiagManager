@@ -131,6 +131,18 @@
 		</Versions>
 		</event>
 	</category>
+  <category name="Backup_Restore">
+    <event package="sqlserver" name="backup_restore_progress_trace">
+    <Features>
+      <Feature name="SQL" enabled="true"/>
+    </Features>
+    <Versions>
+      <Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
+    </Versions>
+    </event>
+  </category>
 	<category name="Broker">
 		<event package="sqlserver" name="broker_activation">
 		<Features>

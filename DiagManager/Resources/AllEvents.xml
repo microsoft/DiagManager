@@ -203,6 +203,9 @@
 
 </category>
 
+<category name="Backup_Restore">
+      <event package="sqlserver" name="backup_restore_progress_trace"  version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+</category>
 
 <category name="Broker">
   <event package="sqlserver" name="broker_activation"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
