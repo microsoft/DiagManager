@@ -444,7 +444,7 @@
     <Content Include="CustomDiagnostics\PsslooksAlive\ConnectivityTest.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="CustomDiagnostics\SQL Server CPU NeverEnding Query\PlanGeneratingNeverEndingQuery.bat">
+    <None Include="CustomDiagnostics\SQL Server CPU NeverEnding Query\PlanGeneratingNeverEndingQuery.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="CustomDiagnostics\Tempdb Space and Latching\readme.rtf">

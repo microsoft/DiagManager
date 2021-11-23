@@ -130,7 +130,12 @@ begin
     RAISERROR ('Lightweight Profiling    SQL 2016 SP1+ or 2017. Using Lightweight Profiling Ver2', 0, 1) WITH NOWAIT
 	PRINT ''
 	PRINT 'Enabling TF 7412'
-    DBCC TRACEON (7412, -1)
+		IF (OBJECT_ID('tempdb.dbo.original_config_tf_7412')) IS NULL
+		BEGIN
+			CREATE TABLE tempdb.dbo.original_config_tf_7412 ([ID] [bigint] IDENTITY(1,1) NOT NULL,[TraceFlag] INT, Status INT, Global INT, Session INT)
+		END
+		INSERT INTO tempdb.dbo.original_config_tf_7412 EXEC('DBCC TRACESTATUS (7412)')
+		IF EXISTS (SELECT 1 FROM tempdb.dbo.original_config_tf_7412 WHERE GLOBAL = 0 AND TraceFlag = 7412) DBCC TRACEON (7412, -1)
 
     WHILE (1=1)
 	BEGIN
