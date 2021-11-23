@@ -12,7 +12,20 @@ function callsql ([string]$sqlcmdparam, [int] $CmdTimeout=30, [string] $serverna
     $ret_value = $SqlCmd.ExecuteScalar()
     $SqlConnection.Close()
     return $ret_value
-}S
+}
+
+#Version check, exit if AV versions
+$query_sqlver = "IF ((LEFT((CONVERT(VARCHAR(128), SERVERPROPERTY ('productversion'))),2) = 14) AND ((SUBSTRING((CONVERT(VARCHAR(128), SERVERPROPERTY ('productversion'))),6,4)) < 3025))
+    OR ((LEFT((CONVERT(VARCHAR(128), SERVERPROPERTY ('productversion'))),2) = 13) AND ((SUBSTRING((CONVERT(VARCHAR(128),SERVERPROPERTY ('productversion'))),6,4)) < 4474))
+	BEGIN
+		SELECT 1
+	END"
+$validver = callsql -sqlcmdparam $query_sqlver -CmdTimeout 60 -servernamesql $SQLSERVERinstance
+
+IF ($validver -eq 1){
+    EXIT
+}
+
 
 #enable mandatory traceflag and create restore to original configuration logic
 IF ($pssdiagprefix -ilike "*startup*"){
