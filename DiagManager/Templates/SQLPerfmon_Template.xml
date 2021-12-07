@@ -3990,19 +3990,6 @@
 			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
-		<PerfmonCounter name="\Copy Read Hits %">
-		<Features>
-			<Feature name="SQL" enabled="true"/> 
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
 		<PerfmonCounter name="\Copy Reads/sec">
 		<Features>
 			<Feature name="SQL" enabled="true"/> 
@@ -4043,32 +4030,6 @@
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Data Map Hits %">
-		<Features>
-			<Feature name="SQL" enabled="true"/> 
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\Data Map Hits %">
-		<Features>
-			<Feature name="SQL" enabled="true"/> 
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\Data Map Pins/sec">
 		<Features>
 			<Feature name="SQL" enabled="true"/> 
 		</Features>
@@ -4185,19 +4146,6 @@
 			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
-		<PerfmonCounter name="\MDL Read Hits %">
-		<Features>
-			<Feature name="SQL" enabled="true"/> 
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
 		<PerfmonCounter name="\MDL Reads/sec">
 		<Features>
 			<Feature name="SQL" enabled="true"/> 
@@ -4221,20 +4169,9 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\Pin Read Hits %">
-		<Features>
-			<Feature name="SQL" enabled="true"/> 
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> 
+      <Version name="14" enabled="true"/> 
+      <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Pin Reads/sec">
@@ -4247,7 +4184,9 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/> 
+      <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Read Aheads/sec">
@@ -10266,19 +10205,6 @@
 		</PerfmonCounter>
 	</PerfmonObject>
 	<PerfmonObject name="\Memory">
-		<PerfmonCounter name="\% Committed Bytes In Use">
-		<Features>
-			<Feature name="SQL" enabled="true"/> 
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
 		<PerfmonCounter name="\% Committed Bytes In Use">
 		<Scenarios>
 			<Scenario name="All" enabled="true"/>
@@ -16682,25 +16608,9 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\Log Send Queue">
-		<Scenarios>
-			<Scenario name="All" enabled="true"/>
-			<Scenario name="DetailedPerf" enabled="true"/>
-			<Scenario name="Replay" enabled="true"/>
-		</Scenarios>
-		<Features>
-			<Feature name="SQL" enabled="true"/> 
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> 
+      <Version name="14" enabled="true"/> 
+      <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Mirrored Write Transactions/sec">
@@ -19589,7 +19499,9 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> 
+      <Version name="14" enabled="true"/> 
+      <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Granted Workspace Memory (KB)">
@@ -19607,7 +19519,9 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> 
+      <Version name="14" enabled="true"/> 
+      <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Lock Blocks">
@@ -19625,7 +19539,9 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/> 
+      <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Lock Blocks Allocated">
@@ -24939,7 +24855,9 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> 
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -24954,20 +24872,9 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\% Usage">
-		<Features>
-			<Feature name="SQL" enabled="true"/> 
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> 
+      <Version name="14" enabled="true"/> 
+      <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\% Usage Peak">
@@ -24980,20 +24887,9 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\% Usage Peak">
-		<Features>
-			<Feature name="SQL" enabled="true"/> 
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> 
+      <Version name="14" enabled="true"/> 
+      <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -25008,20 +24904,9 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\% Usage">
-		<Features>
-			<Feature name="SQL" enabled="true"/> 
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> 
+      <Version name="14" enabled="true"/> 
+      <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\% Usage Peak">
@@ -25034,20 +24919,9 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\% Usage Peak">
-		<Features>
-			<Feature name="SQL" enabled="true"/> 
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/>
+      <Version name="14" enabled="true"/>
+      <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -32671,20 +32545,9 @@
 			<Version name="10.50" enabled="true"/>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
-		</Versions>
-		</PerfmonCounter>
-		<PerfmonCounter name="\% Registry Quota In Use">
-		<Features>
-			<Feature name="SQL" enabled="true"/> 
-		</Features>
-		<Versions>
-			<Version name="9" enabled="true"/>
-			<Version name="10" enabled="true"/>
-			<Version name="10.50" enabled="true"/>
-			<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+			<Version name="13" enabled="true"/> 
+      <Version name="14" enabled="true"/> 
+      <Version name="15" enabled="true"/>
 		</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Alignment Fixups/sec">
