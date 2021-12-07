@@ -1,39 +1,4 @@
-/**************************************************
-beginning of licensing agreement
-Microsoft Public License (Ms-PL)
-
-This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.
-
-1. Definitions
-
-The terms "reproduce," "reproduction," "derivative works," and "distribution" have the same meaning here as under U.S. copyright law.
-
-A "contribution" is the original software, or any additions or changes to the software.
-
-A "contributor" is any person that distributes its contribution under this license.
-
-"Licensed patents" are a contributor's patent claims that read directly on its contribution.
-
-2. Grant of Rights
-
-(A) Copyright Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free copyright license to reproduce its contribution, prepare derivative works of its contribution, and distribute its contribution or any derivative works that you create.
-
-(B) Patent Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free license under its licensed patents to make, have made, use, sell, offer for sale, import, and/or otherwise dispose of its contribution in the software or derivative works of the contribution in the software.
-
-3. Conditions and Limitations
-
-(A) No Trademark License- This license does not grant you rights to use any contributors' name, logo, or trademarks.
-
-(B) If you bring a patent claim against any contributor over patents that you claim are infringed by the software, your patent license from such contributor to the software ends automatically.
-
-(C) If you distribute any portion of the software, you must retain all copyright, patent, trademark, and attribution notices that are present in the software.
-
-(D) If you distribute any portion of the software in source code form, you may do so only under this license by including a complete copy of this license with your distribution. If you distribute any portion of the software in compiled or object code form, you may only do so under a license that complies with this license.
-
-(E) The software is licensed "as-is." You bear the risk of using it. The contributors give no express warranties, guarantees or conditions. You may have additional consumer rights under your local laws which this license cannot change. To the extent permitted under your local laws, the contributors exclude the implied warranties of merchantability, fitness for a particular purpose and non-infringement. 
-end of licensing agreement
-**************************************************/
-/**************************************************
+﻿/**************************************************
 Microsoft Public License (Ms-PL)
 
 This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.
@@ -88,10 +53,10 @@ namespace PssdiagConfig
         
         public static List<DiagCategory> SQLTraceEventCategoryList;//= new List<DiagCategory>();
 
-        public static List<DiagCategory> ASTraceEventCategoryList;//= new List<DiagCategory>();
+       // public static List<DiagCategory> ASTraceEventCategoryList;//= new List<DiagCategory>();
         
         public static List<DiagCategory> SQLPerfmonCounterCategoryList = new List<DiagCategory>();
-        public static List<DiagCategory> ASPerfmonCounterCategoryList = new List<DiagCategory>();
+        //public static List<DiagCategory> ASPerfmonCounterCategoryList = new List<DiagCategory>();
 
         public static List<DiagCategory> CustomDiagnosticsCategoryList = new List<DiagCategory>();
 
@@ -325,7 +290,7 @@ namespace PssdiagConfig
                     {
                         string evtpackage = iterEvents.Current.GetAttribute("package", "");
                         evt = new Xevent(cat, iterEvents.Current.Name, evtname, evtpackage);
-                        
+                        //read field elements from eventfields section
                         XPathNodeIterator iterEventFields = iterEvents.Current.Select("eventfields/field");
                         while (iterEventFields.MoveNext())
                         {
@@ -334,8 +299,15 @@ namespace PssdiagConfig
                             bool isnum = Convert.ToBoolean(iterEventFields.Current.GetAttribute("IsNum", ""));
                             EventField evtField = new EventField(name, autoinclude, isnum);
                             (evt as Xevent).EventFieldList.Add(evtField);
-                            
-                            
+                        }
+                        //read action elements from eventactions section
+                        XPathNodeIterator iterEventActions = iterEvents.Current.Select("eventactions/action");
+                        while (iterEventActions.MoveNext())
+                        {
+                            string package = iterEventActions.Current.GetAttribute("package", "");
+                            string name = iterEventActions.Current.GetAttribute("name", "");
+                            EventAction evtAction = new EventAction(package, name);
+                            (evt as Xevent).EventActionList.Add(evtAction);
                         }
                     }
                     else
@@ -505,7 +477,7 @@ namespace PssdiagConfig
         }
         static void Init()
         {
-            GlobalPlatformList.Add(new Platform("x86", "x86"));
+            GlobalPlatformList.Add(new Platform("i386", "x86"));
             //GlobalPlatformList.Add(new Platform("ia64", "ia64"));
             GlobalPlatformList.Add(new Platform("x64", "x64"));
 
@@ -546,10 +518,10 @@ namespace PssdiagConfig
 
             SQLTraceEventCategoryList = GetEventCategoryList(@"Templates\SQLTraceEvent_Template.xml", "TraceEvents/EventType", "Event", EventType.TraceEvent);
 
-            ASTraceEventCategoryList = GetEventCategoryList(@"Templates\ASTraceEvent_Template.xml", "TraceEvents/EventType", "Event", EventType.TraceEvent);
+            //ASTraceEventCategoryList = GetEventCategoryList(@"Templates\ASTraceEvent_Template.xml", "TraceEvents/EventType", "Event", EventType.TraceEvent);
             SQLPerfmonCounterCategoryList = GetEventCategoryList(@"Templates\SQLPerfmon_Template.xml", "PerfmonCounters/PerfmonObject", "PerfmonCounter", EventType.Perfmon);
 
-            ASPerfmonCounterCategoryList = GetEventCategoryList(@"Templates\ASPerfmon_Template.xml", "PerfmonCounters/PerfmonObject", "PerfmonCounter", EventType.Perfmon);
+            //ASPerfmonCounterCategoryList = GetEventCategoryList(@"Templates\ASPerfmon_Template.xml", "PerfmonCounters/PerfmonObject", "PerfmonCounter", EventType.Perfmon);
 
 
             XEventCategoryList = GetEventCategoryList(@"Templates\SQLXevent_Template.xml", "XEvents/category", "event", EventType.XEvent);

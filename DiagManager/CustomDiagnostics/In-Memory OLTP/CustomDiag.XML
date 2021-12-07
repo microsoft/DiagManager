@@ -1,4 +1,5 @@
 <?xml version="1.0" standalone="yes"?>
 <CustomTasks>
   <CustomTask enabled="true" groupname="In-Memory OLTP" taskname="In-Memory OLTP DMV" type="TSQL_Script" point="Startup" wait="No" cmd="In_Memory_OLTP.SQL" pollinginterval="0" />
+  <CustomTask enabled="true" groupname="In-Memory OLTP" taskname="In-Memory OLTP DMV" type="TSQL_Script" point="Shutdown" wait="No" cmd="In_Memory_OLTP.SQL" pollinginterval="0" />
   </CustomTasks>

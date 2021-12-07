@@ -7,7 +7,7 @@
     <Version name="13"  />
   </Versions>
   <Features>
-    <Feature name="AS" enabled="true"/>
+
     <Feature name="SQL" enabled="true"/>
   </Features>
   
@@ -15,7 +15,7 @@
      <DiagTemplate name="GeneralPerf" friendlyname="General Performance" target="file"  DefaultChecked="false">
               <Features>
                <Feature name="SQL" enabled="true"/> 
-               <Feature name="AS" enabled="false"/>
+               
               </Features>
               <Scenarios>
                 <DiagTemplate name="GeneralPerf" enabled="false"/>
@@ -34,7 +34,6 @@
      <DiagTemplate name="LightPerf" friendlyname="Light Performance" target="file"  DefaultChecked="true">
                      <Features>
                <Feature name="SQL" enabled="true"/> 
-               <Feature name="AS" enabled="false"/>
               </Features>
               <Scenarios>
                 <DiagTemplate name="GeneralPerf" enabled="false"/>
@@ -53,7 +52,7 @@
      <DiagTemplate name="DetailedPerf" friendlyname="Detailed Performance" target="file" DefaultChecked="false">
                      <Features>
                <Feature name="SQL" enabled="true"/> 
-               <Feature name="AS" enabled="false"/>
+               
               </Features>
               <Scenarios>
                 <DiagTemplate name="GeneralPerf" enabled="false"/>
@@ -72,7 +71,7 @@
      <DiagTemplate name="Replay" friendlyname="Replay" target="file"  DefaultChecked="false">
                      <Features>
                <Feature name="SQL" enabled="true"/> 
-               <Feature name="AS" enabled="false"/>
+               
               </Features>
               <Scenarios>
                 <DiagTemplate name="GeneralPerf" enabled="false"/>
@@ -91,7 +90,7 @@
      <DiagTemplate name="SpinLock" friendlyname="Spinlock" target="file"  DefaultChecked="false">
                      <Features>
                <Feature name="SQL" enabled="true"/> 
-               <Feature name="AS" enabled="false"/>
+               
               </Features>
               <Scenarios>
                 <DiagTemplate name="GeneralPerf" enabled="false"/>
@@ -110,7 +109,7 @@
      <DiagTemplate name="QueryPerf" friendlyname="Query Perf (Waits Exec Plan)"  target="file" DefaultChecked="false">
                      <Features>
                <Feature name="SQL" enabled="true"/> 
-               <Feature name="AS" enabled="false"/>
+               
               </Features>
               <Scenarios>
                 <DiagTemplate name="GeneralPerf" enabled="false"/>
@@ -533,7 +532,8 @@
 <category name="Scheduling">
   <event package="sqlos" name="scheduler_monitor_deadlock_ring_buffer_recorded"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
   <event package="sqlos" name="scheduler_monitor_non_yielding_ring_buffer_recorded"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
-  <event package="sqlos" name="wait_info"    version="11"  SpinLock="false" QueryPerf="true" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+  <!-- Issue #111 Disable Wait_info-->
+  <event package="sqlos" name="wait_info"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
   <event package="sqlos" name="wait_info_external"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
 
 </category>
@@ -630,7 +630,7 @@
        <EventType name="Broker">
               <Features>
                <Feature name="SQL" enabled="true"/> 
-               <Feature name="AS" enabled="false"/>
+               
               </Features>
               <Scenarios>
                 <DiagTemplate name="GeneralPerf" enabled="false"/>
@@ -648,7 +648,7 @@
          <Event name="Broker:Activation" id="163"> 
               <Features>
                <Feature name="SQL" enabled="true"/> 
-               <Feature name="AS" enabled="false"/>
+               
               </Features>
               <Scenarios>
                 <DiagTemplate name="GeneralPerf" enabled="false"/>
@@ -669,7 +669,7 @@
          <Event name="Broker:Connection"  id="138">
               <Features>
                <Feature name="SQL" enabled="true"/> 
-               <Feature name="AS" enabled="false"/>
+               
               </Features>
               <Scenarios>
                 <DiagTemplate name="GeneralPerf" enabled="false"/>
@@ -689,7 +689,7 @@
          <Event name="Broker:Conversation"  id="124"> 
               <Features>
                <Feature name="SQL" enabled="true"/> 
-               <Feature name="AS" enabled="false"/>
+               
               </Features>
               <Scenarios>
                 <DiagTemplate name="GeneralPerf" enabled="false"/>
@@ -710,7 +710,7 @@
          <Event name="Broker:Conversation Group" enabled="false" id="136">
                <Features>
                <Feature name="SQL" enabled="true"/> 
-               <Feature name="AS" enabled="false"/>
+               
               </Features>
               <Scenarios>
                 <DiagTemplate name="GeneralPerf" enabled="false"/>
