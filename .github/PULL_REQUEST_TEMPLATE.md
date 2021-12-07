@@ -17,5 +17,8 @@ Has been tested on (remove any that don't apply):
  - SQL Server 2012
  - SQL Server 2014
  - SQL Server 2016
+ - SQL Server 2017
+ - SQL Server 2019
+ - Azure SQL Virtual Machine
  - Amazon RDS
- - Azure SQL DB
+ 
