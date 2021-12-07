@@ -376,6 +376,9 @@
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_execute">
+    <Scenarios>
+      <Scenario name="Replay" enabled="True"/>
+    </Scenarios>  
 		<Features>
 			<Feature name="SQL" enabled="true"/>
 		</Features>
@@ -510,6 +513,9 @@
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_open">
+    <Scenarios>
+      <Scenario name="Replay" enabled="True"/>
+    </Scenarios>
 		<Features>
 			<Feature name="SQL" enabled="true"/>
 		</Features>
@@ -520,6 +526,9 @@
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_prepare">
+    <Scenarios>
+      <Scenario name="Replay" enabled="True"/>
+    </Scenarios>
 		<Features>
 			<Feature name="SQL" enabled="true"/>
 		</Features>
@@ -540,6 +549,9 @@
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_unprepare">
+    <Scenarios>
+      <Scenario name="Replay" enabled="True"/>
+    </Scenarios>
 		<Features>
 			<Feature name="SQL" enabled="true"/>
 		</Features>
@@ -1440,6 +1452,9 @@
 		</Versions>
 		</event>
 		<event package="sqlserver" name="exec_prepared_sql">
+    <Scenarios>
+      <Scenario name="Replay" enabled="True"/>
+    </Scenarios>
 		<Features>
 			<Feature name="SQL" enabled="true"/>
 		</Features>
@@ -1550,6 +1565,9 @@
 		</Versions>
 		</event>
 		<event package="sqlserver" name="prepare_sql">
+    <Scenarios>
+      <Scenario name="Replay" enabled="True"/>
+    </Scenarios>
 		<Features>
 			<Feature name="SQL" enabled="true"/>
 		</Features>
