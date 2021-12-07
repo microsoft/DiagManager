@@ -9,7 +9,7 @@
 [forks badge]:https://img.shields.io/github/forks/Microsoft/DiagManager.svg
 [issues badge]:https://img.shields.io/github/issues/Microsoft/DiagManager.svg
 
-[licence]:https://github.com/Microsoft/DiagManager/blob/master/LICENSE.md
+[licence]:https://github.com/microsoft/DiagManager/blob/master/license.md
 [stars]:https://github.com/Microsoft/DiagManager/stargazers
 [forks]:https://github.com/Microsoft/DiagManager/network
 [issues]:https://github.com/Microsoft/DiagManager/issues
