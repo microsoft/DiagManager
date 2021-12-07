@@ -2,8 +2,9 @@
 Purpose:	Change Tracking Script for PSSDiag
 Date:		1/3/2020
 Note:		
-Version:	1.3
+Version:	1.4
 Change List: Added CT_oject_id and cleanup_version_commit_time
+10/1/21 -- added section to collect cleanup History
 */
 
 
@@ -39,6 +40,7 @@ FOR SELECT
 FROM sys.change_tracking_databases ct
 JOIN sys.databases db on
 	ct.database_id=db.database_id;
+
 
 OPEN tnames_cursor;
 DECLARE @dbname sysname;
@@ -122,6 +124,16 @@ BEGIN
 		PRINT 'Active Snapshot transactions --'
 		EXEC ('select top 10 * from [' 
 		+ @dbname + '].sys.dm_tran_active_snapshot_database_transactions order by elapsed_time_seconds desc');	
+
+		PRINT ''
+		PRINT 'CT Cleanup History --'
+		EXEC ('
+		IF OBJECT_ID(' + '''' + @dbname + '.dbo.MSchange_tracking_history'+ '''' +','+ ''''+ 'U'+''''+ ') IS NOT NULL 
+		BEGIN
+		  select top 1000 * from ' + @dbname + '.[dbo].[MSchange_tracking_history] order by start_time desc
+		END
+		')
+
 
    PRINT ''
    PRINT 'End of Database: ' + @dbname 
