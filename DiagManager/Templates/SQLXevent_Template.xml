@@ -7,7 +7,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="ioaff_scan_end">
@@ -17,7 +17,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="ioaff_scan_start">
@@ -27,7 +27,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="ioaff_scan_worker_end">
@@ -37,7 +37,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="ioaff_scan_worker_start">
@@ -47,87 +47,87 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="parallel_scan_range_created">
 		<Features>
-			<Feature name="SQL" enabled="true"/>
+			<Feature name="SQL" enabled="false"/>
 		</Features>
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="parallel_scan_range_returned">
 		<Features>
-			<Feature name="SQL" enabled="true"/>
+			<Feature name="SQL" enabled="false"/>
 		</Features>
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="parallel_scan_readahead_advance">
 		<Features>
-			<Feature name="SQL" enabled="true"/>
+			<Feature name="SQL" enabled="false"/>
 		</Features>
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="parallel_scan_readahead_fixup">
 		<Features>
-			<Feature name="SQL" enabled="true"/>
+			<Feature name="SQL" enabled="false"/>
 		</Features>
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="parallel_scan_resume_range_generation">
 		<Features>
-			<Feature name="SQL" enabled="true"/>
+			<Feature name="SQL" enabled="false"/>
 		</Features>
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="parallel_scan_stuck_read_ahead">
 		<Features>
-			<Feature name="SQL" enabled="true"/>
+			<Feature name="SQL" enabled="false"/>
 		</Features>
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="parallel_scan_upper_level_readahead">
 		<Features>
-			<Feature name="SQL" enabled="true"/>
+			<Feature name="SQL" enabled="false"/>
 		</Features>
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="parallel_scan_wait_for_work">
 		<Features>
-			<Feature name="SQL" enabled="true"/>
+			<Feature name="SQL" enabled="false"/>
 		</Features>
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -139,7 +139,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_activation_stored_procedure_invoked">
@@ -149,7 +149,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_activation_task_aborted">
@@ -159,7 +159,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_activation_task_limit_reached">
@@ -169,7 +169,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_activation_task_started">
@@ -179,7 +179,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_conversation">
@@ -192,7 +192,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_conversation_group">
@@ -202,7 +202,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_corrupted_message">
@@ -212,7 +212,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_dialog_transmission_body_dequeue">
@@ -222,7 +222,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_dialog_transmission_body_enqueue">
@@ -232,7 +232,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_dialog_transmission_queue_dequeue">
@@ -242,7 +242,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_dialog_transmission_queue_enqueue">
@@ -252,7 +252,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_forwarded_message_dropped">
@@ -265,7 +265,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_forwarded_message_sent">
@@ -275,7 +275,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_message_classify">
@@ -285,7 +285,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_message_undeliverable">
@@ -298,7 +298,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_mirrored_route_state_changed">
@@ -308,7 +308,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_queue_activation_alert">
@@ -318,7 +318,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_queue_false">
@@ -328,7 +328,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_remote_message_acknowledgement">
@@ -338,7 +338,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_transmission_exception">
@@ -348,7 +348,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -360,7 +360,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -372,7 +372,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_execute">
@@ -382,7 +382,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_implicit_conversion">
@@ -396,7 +396,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_manager_cached_cursor_added">
@@ -406,7 +406,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_manager_cached_cursor_removed">
@@ -416,7 +416,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_manager_cursor_begin">
@@ -426,7 +426,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_manager_cursor_cache_attempt">
@@ -436,7 +436,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_manager_cursor_cache_hit">
@@ -446,7 +446,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_manager_cursor_end">
@@ -456,7 +456,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_manager_cursor_memory_usage">
@@ -466,7 +466,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_manager_cursor_plan_begin">
@@ -476,7 +476,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_manager_cursor_plan_end">
@@ -486,7 +486,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_manager_cursor_worktable_use_begin">
@@ -496,7 +496,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_manager_cursor_worktable_use_end">
@@ -506,7 +506,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_open">
@@ -516,7 +516,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_prepare">
@@ -526,7 +526,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cursor_recompile">
@@ -546,7 +546,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -558,7 +558,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="catalog_metadata_cache_entry_pinned">
@@ -568,7 +568,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="catalog_metadata_cache_entry_removed">
@@ -578,7 +578,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="catalog_metadata_cache_entry_unpinned">
@@ -588,7 +588,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="catalog_metadata_cache_hit">
@@ -598,7 +598,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="checkpoint_begin">
@@ -608,7 +608,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="checkpoint_end">
@@ -618,7 +618,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="constant_page_corruption_detected">
@@ -628,7 +628,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="database_attached">
@@ -638,7 +638,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="database_created">
@@ -648,7 +648,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="database_detached">
@@ -658,7 +658,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="database_file_size_change">
@@ -668,7 +668,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="database_mirroring_state_change">
@@ -678,7 +678,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="database_started">
@@ -688,7 +688,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="database_stopped">
@@ -698,7 +698,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="database_uncontained_usage">
@@ -708,7 +708,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_backup_restore_throughput">
@@ -718,7 +718,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_bulk_copy_rows">
@@ -728,7 +728,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_bulk_copy_throughput">
@@ -738,7 +738,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_bulk_insert_rows">
@@ -748,7 +748,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_bulk_insert_throughput">
@@ -758,7 +758,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_data_file_size_changed">
@@ -768,7 +768,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_dbcc_logical_scan">
@@ -778,7 +778,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_log_cache_hit">
@@ -788,7 +788,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_log_cache_read">
@@ -798,7 +798,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_log_file_size_changed">
@@ -808,7 +808,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_log_file_used_size_changed">
@@ -818,7 +818,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_log_flush">
@@ -828,7 +828,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_log_flush_wait">
@@ -838,7 +838,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_log_growth">
@@ -852,7 +852,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_log_shrink">
@@ -866,7 +866,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_log_truncation">
@@ -876,7 +876,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="databases_shrink_data_movement">
@@ -886,7 +886,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_agent_catalog_updated">
@@ -896,7 +896,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_agent_lock_object">
@@ -906,7 +906,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_cache_add">
@@ -916,7 +916,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_cache_flush">
@@ -926,7 +926,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_cache_hit">
@@ -936,7 +936,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_cache_miss">
@@ -946,7 +946,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_cache_update">
@@ -956,7 +956,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_cache_vlr_posted">
@@ -966,7 +966,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_clone_transition">
@@ -976,7 +976,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_create_global_temp_object">
@@ -986,7 +986,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_create_local_temp_object">
@@ -996,7 +996,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_delete_global_temp_object">
@@ -1006,7 +1006,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_delete_local_temp_object">
@@ -1016,7 +1016,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_initiate_lock_object">
@@ -1026,7 +1026,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_initiate_unlock_object">
@@ -1036,7 +1036,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_lock_object">
@@ -1046,7 +1046,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_manager_catalog_deleted">
@@ -1056,7 +1056,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_manager_catalog_inserted">
@@ -1066,7 +1066,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_manager_catalog_updated">
@@ -1076,7 +1076,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_manager_lock_object">
@@ -1086,7 +1086,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_unlock_object">
@@ -1096,7 +1096,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="metadata_version_update">
@@ -1106,7 +1106,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="page_split">
@@ -1116,7 +1116,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="persist_last_value_for_sequence">
@@ -1126,7 +1126,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -1138,7 +1138,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -1155,7 +1155,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="attention">
@@ -1170,7 +1170,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="background_job_error">
@@ -1185,7 +1185,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="batch_hash_table_build_bailout">
@@ -1200,7 +1200,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="bitmap_warning">
@@ -1210,7 +1210,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="blocked_process_report">
@@ -1225,7 +1225,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="cpu_threshold_exceeded">
@@ -1240,7 +1240,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="database_suspect_data_page">
@@ -1255,7 +1255,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="error_reported">
@@ -1270,7 +1270,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
       
 		</event>
@@ -1281,7 +1281,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="exchange_spill">
@@ -1296,7 +1296,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="execution_warning">
@@ -1311,7 +1311,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="filestream_file_io_failure">
@@ -1326,7 +1326,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="hash_warning">
@@ -1341,7 +1341,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="missing_column_statistics">
@@ -1356,7 +1356,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
       
       <eventfields>
@@ -1375,7 +1375,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sort_warning">
@@ -1390,7 +1390,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -1406,7 +1406,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="column_store_object_pool_hit">
@@ -1416,7 +1416,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="column_store_object_pool_miss">
@@ -1426,7 +1426,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="degree_of_parallelism">
@@ -1436,7 +1436,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="exec_prepared_sql">
@@ -1446,7 +1446,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="expression_compile_stop_batch_processing">
@@ -1456,7 +1456,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="filestream_file_io_request">
@@ -1466,7 +1466,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="filestream_file_io_response">
@@ -1476,7 +1476,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="module_end">
@@ -1486,7 +1486,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="module_start">
@@ -1496,7 +1496,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="plan_cache_cache_attempt">
@@ -1506,7 +1506,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="plan_cache_cache_hit">
@@ -1516,7 +1516,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="plan_guide_successful">
@@ -1531,7 +1531,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="plan_guide_unsuccessful">
@@ -1546,7 +1546,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="prepare_sql">
@@ -1556,7 +1556,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_cache_removal_statistics">
@@ -1566,7 +1566,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_driver_aggregate_rows_affected_enter">
@@ -1576,7 +1576,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_driver_aggregate_rows_affected_exit">
@@ -1586,7 +1586,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_driver_aggregate_statistics_profile_enter">
@@ -1596,7 +1596,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_driver_aggregate_statistics_profile_exit">
@@ -1606,7 +1606,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_driver_received_activation">
@@ -1616,7 +1616,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_driver_received_rows_affected">
@@ -1626,7 +1626,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_driver_received_statistics_profile">
@@ -1636,7 +1636,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_driver_sent_activation">
@@ -1646,7 +1646,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_driver_sent_rows_affected">
@@ -1656,7 +1656,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_driver_sent_statistics_profile">
@@ -1666,7 +1666,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_post_compilation_showplan">
@@ -1676,7 +1676,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 
@@ -1690,7 +1690,7 @@
       <Versions>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/>
+        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
       </Versions>
     </event>
     
@@ -1705,7 +1705,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
     
@@ -1716,7 +1716,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_rpc_server_cache_flush">
@@ -1726,7 +1726,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_rpc_server_collection_cache_hit">
@@ -1736,7 +1736,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_rpc_server_collection_cache_insert">
@@ -1746,7 +1746,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_rpc_server_collection_cache_miss">
@@ -1756,7 +1756,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_rpc_server_collection_cache_remove">
@@ -1766,7 +1766,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_rpc_server_collection_create">
@@ -1776,7 +1776,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_rpc_server_runtime_cache_hit">
@@ -1786,7 +1786,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_rpc_server_runtime_cache_insert">
@@ -1796,7 +1796,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_rpc_server_runtime_cache_miss">
@@ -1806,7 +1806,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_rpc_server_runtime_cache_remove">
@@ -1816,7 +1816,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_rpc_server_runtime_create">
@@ -1826,7 +1826,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="query_rx_send_activation">
@@ -1836,7 +1836,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="rpc_completed">
@@ -1852,7 +1852,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
       <eventfields>
         <field name="duration" AutoInclude="true" IsNum="true"/>
@@ -1876,7 +1876,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sp_cache_hit">
@@ -1886,7 +1886,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sp_cache_insert">
@@ -1911,7 +1911,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sp_cache_remove">
@@ -1926,7 +1926,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sp_statement_completed">
@@ -1939,7 +1939,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sp_statement_starting">
@@ -1952,7 +1952,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sql_batch_completed">
@@ -1968,7 +1968,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
     <eventfields>
         <field name="duration" AutoInclude="true" IsNum="true"/>
@@ -1992,7 +1992,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sql_statement_completed">
@@ -2005,7 +2005,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sql_statement_plan_received">
@@ -2015,7 +2015,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sql_statement_plan_shipped">
@@ -2025,7 +2025,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sql_statement_recompile">
@@ -2040,7 +2040,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sql_statement_starting">
@@ -2053,7 +2053,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="uncached_sql_batch_statistics">
@@ -2063,7 +2063,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="unprepare_sql">
@@ -2073,7 +2073,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="xquery_static_type">
@@ -2083,7 +2083,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -2095,7 +2095,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="filestream" name="filetable_file_io_request">
@@ -2105,7 +2105,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="filestream" name="filetable_file_io_response">
@@ -2115,7 +2115,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="filestream" name="filetable_nso_kill">
@@ -2125,7 +2125,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="filestream" name="filetable_nso_operation">
@@ -2135,7 +2135,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="filestream" name="filetable_store_database_operation">
@@ -2145,7 +2145,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="filestream" name="filetable_store_enumerate_getitem">
@@ -2155,7 +2155,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="filestream" name="filetable_store_item_get">
@@ -2165,7 +2165,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="filestream" name="filetable_store_item_modify">
@@ -2175,7 +2175,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="filestream" name="filetable_store_item_moverename">
@@ -2185,7 +2185,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="filestream" name="filetable_store_operation">
@@ -2195,7 +2195,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="filestream" name="filetable_store_table_operation">
@@ -2205,7 +2205,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -2217,7 +2217,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="full_text_crawl_stopped">
@@ -2227,7 +2227,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="fulltext_query_exec_stats">
@@ -2237,7 +2237,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="fulltext_query_recompile">
@@ -2247,7 +2247,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="fulltext_reorganize_progress">
@@ -2257,7 +2257,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="fulltext_reorganize_start">
@@ -2267,7 +2267,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="fulltext_semantic_document_language">
@@ -2277,7 +2277,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -2289,7 +2289,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="hadr_undo_of_redo_log_scan">
@@ -2299,7 +2299,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -2311,7 +2311,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="progress_report_online_index_operation">
@@ -2321,7 +2321,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="scan_started">
@@ -2331,7 +2331,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="scan_stopped">
@@ -2341,7 +2341,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -2353,7 +2353,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="file_read_completed">
@@ -2363,7 +2363,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="file_write_completed">
@@ -2373,7 +2373,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="file_written">
@@ -2383,7 +2383,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="long_io_detected">
@@ -2393,7 +2393,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="physical_page_read">
@@ -2403,7 +2403,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="physical_page_write">
@@ -2413,7 +2413,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -2425,7 +2425,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="latch_promoted">
@@ -2435,7 +2435,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="latch_suspend_begin">
@@ -2445,7 +2445,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="latch_suspend_end">
@@ -2455,7 +2455,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="latch_suspend_warning">
@@ -2465,7 +2465,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -2477,7 +2477,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="lock_cancel">
@@ -2487,7 +2487,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="lock_deadlock">
@@ -2501,7 +2501,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="lock_deadlock_chain">
@@ -2511,7 +2511,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="lock_escalation">
@@ -2525,7 +2525,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="lock_redo_blocked">
@@ -2535,7 +2535,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="lock_released">
@@ -2545,7 +2545,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="lock_timeout">
@@ -2559,7 +2559,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="lock_timeout_greater_than_0">
@@ -2569,7 +2569,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="locks_lock_waits">
@@ -2579,7 +2579,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -2591,7 +2591,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="memory_manager_free_memory">
@@ -2601,7 +2601,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="memory_manager_reserved_server_memory">
@@ -2611,7 +2611,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="memory_manager_stolen_server_memory">
@@ -2621,7 +2621,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="memory_manager_target_server_memory">
@@ -2631,7 +2631,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="memory_manager_total_server_memory">
@@ -2641,7 +2641,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="memory_node_database_node_memory">
@@ -2651,7 +2651,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="memory_node_foreign_node_memory">
@@ -2661,7 +2661,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="memory_node_free_node_memory">
@@ -2671,7 +2671,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="memory_node_stolen_node_memory">
@@ -2681,7 +2681,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="memory_node_target_node_memory">
@@ -2691,7 +2691,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="memory_node_total_node_memory">
@@ -2701,7 +2701,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="server_memory_change">
@@ -2716,7 +2716,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -2728,7 +2728,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="oledb_data_read">
@@ -2738,7 +2738,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="oledb_error">
@@ -2748,7 +2748,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="oledb_provider_information">
@@ -2758,7 +2758,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="oledb_query_interface">
@@ -2768,7 +2768,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -2780,7 +2780,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlos" name="scheduler_monitor_non_yielding_ring_buffer_recorded">
@@ -2790,12 +2790,13 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlos" name="wait_info">
       <Scenarios>
-        <Scenario name="QueryPerf" enabled="True"/>
+        <!-- Issue #111 Disable Wait_info-->
+        <Scenario name="QueryPerf" enabled="False"/>
       </Scenarios>
 		<Features>
 			<Feature name="SQL" enabled="true"/>
@@ -2803,7 +2804,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlos" name="wait_info_external">
@@ -2813,7 +2814,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -2825,7 +2826,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="buffer_manager_page_life_expectancy">
@@ -2835,7 +2836,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="buffer_manager_target_pages">
@@ -2845,7 +2846,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="buffer_node_database_pages">
@@ -2855,7 +2856,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="buffer_node_page_life_expectancy">
@@ -2865,7 +2866,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="deprecation_announcement">
@@ -2875,7 +2876,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="deprecation_final_support">
@@ -2885,7 +2886,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="page_compression_attempt_failed">
@@ -2895,7 +2896,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="page_reference_tracker">
@@ -2905,7 +2906,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="server_start_stop">
@@ -2915,7 +2916,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="trace_flag_changed">
@@ -2925,7 +2926,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -2945,7 +2946,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="login">
@@ -2964,7 +2965,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="logout">
@@ -2979,7 +2980,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="object_altered">
@@ -2989,7 +2990,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="object_created">
@@ -2999,7 +3000,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="object_deleted">
@@ -3009,7 +3010,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="preconnect_completed">
@@ -3019,7 +3020,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="preconnect_starting">
@@ -3029,7 +3030,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="qn_dynamics">
@@ -3039,7 +3040,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="qn_parameter_table">
@@ -3049,7 +3050,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="qn_subscription">
@@ -3059,7 +3060,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="qn_template">
@@ -3069,7 +3070,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="session_mgr_event_notification_received">
@@ -3079,7 +3080,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="session_mgr_work_item_dequeued">
@@ -3089,7 +3090,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="session_mgr_work_item_end_execution">
@@ -3099,7 +3100,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="session_mgr_work_item_enqueued">
@@ -3109,7 +3110,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="session_mgr_work_item_start_execution">
@@ -3119,7 +3120,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -3131,7 +3132,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlos" name="spinlock_backoff_warning">
@@ -3141,7 +3142,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -3153,7 +3154,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -3165,7 +3166,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="begin_tran_starting">
@@ -3175,7 +3176,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="commit_tran_completed">
@@ -3185,7 +3186,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="commit_tran_starting">
@@ -3195,7 +3196,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="database_transaction_begin">
@@ -3205,7 +3206,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="database_transaction_end">
@@ -3215,7 +3216,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="dtc_transaction">
@@ -3230,7 +3231,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="promote_tran_completed">
@@ -3240,7 +3241,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="promote_tran_starting">
@@ -3250,7 +3251,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="rollback_tran_completed">
@@ -3260,7 +3261,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="rollback_tran_starting">
@@ -3270,7 +3271,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="save_tran_completed">
@@ -3280,7 +3281,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="save_tran_starting">
@@ -3290,7 +3291,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 		<event package="sqlserver" name="sql_transaction">
@@ -3305,7 +3306,7 @@
 		<Versions>
 			<Version name="11" enabled="true"/>
 			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
+			<Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
 		</Versions>
 		</event>
 	</category>
@@ -3319,7 +3320,7 @@
       </Features>
       <Versions>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/>
+        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
       </Versions>
 
     </event>
@@ -3329,7 +3330,7 @@
       </Features>
       <Versions>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/>
+        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
       </Versions>
 
     </event>
@@ -3339,7 +3340,7 @@
       </Features>
       <Versions>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/>
+        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
       </Versions>
       <Scenarios>
         <Scenario name="In-Memory OLTP" enabled="True"/>
@@ -3378,7 +3379,7 @@
         <Feature name="SQL" enabled="true"/>
       </Features>
       <Versions>
-        <Version name="13" enabled="true"/>
+        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
       </Versions>
 
     </event>
@@ -3387,7 +3388,7 @@
         <Feature name="SQL" enabled="true"/>
       </Features>
       <Versions>
-        <Version name="13" enabled="true"/>
+        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
       </Versions>
 
     </event>
@@ -3404,7 +3405,7 @@
         <Feature name="SQL" enabled="true"/>
       </Features>
       <Versions>
-        <Version name="13" enabled="true"/>
+        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
       </Versions>
     </event>
 
@@ -3455,7 +3456,7 @@
       </Features>
       <Versions>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/>
+        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
       </Versions>
     </event>
     <event package="XtpEngine" name="gc_cycle_completed">
@@ -3468,7 +3469,7 @@
       </Features>
       <Versions>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/>
+        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
       </Versions>
     </event>
     <event package="XtpEngine" name="gc_notification">
@@ -3481,7 +3482,7 @@
       </Features>
       <Versions>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/>
+        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
       </Versions>
     </event>
     <event package="XtpEngine" name="redo_single_hk_record">
@@ -3831,7 +3832,7 @@
       </Features>
       <Versions>
         
-        <Version name="13" enabled="true"/>
+        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/> 
       </Versions>
     </event>
     
@@ -3839,6 +3840,649 @@
   
   <category name="Unclassified">
 	</category>
-  
+
+  <category name="AlwaysOn_Data_Movement_Tracing">
+    <event package="sqlserver" name="hadr_apply_log_block">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_capture_filestream_wait">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_capture_log_block">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_capture_vlfheader">
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_database_flow_control_action">
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_db_commit_mgr_harden">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_log_block_compression">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_log_block_decompression">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_log_block_group_commit">
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_log_block_send_complete">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_lsn_send_complete">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_receive_harden_lsn_message">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_send_harden_lsn_message">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_transport_flow_control_action">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_transport_receive_log_block_message">
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_transport_dump_message">
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="log_block_pushed_to_logpool">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="log_flush_start">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="log_flush_complete">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="recovery_unit_harden_log_timestamps">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="ucs" name="ucs_connection_flow_control">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="ucs" name="ucs_connection_recv_io">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="ucs" name="ucs_connection_recv_msg">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="ucs" name="ucs_connection_send_io">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="ucs" name="ucs_connection_send_msg">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="file_write_enqueued">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="file_write_completed">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_apply_vlfheader">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_capture_compressed_log_cache">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_db_commit_mgr_harden_still_waiting">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_db_commit_mgr_update_harden">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+    <event package="sqlserver" name="hadr_filestream_processed_block">
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Scenarios>
+        <Scenario name="AlwaysOn_Data_Movement_Tracing" enabled="True"/>
+      </Scenarios>
+      <Versions>
+        <Version name="11" enabled="false"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
+      <eventactions>
+        <action package="package0" name="callstack" />
+        <action package="sqlos" name="task_address" />
+        <action package="sqlos" name="worker_address" />
+      </eventactions>
+    </event>
+  </category>
+
 </XEvents>
 

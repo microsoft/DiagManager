@@ -1,7 +1,7 @@
 # run example
 # powershell.exe -ExecutionPolicy Bypass   .\SqlBaseUtil.ps1 GetWindowsHotfix
 param(
-  [string]$InvokeMethod
+  [string]$InvokeMethod,
   [string]$OutputPath
 )
 

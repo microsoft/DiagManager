@@ -267,7 +267,7 @@ CREATE PROCEDURE sp_perf_stats_infrequent12 @runtime datetime, @firstrun int = 0
       (
         SELECT [timestamp], [record] 
           FROM sys.dm_os_ring_buffers 
-          WHERE ring_buffer_type in (''RING_BUFFER_CONNECTIVITY'',''RING_BUFFER_SECURITY_ERROR'')'
+          WHERE ring_buffer_type in (''RING_BUFFER_CONNECTIVITY'',''RING_BUFFER_SECURITY_ERROR'',''RING_BUFFER_SECURITY_CACHE'')'
   IF @firstrun = 0
     SET @sql = @sql + '            AND [timestamp] > @ts'
   SET @sql = @sql + '      ) as rb
@@ -295,6 +295,26 @@ CREATE PROCEDURE sp_perf_stats_infrequent12 @runtime datetime, @firstrun int = 0
   --SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
   --IF @queryduration > @qrydurationwarnthreshold
   --  PRINT 'DebugPrint: perfstats2 qry19 - ' + CONVERT (varchar, @queryduration) + 'ms' + CHAR(13) + CHAR(10)
+
+
+  /* Resultset #20: System Requests */
+  PRINT ''
+  RAISERROR ('-- System Requests --', 0, 1) WITH NOWAIT
+  SET @querystarttime = GETDATE()
+  
+  select /*qry20*/ CONVERT (varchar(30), @runtime, 126) AS 'runtime', tr.os_thread_id, req.* 
+    from sys.dm_exec_requests req 
+	  join sys.dm_os_workers wrk  on req.task_address = wrk.task_address and req.connection_id is null
+      join sys.dm_os_threads tr on tr.worker_address=wrk.worker_address
+
+
+	  RAISERROR (' ', 0, 1) WITH NOWAIT;
+  --SET @rowcount = @@ROWCOUNT
+  --SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
+  --IF @queryduration > @qrydurationwarnthreshold
+  --  PRINT 'DebugPrint: perfstats2 qry20 - ' + CONVERT (varchar, @queryduration) + 'ms, rowcount=' + CONVERT(varchar, @rowcount) + CHAR(13) + CHAR(10)
+
+
 
   --/* Raise a diagnostic message if we use more CPU than normal (a typical execution uses <200ms) */
   --DECLARE @cpu_time bigint, @elapsed_time bigint

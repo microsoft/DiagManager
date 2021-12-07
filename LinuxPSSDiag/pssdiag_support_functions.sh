@@ -10,7 +10,7 @@ DEFAULT_VALUE="1433"
 if [[ "$1" == "host_instance" ]]; then
 	FILE_EXISTS=$(sh -c "test -f ${MSSQL_CONF} && echo 'exists' || echo 'not exists'")
 	if [[ "${FILE_EXISTS}" == "exists" ]]; then
-        	tcpport=`cat ${MSSQL_CONF} | grep -i ${CONFIG_NAME} | sed 's/ *= */=/g' | awk -F '=' '{ print $2}'`
+        	tcpport=`cat ${MSSQL_CONF} | grep -i -w ${CONFIG_NAME} | sed 's/ *= */=/g' | awk -F '=' '{ print $2}'`
         	if [[ ${tcpport} != "" ]] ; then
                 	echo "${tcpport}"
         	else
@@ -24,7 +24,7 @@ fi
 if [[ "$1" == "container_instance" ]]; then
 	FILE_EXISTS=$(docker exec ${3} sh -c "test -f ${MSSQL_CONF} && echo 'exists' || echo 'not exists'")
 	if [[ "${FILE_EXISTS}" == "exists" ]]; then
-		tcpportline=$(docker exec ${3} sh -c "cat ${MSSQL_CONF} | grep -i ${CONFIG_NAME}")
+		tcpportline=$(docker exec ${3} sh -c "cat ${MSSQL_CONF} | grep -i -w ${CONFIG_NAME}")
 		tcpport=`echo ${tcpportline} | sed 's/ *= */=/g' | awk -F '=' '{ print $2}'`
         	if [[ ${tcpport} != "" ]] ; then
                 	echo "${tcpport}"

@@ -1,0 +1,11 @@
+-- this stored procedure is created from MSDiagprocs.sql
+-- please make sure that script runs before launching this
+-- this trace will capture only events that correspond to light performance capture. See the Events parameter.
+
+EXEC tempdb.dbo.sp_trace13 'ON'
+,@Events='10,12'
+,@AppName='SQLDIAG_Trace_*'
+,@FileName='##TraceFileName##'
+,@MaxFileSize=500
+,@FileCount=50
+

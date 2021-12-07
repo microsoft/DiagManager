@@ -58,7 +58,7 @@ begin
 	while @@FETCH_STATUS = 0
 			begin
 			declare @HasHekatonTable int
-			declare @cmd nvarchar(max) =N'select @HasHekatonTable = count (*) from ' + @dbname + N'.sys.tables where is_memory_optimized = 1'
+			declare @cmd nvarchar(max) =N'select @HasHekatonTable = count (*) from [' + @dbname + N'].sys.tables where is_memory_optimized = 1'
 			exec sp_executesql @cmd, N'@HasHekatonTable Int output', @HasHekatonTable output
 			--only get property for databases that have 
 			if @HasHekatonTable >0
