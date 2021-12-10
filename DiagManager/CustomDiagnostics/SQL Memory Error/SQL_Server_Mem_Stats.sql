@@ -267,7 +267,9 @@ sys.ms_ticks AS [Current Time]
 	x.value('(//Record/MemoryNode/CommittedMemory)[1]', 'bigint') AS [SQL_CommittedMemory_KB], 
 	x.value('(//Record/@id)[1]', 'bigint') AS [Record Id], 
 	x.value('(//Record/@type)[1]', 'varchar(30)') AS [Type], 
-	x.value('(//Record/ResourceMonitor/Indicators)[1]', 'int') AS [Indicators], 
+	x.value('(//Record/ResourceMonitor/IndicatorsProcess)[1]', 'int') AS [IndicatorsProcess], 
+	x.value('(//Record/ResourceMonitor/IndicatorsSystem)[1]', 'int') AS [IndicatorsSystem], 
+	x.value('(//Record/ResourceMonitor/IndicatorsPool)[1]', 'int') AS [IndicatorsPool], 
 	x.value('(//Record/@time)[1]', 'bigint') AS [Record Time]
 	FROM (SELECT CAST (record as xml) FROM sys.dm_os_ring_buffers 
 	WHERE ring_buffer_type = 'RING_BUFFER_RESOURCE_MONITOR') AS R(x)) a 
