@@ -31,7 +31,7 @@ BEGIN
         SELECT CONVERT (varchar(30), @runtime, 126) as runtime,
             CONVERT (varchar(30), @runtime_utc, 126) as runtime_utc,
             qp.session_id,
-			qp.physical_operator_name,
+			convert(nvarchar(48), qp.physical_operator_name) as physical_operator_name,
             qp.row_count,
             qp.estimate_row_count,
             qp.node_id,
@@ -169,7 +169,7 @@ begin
 	BEGIN
         --query the DMV in a loop to compare the 
 		EXEC dbo.sp_perf_never_ending_query_snapshots @appname = 'PSSDIAG'
-        WAITFOR DELAY '00:00:10'
+        WAITFOR DELAY '00:00:20'
     END
 end
 
