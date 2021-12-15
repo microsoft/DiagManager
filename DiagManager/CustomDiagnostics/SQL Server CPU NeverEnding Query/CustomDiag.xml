@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CustomTasks>
+	<CustomTask enabled="true" groupname="SQL Server CPU NeverEnding Query" taskname="NeverEndingPlans" type="Utility" point="Shutdown" wait="No" cmd="powershell.exe .\PlanGeneratingNeverEndingQuery.ps1 %output_name% %server_instance%" pollinginterval="0" />
+	<CustomTask enabled="true" groupname="SQL Server CPU NeverEnding Query" taskname="NeverEndingPlans" type="Utility" point="Startup" wait="No" cmd="powershell.exe .\PlanGeneratingNeverEndingQuery.ps1 %output_name% %server_instance%" pollinginterval="0" />
+	<CustomTask enabled="true" groupname="SQL Server CPU NeverEnding Query" taskname="QueryNever Complets Stats" type="TSQL_Script" point="Startup" wait="No" cmd="QueryNeverCompletes_perfstats.sql" pollinginterval="0" />
+	<CustomTask enabled="true" groupname="SQL Server CPU NeverEnding Query" taskname="Turn off TF7412 NeverEnding" type="TSQL_Command" point="Shutdown" wait="Yes" cmd="IF (SELECT TOP 1 GLOBAL FROM tempdb.dbo.original_config_tf_7412 ORDER BY ID) = 0 BEGIN DBCC TRACEOFF (7412, -1) END DROP TABLE tempdb.dbo.original_config_tf_7412" pollinginterval="0" />
+</CustomTasks>
