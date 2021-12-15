@@ -28,7 +28,7 @@ IF ($validver -eq 1){
 
 
 #enable mandatory traceflag and create restore to original configuration logic
-IF ($pssdiagprefix -ilike "*startup*"){
+If ($pssdiagprefix -ilike "*startup*"){
     $query_sqlcmdtf = "IF (OBJECT_ID('tempdb.dbo.original_config_tf_7412')) IS NULL
         BEGIN
             CREATE TABLE tempdb.dbo.original_config_tf_7412 ([ID] [bigint] IDENTITY(1,1) NOT NULL,[TraceFlag] INT, Status INT, Global INT, Session INT)
@@ -88,11 +88,12 @@ While ($runs –lt 3) {
     }
     Clear-Variable numbers
     
-    IF (($pssdiagprefix -ilike "*startup*") -and ($runs -lt 3)){
+    If (($pssdiagprefix -ilike "*startup*") -and ($runs -lt 3)){
         Start-Sleep -s 120
-    } ELSE {
+    } Else {
         EXIT
     }
 }
+
 Clear-Variable runs
 Clear-Variable pssdiagprefix

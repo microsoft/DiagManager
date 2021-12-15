@@ -123,7 +123,6 @@ SET @serverbuild = CONVERT (int, SERVERPROPERTY ('ProductBuild'))
 
 
 
-
 --minimum build 12.0.5000.0 , see https://docs.microsoft.com/en-us/sql/relational-databases/performance/query-profiling-infrastructure?view=sql-server-ver15
 if (@servermajorversion <= 12 and @serverbuild < 5000)
 begin
@@ -175,7 +174,3 @@ end
 
 go
 exec dbo.sp_Run_NeverEndingQuery_Stats
-
-
---2016 2017 and 2019 to make sure it is consistent
-
