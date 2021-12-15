@@ -31,22 +31,37 @@ BEGIN
         SELECT CONVERT (varchar(30), @runtime, 126) as runtime,
             CONVERT (varchar(30), @runtime_utc, 126) as runtime_utc,
             qp.session_id,
-            text as query_text,
-            qp.physical_operator_name,
-            qp.node_id,
+			qp.physical_operator_name,
             qp.row_count,
+            qp.estimate_row_count,
+            qp.node_id,
+            req.cpu_time,
+            req.total_elapsed_time,
+			substring
+    		(REPLACE
+    		(REPLACE
+    			(SUBSTRING
+    			(SQLText.text
+    			, (req.statement_start_offset/2) + 1
+    			, (
+    				(CASE statement_END_offset
+    					WHEN -1
+    					THEN DATALENGTH(SQLText.text)  
+    					ELSE req.statement_END_offset
+    					END
+    					- req.statement_start_offset)/2) + 1)
+    		, CHAR(10), ' '), CHAR(13), ' '), 1, 512)  AS active_statement_text, 
             qp.rewind_count,
             qp.rebind_count, 
 			qp.end_of_scan_count,
-            qp.estimate_row_count,
-            req.cpu_time,
-            req.total_elapsed_time
+			replace(replace(substring(ISNULL(SQLText.text, ''),1,150),CHAR(10), ' '),CHAR(13), ' ')  as batch_text
         FROM sys.dm_exec_query_profiles qp 
 		RIGHT OUTER JOIN sys.dm_exec_requests req
 			ON qp.session_id = req.session_id
 		LEFT OUTER JOIN sys.dm_exec_sessions sess
 			on req.session_id = sess.session_id
-		CROSS APPLY sys.dm_exec_sql_text(qp.sql_handle) st
+		LEFT OUTER JOIN sys.dm_exec_connections conn on conn.session_id = req.session_id
+		OUTER APPLY sys.dm_exec_sql_text (ISNULL (req.sql_handle, conn.most_recent_sql_handle)) as SQLText
 		WHERE req.session_id <> @@SPID 
 			AND ISNULL (sess.host_name, '') != @appname 
 			AND sess.is_user_process = 1 
