@@ -197,8 +197,47 @@ begin
 	--new stats DMV
 	set nocount on
 	declare @dbname sysname, @dbid int
-	DECLARE dbCursor CURSOR FOR 
-	select name, database_id from sys.databases where state_desc='ONLINE' and database_id > 4 order by name
+	
+	IF (SUBSTRING(CONVERT(NCHAR(3),SERVERPROPERTY('ProductVersion')),1,CHARINDEX ('.',CONVERT(NCHAR(3),SERVERPROPERTY('ProductVersion')))-1) >=11) -- check if SQL is 2012 or newer
+	BEGIN
+	  IF (select SERVERPROPERTY ('IsHadrEnabled')) = 1 AND -- check if AG feature is enabled
+	      EXISTS (select ar.replica_server_name, ar.replica_id,ar.secondary_role_allow_connections_desc, dr.database_id, role 
+	              from sys.availability_replicas ar
+	                inner join sys.dm_hadr_availability_replica_states rs
+	                  on (ar.replica_id = rs.replica_id)
+	                inner join sys.dm_hadr_database_replica_states dr
+	                  on (rs.replica_id = dr.replica_id)
+	              where role=2 and rs.is_local = 1) -- check if there are databases on secondary replicas with readable secondary disabled or read-intent only
+	  BEGIN
+	    DECLARE dbCursor CURSOR Fast_Forward for 
+	    select sd.name, sd.database_id--, dr.database_id, dr.replica_id, ar.replica_id, ar.secondary_role_allow_connections_desc
+        from sys.databases sd
+        	left join sys.dm_hadr_database_replica_states dr
+        		on (sd.database_id = dr.database_id)
+        	left join sys.availability_replicas ar
+        		on (dr.replica_id = ar.replica_id) 
+        where sd.state_desc='ONLINE' and sd.database_id > 4 and
+              (ar.secondary_role_allow_connections_desc = 'ALL' or ar.secondary_role_allow_connections_desc is null)
+         order by sd.name
+	     
+	  END
+	  ELSE
+	  BEGIN
+	    
+		DECLARE dbCursor CURSOR Fast_Forward FOR 
+	    select name, database_id from sys.databases sd where sd.state_desc='ONLINE' and sd.database_id > 4 order by sd.name
+	  
+	  END
+	END
+	ELSE
+	BEGIN
+	
+	  DECLARE dbCursor CURSOR Fast_Forward FOR 
+	  select name, database_id from sys.databases sd where sd.state_desc='ONLINE' and sd.database_id > 4 order by sd.name
+	  
+	  	  
+	END
+
 	OPEN dbCursor
 
 	FETCH NEXT FROM dbCursor  INTO @dbname, @dbid
