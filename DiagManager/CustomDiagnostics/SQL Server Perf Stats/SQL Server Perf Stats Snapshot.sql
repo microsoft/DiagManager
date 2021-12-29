@@ -203,21 +203,25 @@ begin
 	  IF (select SERVERPROPERTY ('IsHadrEnabled')) = 1 AND -- check if AG feature is enabled
 	      EXISTS (select ar.replica_server_name, ar.replica_id,ar.secondary_role_allow_connections_desc, dr.database_id, role 
 	              from sys.availability_replicas ar
-	                inner join sys.dm_hadr_availability_replica_states rs
-	                  on (ar.replica_id = rs.replica_id)
+	                inner join sys.dm_hadr_availability_replica_states ars
+	                  on (ar.replica_id = ars.replica_id)
 	                inner join sys.dm_hadr_database_replica_states dr
-	                  on (rs.replica_id = dr.replica_id)
-	              where role=2 and rs.is_local = 1) -- check if there are databases on secondary replicas with readable secondary disabled or read-intent only
+	                  on (ars.replica_id = dr.replica_id)
+	              where ars.role_desc='SECONDARY' and ars.is_local = 1) -- check if there are databases on secondary replicas 
 	  BEGIN
 	    DECLARE dbCursor CURSOR Fast_Forward for 
-	    select sd.name, sd.database_id--, dr.database_id, dr.replica_id, ar.replica_id, ar.secondary_role_allow_connections_desc
+	    select sd.name, sd.database_id
         from sys.databases sd
-        	left join sys.dm_hadr_database_replica_states dr
-        		on (sd.database_id = dr.database_id)
+        	left join sys.dm_hadr_database_replica_states drs
+        		on (sd.database_id = drs.database_id)
         	left join sys.availability_replicas ar
-        		on (dr.replica_id = ar.replica_id) 
+        		on (drs.replica_id = ar.replica_id) 
+			left join sys.dm_hadr_availability_replica_states ars	
+				on (ar.replica_id = ars.replica_id) AND
+				   (ar.group_id = ars.group_id)
         where sd.state_desc='ONLINE' and sd.database_id > 4 and
-              (ar.secondary_role_allow_connections_desc = 'ALL' or ar.secondary_role_allow_connections_desc is null)
+              ((ar.secondary_role_allow_connections_desc = 'ALL' and ars.role_desc='SECONDARY') or -- filter databases from secondary replicas with readable secondary disable or readintent only
+			   (ar.secondary_role_allow_connections_desc is null or ars.role_desc='PRIMARY'))
          order by sd.name
 	     
 	  END
@@ -241,15 +245,25 @@ begin
 	OPEN dbCursor
 
 	FETCH NEXT FROM dbCursor  INTO @dbname, @dbid
-	select @dbid 'Database_Id', @dbname 'Database_Name',  Object_name(st.object_id) 'Object_Name',  st.* into #tmpStats from sys.dm_db_index_usage_stats usg cross apply sys.dm_db_stats_properties (usg.object_id, index_id) st where database_id is null
+
+	select @dbid 'Database_Id', @dbname 'Database_Name',  Object_name(st.object_id) 'Object_Name',  st.* into #tmpStats 
+	from sys.stats ss cross apply sys.dm_db_stats_properties (ss.object_id, stats_id) st --replaced sys.dm_db_index_usage_stats  by sys.stat since the first doesn't return anything in case the table or index was not accessed since last SQL restart
+	where 1=0 
+	
+
 	WHILE @@FETCH_STATUS = 0
 	begin
 	
 		declare @sql nvarchar (512)
 		set @sql = 'USE [' + @dbname + ']'
 	
-		set @sql = @sql + '	insert into #tmpStats	select ' + cast( @dbid as nvarchar(20)) +   ' ''Database_Id''' + ',''' +  @dbname  + ''' Database_Name,  Object_name(st.object_id) ''Object_Name'',  st.* from sys.dm_db_index_usage_stats usg cross apply sys.dm_db_stats_properties (usg.object_id, index_id) st where database_id  = ' + cast( @dbid as nvarchar(20)) 
-	
+		set @sql = @sql + '	insert into #tmpStats	
+		                    select ' + cast( @dbid as nvarchar(20)) +   ' ''Database_Id''' + ',''' +  @dbname  + ''' Database_Name,  Object_name(st.object_id) ''Object_Name'',  st.* 
+		                    from sys.stats ss  
+							  cross apply sys.dm_db_stats_properties (ss.object_id, ss.stats_id) st 
+		                      inner join sys.objects so ON (ss.object_id = so.object_id) where so.type_desc not in (''SYSTEM_TABLE'', ''INTERNAL_TABLE'')'  
+							  --replaced sys.dm_db_index_usage_stats  by sys.stat since the first doesn't return anything in case the table or index was not accessed since last SQL restart
+							  
 		exec (@sql)
 		--print @sql
 		FETCH NEXT FROM dbCursor  INTO @dbname, @dbid
