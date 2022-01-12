@@ -53,8 +53,16 @@ print '--trace event details--'
 
 
 go
-print ''
 print '--XEvent Session Details--'
-select sess.name 'session_name', event_name  from sys.dm_xe_sessions sess join sys.dm_xe_session_events evt on sess.address = evt.event_session_address
+SELECT convert(nvarchar(128), sess.NAME) as 'session_name', convert(nvarchar(128), event_name) as event_name,
+CASE
+ WHEN xemap.trace_event_id IN ( 23, 24, 40, 41,44, 45, 51, 52,54, 68, 96, 97,98, 113, 114, 122,146, 180 )
+ THEN Cast(1 AS BIT) ELSE Cast(0 AS BIT)
+END AS expensive_event
+FROM sys.dm_xe_sessions sess
+ INNER JOIN sys.dm_xe_session_events evt
+ON sess.address = evt.event_session_address
+ INNER JOIN sys.trace_xe_event_map xemap
+ ON evt.event_name = xemap.xe_event_name
 print ''
 go

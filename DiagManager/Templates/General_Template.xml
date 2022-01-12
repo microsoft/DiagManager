@@ -6,70 +6,20 @@
     <Version name="11" friendlyname="SQL 2012"  enabled="true"  />
     <Version name="12" friendlyname="SQL 2014"  enabled="true"  />
     <Version name="13" friendlyname="SQL 2016"  enabled="true" />
+    <Version name="14" friendlyname="SQL 2017"  enabled="true" />
+    <Version name="15" friendlyname="SQL 2019"  enabled="true" />  
   </Versions>
   <Features>
-    <Feature name="AS" friendlyname="Analysis Service" enabled="true"/>
+    
     <Feature name="SQL" friendlyname="SQL Engine" enabled="true"/>
   </Features>
 
   <Scenarios>
 
-    <Scenario name="ASTabPerf" friendlyname="AS Tabular Performance" target="file"  DefaultChecked="false">
-      <Features>
-        <Feature name="SQL" enabled="false"/>
-        <Feature name="AS" enabled="true"/>
-      </Features>
-      <Versions>
-        <Version name="9"  enabled="true"/>
-        <Version name="10" enabled="true"/>
-        <Version name="10.50" enabled="true"/>
-        <Version name="11" enabled="true"/>
-        <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/>
-      </Versions>
-    </Scenario>
-
-
-
-    <Scenario name="ASGeneral" friendlyname="AS General" target="file"  DefaultChecked="false">
-      <Features>
-        <Feature name="SQL" enabled="false"/>
-        <Feature name="AS" enabled="true"/>
-      </Features>
-      <Versions>
-        <Version name="9"  enabled="true"/>
-        <Version name="10" enabled="true"/>
-        <Version name="10.50" enabled="true"/>
-        <Version name="11" enabled="true"/>
-        <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/>
-      </Versions>
-    </Scenario>
-
-
-
-    <Scenario name="ASMDPerf" friendlyname="AS Multidimensional Performance" target="file"  DefaultChecked="false">
-      <Features>
-        <Feature name="SQL" enabled="false"/>
-        <Feature name="AS" enabled="true"/>
-      </Features>
-      <Versions>
-        <Version name="9"  enabled="true"/>
-        <Version name="10" enabled="true"/>
-        <Version name="10.50" enabled="true"/>
-        <Version name="11" enabled="true"/>
-        <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/>
-      </Versions>
-    </Scenario>
-
-
- 
-    
     <Scenario name="GeneralPerf" friendlyname="General Performance" target="file"  DefaultChecked="false" description="Captures perf stats scripts, perfmon plus XEvent or Profiler trace  which has batch, RPC events plus exceptions etc" >
       <Features>
         <Feature name="SQL" enabled="true"/>
-        <Feature name="AS" enabled="false"/>
+        
       </Features>
        <Versions>
         <Version name="9"  enabled="true"/>
@@ -78,6 +28,8 @@
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
       </Versions>
 
     </Scenario>
@@ -86,7 +38,7 @@
     <Scenario name="LightPerf" friendlyname="Light Performance" target="file"  DefaultChecked="true" description="Captures perf stats scripts, perfmon plus XEvent or Profiler trace  which only has Batch:Completed and RPC:Completed events.">
       <Features>
         <Feature name="SQL" enabled="true"/>
-        <Feature name="AS" enabled="false"/>
+        
       </Features>
       <Versions>
         <Version name="9" enabled="true"/>
@@ -95,12 +47,14 @@
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
       </Versions>
     </Scenario>
     <Scenario name="DetailedPerf" friendlyname="Detailed Performance" target="file" DefaultChecked="false" description="Captures perf stats scripts, perfmon plus XEvent or Profiler trace which can be excessive including statement level events!">
       <Features>
         <Feature name="SQL" enabled="true"/>
-        <Feature name="AS" enabled="false"/>
+        
       </Features>
       <Versions>
         <Version name="9" enabled="true"/>
@@ -109,25 +63,33 @@
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>      
      </Versions>
 
     </Scenario>
-    <Scenario name="QueryPerf" friendlyname="Query Performance"  target="file" DefaultChecked="false" description="Captures query execution plan and wait info xevents etc">
+    
+
+    <Scenario name="QueryPerf" friendlyname="Query Performance"  target="file" DefaultChecked="false" description="Captures statement level events and the actual execution plan">
       <Features>
         <Feature name="SQL" enabled="true"/>
-        <Feature name="AS" enabled="false"/>
+        
       </Features>
       <Versions>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>      
       </Versions>
 
     </Scenario>
+ 
+    
     <Scenario name="Replay" friendlyname="Replay" target="file"  DefaultChecked="false" description="Captures trace for RML replay">
       <Features>
         <Feature name="SQL" enabled="true"/>
-        <Feature name="AS" enabled="false"/>
+        
       </Features>
       <Versions>
         <Version name="9" enabled="true"/>
@@ -136,6 +98,8 @@
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>      
       </Versions>
 
     </Scenario>
@@ -160,6 +124,8 @@
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>      
       </Versions>
 
     </Scenario>
@@ -167,14 +133,16 @@
 
     <Scenario name="AzureVM" friendlyname="Azure Virtual Machine" target="file"  DefaultChecked="false" description="Captures Azure Vritual Machine" >
       <Features>
-        <Feature name="SQL" enabled="true"/>
-        <Feature name="AS" enabled="false"/>
+        <Feature name="SQL" enabled="false"/>
+        
       </Features>
       <Versions>
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>      
       </Versions>
 
     </Scenario>
@@ -187,6 +155,8 @@
       <Versions>
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>      
       </Versions>
     </Scenario>
 
@@ -200,6 +170,8 @@
       <Versions>
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>      
       </Versions>
     </Scenario>
 
@@ -211,6 +183,8 @@
       <Versions>
         
         <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>      
       </Versions>
     </Scenario>
 
@@ -221,6 +195,8 @@
       </Features>
       <Versions>
         <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>      
       </Versions>
     </Scenario>
 
@@ -233,11 +209,26 @@
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>      
       </Versions>
 
     </Scenario>
 
+    <Scenario name="AlwaysOn_Data_Movement_Tracing" friendlyname="AlwaysOn Data Movement Tracing"  target="file" DefaultChecked="false" >
+      <Features>
+        <Feature name="SQL" enabled="true"/>
+      </Features>
+      <Versions>
+        <Version name="11" enabled="true"/>
+        <Version name="12" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+      </Versions>
 
+    </Scenario>
+    
   </Scenarios>
 
   <DefaultSetting>
@@ -248,12 +239,12 @@
     <DefaultChoice Feature="SQL" Version="10" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="true">
       <Scenario name="DetailedPerf"/>
     </DefaultChoice>
-
     <DefaultChoice Feature="SQL" Version="10.50" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="true">
       <Scenario name="GeneralPerf"/>
     </DefaultChoice>
+    <!-- Issue 109 - Changed Default Tracing to XEvent for 2012 + -->
     <DefaultChoice Feature="SQL" Version="11" Profiler="false" Perfmon="true" XEvent="true" EvengLog="true" Sqldiag="true">
-      <Scenario name="LightPerf"/>
+      <Scenario name="GeneralPerf"/>
     </DefaultChoice>
     <DefaultChoice Feature="SQL" Version="12" Profiler="false" Perfmon="true" XEvent="true" EvengLog="true" Sqldiag="true">
       <Scenario name="GeneralPerf"/>
@@ -261,26 +252,14 @@
     <DefaultChoice Feature="SQL" Version="13" Profiler="false" Perfmon="true" XEvent="true" EvengLog="true" Sqldiag="true">
       <Scenario name="GeneralPerf"/>
     </DefaultChoice>
-
-    <!-- AS  -->
-    <DefaultChoice Feature="AS" Version="9" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="false">
-      <Scenario name="ASGeneral"/>
+    <DefaultChoice Feature="SQL" Version="14" Profiler="false" Perfmon="true" XEvent="true" EvengLog="true" Sqldiag="true">
+      <Scenario name="GeneralPerf"/>
     </DefaultChoice>
-      <DefaultChoice Feature="AS" Version="10" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="false">
-      <Scenario name="ASGeneral"/>
+    <DefaultChoice Feature="SQL" Version="15" Profiler="false" Perfmon="true" XEvent="true" EvengLog="true" Sqldiag="true">
+      <Scenario name="GeneralPerf"/>
     </DefaultChoice>
-      <DefaultChoice Feature="AS" Version="10.50" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="false">
-      <Scenario name="ASGeneral"/>
-    </DefaultChoice>
-      <DefaultChoice Feature="AS" Version="11" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="false">
-      <Scenario name="ASGeneral"/>
-    </DefaultChoice>
-      <DefaultChoice Feature="AS" Version="12" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="false">
-      <Scenario name="ASGeneral"/>
-    </DefaultChoice>
-    <DefaultChoice Feature="AS" Version="13" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="false" >
-      <Scenario name="ASGeneral"/>
-    </DefaultChoice>
+      
+  
   
   </DefaultSetting>
 </DiagMgr>

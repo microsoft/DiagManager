@@ -172,23 +172,27 @@ begin
 	print '--sys.dm_database_encryption_keys  Transparent Database Encryption (TDE) information'
 	select DB_NAME(database_id) as 'database_name', * from sys.dm_database_encryption_keys 
 
-	print '-- sys.dm_os_loaded_modules '
+	print ''
+	print '-- sys.dm_os_loaded_modules --'
 	select * from sys.dm_os_loaded_modules
+	print ''
 
+	print ''
 	print '--sys.dm_server_audit_status'
 	select * from sys.dm_server_audit_status
 
-
+	print ''
 	print '--top 10 CPU consuming procedures '
 	SELECT TOP 10 d.object_id, d.database_id, db_name(database_id) 'db name', object_name (object_id, database_id) 'proc name',  d.cached_time, d.last_execution_time, d.total_elapsed_time, d.total_elapsed_time/d.execution_count AS [avg_elapsed_time], d.last_elapsed_time, d.execution_count
 	from sys.dm_exec_procedure_stats d
 	ORDER BY [total_worker_time] DESC
 
+	print ''
 	print '--top 10 CPU consuming triggers '
 	SELECT TOP 10 d.object_id, d.database_id, db_name(database_id) 'db name', object_name (object_id, database_id) 'proc name',  d.cached_time, d.last_execution_time, d.total_elapsed_time, d.total_elapsed_time/d.execution_count AS [avg_elapsed_time], d.last_elapsed_time, d.execution_count
 	from sys.dm_exec_trigger_stats d
 	ORDER BY [total_worker_time] DESC
-
+	print ''
 
 	--new stats DMV
 	set nocount on
@@ -254,7 +258,9 @@ begin
 	print ''
 
 
-	
+	print '-- server_times --'
+	select CONVERT (varchar(30), getdate(), 126) as server_time, CONVERT (varchar(30), getutcdate(), 126)  utc_time, DATEDIFF(hh, getdate(), getutcdate()) time_delta_hours
+
 	/*
 	this takes too long for large machines
 		PRINT '-- High Compile Queries --';
@@ -544,7 +550,29 @@ end
 
 go
 
+IF OBJECT_ID ('sp_perf_stats_snapshot14','P') IS NOT NULL
+   DROP PROCEDURE sp_perf_stats_snapshot14
+GO
 
+CREATE PROCEDURE sp_perf_stats_snapshot14
+as
+begin
+	exec sp_perf_stats_snapshot13
+end
+
+go
+
+IF OBJECT_ID ('sp_perf_stats_snapshot15','P') IS NOT NULL
+   DROP PROCEDURE sp_perf_stats_snapshot15
+GO
+
+CREATE PROCEDURE sp_perf_stats_snapshot15
+as
+begin
+	exec sp_perf_stats_snapshot14
+end
+
+go
 
 /*****************************************************************
 *                   main loop   perf statssnapshot               *

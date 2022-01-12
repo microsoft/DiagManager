@@ -1,0 +1,97 @@
+###############################
+# SECTION FOR OPERATING SYSTEM
+###############################
+
+# Collects Operating System Configuration, values are YES or NO
+# BDC: NOTE: do not Change the Value - Keep it as NO
+COLLECT_OS_CONFIG=NO
+
+# Collects OS level counters (iostat,mpstats,cpustat,etc). Specify YES or NO
+# Interval of collection is in seconds
+# BDC: NOTE: do not Change the Value - Keep it as NO
+COLLECT_OS_COUNTERS=NO
+OS_COUNTERS_INTERVAL=15
+
+# Collect OS log files
+# BDC: NOTE: do not Change the Value - Keep it as NO
+COLLECT_OS_LOGS=NO
+
+# Collect setup related files
+#COLLECT_SETUP_LOGS=NO
+
+# Collect OS HA related OS files and logs
+#COLLECT_OS_HA_LOGS=NO
+
+# Collect OS security, encryption and AD files and logs
+#COLLECT_OS_SEC_AD_LOGS=NO
+
+#########################
+# SECTION FOR SQL SERVER
+#########################
+
+# Collect information about the SQL Server instance running on this local  host machine ( not as a container). Specify YES or NO.
+COLLECT_HOST_SQL_INSTANCE=YES
+
+# Used if SQL Server is running as a container
+# This value is either a specific Container Name (not ID)  or the value "ALL" which monitors all SQL containers
+COLLECT_CONTAINER=NO
+
+# Gets all SQL errorlogs, .xel files under the log folder ( system health etc). Specify YES or NO.
+COLLECT_SQL_LOGS=YES
+
+# Collects SQL Server Dump Files - Note output can be fairly large depending on the number of dumps
+COLLECT_SQL_DUMPS=NO
+
+# Specify the authentication mode to use for connecting to SQL instance
+# Valid values : SQL / AD
+#SQL_CONNECT_AUTH_MODE=SQL
+
+# Collects snapshots of sys.dm_os_performance_counters. Specify YES or NO
+# Interval is in seconds
+COLLECT_SQL_COUNTERS=YES
+SQL_COUNTERS_INTERVAL=15
+
+# Collects SQL Server performance statistics , executing requests, snapshots of waitstats etc. Specify YES or NO
+COLLECT_PERFSTATS=YES
+
+# Specify YES or NO. 
+COLLECT_EXTENDED_EVENTS=NO
+# Specify which template to use for Extended Events: pssdiag_xevent_general, pssdiag_xevent_detailed, pssdiag_xevent_light
+EXTENDED_EVENT_TEMPLATE=pssdiag_xevent_general
+
+# Specify YES or NO. 
+COLLECT_SQL_TRACE=YES
+# Specify which template to use for SQL Trace: pssdiag_trace_general, pssdiag_trace_detailed, pssdiag_trace_light, pssdiag_trace_replication
+SQL_TRACE_TEMPLATE=pssdiag_trace_general
+
+# Specify whether we need to extract QDS/Query Store information from this server
+COLLECT_QUERY_STORE=YES
+
+# Collects various memory related DMVS. Specify YES or NO.
+COLLECT_SQL_MEM_STATS=YES
+
+# Collects SQL related HA logs
+COLLECT_SQL_HA_LOGS=YES
+
+# Collects SQL security, encryption and AD related settings and log
+#COLLECT_SQL_SEC_AD_LOGS=NO
+
+# If you want any other custom collection, set this to YES and change the my_custom_collector.sql file to include your queries.
+CUSTOM_COLLECTOR=NO
+
+##########################
+# SECTION FOR SQL AGENT
+##########################
+
+# Collects information SQL Agent and its logs
+
+
+##################
+#SECTION FOR SSIS
+##################
+
+# collect ssis specific information
+
+
+
+

@@ -1,0 +1,11 @@
+-- this stored procedure is created from MSDiagprocs.sql
+-- please make sure that script runs before launching this
+-- this trace captures all events necessary for tracking replication activity and troubleshooting
+
+EXEC tempdb.dbo.sp_trace13 'ON'
+,@Events='138,161,140,160,196,78,74,76,53,70,75,77,92,94,167,93,95,16,193,212,21,33,127,67,55,79,80,69,162,157,60,189,61,58,217,168,146,190,115,158,159,116,14,20,15,195,81,150,17,216,215,100,10,11,34,36,43,37,42,45,44,19,50,182,186,184,188,187,192,71,12,13,41,166,40,73'
+,@AppName='SQLDIAG_Trace_*'
+,@FileName='##TraceFileName##'
+,@MaxFileSize=500
+,@FileCount=50
+

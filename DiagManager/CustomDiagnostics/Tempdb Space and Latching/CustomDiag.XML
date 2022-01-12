@@ -1,0 +1,4 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+  <CustomTask enabled="true" groupname="SQL 2005 tempdb" taskname="TempDbAnalysis" type="TSQL_Script" point="Startup" wait="No" cmd="TempDBAnalysis.sql" />
+</CustomTasks>

@@ -1,39 +1,4 @@
 /**************************************************
-beginning of licensing agreement
-Microsoft Public License (Ms-PL)
-
-This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.
-
-1. Definitions
-
-The terms "reproduce," "reproduction," "derivative works," and "distribution" have the same meaning here as under U.S. copyright law.
-
-A "contribution" is the original software, or any additions or changes to the software.
-
-A "contributor" is any person that distributes its contribution under this license.
-
-"Licensed patents" are a contributor's patent claims that read directly on its contribution.
-
-2. Grant of Rights
-
-(A) Copyright Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free copyright license to reproduce its contribution, prepare derivative works of its contribution, and distribute its contribution or any derivative works that you create.
-
-(B) Patent Grant- Subject to the terms of this license, including the license conditions and limitations in section 3, each contributor grants you a non-exclusive, worldwide, royalty-free license under its licensed patents to make, have made, use, sell, offer for sale, import, and/or otherwise dispose of its contribution in the software or derivative works of the contribution in the software.
-
-3. Conditions and Limitations
-
-(A) No Trademark License- This license does not grant you rights to use any contributors' name, logo, or trademarks.
-
-(B) If you bring a patent claim against any contributor over patents that you claim are infringed by the software, your patent license from such contributor to the software ends automatically.
-
-(C) If you distribute any portion of the software, you must retain all copyright, patent, trademark, and attribution notices that are present in the software.
-
-(D) If you distribute any portion of the software in source code form, you may do so only under this license by including a complete copy of this license with your distribution. If you distribute any portion of the software in compiled or object code form, you may only do so under a license that complies with this license.
-
-(E) The software is licensed "as-is." You bear the risk of using it. The contributors give no express warranties, guarantees or conditions. You may have additional consumer rights under your local laws which this license cannot change. To the extent permitted under your local laws, the contributors exclude the implied warranties of merchantability, fitness for a particular purpose and non-infringement. 
-end of licensing agreement
-**************************************************/
-/**************************************************
 Microsoft Public License (Ms-PL)
 
 This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.
@@ -168,6 +133,49 @@ namespace PssdiagConfig
             node.Attributes.Append(attribEventLogCollectorStartup);
             node.Attributes.Append(attribEventLogCollectorShutdown);
 
+            XmlNode Eventlogs = doc.CreateNode(XmlNodeType.Element, "Eventlogs", "");
+            node.AppendChild(Eventlogs);
+
+
+            //create the application eventlog node with attributes
+            XmlNode EventLogTypeApp = doc.CreateNode(XmlNodeType.Element, "EventlogType", "");
+            Eventlogs.AppendChild(EventLogTypeApp);
+
+            XmlAttribute attribEventLogCollectorAppName = doc.CreateAttribute("name");
+            attribEventLogCollectorAppName.Value = "Application";
+            EventLogTypeApp.Attributes.Append(attribEventLogCollectorAppName);
+
+            XmlAttribute attribEventLogCollectorAppEnabled = doc.CreateAttribute("enabled");
+            attribEventLogCollectorAppEnabled.Value = "true";
+            EventLogTypeApp.Attributes.Append(attribEventLogCollectorAppEnabled);
+
+
+            //create the system eventlog node with attributes
+            XmlNode EventLogTypeSys = doc.CreateNode(XmlNodeType.Element, "EventlogType", "");
+            Eventlogs.AppendChild(EventLogTypeSys);
+
+            XmlAttribute attribEventLogCollectorSysName = doc.CreateAttribute("name");
+            attribEventLogCollectorSysName.Value = "System";
+            EventLogTypeSys.Attributes.Append(attribEventLogCollectorSysName);
+
+            XmlAttribute attribEventLogCollectorSysEnabled = doc.CreateAttribute("enabled");
+            attribEventLogCollectorSysEnabled.Value = "true";
+            EventLogTypeSys.Attributes.Append(attribEventLogCollectorSysEnabled);
+
+
+            //create the Security eventlog node with attributes
+            XmlNode EventLogTypeSec = doc.CreateNode(XmlNodeType.Element, "EventlogType", "");
+            Eventlogs.AppendChild(EventLogTypeSec);
+
+            XmlAttribute attribEventLogCollectorSecName = doc.CreateAttribute("name");
+            attribEventLogCollectorSecName.Value = "Security";
+            EventLogTypeSec.Attributes.Append(attribEventLogCollectorSecName);
+
+            XmlAttribute attribEventLogCollectorSecEnabled = doc.CreateAttribute("enabled");
+            attribEventLogCollectorSecEnabled.Value = "false";
+            EventLogTypeSec.Attributes.Append(attribEventLogCollectorSecEnabled);
+
+
 
         }
 
@@ -213,12 +221,14 @@ namespace PssdiagConfig
         //ds_Config/Collection/Machines/Machine/MachineCollectors/PerfmonCollector
         void SetMachineCollectors (XmlNode node)
         {
+            //create the EventLogCollector node and process children and attributes for it
             XmlNode EventLogCollectorNode = m_doc.CreateNode(XmlNodeType.Element, "EventlogCollector", "");
-            XmlNode PerfmonCollectorNode = m_doc.CreateNode(XmlNodeType.Element, "PerfmonCollector", "");
             node.AppendChild(EventLogCollectorNode);
-            node.AppendChild(PerfmonCollectorNode);
-
             SetEventLogCollector(EventLogCollectorNode);
+
+            //create the PerfmonCollector node and process children and attributes for it
+            XmlNode PerfmonCollectorNode = m_doc.CreateNode(XmlNodeType.Element, "PerfmonCollector", "");
+            node.AppendChild(PerfmonCollectorNode);
             SetPerfmonCollector(PerfmonCollectorNode);
 
 

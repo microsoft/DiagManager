@@ -44,12 +44,13 @@ order by PropertyName
 drop table #summary
 go
 
-declare @startup table (ArgsName nvarchar(10), ArgsValue nvarchar(max))
-insert into @startup EXEC master..xp_instance_regenumvalues 'HKEY_LOCAL_MACHINE',   'SOFTWARE\Microsoft\MSSQLServer\MSSQLServer\Parameters'
-print ''
-RAISERROR ('--Startup Parameters--', 0, 1) WITH NOWAIT
-select * from @startup
-go
+-- commented out by Suresh Kandoth since this will hang 
+-- declare @startup table (ArgsName nvarchar(10), ArgsValue nvarchar(max))
+-- insert into @startup EXEC master..xp_instance_regenumvalues 'HKEY_LOCAL_MACHINE',   'SOFTWARE\Microsoft\MSSQLServer\MSSQLServer\Parameters'
+-- print ''
+-- RAISERROR ('--Startup Parameters--', 0, 1) WITH NOWAIT
+-- select * from @startup
+-- go
 
 create table #traceflg (TraceFlag int, Status int, Global int, Session int)
 insert into #traceflg exec ('dbcc tracestatus (-1)')
