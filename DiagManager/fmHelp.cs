@@ -74,7 +74,7 @@ namespace PssdiagConfig
         {
 
             LinkLabel.Link link0 = new LinkLabel.Link();
-            link0.LinkData = "http://aka.ms/pssdiag/whatsnew";
+            link0.LinkData = "http://aka.ms/get-pssdiag";
             lblWhatsNew.Links.Add(link0);
 
             LinkLabel.Link link = new LinkLabel.Link();

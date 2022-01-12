@@ -383,7 +383,7 @@ namespace PssdiagConfig
             }
             else
             {
-                throw new ArgumentException("Invalide custom group");
+                throw new ArgumentException("Invalid custom group: " + ((CustomGroupName == null)? "NULL": CustomGroupName));
             }
 
 
@@ -456,12 +456,10 @@ namespace PssdiagConfig
             string CustomDiag = Globals.ExePath + @"\CustomDiagnostics";
             DirectoryInfo dInfo = new DirectoryInfo(CustomDiag);
             DirectoryInfo[] subdirs = dInfo.GetDirectories();
+
             foreach (DirectoryInfo dirinfo in subdirs)
             {
               //  Logger.LogInfo(dirinfo.Name);
-
-                //DiagCategory cat = new DiagCategory("CustomGroup", dirinfo.Name);
-
 
                 DiagCategory cat = GetCustomGroup (dirinfo.Name, dirinfo.FullName + @"\CustomDiag.xml");
                 //donit' want ot deal with empty folder

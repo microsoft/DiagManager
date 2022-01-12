@@ -474,9 +474,33 @@ namespace PssdiagConfig
             if (saveFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 DestFullFileName = saveFileDialog1.FileName;
+                string filename_only = Path.GetFileName(DestFullFileName);
+
                 PackageMgr pckMgr = new PackageMgr(this.UserChoice, DestFullFileName);
+
+                //create a zip file
                 pckMgr.MakeZip();
-            }
+
+                //if we should create an email, get the hash then create the email
+                if (Globals.UserPreferences.CreateEmailChecked == true)
+                {
+                    //create a SHA hash for the zip file
+                    string hashStr;
+
+                    var success = pckMgr.ComputeFileHash(DestFullFileName, out hashStr);
+
+                    //if file hash is successful, pop up email instructions to user; else tell user this failed
+                    if (success == true && !hashStr.StartsWith("Failed to create hash"))
+                    {
+                        pckMgr.PrepareEmail(hashStr, filename_only);
+                    }
+                    else
+                    {
+                        MessageBox.Show(hashStr, "Failed file hash", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }//end email
+
+            }//end SaveSelection
 
             
 

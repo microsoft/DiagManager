@@ -50,26 +50,27 @@ namespace PssdiagConfig
     [Serializable()]
     public class Preferences
     {
-        
-        public string DefaultPssdPath = @"c:\temp";
+
+        public string DefaultPssdPath;
         static string userPreferenceFile = Globals.PssdiagAppData + @"\Diagmanager.user.preferences";
         public int Argb;
+        public bool CreateEmailChecked;
 
-        
         public Preferences()
         {
-            /*
-            -1908000 gray
-            -1118227 light gray
-            -2629132 light blue
-            */
+            /*  -1908000 gray -1118227 light gray -2629132 light blue   */
             SetBackgroundColor(System.Drawing.Color.FromArgb(-1118227));
-            
+            DefaultPssdPath = @"c:\temp";
+            CreateEmailChecked = true;
         }
 
         public void SetBackgroundColor(System.Drawing.Color bkcolor)
         {
             Argb = bkcolor.ToArgb();
+        }
+        public void SetCreateEmail(bool CreateEmail)
+        {
+            CreateEmailChecked = CreateEmail;
         }
         public System.Drawing.Color GetBackgroundColor ()
         {
@@ -132,6 +133,8 @@ namespace PssdiagConfig
 
 
         }
+
+        //SAVE method
 
     }
 }
