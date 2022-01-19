@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+  
+  <CustomTask enabled="true" groupname="SystemInfo" taskname="SystemInfo" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="powershell.exe -File .\get_systeminfo.ps1 %server% %output_path%" />
+  
+</CustomTasks>

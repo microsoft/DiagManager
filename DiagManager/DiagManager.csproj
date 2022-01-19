@@ -188,7 +188,6 @@
     <Content Include="CustomDiagnostics\CMemThread\CustomDiag.XML">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CustomDiagnostics\MSInfo\get_msinfo.cmd" />
     <Content Include="CustomDiagnostics\My Custom Collector\My Collector Script.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -234,7 +233,7 @@
     <Content Include="CustomDiagnostics\Linked Server\linked_server_config.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CustomDiagnostics\MSInfo\CustomDiag.XML">
+    <Content Include="CustomDiagnostics\SystemInfo\CustomDiag.XML">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CustomDiagnostics\PsslooksAlive\CustomDiag.XML">
@@ -442,10 +441,9 @@
     <Content Include="CustomDiagnostics\PsslooksAlive\ConnectivityTest.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CustomDiagnostics\MSInfo\get_systeminfo.cmd">
+    <None Include="CustomDiagnostics\SystemInfo\get_systeminfo.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <None Include="CustomDiagnostics\MSInfo\get_systeminfo.ps1" />
+    </None>
     <None Include="CustomDiagnostics\SQL Server CPU NeverEnding Query\PlanGeneratingNeverEndingQuery.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -991,6 +989,16 @@
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="CustomDiagnostics\MSInfo\get_msinfo.cmd">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="CustomDiagnostics\MSInfo\get_systeminfo.cmd">
       <Visible>False</Visible>
       <Group>
       </Group>
