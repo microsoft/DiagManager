@@ -105,10 +105,10 @@ namespace PssdiagConfig
             this.lblPssdiagWiki.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPssdiagWiki.Location = new System.Drawing.Point(37, 70);
             this.lblPssdiagWiki.Name = "lblPssdiagWiki";
-            this.lblPssdiagWiki.Size = new System.Drawing.Size(66, 35);
+            this.lblPssdiagWiki.Size = new System.Drawing.Size(120, 35);
             this.lblPssdiagWiki.TabIndex = 0;
             this.lblPssdiagWiki.TabStop = true;
-            this.lblPssdiagWiki.Text = "Help Wiki";
+            this.lblPssdiagWiki.Text = "DiagManager Wiki";
             this.lblPssdiagWiki.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblPssdiagWiki.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Link_Clicked);
             // 
@@ -119,10 +119,10 @@ namespace PssdiagConfig
             this.lblPssdiagAppDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPssdiagAppDirectory.Location = new System.Drawing.Point(37, 105);
             this.lblPssdiagAppDirectory.Name = "lblPssdiagAppDirectory";
-            this.lblPssdiagAppDirectory.Size = new System.Drawing.Size(191, 35);
+            this.lblPssdiagAppDirectory.Size = new System.Drawing.Size(185, 35);
             this.lblPssdiagAppDirectory.TabIndex = 1;
             this.lblPssdiagAppDirectory.TabStop = true;
-            this.lblPssdiagAppDirectory.Text = "Diag Manager  Install Directory";
+            this.lblPssdiagAppDirectory.Text = "DiagManager Install Directory";
             this.lblPssdiagAppDirectory.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblPssdiagAppDirectory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Link_Clicked);
             // 
@@ -133,10 +133,10 @@ namespace PssdiagConfig
             this.lblDiagMangerLogDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiagMangerLogDirectory.Location = new System.Drawing.Point(37, 140);
             this.lblDiagMangerLogDirectory.Name = "lblDiagMangerLogDirectory";
-            this.lblDiagMangerLogDirectory.Size = new System.Drawing.Size(175, 35);
+            this.lblDiagMangerLogDirectory.Size = new System.Drawing.Size(117, 35);
             this.lblDiagMangerLogDirectory.TabIndex = 2;
             this.lblDiagMangerLogDirectory.TabStop = true;
-            this.lblDiagMangerLogDirectory.Text = "Diag Manager Log directory";
+            this.lblDiagMangerLogDirectory.Text = "DiagManager Log";
             this.lblDiagMangerLogDirectory.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblDiagMangerLogDirectory.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Link_Clicked);
             // 

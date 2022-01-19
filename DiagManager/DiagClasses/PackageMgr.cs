@@ -40,7 +40,11 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.IO.Compression;
+using System.Security.Cryptography;
+using System.Diagnostics;
 using PssdiagConfig;
+using System.Net;
+
 //using ICSharpCode.SharpZipLib.GZip;
 //using ICSharpCode.SharpZipLib.Tar;
 
@@ -55,6 +59,8 @@ namespace PssdiagConfig
         string m_DestFileNameOnly;
         string m_tempDirectory = Globals.BuildDir;
         string m_Server_Instance;
+        string m_ServerName;
+        string m_Instance; 
         string m_output_prefix;
         string m_output_instance_prefix;
         string m_internal_output_instance_prefix;
@@ -66,24 +72,40 @@ namespace PssdiagConfig
         static string StopTraceTemplate = @"EXEC tempdb.dbo.sp_trace13 'OFF',@AppName='{0}',@TraceName='tsqltrace'";
         string m_input_prefix = @"%launchdir%\";
         string LogManName = "pssdiagperfmon";
-        //start  collecterrorlog.cmd jackli2014\sql16a 1 ^> "c:\temp\pssd\out5.txt" 2>&1 ^&^&exit
+        //start  collecterrorlog.cmd server\sql16a 1 ^> "c:\temp\pssd\out5.txt" 2>&1 ^&^&exit
+        
+
+
         public PackageMgr(UserSetting userchoice, string destFullFileName)
         {
             m_userchoice = userchoice;
             m_DestFullFileName = destFullFileName;
             m_DestPathNameOnly= Path.GetDirectoryName(destFullFileName);
             m_DestFileNameOnly = Path.GetFileName(destFullFileName);
-            m_Server_Instance = m_userchoice[Res.MachineName];
-            if (m_userchoice[Res.InstanceName].ToUpper() != "MSSQLSERVER")
+            m_ServerName = m_userchoice[Res.MachineName];
+            m_Instance = m_userchoice[Res.InstanceName];
+
+            //when user chose "." for server name, replace this with %servername% variable that will be assigned in the batch file
+            if (m_ServerName == ".")
             {
-                m_Server_Instance = m_Server_Instance + @"\" + m_userchoice[Res.InstanceName];
+                m_ServerName = "%servername%";
             }
 
-            m_output_prefix = @"%launchdir%output\" + m_userchoice[Res.MachineName];
-            m_output_instance_prefix = @"%launchdir%output\" + m_userchoice[Res.MachineName] + "_" + m_userchoice[Res.InstanceName];
-            m_internal_output_instance_prefix = @"%launchdir%output\internal\" + m_userchoice[Res.MachineName] + "_" + m_userchoice[Res.InstanceName];
-            m_AppName = "SQLDIAG_" + m_userchoice[Res.MachineName] + "_" +  m_userchoice[Res.InstanceName];
+            //build the default or named instances string
+            if (m_Instance.ToUpper() != "MSSQLSERVER")
+            {
+                m_Server_Instance = m_ServerName + @"\" + m_Instance;
+            }
+            else
+            {
+                m_Server_Instance = m_Instance;
+            }
 
+
+            m_output_prefix = @"%launchdir%output\" + m_ServerName;
+            m_output_instance_prefix = @"%launchdir%output\" + m_ServerName + "_" + m_Instance;
+            m_internal_output_instance_prefix = @"%launchdir%output\internal\" + m_ServerName + "_" + m_Instance;
+            m_AppName = "SQLDIAG_" + m_ServerName + "_" +  m_Instance;
 
         }
 
@@ -106,21 +128,56 @@ namespace PssdiagConfig
 
             return taskCmd.Replace(" %server_instance%", m_Server_Instance).Replace("%output_name%", OutputName).Replace("%output_internal_name%", OutputInternalName);
         }
+
+
         private void MakeManualBatchFiles()
         {
 
 
-            StreamWriter ManualStart = File.CreateText(m_tempDirectory + @"\ManualStart.cmd");
-            StreamWriter ManualStop = File.CreateText(m_tempDirectory + @"\ManualStop.cmd");
+            if (m_Instance == "*")
+            {
+                return;
+            }
+
+            StreamWriter ManualStart = File.CreateText(m_tempDirectory + @"\ManualStart.txt");
+            StreamWriter ManualStop = File.CreateText(m_tempDirectory + @"\ManualStop.txt");
+
+            ManualStart.WriteLine("REM PURPOSE: This file is for cases where execution of PSSDIAG does not work for some reason. It allows you to manually collect some base information.");
+            ManualStart.WriteLine("REM This includes Perfmon, Perfstat scripts and some other configuration information for the instance (sp_configure, sys.databses, etc)");
+            ManualStart.WriteLine("REM INSTRUCTIONS:");
+            ManualStart.WriteLine("REM 1. Rename the file to ManualStart.cmd (change the extension)");
+            ManualStart.WriteLine("REM 2. Rename the ManualStop.txt to ManualStop.cmd (change the extension)");
+            ManualStart.WriteLine("REM 3. Execute from a Command Prompt by running ManualStart.cmd");
+            ManualStart.WriteLine("REM 4. When ready to stop, execute ManualStop.cmd from another Command Prompt window");
+            ManualStart.WriteLine("REM 5. Find the collected data in the \\Output folder");
+            ManualStart.WriteLine("");
+
+            ManualStop.WriteLine("REM PURPOSE: This file is for cases where execution of PSSDIAG does not work for some reason. This file stops manual collection of base information.");
+            ManualStop.WriteLine("REM INSTRUCTIONS:");
+            ManualStop.WriteLine("REM 1. Rename the file to ManualStop.cmd (change the extension)");
+            ManualStop.WriteLine("REM 2. When ready to stop collection, execute ManualStop.cmd from a new Command Prompt window");
+            ManualStop.WriteLine("REM 3. Find the collected data in the \\Output folder");
+            ManualStop.WriteLine("");
+
+
+
             ManualStart.WriteLine("setlocal ENABLEEXTENSIONS");
             ManualStart.WriteLine("set LaunchDir=%~dp0");
+            ManualStart.WriteLine("set servername=%computername%");
+
 
             ManualStop.WriteLine("setlocal ENABLEEXTENSIONS");
             ManualStop.WriteLine("set LaunchDir=%~dp0");
+            ManualStop.WriteLine("set servername=%computername%");
 
             ManualStart.WriteLine("md \"%LaunchDir%\\output\\internal\"");
 
-            ManualStart.WriteLine(string.Format (SqlCmdTemplate, m_Server_Instance, m_output_instance_prefix + "_msdiagprocs.out", "-i\"" + m_input_prefix + "msdiagprocs.sql" + "\"" ));
+            //need to test on a cluster and see if . does anything for VNN
+            //TODO: NEED TO EXCLUDE FROM HASH CALCULATION
+
+
+
+            ManualStart.WriteLine(string.Format(SqlCmdTemplate, m_Server_Instance, m_output_instance_prefix + "_msdiagprocs.out", "-i\"" + m_input_prefix + "msdiagprocs.sql" + "\""));
 
             //make manual profile collector
             if (m_userchoice[Res.CollectProfiler] == "true")
@@ -252,8 +309,6 @@ namespace PssdiagConfig
 
                         }
 
-
-
                     }
                     else
                     {
@@ -384,7 +439,7 @@ namespace PssdiagConfig
 
             ZipFile.CreateFromDirectory(m_tempDirectory, m_DestFullFileName);
             //MakeTar(m_tempDirectory, m_DestFullFileName+".tar");
-
+            
         }
 
         //this was intended for possible TAR file use, but we don't need it or was ever used. This was intended to use a Nuget package ICSharpCode.SharpZipLib;
@@ -422,5 +477,102 @@ namespace PssdiagConfig
 
         //}
 
-    }
-}
+        public bool ComputeFileHash (string filepath, out string hashString)
+        {
+            hashString = "";
+
+            if (File.Exists(filepath))
+            {
+                // Initialize a SHA256 hash object.
+                using (SHA512 mySHA512 = SHA512.Create())
+                {
+                    // Compute and print the hash values for each file in directory.
+                    try
+                    {
+                        // Create a fileStream for the file.
+                        FileStream fileStream = File.OpenRead(filepath);
+                        // Be sure it's positioned to the beginning of the stream.
+                        fileStream.Position = 0;
+                        // Compute the hash of the fileStream.
+                        byte[] hashValue = mySHA512.ComputeHash(fileStream);
+
+                        //convert the byte value to a string and remove "-" inside of the string
+                        hashString += BitConverter.ToString(hashValue).Replace("-", ""); ;
+
+                        Logger.LogInfo($"The file hash value for '{filepath}' is: {hashString}");
+
+                        // Close the file.
+                        fileStream.Close();
+                    }
+                    catch (IOException e)
+                    {
+                        Logger.LogInfo($"I/O Exception: {e.Message}");
+                        hashString = "I/O Exception: " + e.Message;
+                        return false;
+                    }
+                    catch (UnauthorizedAccessException e)
+                    {
+                        Logger.LogInfo($"Access Exception: {e.Message}");
+                        hashString = "Access Exception: " + e.Message;
+                        return false;
+                    }
+                }
+            }
+
+            else  //file does not exist
+            {
+                Logger.LogInfo("The file specified could not be found.");
+                hashString = "Failed to create hash because .zip file was not found. Examine the log for details";
+            }
+
+            return true;
+        } //end ComputeFileHash
+
+
+        public void PrepareEmail(string hashString, string filename)
+        {
+            try
+            {
+                using (Process myProcess = new Process())
+                {
+
+
+
+
+                    //construct the email body
+                    string emailBodyHello = "Hello, " + Environment.NewLine + Environment.NewLine + "Please follow these steps to run a PSSDIAG package:" + Environment.NewLine + Environment.NewLine +
+                                            "1. Download the " + filename + Environment.NewLine + Environment.NewLine;
+
+                    string emailBodyInstr = "2. You can optionally verify the downloaded file by computing a SHA512 hash. " + Environment.NewLine + Environment.NewLine +
+                                            "   a. Run this command in a Windows Command Prompt to compute a SHA512 hash on it " + Environment.NewLine + Environment.NewLine;
+
+                    string emailBodyCertU = "       certutil - hashfile " + filename + " SHA512 " + Environment.NewLine + Environment.NewLine;
+                    string emailBodyHash =  "   b. Compare result to this: " + ((hashString == null) ? "NULL" : hashString) + Environment.NewLine + Environment.NewLine + 
+                                            "3. Follow these instructions to run: https://aka.ms/run-pssdiag" + Environment.NewLine;
+
+
+                    string entireEmail = emailBodyHello + emailBodyInstr + emailBodyCertU + emailBodyHash;
+
+
+                    //append mailto:?body string to the email body so it automatically triggers a new email
+                    string encodedEmail = @"mailto:?body=" + WebUtility.UrlEncode(entireEmail);
+
+                    //since UrlEncode replaces spaces with + sings, but Outlook/email clients use %20 as a space, we need to replace one with the other
+                    encodedEmail = encodedEmail.Replace("+", "%20");
+
+
+                    myProcess.StartInfo.FileName = encodedEmail;
+                    //myProcess.StartInfo.FileName = @"mailto:?body=Hello%2C%0A%0APlease%20find%20PSSDIAG%20instructions%20below%3A%0A%0A1.%20Download%20the%20" + filename + @"%20%0A2.%20You%20can%20verify%20the%20downloaded%20file%20by%20computing%20a%20SHA512%20hash.%20See%20the%20instructions%20below%20%0A3.%20Follow%20these%20instructions%20to%20run%3A%20https%3A%2F%2Faka.ms%2Frun-pssdiag%20%0A%0A%0ATo%20verify%20the%20downloaded%20file%3A%0A1.%20Run%20this%20command%20in%20a%20Windows%20Command%20Prompt%20to%20compute%20a%20SHA512%20hash%20on%20it%0A%0A%20%20certutil%20-hashfile%20" + filename + " %20SHA512%20%0A%0A2.%20%20Compare%20result%20to%20this%3A%20%20" + hashString;
+
+                    myProcess.Start();
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.LogInfo($"Preparing email failed with: {e.Message}");
+            }
+
+        }
+        
+    }//class end
+} //namespace

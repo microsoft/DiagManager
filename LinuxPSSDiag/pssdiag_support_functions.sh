@@ -54,6 +54,7 @@ get_docker_mapped_port()
 
 sql_connect()
 {
+
 	echo "Testing SQL Connectivity for ${1} with name ${2} and port ${3}"
 	MAX_ATTEMPTS=3
 	attempt_num=1
@@ -76,7 +77,7 @@ sql_connect()
 	        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -Q"select @@version" 2>&1 >/dev/null
 	        if [[ $? -eq 0 ]]; then
 	        	sqlconnect=1
-	        	echo "        SQL Connectivity test suceeded..."
+	        	echo "        SQL Connectivity test succeeded..."
 	        	break
 	        else
         		echo "        Login Attempt failed - Attempt ${attempt_num} of ${MAX_ATTEMPTS}, Please try again"
