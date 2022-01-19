@@ -1,6 +1,0 @@
-<?xml version="1.0" standalone="yes"?>
-<CustomTasks>
-  
-  <CustomTask enabled="true" groupname="MsInfo" taskname="SystemInfo" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="get_msinfo.cmd %server% &quot;%output_path%&quot;" />
-  
-</CustomTasks>

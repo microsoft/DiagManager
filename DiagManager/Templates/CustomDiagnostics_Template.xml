@@ -145,7 +145,7 @@
 
   
 
-  <CustomGroup name="MSInfo" enabled="true">
+  <CustomGroup name="SystemInfo" enabled="true">
     <Scenarios>
       <Scenario name="All" enabled="true"/>
     </Scenarios>
