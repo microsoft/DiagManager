@@ -188,6 +188,7 @@
     <Content Include="CustomDiagnostics\CMemThread\CustomDiag.XML">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="CustomDiagnostics\MSInfo\get_msinfo.cmd" />
     <Content Include="CustomDiagnostics\My Custom Collector\My Collector Script.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -417,9 +418,6 @@
     <Content Include="CustomDiagnostics\Linked Server\readme.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CustomDiagnostics\MSInfo\get_msinfo.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="CustomDiagnostics\PsslooksAlive\AutoUserDump.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -447,6 +445,10 @@
     <Content Include="CustomDiagnostics\PsslooksAlive\ConnectivityTest.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="CustomDiagnostics\MSInfo\get_systeminfo.cmd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="CustomDiagnostics\MSInfo\get_systeminfo.ps1" />
     <None Include="CustomDiagnostics\SQL Server CPU NeverEnding Query\PlanGeneratingNeverEndingQuery.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
