@@ -57,7 +57,7 @@ param
     [string] $T = [string]::Empty,
 
     [Parameter(ParameterSetName = 'Config',Mandatory=$false)]
-    [switch] $DebugOn
+    [switch] $DebugOnParam
 
 
 )
@@ -66,15 +66,41 @@ param
 . ./Confirm-FileAttributes.ps1
 
 
+function Check-ElevatedAccess
+{
+    try 
+    {
+	
+        #check for administrator rights
+        if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
+        {
+            Write-Warning "Elevated privilege (run as Admininstrator) is required to run PSSDIAG. Exiting..."
+            exit
+        }
+        
+    }
+
+    catch 
+    {
+        Write-Error "Error occured in $($MyInvocation.MyCommand), $($PSItem.Exception.Message ), line number: $($PSItem.InvocationInfo.ScriptLineNumber)" 
+		exit
+    }
+    
+
+}
+
+
 function FindSQLDiag ()
 {
 
     try
     {
+				
         [bool]$is64bit = $false
 
         [xml]$xmlDocument = Get-Content -Path .\pssdiag.xml
         [string]$sqlver = $xmlDocument.dsConfig.Collection.Machines.Machine.Instances.Instance.ssver
+		
 
         if ($sqlver -eq "10.50")
         {
@@ -96,25 +122,49 @@ function FindSQLDiag ()
         }
 
         $toolsRegStr = ("HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\" + $sqlver+"0\Tools\ClientSetup")
-        [string]$toolsbin = Get-ItemPropertyValue -Path $toolsRegStr -Name Path
+		
+	
+	
+        [string]$toolsBinFolder = Get-ItemPropertyValue -Path $toolsRegStr -Name Path
 
-        $sqldiagPath = ($toolsbin + "sqldiag.exe")
 
-        if ((Test-Path -Path $sqldiagPath) -ne $true)
+		#strip "(x86)" in case Powershell goes to HKLM\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\ under the covers, which it does
+		
+		$toolsBinFolderx64 = $toolsBinFolder.Replace("Program Files (x86)", "Program Files")
+
+		
+		$sqldiagPath = ($toolsBinFolder + "sqldiag.exe")
+        $sqldiagPathx64 = ($toolsBinFolderx64 + "sqldiag.exe")
+		
+		
+	
+        if ((Test-Path -Path $sqldiagPathx64))
         {
-            Write-Host "Unable to find 'sqldiag.exe' version: $($sqlver)0 on this machine.  Data collection will fail"
-
+			return $sqldiagPathx64
+		}
+		
+		else
+		{
+			#path was not valid so checking second path
+			
+			if ($sqldiagPath -ne $sqldiagPathx64)
+			{
+				if ((Test-Path -Path $sqldiagPath))
+				{
+					return $sqldiagPath
+				}
+			}
+			
+			Write-Host "Unable to find 'sqldiag.exe' version: $($sqlver)0 on this machine.  Data collection will fail"
+			return "Path_Error_"
         }
-        else
-        {
-            return $sqldiagPath
         
-        }
-
+		
     }
     catch 
     {
-        Write-Host "Error occured in finding SQLDiag.exe:" $($PSItem.Exception.Message )
+        Write-Error "Error occured in finding SQLDiag.exe: $($PSItem.Exception.Message ), line number: $($PSItem.InvocationInfo.ScriptLineNumber)" 
+		return "Path_Error_"
     }
 
 }
@@ -152,10 +202,16 @@ function main
 
     [bool] $debug_on = $false
 
-    if ($DebugOn -eq $true)
+    if ($DebugOnParam -eq $true)
     {
         $debug_on = $true
     }
+	
+	if (Check-ElevatedAccess -eq $true)
+	{
+		exit
+	}
+	
 
     $validFileAttributes = Confirm-FileAttributes $debug_on
         if (-not($validFileAttributes)){
@@ -341,14 +397,20 @@ function main
 
 	# locate the SQLDiag.exe path for this version of PSSDIAG
 	[string]$sqldiag_path = FindSQLDiag
+	
+	if ("Path_Error_" -eq $sqldiag_path)
+	{
+		#no valid path found to run SQLDiag.exe, so exiting
+		exit
+	}
 
+		
 	#call diagutil.exe 1 for now until counter translation is implemented in this script
 	Write-Host "Executing: diagutil.exe 1"
 	Start-Process -FilePath "diagutil.exe" -ArgumentList "1" -WindowStyle Normal
 
-    Write-Host "Executing:  $sqldiag_path $argument_list"
-
     # launch the sqldiag.exe process
+    Write-Host "Executing: $sqldiag_path $argument_list"
     Start-Process -FilePath $sqldiag_path -ArgumentList $argument_list -WindowStyle Normal
 }
 
