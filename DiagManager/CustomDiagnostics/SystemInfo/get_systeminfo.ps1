@@ -2,7 +2,7 @@
 $servername=$args[0]
 $outputpath=$args[1]
 $osversion = (Get-WmiObject Win32_OperatingSystem).Version
-$outputfile = ($outputpath + $servername + "_SYSTEMINFO32.TXT")
+$outputfile = ($outputpath + $servername + "_SYSTEMINFO.TXT")
 
 Write-Output "GET_SYSTEMINFO Server: $servername"  
 Write-Output "GET_SYSTEMINFO Output Path: $outputpath"  
