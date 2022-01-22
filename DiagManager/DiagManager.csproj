@@ -13,9 +13,9 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\dsdb\Products\pssdiag\ClickOnce_Beta\</PublishUrl>
+    <PublishUrl>c:\pssdiag\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Unc</InstallFrom>
+    <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Background</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
