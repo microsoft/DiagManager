@@ -102,11 +102,19 @@ function FindSQLDiag ()
         [string]$sqlver = $xmlDocument.dsConfig.Collection.Machines.Machine.Instances.Instance.ssver
 		
 
+		[string[]] $valid_versions = "10", "10.5", "11", "12", "13", "14", "15"
+
+		while ($sqlver -notin $valid_versions)
+		{
+			Write-Warning "An invalid version is specified for SQL Server (ssver = '$sqlver') in the pssdiag.xml file. This prevents selecting correct SQLDiag.exe version."
+			$sqlver = Read-Host "Please enter the 2-digit version of your SQL Server ($valid_versions)"
+
+		}
+
         if ($sqlver -eq "10.50")
         {
               $sqlver = "10"
         }
-
 
         [string]$plat = $xmlDocument.dsConfig.DiagMgrInfo.IntendedPlatform
 
@@ -163,7 +171,7 @@ function FindSQLDiag ()
     }
     catch 
     {
-        Write-Error "Error occured in finding SQLDiag.exe: $($PSItem.Exception.Message ), line number: $($PSItem.InvocationInfo.ScriptLineNumber)" 
+        Write-Error "Error occured in finding SQLDiag.exe: $($PSItem.Exception.Message)  line number: $($PSItem.InvocationInfo.ScriptLineNumber)" 
 		return "Path_Error_"
     }
 
