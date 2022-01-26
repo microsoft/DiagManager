@@ -106,8 +106,8 @@ function FindSQLDiag ()
 
 		while ($sqlver -notin $valid_versions)
 		{
-			Write-Warning "An invalid version is specified for SQL Server (ssver = '$sqlver') in the pssdiag.xml file. This prevents selecting correct SQLDiag.exe version."
-			$sqlver = Read-Host "Please enter the 2-digit version of your SQL Server ($valid_versions)"
+			Write-Warning "An non-specific version is specified for SQL Server (ssver = '$sqlver') in the pssdiag.xml file. This prevents selecting correct SQLDiag.exe path."
+			$sqlver = Read-Host "Please enter the 2-digit version of your SQL Server ($valid_versions) to help locate SQLDiag.exe"
 
 		}
 
