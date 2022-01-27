@@ -10,7 +10,7 @@ You can run only a single copy of PSSDIAG utility on a system. If you attempt to
 All the scripts are tested against bash shell. Please launch the start and stop collector explicitly using /bin/bash
 This utility can collect information and logs for SQL Server instances that are installed as host instance or as container instances.
 
-Steps to configure and start data collection using PSSDIAG, you will need to (exec -it) into the mssql-server container under the current primary master pod and perform the below steps
+Steps to configure and start data collection using PSSDIAG, you will need to (exec -it) into the SQL MIAA container under the current primary master pod and perform the below steps
 1. Create a folder to store the collected information (for example: /var/opt/mssql/data/pssdiag). 
 	  mkdir /var/opt/mssql/data/pssdiag
    If you are capturing extended events, this folder hierarchy needs r+x on the whole structure.
@@ -21,7 +21,7 @@ Steps to configure and start data collection using PSSDIAG, you will need to (ex
    If you do not have the pssdiag.tar file, you can obtain using the following commands:
    
       cd /var/opt/mssql/data/pssdiag
-      sudo curl -L https://github.com/Microsoft/DiagManager/releases/download/BdcRel20201227/pssdiag.tar | sudo tar x
+      curl -L https://github.com/Microsoft/DiagManager/releases/download/BdcRel20201227/pssdiag.tar | tar x
    
    Make sure to use the latest release that is available.
 
@@ -40,25 +40,25 @@ Steps to configure and start data collection using PSSDIAG, you will need to (ex
 
 5. To Start the PSSDIAG utility you will use the start_collector.sh script and pass the scenario as parameter:
    Below you will find an example of this:
-	sudo /bin/bash ./start_collector.sh sql_perf.scn
+	/bin/bash ./start_collector.sh sql_perf.scn
 
 		Reading configuration values from config scenario file ./sql_perf.scn
 		Starting pre-req checks
 		Completed pre-req checks
-		collecting information from sql instance on host : master-0
-		Testing SQL Connectivity for host_instance with name master-0 and port 1533
-			Enter SQL UserName: admin
-			Enter User Password: 
+		collecting information from sql instance on host : sqlmiaa1-0
+		Testing SQL Connectivity for host_instance with name sqlmiaa1-0 and port 1533
+			Enter SQL UserName: ********
+			Enter User Password:
 			SQL Connectivity test suceeded...
 			Collecting SQL Configuration information at startup...
 			Starting SQL Perf Stats script as a background job....
-			Starting SQL Performance counter script as a background job.... 
-			Starting SQL Memory Status script as a background job.... 
+			Starting SQL Performance counter script as a background job....
+			Starting SQL Memory Status script as a background job....
 			Creating helper stored procedures in tempdb from MSDiagprocs.sql
-			Starting SQL trace collection...  
-		Note: Please reproduce the problem now and then stop the data collection... 
-		Note: Please save the output from the terminal while starting the collector... 
-		Note: Performance collectors started in the background, run stop_collector.sh to stop the background collectors... 
+			Starting SQL trace collection...
+	 Note: Please reproduce the problem now and then stop the data collection...
+	 Note: Please save the output from the terminal while starting the collector...
+	 Note: Performance collectors started in the background, run stop_collector.sh to stop the background collectors...
 
 6. Please review the information in the terminal for any errors or other messages. Please save this information and pass it on to the engineer if you are working with one. The utility gathers all the diagnostic logs into a /output sub-directory under the directory where you extracted all the scripts. For long term collections you can monitor this /output directory for size and growth.
 
@@ -69,26 +69,29 @@ Steps to configure and start data collection using PSSDIAG, you will need to (ex
 	sudo /bin/bash ./stop_collector.sh
 	
 		Terminating the following Background processes that were collecting sql data... Please wait.
-		<>
+		6218
+		6219
+		6231
+		6233
+		6250
+		6251
+		6258
+		6259
 		Terminating the following Background processes that were collecting os data... Please wait.
-		<>
+		6372
 		Reading configuration values from Config file ./pssdiag_collector.conf
-		Collecting Machine configuration...
-		Collecting sqlservr process configuration... PID = 1722
-		Collecting sqlservr process configuration... PID = 1822
-		<>
-		collecting sql instance logs from host instance
-		collecting information from sql instance on host : master-0
-		Testing SQL Connectivity for host_instance with name master-0 and port 1533
-				Enter SQL UserName: admin
-				Enter User Password: 
-				SQL Connectivity test suceeded...
-				Collecting SQL Configuration Snapshot at Shutdown...
-				Stopping SQL Trace Collection if started...
-				Collecting SQL AlwaysOn configuration at Shutdown...
-				Collecting SQL Query Store information at Shutdown...
+		sudo: you do not exist in the passwd database
+		collecting information from sql instance on host : sqlmiaa1-0
+		Testing SQL Connectivity for host_instance with name sqlmiaa1-0 and port 1533
+			Enter SQL UserName: ********
+			Enter User Password:
+			SQL Connectivity test suceeded...
+			Collecting SQL Configuration Snapshot at Shutdown...
+			Stopping SQL Trace Collection if started...
+			Collecting SQL AlwaysOn configuration at Shutdown...
+			Collecting SQL Query Store information at Shutdown...
 		============ Creating a compressed archive of all log files ===========
-		***Data collected is in the file output_master-0_12_27_2020_17_13.tar.bz2 ***
+		***Data collected is in the file output_sqlmiaa1-0_01_27_2022_09_28.tar.bz2 ***
 
 8. Please upload this zip file to the engineer you are working with. It is a compressed archive of the /output directory which has all the diagnostic logs.
 
