@@ -21,7 +21,7 @@ Steps to configure and start data collection using PSSDIAG, you will need to (ex
    If you do not have the pssdiag.tar file, you can obtain using the following commands:
    
       cd /var/opt/mssql/data/pssdiag
-      curl -L https://github.com/Microsoft/DiagManager/releases/download/BdcRel20201227/pssdiag.tar | tar x
+      curl -L https://github.com/microsoft/DiagManager/releases/download/MiaaRel20220127/pssdiag.tar | tar x
    
    Make sure to use the latest release that is available.
 
