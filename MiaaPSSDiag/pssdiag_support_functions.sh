@@ -61,7 +61,7 @@ sql_connect()
 
 	sqlservicestatus="unknown"
 	if [[ "${1}" == "host_instance" ]]; then
-		supervisorctl is-active mssql-server >/dev/null 2>&1 && sqlservicestatus="active" || sqlservicestatus="unknown"
+		supervisorctl status mssql-server >/dev/null 2>&1 && sqlservicestatus="active" || sqlservicestatus="unknown"
 		if [[ "${sqlservicestatus}" != "active" ]]; then
 			return $sqlconnect
 		fi
