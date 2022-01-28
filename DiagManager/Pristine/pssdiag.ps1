@@ -101,6 +101,8 @@ function FindSQLDiag ()
         [xml]$xmlDocument = Get-Content -Path .\pssdiag.xml
         [string]$sqlver = $xmlDocument.dsConfig.Collection.Machines.Machine.Instances.Instance.ssver
 		
+		#first find out if their registry is messed up
+		ValidateCurrentVersion -ssver $sqlver
 
 		[string[]] $valid_versions = "10", "10.5", "11", "12", "13", "14", "15"
 
@@ -177,6 +179,54 @@ function FindSQLDiag ()
 
 }
 
+function ValidateCurrentVersion ([string]$ssver)
+{
+	[string[]] $intermediateNames = @()
+	[string[]] $currentVersionReg = @()
+
+	$regInstNames = "HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL" 
+	
+	$instNames = Get-Item $regInstNames | Select-Object -ExpandProperty Property 
+
+	# add the discovered values in an array
+	foreach ($inst in $instNames)
+	{
+		$intermediateNames+= ( Get-ItemPropertyValue -Path $regInstNames -Name $inst)
+	}
+
+
+	[int] $nonMatchCounter = 0
+
+	foreach($name in $intermediateNames)
+	{
+
+		$regRoot = "HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\" + $name + "\MSSQLServer\CurrentVersion"
+		$verString = Get-ItemPropertyValue -Path $regRoot -Name CurrentVersion
+
+		$currentVersionReg+= ($regRoot + "=>" + $verString)
+
+		# get the major version value from the reg entry
+		$majVersion = $verString.Substring(0, $verString.IndexOf("."))
+
+
+		if ($majVersion -ne $ssver)
+		{
+			$nonMatchCounter++
+		}
+
+	}
+
+	if ($nonMatchCounter -eq $intermediateNames.Count)
+	{
+		Write-Warning "No instance was found for the version of SQL Server configured in pssdiag.xml (ssver='$ssver'). Collection will fail."
+        Write-Warning "Examine these reg keys to see if the one or more versions is different from expected version $ssver (first 2 digits in NN.n.nnnn):`n"
+        foreach ($entry in $currentVersionReg)
+		{
+			Write-Warning $entry 
+		}
+	}
+
+}
 
 
 
