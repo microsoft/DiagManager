@@ -469,7 +469,7 @@ function main
 
     # launch the sqldiag.exe process
     Write-Host "Executing: $sqldiag_path $argument_list"
-    Start-Process -FilePath $sqldiag_path -ArgumentList $argument_list -WindowStyle Normal
+    Start-Process -FilePath $sqldiag_path -ArgumentList $argument_list -NoNewWindow -Wait
 }
 
 
