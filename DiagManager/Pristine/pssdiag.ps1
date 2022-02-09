@@ -218,7 +218,7 @@ function ValidateCurrentVersion ([string]$ssver)
 
 	if ($nonMatchCounter -eq $intermediateNames.Count)
 	{
-		Write-Warning "No instance was found for the version of SQL Server configured in pssdiag.xml (ssver='$ssver'). Collection will fail."
+		Write-Warning "Collection may fail. No instance was found for the version of SQL Server configured in pssdiag.xml (ssver='$ssver')."
         Write-Warning "Examine these reg keys to see if the one or more versions is different from expected version $ssver (first 2 digits in NN.n.nnnn):`n"
         foreach ($entry in $currentVersionReg)
 		{
@@ -467,9 +467,12 @@ function main
 	Write-Host "Executing: diagutil.exe 1"
 	Start-Process -FilePath "diagutil.exe" -ArgumentList "1" -WindowStyle Normal
 
-    # launch the sqldiag.exe process
+    # launch the sqldiag.exe process and print the last 5 lines of the console file in case there were errors
     Write-Host "Executing: $sqldiag_path $argument_list"
-    Start-Process -FilePath $sqldiag_path -ArgumentList $argument_list -NoNewWindow -Wait
+    Start-Process -FilePath $sqldiag_path -ArgumentList $argument_list -WindowStyle Normal -Wait
+	Get-Content -Tail 5 ".\output\internal\##console.log"
+	Write-Host "SQLDiag has completed. You can close the window. If you got errors, please review \output\internal\##SQLDIAG.LOG file"
+
 }
 
 
