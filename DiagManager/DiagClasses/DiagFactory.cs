@@ -41,6 +41,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.XPath;
 using System.IO;
+
 namespace PssdiagConfig
 {
     public class DiagFactory
@@ -354,12 +355,10 @@ namespace PssdiagConfig
 
             string CustomGroupDir = Path.GetDirectoryName(filename);
             string[] sqlfiles = Directory.GetFiles(CustomGroupDir, "*.sql");
-
-
+            
             if (File.Exists (filename))
             { 
-                
-              doc = new XPathDocument(filename);
+                doc = new XPathDocument(filename);
             }
             else if (sqlfiles.Length > 0)
             {
@@ -383,7 +382,7 @@ namespace PssdiagConfig
             }
             else
             {
-                throw new ArgumentException("Invalid custom group: " + ((CustomGroupName == null)? "NULL": CustomGroupName));
+                throw new Exception("Invalid Custom Diagnostics group: '" + ((CustomGroupName == null) ? "NULL" : CustomGroupName) + "'");
             }
 
 
