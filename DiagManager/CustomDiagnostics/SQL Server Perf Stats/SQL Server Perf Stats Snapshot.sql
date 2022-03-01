@@ -231,7 +231,7 @@ begin
 	set nocount on
 	declare @dbname sysname, @dbid int	
 	DECLARE dbCursor CURSOR FOR 
-	select name, database_id from sys.databases where state_desc='ONLINE' and database_id > 4 order by name
+	select name, database_id from sys.databases where state_desc='ONLINE' and and name not in ('model','tempdb') order by name
 	OPEN dbCursor
 
 	FETCH NEXT FROM dbCursor  INTO @dbname, @dbid
