@@ -11,10 +11,6 @@ SET QUOTED_IDENTIFIER ON
 SET NUMERIC_ROUNDABORT OFF
 GO
 
-
-
-go
-
 /*******************************************************************
 perf stats snapshot
 
