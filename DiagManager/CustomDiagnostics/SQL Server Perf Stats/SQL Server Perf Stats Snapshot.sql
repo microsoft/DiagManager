@@ -539,27 +539,6 @@ begin
 	ORDER BY sum(total_elapsed_time) DESC;
 print ''
 
-
-	PRINT ''
-	RAISERROR ('-- new row modification counter --', 0, 1) WITH NOWAIT;
-	--this only is available after SQL 2008 R2 SP2 and SQL 2012 SP1 and SQL 2014
-	if (@@MICROSOFTVERSION >= 171052960 and @@MICROSOFTVERSION < 184551476) OR  (@@MICROSOFTVERSION >= 184551476 )
-	begin
-
-		EXEC master..sp_MSforeachdb @command1 = '
-		PRINT ''''
-		PRINT ''-- sys.dm_db_stats_properties for database name [?]  database id: '' + cast (db_id (''?'') as varchar(20))  + '' --''', 
-		  @command2 = '
-		use [?]
-		SELECT db_name() ''database_name'', 
-		object_name (stat.object_id) ''Object_Name'', stat.object_id,
-			sp.stats_id, name, filter_definition, cast(last_updated as datetime) ''last_updated'', rows, rows_sampled, steps, unfiltered_rows, modification_counter 
-		FROM sys.stats AS stat 
-		CROSS APPLY sys.dm_db_stats_properties(stat.object_id, stat.stats_id) AS sp
-		'
-
-	end
-
 end
 
 
