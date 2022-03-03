@@ -470,7 +470,10 @@ function main
     # launch the sqldiag.exe process and print the last 5 lines of the console file in case there were errors
     Write-Host "Executing: $sqldiag_path $argument_list"
     Start-Process -FilePath $sqldiag_path -ArgumentList $argument_list -WindowStyle Normal -Wait
-	Get-Content -Tail 5 ".\output\internal\##console.log"
+    if (Test-Path -Path ".\output\internal\##console.log")
+    {
+	    Get-Content -Tail 5 ".\output\internal\##console.log"
+    }
 	Write-Host "SQLDiag has completed. You can close the window. If you got errors, please review \output\internal\##SQLDIAG.LOG file"
 
 }
