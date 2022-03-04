@@ -281,7 +281,7 @@ function main
 
     [string] $argument_list = ""
 
-    if ($ServiceState -iin "stop", "start", "stop_abort", "/U")
+    if ($ServiceState -iin "stop", "start", "stop_abort")
     {
         Write-Host "ServiceState = $ServiceState"
         $argument_list = $ServiceState    
@@ -464,16 +464,37 @@ function main
 
 		
 	#call diagutil.exe 1 for now until counter translation is implemented in this script
-	Write-Host "Executing: diagutil.exe 1"
-	Start-Process -FilePath "diagutil.exe" -ArgumentList "1" -WindowStyle Normal
+	
+    if (($ServiceState -notin "stop", "start", "stop_abort") -and ($U -ne $true))
+    {
+        Write-Host "Executing: diagutil.exe 1"
+	    Start-Process -FilePath "diagutil.exe" -ArgumentList "1" -WindowStyle Normal
+    }
 
     # launch the sqldiag.exe process and print the last 5 lines of the console file in case there were errors
     Write-Host "Executing: $sqldiag_path $argument_list"
     Start-Process -FilePath $sqldiag_path -ArgumentList $argument_list -WindowStyle Normal -Wait
-    if (Test-Path -Path ".\output\internal\##console.log")
+    
+    $console_log = ".\output\internal\##console.log"
+
+    if (($R -eq $true) -or ($ServiceState -in "stop", "start", "stop_abort") -or ($U -eq $true))
     {
-	    Get-Content -Tail 5 ".\output\internal\##console.log"
+        if($R -eq $true)
+        {
+            Write-Host "Registered SQLDiag as a service. Please make sure you run 'pssdiag.ps1 START' or 'SQLDIAG START' or 'net start SQLDIAG'" -ForegroundColor Green
+        }
+
+        if($U -eq $true)
+        {
+            Write-Host "Un-registered SQLDiag as a service." -ForegroundColor Green
+        }
+        
     }
+    elseif (Test-Path -Path $console_log )
+    {
+	    Get-Content -Tail 5 $console_log 
+    }
+
 	Write-Host "SQLDiag has completed. You can close the window. If you got errors, please review \output\internal\##SQLDIAG.LOG file"
 
 }
