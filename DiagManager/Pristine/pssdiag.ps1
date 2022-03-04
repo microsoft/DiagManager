@@ -57,7 +57,7 @@ param
     [string] $T = [string]::Empty,
 
     [Parameter(ParameterSetName = 'Config',Mandatory=$false)]
-    [switch] $DebugOnParam
+    [switch] $DebugOn
 
 
 )
@@ -260,7 +260,7 @@ function main
 
     [bool] $debug_on = $false
 
-    if ($DebugOnParam -eq $true)
+    if ($DebugOn -eq $true)
     {
         $debug_on = $true
     }
