@@ -493,9 +493,10 @@ function main
     elseif (Test-Path -Path $console_log )
     {
 	    Get-Content -Tail 5 $console_log 
+        Write-Host "SQLDiag has completed. You can close the window. If you got errors, please review \output\internal\##SQLDIAG.LOG file"
     }
 
-	Write-Host "SQLDiag has completed. You can close the window. If you got errors, please review \output\internal\##SQLDIAG.LOG file"
+	
 
 }
 
