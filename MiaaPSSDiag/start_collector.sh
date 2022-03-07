@@ -78,8 +78,8 @@ sql_collect_xevent()
         #start any XE collection if defined? XE file should be named pssdiag_xevent_.sql.
         if [[ $COLLECT_EXTENDED_EVENTS == [Yy][eE][sS]  ]]; then
                 echo "	Starting SQL Extended Events collection...  "
-                /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"pssdiag_xevent.sql" -o"$outputdir/${1}_pssdiag_xevent.out"
-                cp -f ./${EXTENDED_EVENT_TEMPLATE}.template ./pssdiag_xevent_start.sql
+                /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"${EXTENDED_EVENT_TEMPLATE}.sql" -o"$outputdir/${1}_pssdiag_xevent.out"
+                cp -f ./pssdiag_xevent_start.template ./pssdiag_xevent_start.sql
 		if [[ "$2" == "host_instance" ]]; then
 	                sed -i "s|##XeFileName##|${outputdir}/${1}_pssdiag_xevent.xel|" pssdiag_xevent_start.sql
 		else
