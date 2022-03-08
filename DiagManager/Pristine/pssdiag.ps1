@@ -492,6 +492,7 @@ function main
     }
     elseif (Test-Path -Path $console_log )
     {
+        Write-Warning "Displaying the last 5 lines from \output\internal\##console.log file. If SQLDiag did not run for some reason, you may be reading an old log."
 	    Get-Content -Tail 5 $console_log 
         Write-Host "SQLDiag has completed. You can close the window. If you got errors, please review \output\internal\##SQLDIAG.LOG file"
     }
