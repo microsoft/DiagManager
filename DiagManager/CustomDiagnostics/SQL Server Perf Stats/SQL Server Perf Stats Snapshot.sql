@@ -232,14 +232,19 @@ begin
 
 	FETCH NEXT FROM dbCursor  INTO @dbname, @dbid
 	--replaced sys.dm_db_index_usage_stats  by sys.stat since the first doesn't return anything in case the table or index was not accessed since last SQL restart
-    select @dbid 'Database_Id', @dbname 'Database_Name',  Object_name(st.object_id) 'Object_Name', SCHEMA_NAME(schema_id) 'Schema_Name', ss.name 'Statistics_Name', st.* into #tmpStats from sys.stats ss cross apply sys.dm_db_stats_properties (ss.object_id, ss.stats_id) st inner join sys.objects so ON (ss.object_id = so.object_id) where 1=0
+    select @dbid 'Database_Id', @dbname 'Database_Name',  Object_name(st.object_id) 'Object_Name', SCHEMA_NAME(schema_id) 'Schema_Name', ss.name 'Statistics_Name', 
+	       st.object_id, st.stats_id, st.last_updated, st.rows, st.rows_sampled, st.steps, st.unfiltered_rows, st.modification_counter, st.persisted_sample_percent
+	into #tmpStats 
+	from sys.stats ss cross apply sys.dm_db_stats_properties (ss.object_id, ss.stats_id) st inner join sys.objects so ON (ss.object_id = so.object_id) where 1=0
 	WHILE @@FETCH_STATUS = 0
 	begin
 	
 		declare @sql nvarchar (max)
 		set @sql = 'USE [' + @dbname + ']'
 	    --replaced sys.dm_db_index_usage_stats  by sys.stat since the first doesn't return anything in case the table or index was not accessed since last SQL restart
-		set @sql = @sql + '	insert into #tmpStats	select ' + cast( @dbid as nvarchar(20)) +   ' ''Database_Id''' + ',''' +  @dbname  + ''' Database_Name,  Object_name(st.object_id) ''Object_Name'', SCHEMA_NAME(schema_id) ''Schema_Name'', ss.name ''Statistics_Name'', st.* from sys.stats ss 
+		set @sql = @sql + '	insert into #tmpStats	select ' + cast( @dbid as nvarchar(20)) +   ' ''Database_Id''' + ',''' +  @dbname  + ''' Database_Name,  Object_name(st.object_id) ''Object_Name'', SCHEMA_NAME(schema_id) ''Schema_Name'', ss.name ''Statistics_Name'', 
+		                                                     st.object_id, st.stats_id, st.last_updated, st.rows, st.rows_sampled, st.steps, st.unfiltered_rows, st.modification_counter, st.persisted_sample_percent
+													from sys.stats ss 
 		                                              cross apply sys.dm_db_stats_properties (ss.object_id, ss.stats_id) st 
 		                                              inner join sys.objects so ON (ss.object_id = so.object_id)
 													where so.type_desc not in (''SYSTEM_TABLE'', ''INTERNAL_TABLE'')'
