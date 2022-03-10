@@ -261,7 +261,7 @@ begin
 	close  dbCursor
 	deallocate dbCursor
 	print ''
-	print '--sys.dm_db_stats_properties--'
+	print '-- sys.dm_db_stats_properties --'
 	select --*
 		Database_Id,
 		[Database_Name],
