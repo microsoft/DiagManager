@@ -225,63 +225,118 @@ begin
 
 	--new stats DMV
 	set nocount on
-	declare @dbname sysname, @dbid int	
+	declare @dbname sysname, @dbid int,  @sql_major_version INT, @sql_major_build INT
+
+	SELECT @sql_major_version = (LEFT(CAST(SERVERPROPERTY(N'ProductVersion') AS NVARCHAR(128)), (CHARINDEX(N'.', CAST(SERVERPROPERTY(N'ProductVersion') AS NVARCHAR(128)))-1))), 
+	       @sql_major_build = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 2) AS INT)) 
+     
+	
 	DECLARE dbCursor CURSOR FOR 
 	select name, database_id from sys.databases where state_desc='ONLINE' and name not in ('model','tempdb') order by name
 	OPEN dbCursor
 
 	FETCH NEXT FROM dbCursor  INTO @dbname, @dbid
-	--replaced sys.dm_db_index_usage_stats  by sys.stat since the first doesn't return anything in case the table or index was not accessed since last SQL restart
-    select @dbid 'Database_Id', @dbname 'Database_Name',  Object_name(st.object_id) 'Object_Name', SCHEMA_NAME(schema_id) 'Schema_Name', ss.name 'Statistics_Name', 
-	       st.object_id, st.stats_id, st.last_updated, st.rows, st.rows_sampled, st.steps, st.unfiltered_rows, st.modification_counter, st.persisted_sample_percent
-	into #tmpStats 
-	from sys.stats ss cross apply sys.dm_db_stats_properties (ss.object_id, ss.stats_id) st inner join sys.objects so ON (ss.object_id = so.object_id) where 1=0
+	
+	  --replaced sys.dm_db_index_usage_stats  by sys.stat since the first doesn't return anything in case the table or index was not accessed since last SQL restart
+      select @dbid 'Database_Id', @dbname 'Database_Name',  Object_name(st.object_id) 'Object_Name', SCHEMA_NAME(schema_id) 'Schema_Name', ss.name 'Statistics_Name', 
+	         st.object_id, st.stats_id, st.last_updated, st.rows, st.rows_sampled, st.steps, st.unfiltered_rows, st.modification_counter
+	  into #tmpStats 
+	  from sys.stats ss cross apply sys.dm_db_stats_properties (ss.object_id, ss.stats_id) st inner join sys.objects so ON (ss.object_id = so.object_id) where 1=0
+	  
+	  --column st.persisted_sample_percent was only introduced on sys.dm_db_stats_properties on SQL Server 2016 (13.x) SP1 CU4 -- 13.0.4446.0	 
+	  IF (@sql_major_version >13 OR (@sql_major_version=13 AND @sql_major_build>=4446))
+	  BEGIN
+	    ALTER TABLE #tmpStats ADD persisted_sample_percent FLOAT
+	  END
+
 	WHILE @@FETCH_STATUS = 0
-	begin
+	BEGIN
 	
 		declare @sql nvarchar (max)
 		set @sql = 'USE [' + @dbname + ']'
 	    --replaced sys.dm_db_index_usage_stats  by sys.stat since the first doesn't return anything in case the table or index was not accessed since last SQL restart
-		set @sql = @sql + '	insert into #tmpStats	select ' + cast( @dbid as nvarchar(20)) +   ' ''Database_Id''' + ',''' +  @dbname  + ''' Database_Name,  Object_name(st.object_id) ''Object_Name'', SCHEMA_NAME(schema_id) ''Schema_Name'', ss.name ''Statistics_Name'', 
-		                                                     st.object_id, st.stats_id, st.last_updated, st.rows, st.rows_sampled, st.steps, st.unfiltered_rows, st.modification_counter, st.persisted_sample_percent
-													from sys.stats ss 
-		                                              cross apply sys.dm_db_stats_properties (ss.object_id, ss.stats_id) st 
-		                                              inner join sys.objects so ON (ss.object_id = so.object_id)
-													where so.type_desc not in (''SYSTEM_TABLE'', ''INTERNAL_TABLE'')'
-									  
+		IF (@sql_major_version >13 OR (@sql_major_version=13 AND @sql_major_build>=4446))
+		BEGIN
+		      set @sql = @sql + '	insert into #tmpStats	select ' + cast( @dbid as nvarchar(20)) +   ' ''Database_Id''' + ',''' +  @dbname  + ''' Database_Name,  Object_name(st.object_id) ''Object_Name'', SCHEMA_NAME(schema_id) ''Schema_Name'', ss.name ''Statistics_Name'', 
+		                                                           st.object_id, st.stats_id, st.last_updated, st.rows, st.rows_sampled, st.steps, st.unfiltered_rows, st.modification_counter, st.persisted_sample_percent
+		      											from sys.stats ss 
+		                                                    cross apply sys.dm_db_stats_properties (ss.object_id, ss.stats_id) st 
+		                                                    inner join sys.objects so ON (ss.object_id = so.object_id)
+		      											where so.type_desc not in (''SYSTEM_TABLE'', ''INTERNAL_TABLE'')'
+		END
+		ELSE
+		BEGIN
+
+		  set @sql = @sql + '	insert into #tmpStats	select ' + cast( @dbid as nvarchar(20)) +   ' ''Database_Id''' + ',''' +  @dbname  + ''' Database_Name,  Object_name(st.object_id) ''Object_Name'', SCHEMA_NAME(schema_id) ''Schema_Name'', ss.name ''Statistics_Name'', 
+		                                                         st.object_id, st.stats_id, st.last_updated, st.rows, st.rows_sampled, st.steps, st.unfiltered_rows, st.modification_counter
+		    											from sys.stats ss 
+		                                                  cross apply sys.dm_db_stats_properties (ss.object_id, ss.stats_id) st 
+		                                                  inner join sys.objects so ON (ss.object_id = so.object_id)
+		    											where so.type_desc not in (''SYSTEM_TABLE'', ''INTERNAL_TABLE'')'
+		  
+		END
+		
 		-- added this check to prevent script from failing on principals with restricted access
 		if HAS_PERMS_BY_NAME(@dbname, 'DATABASE', 'CONNECT') = 1
+			
 			exec (@sql)
 		else
 			PRINT 'Skipped index usage and stats properties check. Principal ' + SUSER_SNAME() + ' does not have CONNECT permission on database ' + @dbname
 		--print @sql
 		FETCH NEXT FROM dbCursor  INTO @dbname, @dbid
 
-	end
+	END
 	close  dbCursor
 	deallocate dbCursor
 	print ''
 	print '-- sys.dm_db_stats_properties --'
-	select --*
-		Database_Id,
-		[Database_Name],
-		[Schema_Name],
-		[Object_Name],
-		[object_id],
-		[stats_id],
-		[Statistics_Name],
-		[last_updated],
-		[rows],
-		rows_sampled,
-		steps,
-		unfiltered_rows,
-		modification_counter,
-		persisted_sample_percent
-	from #tmpStats 
-		order by [database_name]
+	declare @sql2 nvarchar (max)
+
+	IF (@sql_major_version >13 OR (@sql_major_version=13 AND @sql_major_build>=4446))
+	BEGIN
+	    set @sql2 = 'select --*
+	                 	Database_Id,
+	                 	[Database_Name],
+	                 	[Schema_Name],
+	                 	[Object_Name],
+	                 	[object_id],
+	                 	[stats_id],
+	                 	[Statistics_Name],
+	                 	[last_updated],
+	                 	[rows],
+	                 	rows_sampled,
+	                 	steps,
+	                 	unfiltered_rows,
+	                 	modification_counter,
+	                 	persisted_sample_percent
+	                 from #tmpStats 
+	                 order by [database_name]'
+	  
+	END
+	ELSE
+	BEGIN
+	  set @sql2 = 'select --*
+	               	Database_Id,
+	               	[Database_Name],
+	               	[Schema_Name],
+	               	[Object_Name],
+	               	[object_id],
+	               	[stats_id],
+	               	[Statistics_Name],
+	               	[last_updated],
+	               	[rows],
+	               	rows_sampled,
+	               	steps,
+	               	unfiltered_rows,
+	               	modification_counter
+	               from #tmpStats 
+	               order by [database_name]'
+	END
+
+	print @sql2
+	exec (@sql2)
 	drop table #tmpStats
 	print ''
-
 
 	--get disabled indexes
 	--import in SQLNexus
