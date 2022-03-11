@@ -333,7 +333,6 @@ begin
 	               order by [database_name]'
 	END
 
-	print @sql2
 	exec (@sql2)
 	drop table #tmpStats
 	print ''
