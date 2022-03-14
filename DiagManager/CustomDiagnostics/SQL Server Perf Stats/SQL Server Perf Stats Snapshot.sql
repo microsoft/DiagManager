@@ -165,7 +165,7 @@ begin
 
 	print '-- sys.dm_database_encryption_keys TDE --'
 
-	declare @sql_major_version INT, @sql_major_build INT, declare @sql nvarchar (max)
+	declare @sql_major_version INT, @sql_major_build INT, @sql nvarchar (max)
 
 	SELECT @sql_major_version = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 4) AS INT)), 
 	       @sql_major_build = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 2) AS INT)) 
@@ -250,7 +250,7 @@ begin
 
 	--new stats DMV
 	set nocount on
-	declare @dbname sysname, @dbid int,  @sql_major_version INT, @sql_major_build INT
+	declare @dbname sysname, @dbid int
 
 	SELECT @sql_major_version = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 4) AS INT)), 
 	       @sql_major_build = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 2) AS INT)) 
@@ -277,7 +277,6 @@ begin
 	WHILE @@FETCH_STATUS = 0
 	BEGIN
 	
-		declare @sql nvarchar (max)
 		set @sql = 'USE [' + @dbname + ']'
 	    --replaced sys.dm_db_index_usage_stats  by sys.stat since the first doesn't return anything in case the table or index was not accessed since last SQL restart
 		IF (@sql_major_version >13 OR (@sql_major_version=13 AND @sql_major_build>=4446))
