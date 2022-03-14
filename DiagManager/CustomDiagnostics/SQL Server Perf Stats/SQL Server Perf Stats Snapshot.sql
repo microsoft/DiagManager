@@ -165,7 +165,7 @@ begin
 
 	print '-- sys.dm_database_encryption_keys TDE --'
 
-	declare @sql_major_version INT, @sql_major_build INT
+	declare @sql_major_version INT, @sql_major_build INT, declare @sql nvarchar (max)
 
 	SELECT @sql_major_version = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 4) AS INT)), 
 	       @sql_major_build = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 2) AS INT)) 
