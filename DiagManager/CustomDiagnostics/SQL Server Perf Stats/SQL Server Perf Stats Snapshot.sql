@@ -781,31 +781,43 @@ begin
 	print ''
 
 	print '-- sys.availability_replicas --'
-	select 
-		getdate() as runtime, 
-		replica_id,
-		group_id,
-		replica_metadata_id,
-		replica_server_name,
-		owner_sid,
-		[endpoint_url],
-		[availability_mode],
-		availability_mode_desc,
-		[failover_mode],
-		failover_mode_desc,
-		[session_timeout],
-		primary_role_allow_connections,
-		primary_role_allow_connections_desc,
-		secondary_role_allow_connections,
-		secondary_role_allow_connections_desc,
-		create_date,
-		modify_date,
-		[backup_priority],
-		[read_only_routing_url],
-		[seeding_mode],
-		seeding_mode_desc --,
+
+	SET @sql = 'select 
+		          getdate() as runtime, 
+		          replica_id,
+		          group_id,
+		          replica_metadata_id,
+		          replica_server_name,
+		          owner_sid,
+		          [endpoint_url],
+		          [availability_mode],
+		          availability_mode_desc,
+		          [failover_mode],
+		          failover_mode_desc,
+		          [session_timeout],
+		          primary_role_allow_connections,
+		          primary_role_allow_connections_desc,
+		          secondary_role_allow_connections,
+		          secondary_role_allow_connections_desc,
+		          create_date,
+		          modify_date,
+		          [backup_priority],
+		          [read_only_routing_url]'
+	IF (@sql_major_version >=13)
+	BEGIN
+	  -- columns seeding_mode and seeding_mode_desc were only added to sys.availability_replicas on SQL 2016
+	  SET @sql = @sql + '[seeding_mode],
+		                 [seeding_mode_desc]'
+		
 		--read_write_routing_url   --  -- Not exist in Lower SQL Version
-	from sys.availability_replicas
+	END
+
+	SET @sql = @sql + ' from sys.availability_replicas'
+
+	--print @sql
+	
+	exec (@sql)
+
 	print ''
 end 
 go
