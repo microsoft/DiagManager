@@ -164,20 +164,45 @@ begin
 	
 
 	print '-- sys.dm_database_encryption_keys TDE --'
-	select DB_NAME(database_id) as 'database_name', 
-	   [database_id]
-      ,[encryption_state]
-      ,[create_date]
-      ,[regenerate_date]
-      ,[modify_date]
-      ,[set_date]
-      ,[opened_date]
-      ,[key_algorithm]
-      ,[key_length]
-      ,[encryptor_thumbprint]
-      ,[encryptor_type]
-      ,[percent_complete]
-	from sys.dm_database_encryption_keys 
+
+	declare @sql_major_version INT, @sql_major_build INT
+
+	SELECT @sql_major_version = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 4) AS INT)), 
+	       @sql_major_build = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 2) AS INT)) 
+
+	set @sql = 'select DB_NAME(database_id) as ''database_name'', 
+	              [database_id]
+                 ,[encryption_state]
+                 ,[create_date]
+                 ,[regenerate_date]
+                 ,[modify_date]
+                 ,[set_date]
+                 ,[opened_date]
+                 ,[key_algorithm]
+                 ,[key_length]
+                 ,[encryptor_thumbprint]'
+
+	 IF (@sql_major_version >=11)
+	BEGIN	   
+      set @sql = @sql + ',[encryptor_type]'
+	END
+	
+	set @sql = @sql + ',[percent_complete]'
+
+	IF (@sql_major_version >=15)
+	BEGIN	   
+      set @sql = @sql + '[encryption_state_desc]
+                        ,[encryption_scan_state]
+                        ,[encryption_scan_state_desc]
+                        ,[encryption_scan_modify_date]'
+	END
+
+	set @sql = @sql + ' from sys.dm_database_encryption_keys '
+    
+	--print @sql
+	exec (@sql)
+      
+	
 	PRINT ''
 
 
