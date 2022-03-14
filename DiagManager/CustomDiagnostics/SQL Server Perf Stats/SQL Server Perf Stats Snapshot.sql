@@ -227,7 +227,7 @@ begin
 	set nocount on
 	declare @dbname sysname, @dbid int,  @sql_major_version INT, @sql_major_build INT
 
-	SELECT @sql_major_version = (LEFT(CAST(SERVERPROPERTY(N'ProductVersion') AS NVARCHAR(128)), (CHARINDEX(N'.', CAST(SERVERPROPERTY(N'ProductVersion') AS NVARCHAR(128)))-1))), 
+	SELECT @sql_major_version = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 4) AS INT)), 
 	       @sql_major_build = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 2) AS INT)) 
      
 	
