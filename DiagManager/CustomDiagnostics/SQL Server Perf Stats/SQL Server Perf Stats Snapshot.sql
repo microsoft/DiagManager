@@ -457,7 +457,7 @@ begin
     
       SET @sql = @sql + ' from sys.resource_governor_configuration;'
     
-      print @sql
+      --print @sql
       
       exec (@sql)
     
@@ -483,7 +483,7 @@ begin
 
 	SET @sql = @sql + ' from sys.resource_governor_resource_pools;'
 
-	print @sql
+	--print @sql
       
     exec (@sql)    		 
 	           
@@ -688,22 +688,32 @@ begin
 	print ''
 
 	print '-- sys.availability_groups --'
-	select 
-		getdate() as runtime, 
-		group_id,
-		[name],
-		resource_id,
-		resource_group_id,
-		[failure_condition_level],
-		[health_check_timeout],
-		[automated_backup_preference],
-		automated_backup_preference_desc,
-		[version],
-		basic_features,
-		[dtc_support],
-		[db_failover],
-		is_distributed --,
-	from sys.availability_groups
+
+	SET @sql ='select 
+		         getdate() as runtime, 
+		         group_id,
+		         [name],
+		         resource_id,
+		         resource_group_id,
+		         [failure_condition_level],
+		         [health_check_timeout],
+		         [automated_backup_preference],
+		         automated_backup_preference_desc'
+	IF (@sql_major_version >=13)
+	BEGIN
+	  SET @sql = @sql + ',[version],
+		                  basic_features,
+		                  [dtc_support],
+		                  [db_failover],
+		                  is_distributed'
+	END
+
+	SET @sql = @sql + ' from sys.availability_groups;'
+
+	--print @sql
+      
+    exec (@sql)    
+		
 	print ''
 
 	print '-- sys.dm_hadr_cluster --'
