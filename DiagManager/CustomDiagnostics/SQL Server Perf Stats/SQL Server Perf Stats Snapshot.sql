@@ -268,8 +268,8 @@ begin
 	  into #tmpStats 
 	  from sys.stats ss cross apply sys.dm_db_stats_properties (ss.object_id, ss.stats_id) st inner join sys.objects so ON (ss.object_id = so.object_id) where 1=0
 	  
-	  --column st.persisted_sample_percent was only introduced on sys.dm_db_stats_properties on SQL Server 2016 (13.x) SP1 CU4 -- 13.0.4446.0	 
-	  IF (@sql_major_version >13 OR (@sql_major_version=13 AND @sql_major_build>=4446))
+	  --column st.persisted_sample_percent was only introduced on sys.dm_db_stats_properties on SQL Server 2016 (13.x) SP1 CU4 -- 13.0.4446.0 and 2017 CU1 14.0.3006.16	 
+	  IF (@sql_major_version >14 OR (@sql_major_version=13 AND @sql_major_build>=4446) OR (@sql_major_version=14 AND @sql_major_build>=3006))
 	  BEGIN
 	    ALTER TABLE #tmpStats ADD persisted_sample_percent FLOAT
 	  END
@@ -279,7 +279,7 @@ begin
 	
 		set @sql = 'USE [' + @dbname + ']'
 	    --replaced sys.dm_db_index_usage_stats  by sys.stat since the first doesn't return anything in case the table or index was not accessed since last SQL restart
-		IF (@sql_major_version >13 OR (@sql_major_version=13 AND @sql_major_build>=4446))
+		IF (@sql_major_version >14 OR (@sql_major_version=13 AND @sql_major_build>=4446) OR (@sql_major_version=14 AND @sql_major_build>=3006))
 		BEGIN
 		      set @sql = @sql + '	insert into #tmpStats	select ' + cast( @dbid as nvarchar(20)) +   ' ''Database_Id''' + ',''' +  @dbname  + ''' Database_Name,  Object_name(st.object_id) ''Object_Name'', SCHEMA_NAME(schema_id) ''Schema_Name'', ss.name ''Statistics_Name'', 
 		                                                           st.object_id, st.stats_id, st.last_updated, st.rows, st.rows_sampled, st.steps, st.unfiltered_rows, st.modification_counter, st.persisted_sample_percent
@@ -316,7 +316,7 @@ begin
 	print '-- sys.dm_db_stats_properties --'
 	declare @sql2 nvarchar (max)
 
-	IF (@sql_major_version >13 OR (@sql_major_version=13 AND @sql_major_build>=4446))
+	IF (@sql_major_version >14 OR (@sql_major_version=13 AND @sql_major_build>=4446) OR (@sql_major_version=14 AND @sql_major_build>=3006))
 	BEGIN
 	    set @sql2 = 'select --*
 	                 	Database_Id,
