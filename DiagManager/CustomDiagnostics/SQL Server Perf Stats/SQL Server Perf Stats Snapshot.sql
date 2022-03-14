@@ -440,42 +440,77 @@ begin
 	print ''
 	
 	print '-- sys.resource_governor_configuration --'
-	select --* 
-		classifier_function_id,
-		is_enabled,
-		[max_outstanding_io_per_volume]
-	from sys.resource_governor_configuration
+	declare @sql_major_version INT, @sql_major_build INT, @sql nvarchar (max)
+
+    SELECT @sql_major_version = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 4) AS INT)), 
+           @sql_major_build = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 2) AS INT)) 
+    
+    BEGIN
+      SET @sql = 'select --* 
+                    classifier_function_id,
+                    is_enabled'
+      
+      IF (@sql_major_version >12)
+      BEGIN
+        SET @sql = @sql + ',[max_outstanding_io_per_volume]'
+      END
+    
+      SET @sql = @sql + ' from sys.resource_governor_configuration;'
+    
+      print @sql
+      
+      exec (@sql)
+    
+    END
 	print ''
 	
 	print '-- sys.resource_governor_resource_pools --'
-	select --* 
-		pool_id,
-		[name],
-		min_cpu_percent,
-		max_cpu_percent,
-		min_memory_percent,
-		max_memory_percent,
-		cap_cpu_percent,
-		min_iops_per_volume,
-		max_iops_per_volume
-	from sys.resource_governor_resource_pools
+	SET @sql ='select --* 
+		         pool_id,
+           		 [name],
+           		 min_cpu_percent,
+           		 max_cpu_percent,
+           		 min_memory_percent,
+           		 max_memory_percent'
+	IF (@sql_major_version >=11)
+	BEGIN
+      SET @sql = @sql + ',cap_cpu_percent'
+	END
+	IF (@sql_major_version >=12)
+	BEGIN
+      SET @sql = @sql + ',min_iops_per_volume, max_iops_per_volume'
+	END
+
+	SET @sql = @sql + ' from sys.resource_governor_resource_pools;'
+
+	print @sql
+      
+    exec (@sql)    		 
+	           
 	print ''
 	
 	print '-- sys.resource_governor_workload_groups --'
-	select --* 
-		group_id,
-		[name],
-		importance,
-		request_max_memory_grant_percent,
-		request_max_cpu_time_sec,
-		request_memory_grant_timeout_sec,
-		max_dop,
-		group_max_requests,
-		pool_id,
-		external_pool_id --,
-		-- -- Not exist in Lower SQL Version
-		--request_max_memory_grant_percent_numeric
-	from sys.resource_governor_workload_groups
+	SET @sql ='select --* 
+	        	group_id,
+	        	[name],
+	        	importance,
+	        	request_max_memory_grant_percent,
+	        	request_max_cpu_time_sec,
+	        	request_memory_grant_timeout_sec,
+	        	max_dop,
+	        	group_max_requests,
+	        	pool_id'
+	IF (@sql_major_version >=13)
+	BEGIN
+	  SET @sql = @sql + ',external_pool_id'
+	END
+
+	SET @sql = @sql + ' from sys.resource_governor_workload_groups'
+	
+	--print @sql
+      
+    exec (@sql)    		 
+
 	print ''
 	
 	print 'Query and plan hash capture '
