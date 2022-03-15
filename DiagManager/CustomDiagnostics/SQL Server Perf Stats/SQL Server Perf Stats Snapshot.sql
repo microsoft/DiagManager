@@ -180,15 +180,14 @@ begin
                  ,[opened_date]
                  ,[key_algorithm]
                  ,[key_length]
-                 ,[encryptor_thumbprint]'
+                 ,[encryptor_thumbprint]
+				 ,[percent_complete]'
 
 	 IF (@sql_major_version >=11)
 	BEGIN	   
       set @sql = @sql + ',[encryptor_type]'
 	END
 	
-	set @sql = @sql + ',[percent_complete]'
-
 	IF (@sql_major_version >=15)
 	BEGIN	   
       set @sql = @sql + '[encryption_state_desc]
