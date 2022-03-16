@@ -192,8 +192,8 @@ function ValidateCurrentVersion ([string]$ssver)
 	# add the discovered values in an array
 	foreach ($inst in $instNames)
 	{
-		# for higher versions of PS use: $intermediateNames+= ( Get-ItemPropertyValue -Path $regInstNames -Name $inst)
-        $intermediateNames+= ( Get-ItemProperty -Path $regInstNames -Name $inst |Select-Object * -ExcludeProperty PS*).$inst
+		# for higher versions of Powershell use: $intermediateNames+= ( Get-ItemPropertyValue -Path $regInstNames -Name $inst)
+        $intermediateNames+= ( Get-ItemProperty -Path $regInstNames -Name $inst).$inst
 	}
 
 
