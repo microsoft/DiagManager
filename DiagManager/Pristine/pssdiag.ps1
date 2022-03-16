@@ -57,7 +57,7 @@ param
     [string] $T = [string]::Empty,
 
     [Parameter(ParameterSetName = 'Config',Mandatory=$false)]
-    [switch] $DebugOnParam
+    [switch] $DebugOn
 
 
 )
@@ -135,7 +135,8 @@ function FindSQLDiag ()
 		
 	
 	
-        [string]$toolsBinFolder = Get-ItemPropertyValue -Path $toolsRegStr -Name Path
+        # for higher versions of PS use: [string]$toolsBinFolder = Get-ItemPropertyValue -Path $toolsRegStr -Name Path
+        [string]$toolsBinFolder = (Get-ItemProperty -Path $toolsRegStr -Name Path).Path
 
 
 		#strip "(x86)" in case Powershell goes to HKLM\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\ under the covers, which it does
@@ -191,7 +192,8 @@ function ValidateCurrentVersion ([string]$ssver)
 	# add the discovered values in an array
 	foreach ($inst in $instNames)
 	{
-		$intermediateNames+= ( Get-ItemPropertyValue -Path $regInstNames -Name $inst)
+		# for higher versions of Powershell use: $intermediateNames+= ( Get-ItemPropertyValue -Path $regInstNames -Name $inst)
+        $intermediateNames+= ( Get-ItemProperty -Path $regInstNames -Name $inst).$inst
 	}
 
 
@@ -201,7 +203,9 @@ function ValidateCurrentVersion ([string]$ssver)
 	{
 
 		$regRoot = "HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\" + $name + "\MSSQLServer\CurrentVersion"
-		$verString = Get-ItemPropertyValue -Path $regRoot -Name CurrentVersion
+		
+        # for higher versions of PS use: $verString = Get-ItemPropertyValue -Path $regRoot -Name CurrentVersion
+        $verString = (Get-ItemProperty -Path $regRoot -Name CurrentVersion).CurrentVersion
 
 		$currentVersionReg+= ($regRoot + "=>" + $verString)
 
@@ -260,7 +264,7 @@ function main
 
     [bool] $debug_on = $false
 
-    if ($DebugOnParam -eq $true)
+    if ($DebugOn -eq $true)
     {
         $debug_on = $true
     }
@@ -281,7 +285,7 @@ function main
 
     [string] $argument_list = ""
 
-    if ($ServiceState -iin "stop", "start", "stop_abort", "/U")
+    if ($ServiceState -iin "stop", "start", "stop_abort")
     {
         Write-Host "ServiceState = $ServiceState"
         $argument_list = $ServiceState    
@@ -464,14 +468,40 @@ function main
 
 		
 	#call diagutil.exe 1 for now until counter translation is implemented in this script
-	Write-Host "Executing: diagutil.exe 1"
-	Start-Process -FilePath "diagutil.exe" -ArgumentList "1" -WindowStyle Normal
+	
+    if (($ServiceState -notin "stop", "start", "stop_abort") -and ($U -ne $true))
+    {
+        Write-Host "Executing: diagutil.exe 1"
+	    Start-Process -FilePath "diagutil.exe" -ArgumentList "1" -WindowStyle Normal
+    }
 
     # launch the sqldiag.exe process and print the last 5 lines of the console file in case there were errors
     Write-Host "Executing: $sqldiag_path $argument_list"
     Start-Process -FilePath $sqldiag_path -ArgumentList $argument_list -WindowStyle Normal -Wait
-	Get-Content -Tail 5 ".\output\internal\##console.log"
-	Write-Host "SQLDiag has completed. You can close the window. If you got errors, please review \output\internal\##SQLDIAG.LOG file"
+    
+    $console_log = ".\output\internal\##console.log"
+
+    if (($R -eq $true) -or ($ServiceState -in "stop", "start", "stop_abort") -or ($U -eq $true))
+    {
+        if($R -eq $true)
+        {
+            Write-Host "Registered SQLDiag as a service. Please make sure you run 'pssdiag.ps1 START' or 'SQLDIAG START' or 'net start SQLDIAG'" -ForegroundColor Green
+        }
+
+        if($U -eq $true)
+        {
+            Write-Host "Un-registered SQLDiag as a service." -ForegroundColor Green
+        }
+        
+    }
+    elseif (Test-Path -Path $console_log )
+    {
+        Write-Warning "Displaying the last 5 lines from \output\internal\##console.log file. If SQLDiag did not run for some reason, you may be reading an old log."
+	    Get-Content -Tail 5 $console_log 
+        Write-Host "SQLDiag has completed. You can close the window. If you got errors, please review \output\internal\##SQLDIAG.LOG file"
+    }
+
+	
 
 }
 

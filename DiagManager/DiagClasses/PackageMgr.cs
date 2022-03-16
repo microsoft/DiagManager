@@ -546,7 +546,7 @@ namespace PssdiagConfig
                     string emailBodyInstr = "2. You can optionally verify the downloaded file by computing a SHA512 hash. " + Environment.NewLine + Environment.NewLine +
                                             "   a. Run this command in a Windows Command Prompt to compute a SHA512 hash on it " + Environment.NewLine + Environment.NewLine;
 
-                    string emailBodyCertU = "       certutil - hashfile " + filename + " SHA512 " + Environment.NewLine + Environment.NewLine;
+                    string emailBodyCertU = "       certutil -hashfile " + filename + " SHA512 " + Environment.NewLine + Environment.NewLine;
                     string emailBodyHash =  "   b. Compare result to this: " + ((hashString == null) ? "NULL" : hashString) + Environment.NewLine + Environment.NewLine + 
                                             "3. Follow these instructions to run: https://aka.ms/run-pssdiag" + Environment.NewLine;
 
