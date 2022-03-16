@@ -135,7 +135,8 @@ function FindSQLDiag ()
 		
 	
 	
-        [string]$toolsBinFolder = Get-ItemPropertyValue -Path $toolsRegStr -Name Path
+        # for higher versions of PS use: [string]$toolsBinFolder = Get-ItemPropertyValue -Path $toolsRegStr -Name Path
+        [string]$toolsBinFolder = (Get-ItemProperty -Path $toolsRegStr -Name Path).Path
 
 
 		#strip "(x86)" in case Powershell goes to HKLM\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\ under the covers, which it does
@@ -191,7 +192,8 @@ function ValidateCurrentVersion ([string]$ssver)
 	# add the discovered values in an array
 	foreach ($inst in $instNames)
 	{
-		$intermediateNames+= ( Get-ItemPropertyValue -Path $regInstNames -Name $inst)
+		# for higher versions of PS use: $intermediateNames+= ( Get-ItemPropertyValue -Path $regInstNames -Name $inst)
+        $intermediateNames+= ( Get-ItemProperty -Path $regInstNames -Name $inst |Select-Object * -ExcludeProperty PS*).$inst
 	}
 
 
@@ -201,7 +203,9 @@ function ValidateCurrentVersion ([string]$ssver)
 	{
 
 		$regRoot = "HKLM:\SOFTWARE\Microsoft\Microsoft SQL Server\" + $name + "\MSSQLServer\CurrentVersion"
-		$verString = Get-ItemPropertyValue -Path $regRoot -Name CurrentVersion
+		
+        # for higher versions of PS use: $verString = Get-ItemPropertyValue -Path $regRoot -Name CurrentVersion
+        $verString = (Get-ItemProperty -Path $regRoot -Name CurrentVersion).CurrentVersion
 
 		$currentVersionReg+= ($regRoot + "=>" + $verString)
 
