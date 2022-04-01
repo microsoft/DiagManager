@@ -819,12 +819,41 @@ begin
 
 	print ''
 
+	
+end 
+go
+
+
+
+IF OBJECT_ID ('#sp_perf_stats_snapshot12','P') IS NOT NULL
+   DROP PROCEDURE #sp_perf_stats_snapshot12
+GO
+
+CREATE PROCEDURE #sp_perf_stats_snapshot12
+as
+begin
+	exec #sp_perf_stats_snapshot11
+end
+go
+
+IF OBJECT_ID ('#sp_perf_stats_snapshot13','P') IS NOT NULL
+   DROP PROCEDURE #sp_perf_stats_snapshot13
+GO
+
+CREATE PROCEDURE #sp_perf_stats_snapshot13
+as
+begin
+	exec #sp_perf_stats_snapshot12
+
 	PRINT '-- sys.database_scoped_configurations --'
 
     DECLARE @database_id INT
     DECLARE @dbname SYSNAME
     DECLARE @cont INT
     DECLARE @maxcont INT
+	DECLARE @sql_major_version INT
+	DECLARE @sql_major_build INT
+	DECLARE @sql nvarchar (max)
         
     DECLARE @dbtable TABLE (
       id INT IDENTITY (1,1) PRIMARY KEY,
@@ -879,31 +908,6 @@ begin
     SELECT * FROM #temp
     
     PRINT ''
-
-end 
-go
-
-
-
-IF OBJECT_ID ('#sp_perf_stats_snapshot12','P') IS NOT NULL
-   DROP PROCEDURE #sp_perf_stats_snapshot12
-GO
-
-CREATE PROCEDURE #sp_perf_stats_snapshot12
-as
-begin
-	exec #sp_perf_stats_snapshot11
-end
-go
-
-IF OBJECT_ID ('#sp_perf_stats_snapshot13','P') IS NOT NULL
-   DROP PROCEDURE #sp_perf_stats_snapshot13
-GO
-
-CREATE PROCEDURE #sp_perf_stats_snapshot13
-as
-begin
-	exec #sp_perf_stats_snapshot12
 end
 
 
