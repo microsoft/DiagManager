@@ -905,7 +905,7 @@ begin
     
     END
     
-    SELECT * FROM #temp
+    SELECT database_id, CONVERT(VARCHAR(48), dbname) AS dbname, configuration_id, name, CONVERT(VARCHAR(256), value) AS value, CONVERT(VARCHAR(256),value_for_secondary) AS value_for_secondary FROM #temp
     
     PRINT ''
 end
