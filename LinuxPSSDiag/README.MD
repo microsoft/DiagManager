@@ -132,3 +132,6 @@ Testing SQL Connectivity for host_instance with name machinename and port NNNN
 
 
 8. Please upload this zip file to the engineer you are working with. It is a compressed archive of the **/output** directory which has all the diagnostic logs.
+
+## License Agreement
+[MIT License](/license.md)
