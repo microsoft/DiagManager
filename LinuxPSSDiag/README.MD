@@ -34,7 +34,7 @@ drwxr-xr-x    2 root root    6 Aug  4 15:31 pssdiag
 2. Extract the contents of the tar using the following command:
 
 ```bash
-tar -xvf pssdiag*.tar
+tar -xvf pssdiag_<version>.tar
 ```
 
 3. Using the command [ls -l] you can verify the files and you will see a collection of files with .sh, .scn, .conf and .sql files. The important ones we will be using to launch the data collection are shown below:
