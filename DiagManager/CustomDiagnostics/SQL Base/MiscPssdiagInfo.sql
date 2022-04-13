@@ -152,7 +152,7 @@ declare @startup table (ArgsName nvarchar(10), ArgsValue nvarchar(max))
 insert into @startup 
 SELECT     sReg.value_name,     CAST(sReg.value_data AS nvarchar(max))
 FROM sys.dm_server_registry AS sReg
-WHERE     sReg.registry_key LIKE N'%Parameters';
+WHERE     sReg.value_name LIKE N'SQLArg%';
 
 print ''
 RAISERROR ('--Startup Parameters--', 0, 1) WITH NOWAIT
