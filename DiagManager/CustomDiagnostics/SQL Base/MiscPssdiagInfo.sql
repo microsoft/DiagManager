@@ -62,11 +62,6 @@ PRINT ''
 PRINT ''
 RAISERROR ('--ServerProperty--', 0, 1) WITH NOWAIT
 
-select * from #summary
-order by PropertyName
-
-truncate table #summary
-
 go
 
 PRINT ''
@@ -138,8 +133,6 @@ begin
 	insert into #summary values ('IsXTPSupported', cast (SERVERPROPERTY('IsXTPSupported') as nvarchar(max)))
 end
 
-RAISERROR ('', 0, 1) WITH NOWAIT
-RAISERROR ('--ServerProperty--', 0, 1) WITH NOWAIT
 
 select * from #summary
 order by PropertyName
