@@ -107,7 +107,7 @@ END
 	INSERT INTO #summary VALUES ('registry ActivePowerScheme', NULL)	
 
 	--inserting OS Edition and Build from @@Version 
-	INSERT INTO #summary VALUES ('OS Edition and Build from @@Version',  LTRIM(SUBSTRING(@@VERSION,CHARINDEX(' on ',@@VERSION)+3,100)))
+	INSERT INTO #summary VALUES ('OS Edition and Build from @@Version',  REPLACE(LTRIM(SUBSTRING(@@VERSION,CHARINDEX(' on ',@@VERSION)+3,100)),CHAR(10),''))
  
 
 IF (@@MICROSOFTVERSION >= 167773760) --10.0.1600
