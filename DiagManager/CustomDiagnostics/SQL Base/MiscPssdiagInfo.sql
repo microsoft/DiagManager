@@ -325,10 +325,15 @@ print ''
 
 go
 
+IF @@MICROSOFTVERSION >= 251658240 --15.0.2000
+begin
+
 print '-- sys.dm_tran_persistent_version_store_stats --'
 select * From sys.dm_tran_persistent_version_store_stats
 print ''
+end
 go
+
 /*
 --windows version from @@version
 declare @pos int
