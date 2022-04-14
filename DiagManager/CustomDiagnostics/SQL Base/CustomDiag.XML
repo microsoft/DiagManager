@@ -21,14 +21,8 @@
   <!--CustomTask enabled="true" groupname="SQL Base" taskname="Windows 2012 or R2 cluster log" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="powershell -command &quot;&amp; {get-clusterlog -Timespan 10080  -Destination &apos;%output_path%&apos;}&quot;"  pollinginterval="0" /-->
   <CustomTask enabled="true" groupname="SQL Base" taskname="Windows 2008 or R2 cluster log" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="powershell -command &quot;&amp; {cluster log /g /Span:10080 /Copy:&apos;%output_path%&apos;}&quot;"  pollinginterval="0" />
   <CustomTask enabled="true" groupname="SQL Base" taskname="DBCC LogInfo" type="TSQL_Script" point="Shutdown" wait="OnlyOnShutdown" cmd="get_dbccloginfo.sql" pollinginterval="0" />
-
-
-
-  
-  
-  
-  
-
+  <CustomTask enabled="true" groupname="SQL Base" taskname="TaskList" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="powershell.exe -File .\get_tasklist.ps1 &gt; &quot;%output_name%.TXT&quot; 2&gt;&amp;1" />
+	
 </CustomTasks>
 
 
