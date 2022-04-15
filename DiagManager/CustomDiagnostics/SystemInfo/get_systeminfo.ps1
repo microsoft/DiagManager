@@ -1,18 +1,7 @@
-#Generate systeminfo report and save to file 
-$servername=$args[0]
-$outputpath=$args[1]
-$osversion = (Get-WmiObject Win32_OperatingSystem).Version
-$outputfile = ($outputpath + $servername + "_SYSTEMINFO.TXT")
-
-Write-Output "GET_SYSTEMINFO Server: $servername"  
-Write-Output "GET_SYSTEMINFO Output Path: $outputpath"  
-Write-Output "GET_SYSTEMINFO Detected OS: $osversion"
-Write-Output "GET_SYSTEMINFO Output File: $outputfile"
-
-Write-Output "Current time: $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")" | Out-File -Append -FilePath $outputfile
-
-Write-Output "Generating systeminfo report: systeminfo.exe /FO LIST " 
-systeminfo.exe /FO LIST | Out-File -Append -FilePath $outputfile
-Write-Output "Report completed"
-
-Write-Output "Current time: $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")" | Out-File -Append -FilePath $outputfile
+﻿#Generate systeminfo report and save to file 
+Write-Output "Start time: $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")" 
+Write-Output "`nGenerating systeminfo report..."
+Write-Output "`n-- system_info --" 
+Write-Output "Property                   Value         " 
+Write-Output "-------------------------- ----------------------------------------------------------------------------------------------------"
+systeminfo.exe /FO LIST | Where-Object {$_.trim() -ne ""}
