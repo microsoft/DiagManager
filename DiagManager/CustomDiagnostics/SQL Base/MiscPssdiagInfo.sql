@@ -59,12 +59,6 @@ select @cpu_ticks = cpu_ticks - @cpu_ticks from sys.dm_os_sys_info
 insert into #summary values ('cpu_ticks_per_sec', @cpu_ticks / 2 )
 
 PRINT ''
-PRINT ''
-RAISERROR ('--ServerProperty--', 0, 1) WITH NOWAIT
-
-go
-
-PRINT ''
 
 go
 
@@ -133,12 +127,14 @@ begin
 	insert into #summary values ('IsXTPSupported', cast (SERVERPROPERTY('IsXTPSupported') as nvarchar(max)))
 end
 
+RAISERROR ('--ServerProperty--', 0, 1) WITH NOWAIT
 
 select * from #summary
 order by PropertyName
 drop table #summary
-go
+print ''
 
+GO
 --changing xp_instance_regenumvalues to dmv access as a part of issue #149
 
 declare @startup table (ArgsName nvarchar(10), ArgsValue nvarchar(max))
@@ -147,10 +143,10 @@ SELECT     sReg.value_name,     CAST(sReg.value_data AS nvarchar(max))
 FROM sys.dm_server_registry AS sReg
 WHERE     sReg.value_name LIKE N'SQLArg%';
 
-print ''
 RAISERROR ('--Startup Parameters--', 0, 1) WITH NOWAIT
 select * from @startup
 go
+print ''
 
 create table #traceflg (TraceFlag int, Status int, Global int, Session int)
 insert into #traceflg exec ('dbcc tracestatus (-1)')
