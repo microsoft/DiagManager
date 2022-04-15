@@ -410,6 +410,6 @@ FROM sys.dm_xe_sessions sess
  INNER JOIN sys.dm_xe_session_events evt
 ON sess.address = evt.event_session_address
  INNER JOIN sys.trace_xe_event_map xemap
- ON evt.event_name = xemap.xe_event_name
+ ON evt.event_name = xemap.xe_event_name collate database_default
 print ''
 go
