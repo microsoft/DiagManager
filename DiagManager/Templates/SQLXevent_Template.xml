@@ -364,6 +364,40 @@
 		</Versions>
 		</event>
 	</category>
+	<category name="CDC">
+    	<event package="sqlserver" name="cdc_db_enable">
+    	<Features>
+      		<Feature name="SQL" enabled="true"/>
+    	</Features>
+    	<Versions>
+      		<Version name="14" enabled="true"/>
+      		<Version name="15" enabled="true"/>
+    		</Versions>
+    	</event>
+		<event package="sqlserver" name="cdc_session">
+    	<Features>
+      		<Feature name="SQL" enabled="true"/>
+    	</Features>
+    	<Versions>
+      		<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+			<Version name="14" enabled="true"/>
+      		<Version name="15" enabled="true"/>
+    	</Versions>
+		<event package="sqlserver" name="cdc_error">
+    	<Features>
+      		<Feature name="SQL" enabled="true"/>
+    	</Features>
+    	<Versions>
+      		<Version name="11" enabled="true"/>
+			<Version name="12" enabled="true"/>
+			<Version name="13" enabled="true"/>
+			<Version name="14" enabled="true"/>
+      		<Version name="15" enabled="true"/>
+    	</Versions>
+  		</event>
+  </category>
 	<category name="CLR">
 		<event package="sqlserver" name="assembly_load">
 		<Features>
