@@ -385,6 +385,7 @@
 			<Version name="14" enabled="true"/>
       		<Version name="15" enabled="true"/>
     	</Versions>
+		</event>
 		<event package="sqlserver" name="cdc_error">
     	<Features>
       		<Feature name="SQL" enabled="true"/>
