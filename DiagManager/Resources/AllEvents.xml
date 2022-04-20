@@ -232,6 +232,12 @@
 
 </category>
 
+<category name="CDC">
+      <event package="sqlserver" name="cdc_db_enable"  version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+      <event package="sqlserver" name="cdc_session"  version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+      <event package="sqlserver" name="cdc_error"  version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
+</category>
+
 <category name="CLR">
   <event package="sqlserver" name="assembly_load"    version="11"  SpinLock="false" QueryPerf="false" LightPerf="false" GeneralPerf="false" DetailedPerf="false" Replay="false" />
   
