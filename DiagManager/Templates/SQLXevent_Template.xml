@@ -380,10 +380,10 @@
     	</Features>
     	<Versions>
       		<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-			<Version name="14" enabled="true"/>
-      		<Version name="15" enabled="true"/>
+          <Version name="12" enabled="true"/>
+          <Version name="13" enabled="true"/>
+          <Version name="14" enabled="true"/>
+          <Version name="15" enabled="true"/>
     	</Versions>
 		</event>
 		<event package="sqlserver" name="cdc_error">
@@ -391,11 +391,11 @@
       		<Feature name="SQL" enabled="true"/>
     	</Features>
     	<Versions>
-      		<Version name="11" enabled="true"/>
-			<Version name="12" enabled="true"/>
-			<Version name="13" enabled="true"/>
-			<Version name="14" enabled="true"/>
-      		<Version name="15" enabled="true"/>
+          <Version name="11" enabled="true"/>
+          <Version name="12" enabled="true"/>
+          <Version name="13" enabled="true"/>
+          <Version name="14" enabled="true"/>
+          <Version name="15" enabled="true"/>
     	</Versions>
   		</event>
   </category>
