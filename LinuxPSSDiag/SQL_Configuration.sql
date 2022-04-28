@@ -52,6 +52,19 @@ go
 -- select * from @startup
 -- go
 
+
+-- version of "registry" parameters looking into error log to avoid using xp_instance_regenumvalues in SQL SERVER 2017
+declare @logparams table (logdate datetime,  ProcessInfo nvarchar(30), [Text] nvarchar(max)); 
+INSERT INTO @logparams exec sp_readerrorlog 0, 1, 'Registry startup parameters';
+print '';
+RAISERROR ('--Startup Parameters--', 0, 1) WITH NOWAIT;
+WITH Q AS(
+SELECT   value, row_number() over(order by(select 1)) as r
+FROM @logparams CROSS APPLY STRING_SPLIT([Text], CHAR(13))
+)SELECT cast( concat('SQLArg', r-2) as nvarchar(10)) as ArgsName,  REPLACE(value, CHAR(10), '')  as ArgsValue 
+FROM Q WHERE value not like 'R%' --AND value not like 'Command%'
+go
+
 create table #traceflg (TraceFlag int, Status int, Global int, Session int)
 insert into #traceflg exec ('dbcc tracestatus (-1)')
 print ''
@@ -567,6 +580,13 @@ go
 	  convert(int,is_advanced) as 'is_advanced', 
 	  name  
 	from sys.configurations order by name
+
+--fesibaja: unclear why this was not present
+print ''
+RAISERROR ('--sys.databases_ex--', 0, 1) WITH NOWAIT
+select cast(DATABASEPROPERTYEX (name,'IsAutoCreateStatistics') as int) 'IsAutoCreateStatistics', cast( DATABASEPROPERTYEX (name,'IsAutoUpdateStatistics') as int) 'IsAutoUpdateStatistics', cast (DATABASEPROPERTYEX (name,'IsAutoCreateStatisticsIncremental') as int) 'IsAutoCreateStatisticsIncremental', *  from sys.databases
+go
+
 
 print ''
 RAISERROR ('--database files--', 0, 1) WITH NOWAIT
