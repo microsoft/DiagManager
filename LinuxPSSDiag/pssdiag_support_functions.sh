@@ -1,6 +1,10 @@
 #!/bin/bash
 
 MSSQL_CONF="/var/opt/mssql/mssql.conf"
+outputdir="$PWD/output"
+#SQL_LOG_DIR=${SQL_LOG_DIR:-"/var/opt/mssql/log"}
+pssdiag_log="$outputdir/${HOSTNAME}_pssdiag.log"
+
 
 get_sql_listen_port()
 {
@@ -127,3 +131,27 @@ fi
 }
 
 
+
+get_conf_option()
+{
+
+
+result=$(/opt/mssql/bin/mssql-conf get $1 $2 | awk '!/^No setting/ {print $3}')
+
+echo "host conf option '$1 $2': ${result:-$3}">>$pssdiag_log
+echo ${result:-$3}
+
+}
+
+get_docker_conf_option()
+{
+
+command="/opt/mssql/bin/mssql-conf get $2 $3"'| awk '"'"'!/^No setting/ {print $3}'"'" 
+
+result=$(docker exec ${1} sh -c "$command" --user root)
+
+echo "docker conf option '$2 $3': ${result:-$4}">>$pssdiag_log
+echo ${result:-$4}
+
+}
+#tee -a $pssdiag_log

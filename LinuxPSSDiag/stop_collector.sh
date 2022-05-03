@@ -171,7 +171,7 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
         # we finished processing the requested container
         else
         # we need to iterate through all containers
-                dockerid_col=$(docker ps | grep 'microsoft/mssql-server-linux' | awk '{ print $1 }')
+                dockerid_col=$(docker ps | grep 'mcr.microsoft.com/mssql/server' | awk '{ print $1 }')
                 for dockerid in $dockerid_col;
                 do
 			#moved to helper function
