@@ -161,7 +161,7 @@ namespace PssdiagConfig
             this.chkBoxCreateEmail.Size = new System.Drawing.Size(15, 14);
             this.chkBoxCreateEmail.TabIndex = 30;
             this.chkBoxCreateEmail.UseVisualStyleBackColor = true;
-            this.chkBoxCreateEmail.CheckedChanged += new System.EventHandler(this.chkBoxCreateEmail_CheckedChanged);
+           
             // 
             // btnReset
             // 
