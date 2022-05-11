@@ -237,7 +237,7 @@
       <Scenario name="GeneralPerf"/>
     </DefaultChoice>/>
     <DefaultChoice Feature="SQL" Version="10" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="true">
-      <Scenario name="DetailedPerf"/>
+      <Scenario name="GeneralPerf"/>
     </DefaultChoice>
     <DefaultChoice Feature="SQL" Version="10.50" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="true">
       <Scenario name="GeneralPerf"/>
