@@ -89,6 +89,8 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" = "YES" ]]; then
 	fi
 	if [ -e "/var/opt/mssql/mssql.conf" ]; then
 		cp /var/opt/mssql/mssql.conf $outputdir/${HOSTNAME}_mssql.conf
+	else
+		touch $outputdir/${HOSTNAME}_mssql.conf
 	fi
 fi
 

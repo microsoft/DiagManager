@@ -26,6 +26,10 @@ COLLECT_OS_LOGS=YES
 # SECTION FOR SQL SERVER
 #########################
 
+# Specify the authentication mode to use for connecting to SQL instance
+# Valid values : SQL / INTEGRATED / SELECT
+SQL_CONNECT_AUTH_MODE=SELECT
+
 # Collect information about the SQL Server instance running on this local  host machine ( not as a container). Specify YES or NO.
 COLLECT_HOST_SQL_INSTANCE=YES
 

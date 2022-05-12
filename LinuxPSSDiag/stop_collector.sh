@@ -8,14 +8,14 @@ source ./pssdiag_support_functions.sh
 sql_collect_config()
 {
 	echo "	Collecting SQL Configuration Snapshot at Shutdown..."
-        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"SQL_Configuration.sql" -o"$outputdir/${1}_SQL_Configuration_Shutdown.out"
+        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -i"SQL_Configuration.sql" -o"$outputdir/${1}_SQL_Configuration_Shutdown.out"
 }
 
 sql_stop_xevent()
 {
 if [[ $COLLECT_EXTENDED_EVENTS == [Yy][eE][sS]  ]]; then
 	echo "	Stopping XE Collection if started..."
-        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"pssdiag_xevent_stop.sql" -o"$outputdir/${1}_Stop_XECollection.out"
+        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -i"pssdiag_xevent_stop.sql" -o"$outputdir/${1}_Stop_XECollection.out"
 fi
 }
 
@@ -23,7 +23,7 @@ sql_stop_trace()
 {
 if [[ $COLLECT_SQL_TRACE == [Yy][eE][sS]  ]]; then
         echo "	Stopping SQL Trace Collection if started..."
-        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"pssdiag_trace_stop.sql" -o"$outputdir/${1}_Stop_TraceCollection.out"
+        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -i"pssdiag_trace_stop.sql" -o"$outputdir/${1}_Stop_TraceCollection.out"
 fi
 }
 
@@ -49,7 +49,7 @@ sql_collect_alwayson()
 {
 if [[ $COLLECT_SQL_HA_LOGS == [Yy][eE][sS]  ]]; then
         echo "	Collecting SQL AlwaysOn configuration at Shutdown..."
-        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"SQL_AlwaysOnDiagScript.sql" -o"$outputdir/${1}_SQL_AlwaysOnDiag_Shutdown.out"
+        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -i"SQL_AlwaysOnDiagScript.sql" -o"$outputdir/${1}_SQL_AlwaysOnDiag_Shutdown.out"
 fi
 }
 
@@ -57,7 +57,7 @@ sql_collect_querystore()
 {
 if [[ $COLLECT_QUERY_STORE == [Yy][eE][sS]  ]]; then
         echo "	Collecting SQL Query Store information at Shutdown..."
-        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -i"SQL_QueryStore.sql" -o"$outputdir/${1}_SQL_QueryStore_Shutdown.out"
+        /opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -i"SQL_QueryStore.sql" -o"$outputdir/${1}_SQL_QueryStore_Shutdown.out"
 fi
 }
 

@@ -59,7 +59,7 @@ get_docker_mapped_port()
 sql_connect()
 {
 
-	echo "Testing SQL Connectivity for ${1} with name ${2} and port ${3}"
+	echo "Testing SQL Connectivity for ${1} with name ${2} and port ${3}" 
 	MAX_ATTEMPTS=3
 	attempt_num=1
 	sqlconnect=0
@@ -72,8 +72,29 @@ sql_connect()
 		fi
 	fi
 
-	while [ $attempt_num -le $MAX_ATTEMPTS ]
+	
+	while [ $SQL_CONNECT_AUTH_MODE != 'SQL' ] && [ $SQL_CONNECT_AUTH_MODE != 'INTEGRATED' ]
 	do
+		
+		read -r -p "  Select authentication type: 1 (user/password), 2 (integrated security)" lmode
+		lmode=${lmode:-0}
+		if [ 1 = $lmode ]; then
+			SQL_CONNECT_AUTH_MODE='SQL'
+		fi
+		
+		if [ 2 = $lmode ]; then
+			SQL_CONNECT_AUTH_MODE='INTEGRATED'
+		fi
+
+	done 
+
+	CONN_AUTH_OPTIONS=''
+	sqlconnect=0
+
+	if [ $SQL_CONNECT_AUTH_MODE = 'SQL' ]; then
+
+		while [ $attempt_num -le $MAX_ATTEMPTS ]
+		do
         	#prompt for credentials for SQL authentication
 	        read -r -p "        Enter SQL UserName: " sqluser
 	        read -s -r -p "        Enter User Password: " pass
@@ -82,15 +103,34 @@ sql_connect()
 	        if [[ $? -eq 0 ]]; then
 	        	sqlconnect=1
 	        	echo "        SQL Connectivity test succeeded..."
+				CONN_AUTH_OPTIONS="-U$sqluser -P$pass"
 	        	break
 	        else
+			
         		echo "        Login Attempt failed - Attempt ${attempt_num} of ${MAX_ATTEMPTS}, Please try again"
+
 	        fi
         	attempt_num=$(( attempt_num + 1 ))
-	done
-	return $sqlconnect
-}
+		done
+	
+	else
 
+		#integrated
+
+		/opt/mssql-tools/bin/sqlcmd -S$SQL_SERVER_NAME -E -Q"select @@version" 2>&1 >/dev/null
+	    if [[ $? -eq 0 ]]; then
+	       	
+			sqlconnect=1;
+			CONN_AUTH_OPTIONS='-E'
+			echo "        Integrated SQL Connectivity test succeeded..."
+			
+		fi
+
+	fi
+	
+	return $sqlconnect
+	
+}
 
 
 get_sql_log_directory()
