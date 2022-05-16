@@ -931,9 +931,26 @@ GO
 
 CREATE PROCEDURE #sp_perf_stats_snapshot15
 as
-begin
+BEGIN
 	exec #sp_perf_stats_snapshot14
-end
+	
+	declare @sql_major_version INT
+	SELECT @sql_major_version = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 4) AS INT))	
+	-- Check the MS Version
+	IF (@sql_major_version >=15)
+	BEGIN
+		-- Add identifier
+		print '-- sys.index_resumable_operations --'
+		SELECT object_id, OBJECT_NAME(object_id) [object_name], index_id, name [index_name],
+		sql_text,last_max_dop_used,	partition_number, state, state_desc, start_time, 
+		last_pause_time, total_execution_time, percent_complete, page_count 
+		FROM sys.index_resumable_operations
+		
+		PRINT ''
+		RAISERROR ('', 0, 1) WITH NOWAIT
+	END
+END
+
 
 go
 
