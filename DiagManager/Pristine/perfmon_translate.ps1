@@ -26,7 +26,7 @@ if((Get-WinSystemLocale).name -notlike "en*"){
 
 
 
-    $pc_local_names = (Get-ItemProperty –Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib\CurrentLanguage' –Name 'counter').Counter
+    $pc_local_names = (Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib\CurrentLanguage' -Name 'counter').Counter
     $pc_local_hash = @{}
     foreach ($item in $pc_local_names) {
         $pc_id_indexnumber = $pc_local_names.IndexOf($item)
