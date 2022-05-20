@@ -405,9 +405,8 @@ function main
 	}
 
 		
-	#call diagutil.exe 1 for now until counter translation is implemented in this script
-	Write-Host "Executing: diagutil.exe 1"
-	Start-Process -FilePath "diagutil.exe" -ArgumentList "1" -WindowStyle Normal
+	#Translate Performance Counters if((Get-WinSystemLocale).name -notlike "en*")
+    & .\perfmon_translate.ps1
 
     # launch the sqldiag.exe process
     Write-Host "Executing: $sqldiag_path $argument_list"

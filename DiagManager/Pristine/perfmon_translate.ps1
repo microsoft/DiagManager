@@ -1,8 +1,8 @@
 #Check if the language is not English
 if((Get-WinSystemLocale).name -notlike "en*"){
 
-    #revert xml file to original En language
-    Copy-Item -Path C:\perfmon_test\org\pssdiag.xml -Destination C:\perfmon_test\pssdiag.xml
+    #Get all Local existing counters paths in array for future check
+    $counterexistingpaths = @(Get-Counter -ListSet *).Paths
 
     #Get performance counters names and ID's in english and local languages to hash table
     $pc_en_names = [Microsoft.Win32.Registry]::PerformanceData.GetValue("Counter 009")
@@ -40,7 +40,7 @@ if((Get-WinSystemLocale).name -notlike "en*"){
 
 
     #get pssdiag xml with performance counters info
-    $pathxml = "C:\perfmon_test\pssdiag.xml"
+    $pathxml = "pssdiag.xml"
     $xml = [xml](Get-Content $pathxml)
 
 
@@ -114,7 +114,7 @@ if((Get-WinSystemLocale).name -notlike "en*"){
                                 $dup_node_name = $pc_local_hash."$dup_node"
                                 $confirm_counter = $pob_translated_name + "\" + $dup_node_name
 
-                                IF ((@(Get-Counter -ListSet $pob_local_name).Paths).Contains($confirm_counter)){
+                                IF ($counterexistingpaths.Contains($confirm_counter)){
                                     $pc_local_name = $dup_node_name
                                 }
                             }
@@ -139,5 +139,6 @@ if((Get-WinSystemLocale).name -notlike "en*"){
 
 
     #save the XML file with the changes
-    $xml.Save("C:\perfmon_test\pssdiag.xml")
+    $xmlsavelocation = (Get-Location).Path + "\" + $pathxml
+    $xml.Save($xmlsavelocation)
 }
