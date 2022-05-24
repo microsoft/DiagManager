@@ -6,7 +6,7 @@
 	- [Prerequisites](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#prerequisites)
 	- [Download](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#downloading-pssdiag)
 	- [Configure](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#configuring-pssdiag)
-- [Starting and Stopping](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#starting-and-stopping-pssdiag)
+- [Starting and Stopping PSSDiag](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#starting-and-stopping-pssdiag)
 	- [Linux or Docker Container](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#linux-or-docker-container)
 	- [Azure Arc-enabled SQL Managed Instance](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#azure-arc-enabled-sql-managed-instance)
 	- [SQL Big Data cluster 2019](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#sql-big-data-cluster-2019)
