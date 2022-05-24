@@ -1,7 +1,7 @@
 # PSSDiag Data Collection Utility (Linux)
 **Table of Content**
 
-- [Overview](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#pssdiag-data-collection-utility-linux)
+- [Overview](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#overiew)
 	- [Supported Products](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#supported-targets)
 	- [Prerequisites](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#prerequisites)
 	- [Download](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#downloading-pssdiag)
