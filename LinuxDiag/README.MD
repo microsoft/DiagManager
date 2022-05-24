@@ -1,6 +1,7 @@
+# PSSDiag Data Collection Utility (Linux)
 **Table of Content**
 
-- [PSSDiag Data Collection Utility Overview](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#pssdiag-data-collection-utility-linux)
+- [Overview](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#pssdiag-data-collection-utility-linux)
 	- [Supported Products](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#supported-targets)
 	- [Prerequisites](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#prerequisites)
 	- [Download](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#downloading-pssdiag)
@@ -9,7 +10,7 @@
 - [Azure Arc-enabled SQL Managed Instance](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#azure-arc-enabled-sql-managed-instance)
 - [SQL Big Data cluster 2019](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#sql-big-data-cluster-2019)
 
-# PSSDiag Data Collection Utility (Linux)
+# Overiew
 
 This utility was created by Microsoft engineers to assist with diagnostic log collection when you are troubleshooting problems in Microsoft SQL Server.
 This utility is a collection of shell scripts as well as TSQL scripts that collect various data points of interest for a troubleshooting scenario.
