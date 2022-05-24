@@ -1,17 +1,12 @@
 [PSSDiag Data Collection Utility Overview](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#pssdiag-data-collection-utility-linux)
-
-	[Supported Products](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#supported-targets)
-	
-	[Prerequisites](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#prerequisites)
-	
-	[Download](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#downloading-pssdiag)
-	
-	[Configuring ](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#configuring-pssdiag)
-	
+[Supported Products](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#supported-targets)
+[Prerequisites](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#prerequisites)
+[Download](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#downloading-pssdiag)
+[Configuring ](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#configuring-pssdiag)
 [Run Instrunctions for host Instnace or Docker Container](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#run-instrunctions-for-host-instnace-or-docker-container)
-
+[Run Instrunctions for Azure Arc-enabled SQL Managed Instance](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#run-instrunctions-for-azure-arc-enabled-sql-managed-instance)
+[Run Instrunctions for SQL Big Data cluster 2019](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#run-instrunctions-for-sql-big-data-cluster-2019)
 []()
-
 []()
 
 
