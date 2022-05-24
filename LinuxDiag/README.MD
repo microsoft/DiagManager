@@ -17,7 +17,7 @@ This utility is a collection of shell scripts as well as TSQL scripts that colle
 As you can imagine there are various pre-requisites to be able to perform this data collection in a reliable manner.
 
 ## Supported Targets
-1. SQL server running on host instance
+1. SQL server running on Linux host instance
 2. SQL docker container
 3. Azure Arc-enabled SQL Managed Instance
 4. SQL Big Data cluster 2019
