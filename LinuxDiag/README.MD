@@ -76,7 +76,7 @@ The default setting is to collect information about the host instance of SQL Ser
 
 # Starting and Stopping PSSDiag
 
-## Linux host Instnace or Docker Container
+## Linux or Docker Container
 follow these steps to star and stop
 
 ### Starting PSSDiag
