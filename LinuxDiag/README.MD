@@ -6,9 +6,10 @@
 	- [Prerequisites](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#prerequisites)
 	- [Download](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#downloading-pssdiag)
 	- [Configure](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#configuring-pssdiag)
-- [Linux Host Instnace or Docker Container](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#linux-host-instnace-or-docker-container)
-- [Azure Arc-enabled SQL Managed Instance](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#azure-arc-enabled-sql-managed-instance)
-- [SQL Big Data cluster 2019](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#sql-big-data-cluster-2019)
+- [Starting and Stopping](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#starting-and-stopping-pssdiag)
+	- [Linux Host Instnace or Docker Container](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#linux-host-instnace-or-docker-container)
+	- [Azure Arc-enabled SQL Managed Instance](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#azure-arc-enabled-sql-managed-instance)
+	- [SQL Big Data cluster 2019](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#sql-big-data-cluster-2019)
 
 # Overiew
 This utility was created by Microsoft engineers to assist with diagnostic log collection when you are troubleshooting problems in Microsoft SQL Server.
