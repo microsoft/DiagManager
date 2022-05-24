@@ -73,7 +73,7 @@ For each log collection scenario, there are specific information points that nee
 **Note:**
 The default setting is to collect information about the host instance of SQL Server. If you need to collect information for the container instances, you need to enable that configuration parameter in the .scn file to specify the container name or ALL to indicate every sql container.
 
-#Running and Stopping PSSDiag
+# Starting and Stopping PSSDiag
 
 ## Linux host Instnace or Docker Container
 follow these steps to star and stop
