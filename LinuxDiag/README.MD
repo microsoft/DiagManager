@@ -73,7 +73,7 @@ For each log collection scenario, there are specific information points that nee
 **Note:**
 The default setting is to collect information about the host instance of SQL Server. If you need to collect information for the container instances, you need to enable that configuration parameter in the .scn file to specify the container name or ALL to indicate every sql container.
 
-## Run Instrunctions for host Instnace or Docker Container
+## Linux host Instnace or Docker Container
 follow these steps to star and stop
 
 ### Starting PSSDiag
@@ -100,7 +100,7 @@ sudo /bin/bash ./stop_collector.sh
 
 Please upload this zip file to the engineer you are working with. It is a compressed archive of the **/output** directory which has all the diagnostic logs.
 
-## Run Instrunctions for Azure Arc-enabled SQL Managed Instance
+## Azure Arc-enabled SQL Managed Instance
 1. you will need to download the tool into the primary SQLMI Pod 
 2. "kubectl exec" into the Pod and follow the instructions
 
@@ -117,7 +117,7 @@ To stop the utility and log collection, use the following command:
 /bin/bash ./stop_collector.sh
 ```
 
-## Run Instrunctions for SQL Big Data cluster 2019
+## SQL Big Data cluster 2019
 1. you will need to download the tool into the primary master Pod 
 2. "kubectl exec" into the Pod and follow the instructions
 
