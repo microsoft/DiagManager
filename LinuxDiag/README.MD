@@ -11,7 +11,6 @@
 - [SQL Big Data cluster 2019](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#sql-big-data-cluster-2019)
 
 # Overiew
-
 This utility was created by Microsoft engineers to assist with diagnostic log collection when you are troubleshooting problems in Microsoft SQL Server.
 This utility is a collection of shell scripts as well as TSQL scripts that collect various data points of interest for a troubleshooting scenario.
 As you can imagine there are various pre-requisites to be able to perform this data collection in a reliable manner.
