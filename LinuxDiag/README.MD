@@ -6,7 +6,7 @@
 
 [Download](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#downloading-pssdiag)
 
-[Configuring ](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#configuring-pssdiag)
+[Configure](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#configuring-pssdiag)
 
 [Run Instrunctions for host Instnace or Docker Container](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#run-instrunctions-for-host-instnace-or-docker-container)
 
