@@ -43,13 +43,13 @@ This utility can collect information and logs for SQL Server instances that are 
 
 Using the command [ls -l] you can verify the files and you will see a collection of files with .sh, .scn, .conf and .sql files. The important ones we will be using to launch the data collection are shown below:
 	
-```bash
-start_collector.sh
-sql_perf.scn
-sql_perf_kube.scn
-static_collect.scn
-stop_collector.sh
-```
+	```bash
+	start_collector.sh
+	sql_perf.scn
+	sql_perf_kube.scn
+	static_collect.scn
+	stop_collector.sh
+	```
 
 For each log collection scenario, there are specific information points that need to be collected. To simplify things, we created scenario files like sql_perf.scn and static_collect.scn to specify all logs configuration aspects. These scenario files will provide directives to the utility on what specific logs and data points need to be captured. You can open the .scn files using the cat command or vi editor and make necessary adjustments as you see fit. You will notice that each scenario file contains sections for OS and SQL log collections.
 
