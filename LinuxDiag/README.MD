@@ -1,4 +1,4 @@
-# PSSDiag Data Collection Utility (Linux)
+# PSSDiag for Linux
 **Table of Content**
 
 - [Overview](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#overiew)
@@ -11,12 +11,12 @@
 	- [Azure Arc-enabled SQL Managed Instance](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#azure-arc-enabled-sql-managed-instance)
 	- [SQL Big Data cluster 2019](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#sql-big-data-cluster-2019)
 
-# Overiew
+# Overview
 This utility was created by Microsoft engineers to assist with diagnostic log collection when you are troubleshooting problems in Microsoft SQL Server.
 This utility is a collection of shell scripts as well as TSQL scripts that collect various data points of interest for a troubleshooting scenario.
 As you can imagine there are various pre-requisites to be able to perform this data collection in a reliable manner.
 
-## Supported Targets
+## Supported Products
 1. SQL server running on Linux host instance
 2. SQL docker container
 3. Azure Arc-enabled SQL Managed Instance
@@ -36,6 +36,7 @@ If you do not have all these utilities and commands then we will be able to coll
 Depending upon your Linux operating system you might have to register the system with the operating system vendor to install all the required utilities.
 Consult with your system administrator to help you with these tasks.
 
+## Scenario Files and Usage Information
 You can run only a single copy of PSSDIAG utility on a system. If you attempt to launch the second instance, it will provide you with warnings and exit.
 All the scripts are tested against bash shell. Please launch the start and stop collector explicitly using /bin/bash
 This utility can collect information and logs for SQL Server instances that are installed as host instance or as container instances.
@@ -66,9 +67,9 @@ Depending on the scenario for which you are collecting logs, you may have to jus
 - Download `pssdiag_<version>.tar` 
 
 
-# How to start and stop PSSDiag
+# Usage
 
-## Linux or Docker Container
+## Linux or Docker Container Usage
 1. you will need to copy `pssdiag_<version>.tar` into folder
 
 	**Note:** if you are capturing extended events (default is NO in sql_perf.scn file) the folder hierarchy needs r+x on the whole structure. Specifically on RHEL the /home/user folder does not have x permissions for all
@@ -92,7 +93,7 @@ sudo /bin/bash ./stop_collector.sh
 
 Please upload this zip file to the engineer you are working with. It is a compressed archive of the **/output** directory which has all the diagnostic logs.
 
-## SQL Big Data cluster 2019
+## SQL Big Data cluster 2019 Usage
 1. you will need to copy `pssdiag_<version>.tar` into the primary master Pod using "kubectl cp"
 2. "kubectl exec... bash" into master POD
 3. extract the content using `tar -xvf pssdiag_<version>.tar`
@@ -110,7 +111,7 @@ sudo /bin/bash ./stop_collector.sh
 ```
 Please upload this zip file to the engineer you are working with. It is a compressed archive of the /output directory which has all the diagnostic logs.
 
-## Azure Arc-enabled SQL Managed Instance
+## Azure Arc-enabled SQL Managed Instance Usage
 1. you will need to copy `pssdiag_<version>.tar` into the primary SQLMI Pod using "kubectl cp"
 2. "kubectl exec... bash" into master POD
 3. extract the content using `tar -xvf pssdiag_<version>.tar`
