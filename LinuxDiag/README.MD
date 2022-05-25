@@ -88,7 +88,7 @@ Depending on the scenario for which you are collecting logs, you may have to jus
 # Starting and Stopping PSSDiag
 
 ## Linux or Docker Container
-1. you will need to copy pssdiag_<version>.tar into folder
+1. you will need to copy `pssdiag_<version>.tar` into folder
 
 	**Note:** if you are capturing extended events (default is NO in sql_perf.scn file) the folder hierarchy needs r+x on the whole structure. Specifically on RHEL the /home/user folder does not have x permissions for all
 	
@@ -108,7 +108,7 @@ sudo /bin/bash ./stop_collector.sh
 Please upload this zip file to the engineer you are working with. It is a compressed archive of the **/output** directory which has all the diagnostic logs.
 
 ## SQL Big Data cluster 2019
-1. you will need to copy pssdiag_<version>.tar into the primary master Pod using "kubectl cp"
+1. you will need to copy `pssdiag_<version>.tar` into the primary master Pod using "kubectl cp"
 2. "kubectl exec... bash" into master POD
 3. extract the content using `tar -xvf pssdiag_<version>.tar`
 4. Make sure all *.sh has x attribute using `chmod a+x *.sh`
@@ -126,7 +126,7 @@ sudo /bin/bash ./stop_collector.sh
 Please upload this zip file to the engineer you are working with. It is a compressed archive of the /output directory which has all the diagnostic logs.
 
 ## Azure Arc-enabled SQL Managed Instance
-1. you will need to copy pssdiag_<version>.tar into the primary SQLMI Pod using "kubectl cp"
+1. you will need to copy `pssdiag_<version>.tar` into the primary SQLMI Pod using "kubectl cp"
 2. "kubectl exec... bash" into master POD
 3. extract the content using `tar -xvf pssdiag_<version>.tar`
 4. Make sure all *.sh has x attribute using `chmod a+x *.sh`
