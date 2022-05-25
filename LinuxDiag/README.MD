@@ -23,6 +23,7 @@ As you can imagine there are various pre-requisites to be able to perform this d
 4. SQL Big Data cluster 2019
 
 ## Prerequisites
+**Note:** the following prerequisites doesnt apply for Azure Arc-enabled SQL Managed Instance  
 - You need to be able to launch these scripts with elevated permissions using the sudo command and privileges since many data points require elevated permissions.
 - You need to be able to connect to the SQL Server instance using sysadmin logins
 - There are several Linux commands and utilities used for data collection. Here are the important ones:
@@ -54,20 +55,23 @@ Extract the contents of the tar using the following command:
 ```bash
 tar -xvf pssdiag_<version>.tar
 ```
+     
+In this folder, if any of the .sh files do not have the x attribute, please execute the following command to set the required attributes:
+  
+```bash
+chmod a+x *.sh
+```
 
 Using the command [ls -l] you can verify the files and you will see a collection of files with .sh, .scn, .conf and .sql files. The important ones we will be using to launch the data collection are shown below:
 
 	
 ```bash
--rwxrwxr-x 1 username groupname  12292 Dec 27 05:29 start_collector.sh
--rw-rw-r-- 1 username groupname   2449 Dec 27 05:29 sql_perf.scn
--rw-rw-r-- 1 username groupname   2445 Dec 27 05:29 static_collect.scn
--rwxrwxr-x 1 username groupname   5748 Dec 27 05:29 stop_collector.sh
+start_collector.sh
+sql_perf.scn
+sql_perf_kube.scn
+static_collect.scn
+stop_collector.sh
 ```
-
-        
-   In this folder, if any of the .sh files do not have the x attribute, please execute the following command to set the required attributes:
-      chmod a+x *.sh
 
 For each log collection scenario, there are specific information points that need to be collected. To simplify things, we created scenario files like sql_perf.scn and static_collect.scn to specify all logs configuration aspects. These scenario files will provide directives to the utility on what specific logs and data points need to be captured. You can open the .scn files using the cat command or vi editor and make necessary adjustments as you see fit. You will notice that each scenario file contains sections for OS and SQL log collections.
 
@@ -103,23 +107,6 @@ sudo /bin/bash ./stop_collector.sh
 
 Please upload this zip file to the engineer you are working with. It is a compressed archive of the **/output** directory which has all the diagnostic logs.
 
-## Azure Arc-enabled SQL Managed Instance
-1. you will need to download the tool into the primary SQLMI Pod 
-2. "kubectl exec" into the Pod and follow the instructions
-
-### Starting PSSDiag 
-
-```
-/bin/bash ./start_collector.sh sql_perf_kube.scn
-```
-
-### Stopping PSSDiag
-To stop the utility and log collection, use the following command:
-
-```
-/bin/bash ./stop_collector.sh
-```
-
 ## SQL Big Data cluster 2019
 1. you will need to download the tool into the primary master Pod 
 2. "kubectl exec" into the Pod and follow the instructions
@@ -135,6 +122,22 @@ To stop the utility and log collection, use the following command:
 
 ```
 sudo /bin/bash ./stop_collector.sh
+```
+## Azure Arc-enabled SQL Managed Instance
+1. you will need to download the tool into the primary SQLMI Pod 
+2. "kubectl exec" into the Pod and follow the instructions
+
+### Starting PSSDiag 
+
+```
+/bin/bash ./start_collector.sh sql_perf_kube.scn
+```
+
+### Stopping PSSDiag
+To stop the utility and log collection, use the following command:
+
+```
+/bin/bash ./stop_collector.sh
 ```
 
 ### License Agreement
