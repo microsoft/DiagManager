@@ -5,7 +5,7 @@
 	- [Supported Products](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#supported-targets)
 	- [Prerequisites](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#prerequisites)
 	- [Scenario Files and Usage Information](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#scenario-files-and-usage-information)
-	- [Download](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#downloading-pssdiag)
+	- [Downloading PSSDiag](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#downloading-pssdiag)
 - [Usage](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#usage)
 	- [Linux or Docker Container](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#linux-or-docker-container)
 	- [Azure Arc-enabled SQL Managed Instance](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#azure-arc-enabled-sql-managed-instance)
