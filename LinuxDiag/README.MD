@@ -6,10 +6,9 @@
 	- [Prerequisites](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#prerequisites)
 	- [Scenario Files and Usage Information](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#scenario-files-and-usage-information)
 	- [Downloading PSSDiag](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#downloading-pssdiag)
-- [Usage](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#usage)
-	- [Linux or Docker Container](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#linux-or-docker-container)
-	- [Azure Arc-enabled SQL Managed Instance](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#azure-arc-enabled-sql-managed-instance)
-	- [SQL Big Data cluster 2019](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#sql-big-data-cluster-2019)
+- [Linux or Docker Container Usage](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#linux-or-docker-container-usage)
+- [Azure Arc-enabled SQL Managed Instance Usage](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#sql-big-data-cluster-2019-usage)
+- [SQL Big Data cluster 2019 Usage](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#azure-arc-enabled-sql-managed-instance-usage)
 
 # Overview
 This utility was created by Microsoft engineers to assist with diagnostic log collection when you are troubleshooting problems in Microsoft SQL Server.
@@ -61,15 +60,13 @@ Please review the information in the terminal for any errors or other messages. 
 Depending on the scenario for which you are collecting logs, you may have to just run the start_collector. In some cases where you are collecting logs and diagnostic information for a period of time, you have to stop the utility. The information in the script output from start_collector will indicate if you have to specifically stop the log collection.
    When you stop the log collection, it will terminate various background processes that were collecting information. You can review these processes using the PID from the files stoppids*. There is a set of configuration information collected during the stop collector phase.
 
-## Downloading PSSDiag
+# Downloading PSSDiag
 - Navigate to releases using the following link https://github.com/microsoft/DiagManager/releases?q=Linux&expanded=true 
 - Expand Assests section
 - Download `pssdiag_<version>.tar` 
 
 
-# Usage
-
-## Linux or Docker Container Usage
+# Linux or Docker Container Usage
 1. you will need to copy `pssdiag_<version>.tar` into folder
 
 	**Note:** if you are capturing extended events (default is NO in sql_perf.scn file) the folder hierarchy needs r+x on the whole structure. Specifically on RHEL the /home/user folder does not have x permissions for all
@@ -93,7 +90,7 @@ sudo /bin/bash ./stop_collector.sh
 
 Please upload this zip file to the engineer you are working with. It is a compressed archive of the **/output** directory which has all the diagnostic logs.
 
-## SQL Big Data cluster 2019 Usage
+# SQL Big Data cluster 2019 Usage
 1. you will need to copy `pssdiag_<version>.tar` into the primary master Pod using "kubectl cp"
 2. "kubectl exec... bash" into master POD
 3. extract the content using `tar -xvf pssdiag_<version>.tar`
@@ -111,7 +108,7 @@ sudo /bin/bash ./stop_collector.sh
 ```
 Please upload this zip file to the engineer you are working with. It is a compressed archive of the /output directory which has all the diagnostic logs.
 
-## Azure Arc-enabled SQL Managed Instance Usage
+# Azure Arc-enabled SQL Managed Instance Usage
 1. you will need to copy `pssdiag_<version>.tar` into the primary SQLMI Pod using "kubectl cp"
 2. "kubectl exec... bash" into master POD
 3. extract the content using `tar -xvf pssdiag_<version>.tar`
