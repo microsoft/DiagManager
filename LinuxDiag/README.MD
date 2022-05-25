@@ -40,32 +40,7 @@ You can run only a single copy of PSSDIAG utility on a system. If you attempt to
 All the scripts are tested against bash shell. Please launch the start and stop collector explicitly using /bin/bash
 This utility can collect information and logs for SQL Server instances that are installed as host instance or as container instances.
 
-## Downloading PSSDiag
-- Navigate to releases using the following link https://github.com/microsoft/DiagManager/releases?q=Linux&expanded=true 
-- Expand Assests section
-- Download `pssdiag_<version>.tar`
-
-## Configuring PSSDiag
-Create a folder (for example: /mnt/data/pssdiag) and move pssdiag*.tar to the newly created folder. If you are capturing extended events, this folder hierarchy needs r+x on the whole structure. Specifically on RHEL the /home/user folder does not have x permissions for all. 
-   
-```bash
-drwxr-xr-x    2 root root    6 Aug  4 15:31 pssdiag
-```
-
-Extract the contents of the tar using the following command:
-
-```bash
-tar -xvf pssdiag_<version>.tar
-```
-     
-In this folder, if any of the .sh files do not have the x attribute, please execute the following command to set the required attributes:
-  
-```bash
-chmod a+x *.sh
-```
-
 Using the command [ls -l] you can verify the files and you will see a collection of files with .sh, .scn, .conf and .sql files. The important ones we will be using to launch the data collection are shown below:
-
 	
 ```bash
 start_collector.sh
@@ -84,13 +59,23 @@ Please review the information in the terminal for any errors or other messages. 
 
 Depending on the scenario for which you are collecting logs, you may have to just run the start_collector. In some cases where you are collecting logs and diagnostic information for a period of time, you have to stop the utility. The information in the script output from start_collector will indicate if you have to specifically stop the log collection.
    When you stop the log collection, it will terminate various background processes that were collecting information. You can review these processes using the PID from the files stoppids*. There is a set of configuration information collected during the stop collector phase.
-   
-# Starting and Stopping PSSDiag
+
+## Downloading PSSDiag
+- Navigate to releases using the following link https://github.com/microsoft/DiagManager/releases?q=Linux&expanded=true 
+- Expand Assests section
+- Download `pssdiag_<version>.tar` 
+
+
+# How to starting and stopping PSSDiag
 
 ## Linux or Docker Container
 1. you will need to copy `pssdiag_<version>.tar` into folder
 
 	**Note:** if you are capturing extended events (default is NO in sql_perf.scn file) the folder hierarchy needs r+x on the whole structure. Specifically on RHEL the /home/user folder does not have x permissions for all
+	
+	```bash
+	drwxr-xr-x    2 root root    6 Aug  4 15:31 pssdiag
+	```
 	
 2. extract the content using `tar -xvf pssdiag_<version>.tar`
 3. Make sure all *.sh has x attribute using `chmod a+x *.sh`
