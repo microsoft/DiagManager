@@ -81,7 +81,7 @@ The default setting is to collect information about the host instance of SQL Ser
 # Starting and Stopping PSSDiag
 
 ## Linux or Docker Container
-follow these steps to star and stop
+follow these steps to start and stop
 
 ### Starting PSSDiag
 To Start the PSSDIAG utility you will use the start_collector.sh script and pass the scenario as parameter:
@@ -108,8 +108,10 @@ sudo /bin/bash ./stop_collector.sh
 Please upload this zip file to the engineer you are working with. It is a compressed archive of the **/output** directory which has all the diagnostic logs.
 
 ## SQL Big Data cluster 2019
-1. you will need to download the tool into the primary master Pod 
-2. "kubectl exec" into the Pod and follow the instructions
+1. you will need to copy pssdiag_<version>.tar into the primary master Pod using "kubectl cp"
+2. "kubectl exec... bash" into master POD
+3. extract the content using `tar -xvf pssdiag_<version>.tar'
+4. Make sure all *.sh has x attribute using `chmod a+x *.sh`
 
 ### Starting PSSDiag
 
@@ -124,8 +126,10 @@ To stop the utility and log collection, use the following command:
 sudo /bin/bash ./stop_collector.sh
 ```
 ## Azure Arc-enabled SQL Managed Instance
-1. you will need to download the tool into the primary SQLMI Pod 
-2. "kubectl exec" into the Pod and follow the instructions
+1. you will need to copy pssdiag_<version>.tar into the primary SQLMI Pod using "kubectl cp"
+2. "kubectl exec... bash" into master POD
+3. extract the content using `tar -xvf pssdiag_<version>.tar'
+4. Make sure all *.sh has x attribute using `chmod a+x *.sh`
 
 ### Starting PSSDiag 
 
