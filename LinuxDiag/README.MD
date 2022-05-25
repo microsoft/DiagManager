@@ -115,14 +115,12 @@ Please upload this zip file to the engineer you are working with. It is a compre
 3. extract the content using `tar -xvf pssdiag_<version>.tar`
 4. Make sure all *.sh has x attribute using `chmod a+x *.sh`
 
-### Starting PSSDiag
-
+#### Starting PSSDiag
 ```
 sudo /bin/bash ./start_collector.sh sql_perf_kube.scn
 ```
 
-### Stopping PSSDiag
-To stop the utility and log collection, use the following command:
+#### Stopping PSSDiag
 
 ```
 sudo /bin/bash ./stop_collector.sh
@@ -133,15 +131,12 @@ sudo /bin/bash ./stop_collector.sh
 3. extract the content using `tar -xvf pssdiag_<version>.tar`
 4. Make sure all *.sh has x attribute using `chmod a+x *.sh`
 
-### Starting PSSDiag 
-
+#### Starting PSSDiag 
 ```
 /bin/bash ./start_collector.sh sql_perf_kube.scn
 ```
 
-### Stopping PSSDiag
-To stop the utility and log collection, use the following command:
-
+#### Stopping PSSDiag
 ```
 /bin/bash ./stop_collector.sh
 ```
