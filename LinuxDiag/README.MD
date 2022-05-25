@@ -110,7 +110,7 @@ Please upload this zip file to the engineer you are working with. It is a compre
 ## SQL Big Data cluster 2019
 1. you will need to copy pssdiag_<version>.tar into the primary master Pod using "kubectl cp"
 2. "kubectl exec... bash" into master POD
-3. extract the content using `tar -xvf pssdiag_<version>.tar'
+3. extract the content using `tar -xvf pssdiag_<version>.tar`
 4. Make sure all *.sh has x attribute using `chmod a+x *.sh`
 
 ### Starting PSSDiag
@@ -128,7 +128,7 @@ sudo /bin/bash ./stop_collector.sh
 ## Azure Arc-enabled SQL Managed Instance
 1. you will need to copy pssdiag_<version>.tar into the primary SQLMI Pod using "kubectl cp"
 2. "kubectl exec... bash" into master POD
-3. extract the content using `tar -xvf pssdiag_<version>.tar'
+3. extract the content using `tar -xvf pssdiag_<version>.tar`
 4. Make sure all *.sh has x attribute using `chmod a+x *.sh`
 
 ### Starting PSSDiag 
