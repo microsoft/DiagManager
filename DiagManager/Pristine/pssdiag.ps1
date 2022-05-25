@@ -467,13 +467,16 @@ function main
 	}
 
 		
-	#call diagutil.exe 1 for now until counter translation is implemented in this script
+#	#call diagutil.exe 1 for now until counter translation is implemented in this script
 	
-    if (($ServiceState -notin "stop", "start", "stop_abort") -and ($U -ne $true))
-    {
-        Write-Host "Executing: diagutil.exe 1"
-	    Start-Process -FilePath "diagutil.exe" -ArgumentList "1" -WindowStyle Normal
-    }
+#    if (($ServiceState -notin "stop", "start", "stop_abort") -and ($U -ne $true))
+#    {
+#        Write-Host "Executing: diagutil.exe 1"
+#	    Start-Process -FilePath "diagutil.exe" -ArgumentList "1" -WindowStyle Normal
+#    }
+
+	#Translate Performance Counters if((Get-WinSystemLocale).name -notlike "en*")
+    & .\perfmon_translate.ps1
 
     # launch the sqldiag.exe process and print the last 5 lines of the console file in case there were errors
     Write-Host "Executing: $sqldiag_path $argument_list"
