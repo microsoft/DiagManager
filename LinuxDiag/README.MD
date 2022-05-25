@@ -89,10 +89,11 @@ Depending on the scenario for which you are collecting logs, you may have to jus
 
 ## Linux or Docker Container
 1. you will need to copy pssdiag_<version>.tar into folder
+
+	**Note:** if you are capturing extended events (default is NO in sql_perf.scn file) the folder hierarchy needs r+x on the whole structure. Specifically on RHEL the /home/user folder does not have x permissions for all
+	
 2. extract the content using `tar -xvf pssdiag_<version>.tar`
 3. Make sure all *.sh has x attribute using `chmod a+x *.sh`
-
-**Note:** if you are capturing extended events (default is NO in sql_perf.scn file) this folder hierarchy needs r+x on the whole structure. Specifically on RHEL the /home/user folder does not have x permissions for all
 	
 #### Starting PSSDiag
 ```
