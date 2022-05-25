@@ -26,8 +26,13 @@ COLLECT_OS_LOGS=YES
 # SECTION FOR SQL SERVER
 #########################
 
+# Specify the authentication mode to use for connecting to SQL instance
+# Valid values : SQL / AD / SELECT
+SQL_CONNECT_AUTH_MODE=SQL
+
 # Collect information about the SQL Server instance running on this local  host machine ( not as a container). Specify YES or NO.
 COLLECT_HOST_SQL_INSTANCE=YES
+
 
 # Used if SQL Server is running as a container
 # This value is either a specific Container Name (not ID)  or the value "ALL" which monitors all SQL containers
@@ -38,10 +43,6 @@ COLLECT_SQL_LOGS=YES
 
 # Collects SQL Server Dump Files - Note output can be fairly large depending on the number of dumps
 COLLECT_SQL_DUMPS=NO
-
-# Specify the authentication mode to use for connecting to SQL instance
-# Valid values : SQL / AD
-#SQL_CONNECT_AUTH_MODE=SQL
 
 # Collects snapshots of sys.dm_os_performance_counters. Specify YES or NO
 # Interval is in seconds
