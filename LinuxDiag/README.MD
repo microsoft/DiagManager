@@ -43,7 +43,7 @@ This utility can collect information and logs for SQL Server instances that are 
 ## Downloading PSSDiag
 - Navigate to releases using the following link https://github.com/microsoft/DiagManager/releases?q=Linux&expanded=true 
 - Expand Assests section
-- Download pssdiag_<version>.tar
+- Download `pssdiag_<version>.tar`
 
 ## Configuring PSSDiag
 Create a folder (for example: /mnt/data/pssdiag) and move pssdiag*.tar to the newly created folder. If you are capturing extended events, this folder hierarchy needs r+x on the whole structure. Specifically on RHEL the /home/user folder does not have x permissions for all. 
