@@ -6,7 +6,7 @@
 	- [Prerequisites](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#prerequisites)
 	- [Scenario Files and Usage Information](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#scenario-files-and-usage-information)
 	- [Downloading PSSDiag](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#downloading-pssdiag)
-- [Linux or Docker Container Usage](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#linux-or-docker-container-usage)
+- [Linux and Docker Container Usage](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#linux-and-docker-container-usage)
 - [Azure Arc-enabled SQL Managed Instance Usage](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#sql-big-data-cluster-2019-usage)
 - [SQL Big Data cluster 2019 Usage](https://github.com/microsoft/DiagManager/blob/master/LinuxDiag/README.MD#azure-arc-enabled-sql-managed-instance-usage)
 
@@ -66,7 +66,7 @@ Depending on the scenario for which you are collecting logs, you may have to jus
 - Download `pssdiag_<version>.tar` 
 
 
-## Linux or Docker Container Usage
+## Linux and Docker Container Usage
 1. you will need to copy `pssdiag_<version>.tar` into folder
 
 	**Note:** if you are capturing extended events (default is NO in sql_perf.scn file) the folder hierarchy needs r+x on the whole structure. Specifically on RHEL the /home/user folder does not have x permissions for all
