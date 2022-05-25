@@ -59,164 +59,45 @@ select @cpu_ticks = cpu_ticks - @cpu_ticks from sys.dm_os_sys_info
 insert into #summary values ('cpu_ticks_per_sec', @cpu_ticks / 2 )
 
 PRINT ''
-PRINT ''
-RAISERROR ('--ServerProperty--', 0, 1) WITH NOWAIT
-
-select * from #summary
-order by PropertyName
-
-truncate table #summary
 
 go
 
-PRINT ''
+--removing xp_instance_regread calls & related variables as a part of issue #149
+ 
+DECLARE @value NVARCHAR(256)
+DECLARE @pos INT 
+ 
+--get windows info from dmv
+SELECT @value = windows_release FROM sys.dm_os_windows_info
 
-go
-
-
-
---we need to get this into a different rowset because it may fail
-
-DECLARE @osversion NVARCHAR(256)
-DECLARE @regvalue NVARCHAR(256)
-DECLARE @regvalueint INT
-DECLARE @myhive NVARCHAR(256)
-DECLARE @mykey NVARCHAR(1000)
-DECLARE @pos INT
-DECLARE @osmajorversion INT
-DECLARE @fWinVista BIT
-SET @myhive = N'HKEY_LOCAL_MACHINE'
-SET @mykey = N'Software\Microsoft\Windows NT\CurrentVersion'
---get windows info from registry
-EXEC xp_instance_regread
-	@rootkey = @myhive,
-	@key = @mykey,
-	@value_name = 'CurrentVersion',
-	@value = @regvalue OUTPUT
-
-
-SET @pos = CHARINDEX(N'.', @regvalue)
+SET @pos = CHARINDEX(N'.', @value)
 IF @pos != 0
 BEGIN
-	INSERT INTO #summary VALUES ('operating system version major',SUBSTRING(@regvalue, 1, @pos-1))
-	INSERT INTO #summary VALUES ('operating system version minor',SUBSTRING(@regvalue, @pos+1, LEN(@regvalue)))
-
-	SET @osmajorversion = SUBSTRING(@regvalue, 1, @pos-1)
-	IF @osmajorversion >= 6
-	BEGIN
-		SET @fWinVista = 1
-	END
-	ELSE
-	BEGIN
-		SET @fWinVista = 0
-	END
+	INSERT INTO #summary VALUES ('operating system version major',SUBSTRING(@value, 1, @pos-1))
+	INSERT INTO #summary VALUES ('operating system version minor',SUBSTRING(@value, @pos+1, LEN(@value)))	
 	
-	EXEC xp_instance_regread
-		@rootkey = @myhive,
-		@key = @mykey,
-		@value_name = 'CurrentBuildNumber',
-		@value = @regvalue OUTPUT
+	--inserting NULL to keep same #summary structure
 
-	INSERT INTO #summary VALUES ('operating system version build', @regvalue)
+ 	INSERT INTO #summary VALUES ('operating system version build', NULL)
 	
-	EXEC xp_instance_regread
-		@rootkey = @myhive,
-		@key = @mykey,
-		@value_name = 'ProductName',
-		@value = @osversion OUTPUT
-	EXEC xp_instance_regread
-		@rootkey = @myhive,
-		@key = @mykey,
-		@value_name = 'CSDVersion',
-		@value = @regvalue OUTPUT
+	INSERT INTO #summary VALUES ('operating system', NULL)	
 
-	INSERT INTO #summary VALUES ('operating system', @osversion + N' ' + @regvalue)
-
-	EXEC xp_instance_regread
-		@rootkey = @myhive,
-		@key = @mykey,
-		@value_name = 'InstallDate',
-		@value = @regvalueint OUTPUT
-
-	INSERT INTO #summary VALUES ('operating system install date', CONVERT(VARCHAR(23), DATEADD(SECOND, @regvalueint, '1970-01-01'), 121))
-
-	/*
-	other possible values of interest
-	CurrentType
-	InstallationType
-	EditionID
-	SoftwareType
-	*/
+	INSERT INTO #summary VALUES ('operating system install date',NULL)
+ 
 END
+ 
+	--inserting NULL to keep same #summary structure 
+	INSERT INTO #summary VALUES ('registry SystemManufacturer', NULL)
 
-IF @fWinVista = 1
-BEGIN
-	SET @mykey = N'SYSTEM\CurrentControlSet\Control\SystemInformation'
-	--get system info from registry
-	EXEC xp_instance_regread
-		@rootkey = @myhive,
-		@key = @mykey,
-		@value_name = 'SystemManufacturer',
-		@value = @regvalue OUTPUT
-	INSERT INTO #summary VALUES ('registry SystemManufacturer', @regvalue)
-	EXEC xp_instance_regread
-		@rootkey = @myhive,
-		@key = @mykey,
-		@value_name = 'SystemProductName',
-		@value = @regvalue OUTPUT
-	INSERT INTO #summary VALUES ('registry SystemProductName', @regvalue)	
+	INSERT INTO #summary VALUES ('registry SystemProductName', NULL)	
 
-	--get powerplan from registry
-	SET @mykey = N'SYSTEM\CurrentControlSet\Control\Power\User\Default\PowerSchemes'
+	INSERT INTO #summary VALUES ('registry ActivePowerScheme (default)', NULL)	
 
-	EXEC   xp_instance_regread
-		@rootkey = @myhive,
-		@key = @mykey,
-		@value_name = 'ActivePowerScheme',
-		@value = @regvalue OUTPUT
+	INSERT INTO #summary VALUES ('registry ActivePowerScheme', NULL)	
 
-	SET @mykey = @mykey + N'\' + @regvalue
-
-	EXEC   xp_instance_regread
-		@rootkey = @myhive,
-		@key = @mykey,
-		@value_name = 'FriendlyName',
-		@value = @regvalue OUTPUT
-
-	DECLARE @string NVARCHAR(100)
-	SET @string = N'@%SystemRoot%\system32\powrprof.dll,'
-	SET @pos = CHARINDEX(@string, @regvalue)
-	IF @pos != 0
-	BEGIN
-		DECLARE @len int
-		SET @len = LEN(@string)+1
-		SET @pos = CHARINDEX(N',', @regvalue, @len)
-		IF @pos != 0
-		BEGIN
-			SET @regvalue = SUBSTRING(@regvalue, @pos+1, LEN(@regvalue))
-		END
-	END
-
-	INSERT INTO #summary VALUES ('registry ActivePowerScheme (default)', @regvalue)	
-
-	SET @mykey = N'SYSTEM\CurrentControlSet\Control\Power\User\PowerSchemes'
-
-	EXEC   xp_instance_regread
-		@rootkey = 'HKEY_LOCAL_MACHINE',
-		@key = @mykey,
-		@value_name = 'ActivePowerScheme',
-		@value = @regvalue OUTPUT
-
-	SET @mykey = @mykey + N'\' + @regvalue
-
-	EXEC   xp_instance_regread
-		@rootkey = @myhive,
-		@key = @mykey,
-		@value_name = 'FriendlyName',
-		@value = @regvalue OUTPUT
-
-	INSERT INTO #summary VALUES ('registry ActivePowerScheme', @regvalue)	
-END
+	--inserting OS Edition and Build from @@Version 
+	INSERT INTO #summary VALUES ('OS Edition and Build from @@Version',  REPLACE(LTRIM(SUBSTRING(@@VERSION,CHARINDEX(' on ',@@VERSION)+3,100)),CHAR(10),''))
+ 
 
 IF (@@MICROSOFTVERSION >= 167773760) --10.0.1600
 begin
@@ -246,20 +127,26 @@ begin
 	insert into #summary values ('IsXTPSupported', cast (SERVERPROPERTY('IsXTPSupported') as nvarchar(max)))
 end
 
-RAISERROR ('', 0, 1) WITH NOWAIT
 RAISERROR ('--ServerProperty--', 0, 1) WITH NOWAIT
 
 select * from #summary
 order by PropertyName
 drop table #summary
-go
+print ''
+
+GO
+--changing xp_instance_regenumvalues to dmv access as a part of issue #149
 
 declare @startup table (ArgsName nvarchar(10), ArgsValue nvarchar(max))
-insert into @startup EXEC master..xp_instance_regenumvalues 'HKEY_LOCAL_MACHINE',   'SOFTWARE\Microsoft\MSSQLServer\MSSQLServer\Parameters'
-print ''
+insert into @startup 
+SELECT     sReg.value_name,     CAST(sReg.value_data AS nvarchar(max))
+FROM sys.dm_server_registry AS sReg
+WHERE     sReg.value_name LIKE N'SQLArg%';
+
 RAISERROR ('--Startup Parameters--', 0, 1) WITH NOWAIT
 select * from @startup
 go
+print ''
 
 create table #traceflg (TraceFlag int, Status int, Global int, Session int)
 insert into #traceflg exec ('dbcc tracestatus (-1)')
@@ -434,10 +321,15 @@ print ''
 
 go
 
+IF @@MICROSOFTVERSION >= 251658240 --15.0.2000
+begin
+
 print '-- sys.dm_tran_persistent_version_store_stats --'
 select * From sys.dm_tran_persistent_version_store_stats
 print ''
+end
 go
+
 /*
 --windows version from @@version
 declare @pos int
@@ -514,6 +406,6 @@ FROM sys.dm_xe_sessions sess
  INNER JOIN sys.dm_xe_session_events evt
 ON sess.address = evt.event_session_address
  INNER JOIN sys.trace_xe_event_map xemap
- ON evt.event_name = xemap.xe_event_name
+ ON evt.event_name = xemap.xe_event_name collate database_default
 print ''
 go
