@@ -66,7 +66,7 @@ Depending on the scenario for which you are collecting logs, you may have to jus
 - Download `pssdiag_<version>.tar` 
 
 
-# How to starting and stopping PSSDiag
+# How to start and stop PSSDiag
 
 ## Linux or Docker Container
 1. you will need to copy `pssdiag_<version>.tar` into folder
