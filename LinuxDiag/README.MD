@@ -41,7 +41,9 @@ All the scripts are tested against bash shell. Please launch the start and stop 
 This utility can collect information and logs for SQL Server instances that are installed as host instance or as container instances.
 
 ## Downloading PSSDiag
-Download the latest release from https://github.com/microsoft/DiagManager/releases?q=Linux&expanded=true to /pssdiag folder
+- Navigate to releases using the following link https://github.com/microsoft/DiagManager/releases?q=Linux&expanded=true 
+- Expand Assests section
+- Download pssdiag_<version>.tar
 
 ## Configuring PSSDiag
 Create a folder (for example: /mnt/data/pssdiag) and move pssdiag*.tar to the newly created folder. If you are capturing extended events, this folder hierarchy needs r+x on the whole structure. Specifically on RHEL the /home/user folder does not have x permissions for all. 
