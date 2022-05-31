@@ -94,7 +94,7 @@ sql_connect()
 	while [ $SQL_CONNECT_AUTH_MODE != 'SQL' ] && [ $SQL_CONNECT_AUTH_MODE != 'AD' ]
 	do
 		
-		read -r -p "  Select authentication type: 1 (user/password), 2 (integrated security)" lmode
+		read -r -p "  Select authentication type: 1 (SQL Authentication), 2 (Integrated Authentication)" lmode
 		lmode=${lmode:-0}
 		if [ 1 = $lmode ]; then
 			SQL_CONNECT_AUTH_MODE='SQL'
