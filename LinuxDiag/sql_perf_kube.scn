@@ -28,7 +28,7 @@ COLLECT_OS_LOGS=YES
 #########################
 
 # Specify the authentication mode to use for connecting to SQL instance
-# Valid values : SQL / AD / SELECT
+# Valid values : SQL / AD / AUTO
 SQL_CONNECT_AUTH_MODE=SQL
 
 
