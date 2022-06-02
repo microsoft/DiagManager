@@ -35,6 +35,28 @@ WHERE perm.class_desc = 'ENDPOINT' AND
 perm.permission_name = 'CONNECT' AND
 tep.type = 4
 
+print ''
+
+--Database Mirroring States
+PRINT '======================================='
+PRINT 'Database Mirroring States'
+PRINT '======================================='
+RAISERROR ('-- sys.database_mirroring --', 0, 1) WITH NOWAIT
+IF (@@MICROSOFTVERSION >= 167772160) --10.0.0
+begin
+	exec sp_executesql N'select database_id, mirroring_guid, mirroring_state, mirroring_role, mirroring_role_sequence, mirroring_safety_level, mirroring_safety_sequence, 
+			mirroring_witness_state, mirroring_failover_lsn, mirroring_end_of_log_lsn, mirroring_replication_lsn, mirroring_connection_timeout, mirroring_redo_queue,
+			db_name(database_id) as ''database_name'', mirroring_partner_name, mirroring_partner_instance, mirroring_witness_name 
+		from sys.database_mirroring where mirroring_guid IS NOT NULL'
+end
+else
+begin
+	select database_id, mirroring_guid, mirroring_state, mirroring_role, mirroring_role_sequence, mirroring_safety_level, mirroring_safety_sequence, 
+			mirroring_witness_state, mirroring_failover_lsn, mirroring_connection_timeout, mirroring_redo_queue,
+			db_name(database_id) as 'database_name', mirroring_partner_name, mirroring_partner_instance, mirroring_witness_name 
+		from sys.database_mirroring where mirroring_guid IS NOT NULL
+end
+go
 PRINT ''
 
 --Availability Group Listeners and IP
