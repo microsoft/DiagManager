@@ -74,7 +74,7 @@ function Check-ElevatedAccess
         #check for administrator rights
         if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
         {
-            Write-Warning "Elevated privilege (run as Admininstrator) is required to run PSSDIAG. Exiting..."
+            Write-Warning "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Elevated privilege (run as Admininstrator) is required to run PSSDIAG. Exiting..."
             exit
         }
         
@@ -166,7 +166,7 @@ function FindSQLDiag ()
 				}
 			}
 			
-			Write-Host "Unable to find 'sqldiag.exe' version: $($sqlver)0 on this machine.  Data collection will fail"
+			Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Unable to find 'sqldiag.exe' version: $($sqlver)0 on this machine.  Data collection will fail"
 			return "Path_Error_"
         }
         
@@ -277,7 +277,7 @@ function main
 
     $validFileAttributes = Confirm-FileAttributes $debug_on
         if (-not($validFileAttributes)){
-            Write-Host "File attribute validation FAILED. Exiting..." -ForegroundColor Red
+            Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") File attribute validation FAILED. Exiting..." -ForegroundColor Red
             return
         }
         
@@ -471,9 +471,8 @@ function main
 	#Translate Performance Counters if((Get-WinSystemLocale).name -notlike "en*")
     & .\perfmon_translate.ps1
 
-
     # launch the sqldiag.exe process and print the last 5 lines of the console file in case there were errors
-    Write-Host "Executing: $sqldiag_path $argument_list"
+    Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Executing: $sqldiag_path $argument_list"
     Start-Process -FilePath $sqldiag_path -ArgumentList $argument_list -WindowStyle Normal -Wait
     
     $console_log = ".\output\internal\##console.log"
@@ -482,20 +481,20 @@ function main
     {
         if($R -eq $true)
         {
-            Write-Host "Registered SQLDiag as a service. Please make sure you run 'pssdiag.ps1 START' or 'SQLDIAG START' or 'net start SQLDIAG'" -ForegroundColor Green
+            Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Registered SQLDiag as a service. Please make sure you run 'pssdiag.ps1 START' or 'SQLDIAG START' or 'net start SQLDIAG'" -ForegroundColor Green
         }
 
         if($U -eq $true)
         {
-            Write-Host "Un-registered SQLDiag as a service." -ForegroundColor Green
+            Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Un-registered SQLDiag as a service." -ForegroundColor Green
         }
         
     }
     elseif (Test-Path -Path $console_log )
     {
-        Write-Warning "Displaying the last 5 lines from \output\internal\##console.log file. If SQLDiag did not run for some reason, you may be reading an old log."
+        Write-Warning "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Displaying the last 5 lines from \output\internal\##console.log file. If SQLDiag did not run for some reason, you may be reading an old log."
 	    Get-Content -Tail 5 $console_log 
-        Write-Host "SQLDiag has completed. You can close the window. If you got errors, please review \output\internal\##SQLDIAG.LOG file"
+        Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") SQLDiag has completed. You can close the window. If you got errors, please review \output\internal\##SQLDIAG.LOG file"
     }
 
 	

@@ -1,6 +1,7 @@
 #Check if the language is not English
 if((Get-WinSystemLocale).name -notlike "en*"){
 
+    Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Executing:Perfmon Counters localization. Please wait..."
     #Get all Local existing counters paths in array for future check
     $counterexistingpaths = @(Get-Counter -ListSet *).Paths
 
@@ -141,4 +142,5 @@ if((Get-WinSystemLocale).name -notlike "en*"){
     #save the XML file with the changes
     $xmlsavelocation = (Get-Location).Path + "\" + $pathxml
     $xml.Save($xmlsavelocation)
+    Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Perfmon counters in local Language saved in pssdiag.xml"
 }
