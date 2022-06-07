@@ -43,8 +43,6 @@ COLLECT_HOST_SQL_INSTANCE=${COLLECT_HOST_SQL_INSTANCE:-"NO"}
 if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
 # we need to collect logs from containers
 
-	
-
 	if [[ "$COLLECT_CONTAINER" != "ALL" ]]; then
 	# we need to process just the specific container
 		

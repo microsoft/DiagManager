@@ -189,12 +189,12 @@ fi
 }
 
 
-
+#$(get_conf_option 'filelocation' 'errorlogfile' '/var/opt/mssql/log/errorlog')
 get_conf_option()
 {
-
-
-result=$(/opt/mssql/bin/mssql-conf get $1 $2 | awk '!/^No setting/ {print $3}')
+unset result
+#result=$(/opt/mssql/bin/mssql-conf get $1 $2 | awk '!/^No setting/ {print $3}')
+result=$(cat /var/opt/mssql/mssql.conf | awk  -F' *= *' '$1 ~ '"/$2/"' {print $2}')
 
 echo "host conf option '$1 $2': ${result:-$3}">>$pssdiag_log
 echo ${result:-$3}
@@ -203,8 +203,11 @@ echo ${result:-$3}
 
 get_docker_conf_option()
 {
+unset result
 
-command="/opt/mssql/bin/mssql-conf get $2 $3"'| awk '"'"'!/^No setting/ {print $3}'"'" 
+#command="/opt/mssql/bin/mssql-conf get $2 $3"'| awk '"'"'!/^No setting/ {print $3}'"'" 
+
+command="cat /var/opt/mssql/mssql.conf | awk -F' *= *' ""'"'$1 ~ '"/$2/"' {print $2}'"'"
 
 result=$(docker exec ${1} sh -c "$command" --user root)
 
