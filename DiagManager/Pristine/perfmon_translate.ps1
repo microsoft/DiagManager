@@ -4,7 +4,7 @@ if((Get-WinSystemLocale).name -notlike "en*"){
     Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Executing:Perfmon Counters localization. Please wait..."
     #Get all Local existing counters paths in array for future check
     $counterexistingpaths = @(Get-Counter -ListSet *).Paths
-
+    $countertranslatedcounters = 1
     #Get performance counters names and ID's in english and local languages to hash table
     $pc_en_names = [Microsoft.Win32.Registry]::PerformanceData.GetValue("Counter 009")
     $pc_en_hash = @{}
@@ -127,7 +127,7 @@ if((Get-WinSystemLocale).name -notlike "en*"){
                         #change the xml of the counter
 
                         $xmlPerfCounter.name = $pc_translated_name
-                
+                        $countertranslatedcounters = $countertranslatedcounters +1                
                     }
                 }
             }
@@ -142,5 +142,4 @@ if((Get-WinSystemLocale).name -notlike "en*"){
     #save the XML file with the changes
     $xmlsavelocation = (Get-Location).Path + "\" + $pathxml
     $xml.Save($xmlsavelocation)
-    Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Perfmon counters in local Language saved in pssdiag.xml"
-}
+    Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") $countertranslatedcounters Perfmon counters in local Language saved in pssdiag.xml"}
