@@ -1,5 +1,5 @@
 #Check if the language is not English
-if((Get-WinSystemLocale).name -notlike "en*"){
+if(((Get-WinUserLanguageList).LanguageTag | Select -First 1) -notlike "en*"){
 
     Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Executing:Perfmon Counters localization. Please wait..."
     #Get all Local existing counters paths in array for future check
