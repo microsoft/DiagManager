@@ -300,12 +300,37 @@ function main
         $lv_I = "/I" + $I
 
         # [/O outputpath] = sets the output folder.  Defaults to startupfolder\SQLDIAG (if the folder does not exist, the collector will attempt to create it)
+        #if this is a full directory path make sure to trim a final backslash because SQLDiag would fail to start the service if that exists
+        if ($O.Substring($O.Length -1) -eq "`\")
+        {
+          $O = $O.Substring(0,$O.Length -1)
+        }
+
         $lv_O = "/O" + $O
+
         
         # [/P supportpath] = sets the support path folder.   By default, /P is set to the folder where the SQLdiag executable resides. 
 		# The support folder contains SQLdiag support files, such as the XML configuration file, Transact-SQL scripts, and other files that the utility uses during diagnostics collection. 
 		# If you use this option to specify an alternate support files path, SQLdiag will automatically copy the support files it requires to the specified folder if they do not already exist.
-        $lv_P = "/P" + $P 
+        $pwd = Get-Location
+        
+        if ([string]::IsNullOrWhiteSpace($P) -eq $false) 
+        {
+          #trim a final backslash because SQLDiag would fail to start the service if that exists
+          if ($P.Substring($P.Length -1) -eq "`\")
+          {
+            $P = $P.Substring(0,$P.Length -1)
+          }
+
+          $lv_P = "/P" + $P 
+        }
+
+        else
+        {
+            $lv_P = "/P" + $pwd.Path
+        }
+        
+
 
         # [/N #] = output folder management at startup #: 1 = overwrite (default), 2 = rename (format is OUTPUT_00001,...00002, etc.)
         $lv_N = "/N" + $N
