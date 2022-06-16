@@ -22,18 +22,17 @@ BEGIN
     FROM sys.dm_db_file_space_usage 
     PRINT ''
 
-
-    PRINT '-- Usage By File --'
+    PRINT '-- tempdb_space_usage_by_file --'
     SELECT	@runtime AS runtime, 
-		    DB_NAME() AS DbName, 
-    name AS FileName, 
-    size/128.0 AS CurrentSizeMB, 
-    size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS INT)/128.0 AS FreeSpaceMB
-    FROM sys.database_files
+            name AS FileName, 
+			physical_name,
+			size/128.0 AS CurrentSizeMB, 
+            size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS INT)/128.0 AS FreeSpaceMB
+    FROM tempdb.sys.database_files f
     PRINT ''
 
 
-    PRINT '-- Transaction Counters --'
+    PRINT '-- transaction_perfmon_counters --'
     SELECT @runtime AS runtime, 
 		    DB_NAME() AS DbName, *
     FROM sys.dm_os_performance_counters
@@ -44,14 +43,25 @@ BEGIN
 
     PRINT '-- sys.dm_db_session_space_usage --'
     SELECT	TOP 10 @runtime AS runtime,
-				    DB_NAME() AS DbName, 
-				    SS.* ,T.text [Query Text]
-    FROM	sys.dm_db_session_space_usage SS
-    LEFT JOIN sys.dm_exec_requests CN
-	  ON SS.session_id = CN.session_id
-    OUTER APPLY sys.dm_exec_sql_text(CN.sql_handle) T
+			su.session_id,
+			su.database_id,
+			su.internal_objects_alloc_page_count,
+			su.internal_objects_dealloc_page_count,
+			su.user_objects_alloc_page_count,
+			su.user_objects_dealloc_page_count,
+			su.user_objects_deferred_dealloc_page_count,
+		LTRIM(RTRIM(REPLACE(REPLACE(SUBSTRING(t.text, (r.statement_start_offset/2)+1,   
+        ((CASE r.statement_end_offset  
+          WHEN -1 THEN DATALENGTH(t.text)  
+         ELSE r.statement_end_offset  
+         END - r.statement_start_offset)/2) + 1), CHAR(10), ' '), CHAR(13), ' '))) AS statement_text  
+    FROM	sys.dm_db_session_space_usage su
+    LEFT JOIN sys.dm_exec_requests r
+	  ON su.session_id = r.session_id
+    OUTER APPLY sys.dm_exec_sql_text(r.sql_handle) t
     ORDER BY (user_objects_alloc_page_count + internal_objects_alloc_page_count) DESC
     PRINT ''
+
 
 
     PRINT '-- sys.dm_db_task_space_usage --'
