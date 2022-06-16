@@ -350,6 +350,9 @@
     <Content Include="CustomDiagnostics\SQL Base\ClearOrphanedBLGs.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="CustomDiagnostics\SQL Base\collecterrorlog.cmd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="CustomDiagnostics\SQL Base\DefineCommonVars.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -510,6 +513,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CustomDiagnostics\SQL Base\collecterrorlog.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="CustomDiagnostics\SQL Base\CustomDiag.XML">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -1067,6 +1073,26 @@
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="CustomDiagnostics\SQL Base\ClearOrphanedBLGs.cmd">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="CustomDiagnostics\SQL Base\collecterrorlog.cmd">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="CustomDiagnostics\SQL Base\collecterrorlog.sql">
       <Visible>False</Visible>
       <Group>
       </Group>
