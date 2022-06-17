@@ -20,6 +20,7 @@ BEGIN
 	    SUM (unallocated_extent_page_count)*8 AS freespace_kb,
 	    SUM (mixed_extent_page_count)*8 AS mixedextent_kb
     FROM sys.dm_db_file_space_usage 
+    OPTION (max_grant_percent = 3, MAXDOP 2)
     PRINT ''
 
     PRINT '-- tempdb_space_usage_by_file --'
@@ -50,52 +51,83 @@ BEGIN
 			su.user_objects_alloc_page_count,
 			su.user_objects_dealloc_page_count,
 			su.user_objects_deferred_dealloc_page_count,
+			s.open_transaction_count,
+			s.last_request_end_time,
+			s.host_name,
+			s.program_name,
+		    LTRIM(RTRIM(REPLACE(REPLACE(SUBSTRING(t.text, 0,256), CHAR(10), ' '), CHAR(13), ' '))) AS most_recent_query  
+    FROM	sys.dm_db_session_space_usage su
+	LEFT OUTER JOIN sys.dm_exec_sessions s
+	  ON su.session_id = s.session_id
+    LEFT OUTER JOIN sys.dm_exec_connections c
+	  on su.session_id = c.session_id
+	OUTER APPLY sys.dm_exec_sql_text (c.most_recent_sql_handle) as t
+    WHERE (internal_objects_alloc_page_count +	internal_objects_dealloc_page_count + user_objects_alloc_page_count + user_objects_dealloc_page_count + su.user_objects_deferred_dealloc_page_count) !=0
+    ORDER BY (user_objects_alloc_page_count + internal_objects_alloc_page_count) DESC
+    OPTION (max_grant_percent = 3, MAXDOP 2)
+    PRINT ''
+
+
+      PRINT '-- sys.dm_db_task_space_usage --'
+	  SELECT	TOP 10 @runtime AS runtime,
+			tsu.session_id,
+			tsu.database_id,
+			tsu.internal_objects_alloc_page_count,
+			tsu.internal_objects_dealloc_page_count,
+			tsu.user_objects_alloc_page_count,
+			tsu.user_objects_dealloc_page_count,
+			tsu.exec_context_id,
+			r.status,
+			r.wait_type,
+			r.wait_type,
+			r.cpu_time,
 		LTRIM(RTRIM(REPLACE(REPLACE(SUBSTRING(t.text, (r.statement_start_offset/2)+1,   
         ((CASE r.statement_end_offset  
           WHEN -1 THEN DATALENGTH(t.text)  
          ELSE r.statement_end_offset  
          END - r.statement_start_offset)/2) + 1), CHAR(10), ' '), CHAR(13), ' '))) AS statement_text  
-    FROM	sys.dm_db_session_space_usage su
+    FROM	sys.dm_db_task_space_usage tsu
     LEFT JOIN sys.dm_exec_requests r
-	  ON su.session_id = r.session_id
-    OUTER APPLY sys.dm_exec_sql_text(r.sql_handle) t
+	  ON tsu.session_id = r.session_id
+    CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) t
+    WHERE (internal_objects_alloc_page_count +	internal_objects_dealloc_page_count + user_objects_alloc_page_count + user_objects_dealloc_page_count) !=0
     ORDER BY (user_objects_alloc_page_count + internal_objects_alloc_page_count) DESC
+    OPTION (max_grant_percent = 3, MAXDOP 2)
     PRINT ''
 
 
-
-    PRINT '-- sys.dm_db_task_space_usage --'
-    SELECT TOP 10 @runtime AS runtime,		
-		    DB_NAME() AS DbName, 
-		    TS.* ,
-            T.text [Query Text]
-    FROM	sys.dm_db_task_space_usage TS
-            INNER JOIN sys.sysprocesses ER 
-		    ON ER.ecid= TS.exec_context_id
-			    AND ER.spid = TS.session_id
-            OUTER APPLY sys.dm_exec_sql_text(ER.sql_handle) T
-    ORDER BY (user_objects_alloc_page_count + internal_objects_alloc_page_count) DESC
-    PRINT ''
-
-
-    --CAN WE MERGE THE NEXT TWO STATEMENTS INTO ONE ???
     PRINT '-- version store transactions --'
-    SELECT	@runtime AS runtime,a.*,b.kpid,b.blocked,b.lastwaittype,b.waittime
-		    , b.waitresource,b.dbid,b.cpu,b.physical_io,b.memusage,b.login_time,b.last_batch,b.open_tran
-		    ,b.status,b.hostname,b.program_name,b.cmd,b.loginame,request_id
-    FROM	sys.dm_tran_active_snapshot_database_transactions a 
-    INNER JOIN sys.sysprocesses b  
-	  ON a.session_id = b.spid  
+    SELECT	@runtime AS runtime,
+			ast.transaction_id,
+			ast.transaction_sequence_num,
+			ast.commit_sequence_num,
+			ast.elapsed_time_seconds,
+			ast.average_version_chain_traversed,
+			ast.max_version_chain_traversed,
+			ast.first_snapshot_sequence_num,
+			ast.is_snapshot,
+			ast.session_id,
+			r.blocking_session_id,
+			r.status,
+			r.wait_type,
+			r.wait_time,
+			r.cpu_time,
+			r.total_elapsed_time,
+			r.granted_query_memory,
+			r.open_transaction_count,
+			r.transaction_isolation_level,
+		    LTRIM(RTRIM(REPLACE(REPLACE(SUBSTRING(t.text, (r.statement_start_offset/2)+1,   
+        ((CASE r.statement_end_offset  
+          WHEN -1 THEN DATALENGTH(t.text)  
+         ELSE r.statement_end_offset  
+         END - r.statement_start_offset)/2) + 1), CHAR(10), ' '), CHAR(13), ' '))) AS statement_text  
+    FROM	sys.dm_tran_active_snapshot_database_transactions ast 
+    LEFT JOIN sys.dm_exec_requests r
+	  ON ast.session_id = r.session_id
+	CROSS APPLY sys.dm_exec_sql_text(r.sql_handle) as t 
     RAISERROR ('', 0, 1) WITH NOWAIT
     PRINT ''
 
-    PRINT ('-- version store transactions with input buffer --'
-    SELECT @runtime AS runtime,b.spid,c.text
-    FROM sys.dm_tran_active_snapshot_database_transactions a
-    INNER JOIN sys.sysprocesses b
-      ON a.session_id = b.spid
-    OUTER APPLY sys.dm_exec_sql_text(sql_handle) c
-    PRINT ''
 
 
     PRINT '-- open transactions --'
@@ -130,17 +162,16 @@ BEGIN
 	  ON con.session_id = s_tst.session_id 
     OUTER APPLY sys.dm_exec_sql_text(con.most_recent_sql_handle) T
     ORDER BY BeginTime ASC
+    OPTION (max_grant_percent = 3, MAXDOP 2)
 
     RAISERROR ('', 0, 1) WITH NOWAIT
     PRINT ''
 
-    PRINT '-- Usage by objects --'
+PRINT '-- tempdb usage by objects --'
     SELECT TOP 10
            @runtime AS runtime,
 	       DB_NAME() AS DbName, 
-           Cast(ServerProperty('ServerName') AS NVarChar(128)) AS [ServerName],
            DB_ID() AS [DatabaseID],
-           DB_Name() AS [DatabaseName],
            [_Objects].[schema_id] AS [SchemaID],
            Schema_Name([_Objects].[schema_id]) AS [SchemaName],
            [_Objects].[object_id] AS [ObjectID],
@@ -156,10 +187,12 @@ BEGIN
                   [_Objects].[object_id],
                   [_Objects].[name],
                   [_Partitions].[index_id]
-    ORDER BY UsedPageBytes DESC;
+    ORDER BY UsedPageBytes DESC
+    OPTION (max_grant_percent = 3, MAXDOP 2)
     PRINT ''
 
-    PRINT '-- wait-type-Pagelatch-tempdb --'
+
+    PRINT '-- waits-in-tempdb --'
     SELECT @runtime AS runtime, 
 	    session_id,    
 	    start_time,                    
@@ -168,7 +201,8 @@ BEGIN
 	    db_name(database_id),
 	    blocking_session_id,          
 	    wait_type,           
-	    wait_time,                      
+	    wait_time,   
+        wait_resource,
 	    last_wait_type,
 	    wait_resource,                  
 	    open_transaction_count,
@@ -176,16 +210,9 @@ BEGIN
 	    total_elapsed_time,
 	    logical_reads                  
     FROM sys.dm_exec_requests
-    WHERE wait_type like 'PAGE%LATCH_%' AND wait_resource like '2:%'
+    WHERE wait_resource like '% 2:%'
+    OPTION (max_grant_percent = 3, MAXDOP 2)
 
-    PRINT '-- Output from sys.dm_os_waiting_tasks --'
-    SELECT @runtime AS runtime, 
-        session_id, 
-        wait_duration_ms, 
-        resource_description
-    FROM sys.dm_os_waiting_tasks 
-    WHERE wait_type LIKE 'PAGE%LATCH_%' 
-      AND resource_description LIKE '2:%'
 
     RAISERROR ('', 0, 1) WITH NOWAIT
     PRINT ''
