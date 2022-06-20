@@ -1,6 +1,6 @@
 
 SET NOCOUNT ON
-USE Tempdb
+USE tempdb
 GO
 
 WHILE 1=1
@@ -25,7 +25,7 @@ BEGIN
 
     PRINT '-- tempdb_space_usage_by_file --'
     SELECT	@runtime AS runtime, 
-            name AS FileName, 
+            SUBSTRING(name, 0, 32) AS FileName, 
 			physical_name,
 			size/128.0 AS CurrentSizeMB, 
             size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS INT)/128.0 AS FreeSpaceMB
@@ -33,9 +33,12 @@ BEGIN
     PRINT ''
 
 
-    PRINT '-- transaction_perfmon_counters --'
+	PRINT '-- transaction_perfmon_counters --'
     SELECT @runtime AS runtime, 
-		    DB_NAME() AS DbName, *
+			CONVERT(VARCHAR(16), DB_NAME ()) AS DbName,
+			SUBSTRING(object_name,0,28) as object_name,
+			SUBSTRING(counter_name,0,42),
+			cntr_value AS counter_value
     FROM sys.dm_os_performance_counters
     WHERE Object_Name LIKE '%:Transactions%'
 
@@ -53,8 +56,8 @@ BEGIN
 			su.user_objects_deferred_dealloc_page_count,
 			s.open_transaction_count,
 			s.last_request_end_time,
-			s.host_name,
-			s.program_name,
+			SUBSTRING(s.host_name, 0, 48) host_name,
+		    SUBSTRING(s.program_name,0,48) program_name,
 		    LTRIM(RTRIM(REPLACE(REPLACE(SUBSTRING(t.text, 0,256), CHAR(10), ' '), CHAR(13), ' '))) AS most_recent_query  
     FROM	sys.dm_db_session_space_usage su
 	LEFT OUTER JOIN sys.dm_exec_sessions s
@@ -70,7 +73,7 @@ BEGIN
 
       PRINT '-- sys.dm_db_task_space_usage --'
 	  SELECT	TOP 10 @runtime AS runtime,
-			tsu.session_id,
+		 	tsu.session_id,
 			tsu.database_id,
 			tsu.internal_objects_alloc_page_count,
 			tsu.internal_objects_dealloc_page_count,
@@ -81,11 +84,12 @@ BEGIN
 			r.wait_type,
 			r.wait_type,
 			r.cpu_time,
-		LTRIM(RTRIM(REPLACE(REPLACE(SUBSTRING(t.text, (r.statement_start_offset/2)+1,   
-        ((CASE r.statement_end_offset  
-          WHEN -1 THEN DATALENGTH(t.text)  
-         ELSE r.statement_end_offset  
-         END - r.statement_start_offset)/2) + 1), CHAR(10), ' '), CHAR(13), ' '))) AS statement_text  
+		    LTRIM(RTRIM(REPLACE(REPLACE(SUBSTRING(t.text, (r.statement_start_offset/2)+1,   
+			((CASE r.statement_end_offset  
+			  WHEN -1 THEN DATALENGTH(t.text)  
+			 ELSE r.statement_end_offset  
+			 END - r.statement_start_offset)/2) + 1), CHAR(10), ' '), CHAR(13), ' '))) AS statement_text,
+			LTRIM(RTRIM(REPLACE(REPLACE(SUBSTRING(t.text, 0,256), CHAR(10), ' '), CHAR(13), ' '))) AS batch_text  
     FROM	sys.dm_db_task_space_usage tsu
     LEFT JOIN sys.dm_exec_requests r
 	  ON tsu.session_id = r.session_id
@@ -132,23 +136,30 @@ BEGIN
 
     PRINT '-- open transactions --'
        SELECT @runtime AS runtime,
-        s_tst.session_id,
-		s_es.login_time,
+        s_tdt.transaction_id,
+		s_tdt.database_transaction_state,
+		s_tdt.database_transaction_type,
+		s_tdt.database_transaction_log_record_count,
+		s_tdt.database_transaction_begin_lsn,
+		s_tdt.database_transaction_last_lsn,
 		s_tdt.database_transaction_begin_time,
+        s_tdt.database_transaction_log_bytes_used,
+        s_tdt.database_transaction_log_bytes_reserved,
+		s_tdt.database_transaction_log_bytes_reserved_system,
+		s_tdt.database_transaction_log_bytes_used_system,
+        s_tst.session_id,
+		s_tst.is_local,
+		s_es.login_time,
 		s_es.last_request_end_time,
-        s_es.login_name AS LoginName,
-        DB_NAME (s_tdt.database_id) AS DbName,
-        s_tdt.database_transaction_begin_time AS BeginTime,
-        s_tdt.database_transaction_log_bytes_used AS LogBytesUsed,
-        s_tdt.database_transaction_log_bytes_reserved AS LogReserved,
+        CONVERT(VARCHAR, DB_NAME (s_tdt.database_id)) AS DbName,
 		con.most_recent_session_id,
 		s_es.open_transaction_count,
 		s_es.status,
-		s_es.host_name,
-		s_es.program_name,
+		SUBSTRING(s_es.host_name, 0, 48) host_name,
+		SUBSTRING(s_es.program_name,0,48) program_name,
 		s_es.is_user_process,
 		s_es.host_process_id,
-		s_es.login_name,
+		SUBSTRING(s_es.login_name, 0,48) login_name,
 	    con.client_net_address,
 		con.net_transport
     FROM sys.dm_tran_database_transactions s_tdt
@@ -167,29 +178,30 @@ BEGIN
     RAISERROR ('', 0, 1) WITH NOWAIT
     PRINT ''
 
-PRINT '-- tempdb usage by objects --'
+    PRINT '-- tempdb usage by objects --'
     SELECT TOP 10
            @runtime AS runtime,
-	       DB_NAME() AS DbName, 
-           DB_ID() AS [DatabaseID],
-           [_Objects].[schema_id] AS [SchemaID],
-           Schema_Name([_Objects].[schema_id]) AS [SchemaName],
-           [_Objects].[object_id] AS [ObjectID],
-           RTrim([_Objects].[name]) AS [TableName],
-           (~(Cast([_Partitions].[index_id] AS Bit))) AS [IsHeap],       
-           SUM([_Partitions].used_page_count) * 8192 UsedPageBytes,
-           SUM([_Partitions].reserved_page_count) * 8192 ReservedPageBytes
-    FROM   [sys].[objects] AS [_Objects]
-    INNER JOIN [sys].[dm_db_partition_stats] AS [_Partitions]
-      ON ([_Objects].[object_id] = [_Partitions].[object_id])
-    WHERE ([_Partitions].[index_id] IN (0, 1))
-    GROUP BY [_Objects].[schema_id],
-                  [_Objects].[object_id],
-                  [_Objects].[name],
-                  [_Partitions].[index_id]
+		   CONVERT(VARCHAR(16), DB_NAME ()) AS DbName,
+           DB_ID() AS DatabaseID,
+           _Objects.schema_id AS SchemaID,
+           Schema_Name(_Objects.schema_id) AS SchemaName,
+           _Objects.object_id AS ObjectID,
+           RTrim(_Objects.name) AS TableName,
+           (~(Cast(_Partitions.index_id AS Bit))) AS IsHeap,       
+           SUM(_Partitions.used_page_count) * 8192 UsedPageBytes,
+           SUM(_Partitions.reserved_page_count) * 8192 ReservedPageBytes
+    FROM   sys.objects AS _Objects
+    INNER JOIN sys.dm_db_partition_stats AS _Partitions
+      ON (_Objects.object_id = _Partitions.object_id)
+    WHERE (_Partitions.index_id IN (0, 1))
+    GROUP BY _Objects.schema_id,
+                  _Objects.object_id,
+                  _Objects.name,
+                  _Partitions.index_id
     ORDER BY UsedPageBytes DESC
     OPTION (max_grant_percent = 3, MAXDOP 2)
     PRINT ''
+
 
 
     PRINT '-- waits-in-tempdb --'
@@ -198,7 +210,7 @@ PRINT '-- tempdb usage by objects --'
 	    start_time,                    
 	    status,                    
 	    command,                        
-	    db_name(database_id),
+	    CONVERT(VARCHAR(36), DB_NAME (database_id)) AS DbName,
 	    blocking_session_id,          
 	    wait_type,           
 	    wait_time,   
