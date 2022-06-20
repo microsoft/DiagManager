@@ -151,7 +151,7 @@ BEGIN
 		s_tst.is_local,
 		s_es.login_time,
 		s_es.last_request_end_time,
-        CONVERT(VARCHAR, DB_NAME (s_tdt.database_id)) AS DbName,
+		CONVERT(VARCHAR(36), DB_NAME (s_tdt.database_id)) AS DbName,
 		con.most_recent_session_id,
 		s_es.open_transaction_count,
 		s_es.status,
@@ -172,7 +172,7 @@ BEGIN
 	LEFT OUTER JOIN sys.dm_exec_connections con 
 	  ON con.session_id = s_tst.session_id 
     OUTER APPLY sys.dm_exec_sql_text(con.most_recent_sql_handle) T
-    ORDER BY BeginTime ASC
+    ORDER BY database_transaction_begin_time ASC
     OPTION (max_grant_percent = 3, MAXDOP 2)
 
     RAISERROR ('', 0, 1) WITH NOWAIT

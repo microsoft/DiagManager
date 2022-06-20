@@ -1,0 +1,4 @@
+<?xml version="1.0" standalone="yes"?>
+<CustomTasks>
+  <CustomTask enabled="true" groupname="Tempdb and Transactions" taskname="TempDB_and_Transactions" type="TSQL_Script" point="Startup" wait="No" cmd="TempDB_and_Tran_Analysis.sql" />
+</CustomTasks>
