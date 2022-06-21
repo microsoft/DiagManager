@@ -8,6 +8,7 @@ PRINT '==========================='
 PRINT 'Database Mirroring Endpoint'
 PRINT '==========================='
 PRINT ''
+PRINT '--AG_hadr_endpoints_principals--'
 
 SELECT        tcpe.name, tcpe.endpoint_id, tcpe.principal_id, tcpe.protocol, tcpe.protocol_desc, 
               tcpe.type, tcpe.type_desc, tcpe.state, tcpe.state_desc, tcpe.is_admin_endpoint, 
@@ -19,12 +20,13 @@ FROM         sys.tcp_endpoints                AS tcpe
 INNER JOIN   sys.database_mirroring_endpoints AS me   ON tcpe.endpoint_id  = me.endpoint_id 
 INNER JOIN   sys.server_principals            AS sp   ON tcpe.principal_id = sp.principal_id
 
+PRINT ''
 --Database Mirroring Endpoint Permissions
 PRINT '======================================='
 PRINT 'Database Mirroring Endpoint Permissions'
 PRINT '======================================='
 PRINT ''
-
+PRINT '--AG_mirroring_endpoints_permissions--'
 SELECT cast(perm.class_desc as varchar(30)) as [ClassDesc], 
        cast(prin.name as varchar(30)) [Principal],
        cast(perm.permission_name as varchar(30)) as [Permission], 
@@ -42,7 +44,7 @@ PRINT ''
 PRINT '======================================='
 PRINT 'Database Mirroring States'
 PRINT '======================================='
-RAISERROR ('-- sys.database_mirroring --', 0, 1) WITH NOWAIT
+PRINT '--AG_mirroring_states--'
 
 SELECT database_id, mirroring_guid, mirroring_state, mirroring_role, mirroring_role_sequence, mirroring_safety_level, mirroring_safety_sequence, 
 			mirroring_witness_state, mirroring_failover_lsn, mirroring_end_of_log_lsn, mirroring_replication_lsn, mirroring_connection_timeout, mirroring_redo_queue,
@@ -56,7 +58,7 @@ PRINT '==================================='
 PRINT 'Availability Group Listeners and IP'
 PRINT '==================================='
 PRINT ''
-
+PRINT '--AG_hadr_ag_listeners--'
 --First the listeners, one line per listener instead of the previous multi-line per IP.
 -- IPs will be broken out in the next query.
 DECLARE @sql_major_version INT, @sql_major_build INT, @sql NVARCHAR(max)
@@ -77,6 +79,7 @@ EXEC(@sql)
 
 SET @sql = ''
 PRINT ''
+PRINT '--AG_hadr_ag_ip_information--'
 
 --IP information which isn't fully returned via the query above.
 SELECT        agl.dns_name AS Listener_Name, aglip.listener_id, aglip.ip_address, aglip.ip_subnet_mask, aglip.is_dhcp, aglip.network_subnet_ip, 
@@ -92,6 +95,8 @@ PRINT '==================================='
 PRINT 'ROUTING LIST INFO'
 PRINT '==================================='
 PRINT ''
+PRINT '--AG_hadr_readonly_routing--'
+
 SELECT	cast(ar.replica_server_name as varchar(30)) [When This Server is Primary], 
    		rl.routing_priority [Priority], 
 		cast(ar2.replica_server_name as varchar(30)) [Route to this Server],
@@ -110,6 +115,8 @@ PRINT '========================'
 PRINT 'AlwaysOn Windows Cluster'
 PRINT '========================'
 PRINT ''
+PRINT '--AG_hadr_cluster--'
+
 SELECT  cluster_name,quorum_type,quorum_type_desc,quorum_state,quorum_state_desc
 FROM sys.dm_hadr_cluster
 
@@ -121,6 +128,7 @@ PRINT '================================================'
 PRINT 'Windows Cluster Member State, Quorum and Network'
 PRINT '================================================'
 PRINT ''
+PRINT '--AG_hadr_cluster_members--'
 SELECT        cm.member_name, cm.member_type, cm.member_type_desc, cm.member_state, cm.member_state_desc, cm.number_of_quorum_votes,
               cn.network_subnet_ip, cn.network_subnet_ipv4_mask, cn.network_subnet_prefix_length, cn.is_public, cn.is_ipv4
       FROM	sys.dm_hadr_cluster_members  AS cm 
@@ -131,6 +139,7 @@ PRINT ''
 PRINT '==================================================================='
 PRINT 'AlwaysOn Availability Group State, Identification and Configuration'
 PRINT '==================================================================='
+PRINT ''
 SET @sql ='SELECT	 ag.group_id, ag.name, ag.resource_id, ag.resource_group_id, ag.failure_condition_level, ag.health_check_timeout, ag.automated_backup_preference,ag.automated_backup_preference_desc'
 
 IF (@sql_major_version >=13) --these exists SQL 2016 and above
@@ -149,7 +158,7 @@ SET @sql = @sql + ', ags.primary_replica, ags.primary_recovery_health, ags.prima
 		 ags.secondary_recovery_health_desc, ags.synchronization_health, ags.synchronization_health_desc
 	  FROM	sys.availability_groups AS ag 
 INNER JOIN	sys.dm_hadr_availability_group_states AS ags ON ag.group_id = ags.group_id'
-
+PRINT '--AG_hadr_ag_states--'
 EXEC(@sql)
 
 SET @sql = ''
@@ -193,7 +202,7 @@ INNER JOIN	sys.dm_hadr_availability_replica_states         AS ars  ON arcs.repli
 INNER JOIN	sys.availability_replicas                       AS ar   ON ars.replica_id  = ar.replica_id 
 INNER JOIN	sys.availability_groups                         AS ag   ON ag.group_id     = arcs.group_id AND ag.name = arc.group_name
 ORDER BY CAST(arc.group_name AS varchar(30)), CAST(ars.role_desc AS varchar(30))'
-
+PRINT '--AG_hadr_ag_replica_states--'
 EXEC(@sql)
 
 SET @sql = ''
@@ -251,7 +260,7 @@ SET @sql = @sql + ' FROM	sys.dm_hadr_database_replica_cluster_states AS drcs
 LEFT OUTER JOIN sys.dm_hadr_auto_page_repair                AS pr  ON drs.database_id = pr.database_id 
 	 INNER JOIN	sys.availability_groups			            AS ag  ON ag.group_id     = drs.group_id
 ORDER BY drs.database_id'
-
+PRINT '--AG_hadr_ag_database_replica_states--'
 EXEC(@sql)
 
 SET @sql = ''
@@ -259,7 +268,7 @@ SET @sql = ''
 PRINT ''
 PRINT ''
 
-PRINT '-> dm_os_server_diagnostics_log_configurations'
+PRINT '--AG_dm_os_server_diagnostics_log_configurations--'
 SELECT        is_enabled, path, max_size, max_files
 FROM            sys.dm_os_server_diagnostics_log_configurations
 
