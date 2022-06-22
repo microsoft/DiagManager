@@ -202,7 +202,7 @@ INNER JOIN	sys.dm_hadr_availability_replica_states         AS ars  ON arcs.repli
 INNER JOIN	sys.availability_replicas                       AS ar   ON ars.replica_id  = ar.replica_id 
 INNER JOIN	sys.availability_groups                         AS ag   ON ag.group_id     = arcs.group_id AND ag.name = arc.group_name
 ORDER BY CAST(arc.group_name AS varchar(30)), CAST(ars.role_desc AS varchar(30))'
-PRINT '--AG_hadr_ag_replica_states--'
+PRINT '-- AG_hadr_ag_replica_states --'
 EXEC(@sql)
 
 SET @sql = ''
