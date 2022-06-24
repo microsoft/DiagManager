@@ -547,7 +547,9 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
   RAISERROR ('--  dm_os_spinlock_stats --', 0, 1) WITH NOWAIT;
   SET @querystarttime = GETDATE()
 
-  SELECT /*qry2a*/ CONVERT (varchar(30), @runtime, 126) AS 'runtime', collisions, spins, spins_per_collision, sleep_time, backoffs, name FROM sys.dm_os_spinlock_stats
+  SELECT /*qry2a*/ CONVERT (varchar(30), @runtime, 126) AS 'runtime', collisions, spins, spins_per_collision, sleep_time, backoffs, name 
+  FROM sys.dm_os_spinlock_stats
+  WHERE spins > 0
 
   RAISERROR (' ', 0, 1) WITH NOWAIT;
   SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
