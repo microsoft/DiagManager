@@ -146,7 +146,7 @@ namespace PssdiagConfig
             EventLogTypeApp.Attributes.Append(attribEventLogCollectorAppName);
 
             XmlAttribute attribEventLogCollectorAppEnabled = doc.CreateAttribute("enabled");
-            attribEventLogCollectorAppEnabled.Value = "true";
+            attribEventLogCollectorAppEnabled.Value = m_Setting[Res.CollectEventLogShutdown]; //"true";
             EventLogTypeApp.Attributes.Append(attribEventLogCollectorAppEnabled);
 
 
@@ -159,7 +159,7 @@ namespace PssdiagConfig
             EventLogTypeSys.Attributes.Append(attribEventLogCollectorSysName);
 
             XmlAttribute attribEventLogCollectorSysEnabled = doc.CreateAttribute("enabled");
-            attribEventLogCollectorSysEnabled.Value = "true";
+            attribEventLogCollectorSysEnabled.Value = m_Setting[Res.CollectEventLogShutdown]; ;
             EventLogTypeSys.Attributes.Append(attribEventLogCollectorSysEnabled);
 
 
