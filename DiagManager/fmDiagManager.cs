@@ -222,6 +222,7 @@ namespace PssdiagConfig
         }
 
         private UserSetting m_setting = ObjectCopier.Clone<UserSetting>(DiagRuntime.UserDefaultSetting);
+
         public UserSetting UserChoice
         {
             get
@@ -255,7 +256,7 @@ namespace PssdiagConfig
                 //sqldiag
                 setting[Res.CollectSqldiag] = "true";
                 setting[Res.CollectSqldiagStartup] = chkSQLDiagStartup.Checked.ToString().ToLower();
-                setting[Res.CollectSqldaigShutdown] = chkSQLDIAGShutdown.Checked.ToString().ToLower();
+                setting[Res.CollectSqldiagShutdown] = chkSQLDIAGShutdown.Checked.ToString().ToLower();
 
                 //Blocking -- dont' need it for later versions
                 setting[Res.CollectBlocking] = "false";
@@ -658,6 +659,16 @@ namespace PssdiagConfig
         private void tv_Perfmon_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
+        }
+
+        private void cb_EventLogShtudown_CheckedChanged(object sender, EventArgs e)
+        {
+            m_setting[Res.CollectEventLogShutdown] = cb_EventLogShtudown.Checked.ToString().ToLower();
+        }
+
+        private void cb_EventLogStartup_CheckedChanged(object sender, EventArgs e)
+        {
+            m_setting[Res.CollectEventLogsStartup] = cb_EventLogStartup.Checked.ToString().ToLower();
         }
     }
 }

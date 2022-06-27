@@ -166,7 +166,7 @@ namespace PssdiagConfig
                 bool Profiler = Convert.ToBoolean(iter.Current.GetAttribute("Profiler", ""));
                 bool Perfmon = Convert.ToBoolean(iter.Current.GetAttribute("Perfmon", ""));
                 bool xevent = Convert.ToBoolean(iter.Current.GetAttribute("XEvent", ""));
-                bool EvengLog = Convert.ToBoolean(iter.Current.GetAttribute("EvengLog", ""));
+                bool EventLog = Convert.ToBoolean(iter.Current.GetAttribute("EventLog", ""));
                 bool Sqldiag = Convert.ToBoolean(iter.Current.GetAttribute("Sqldiag", ""));
                 List<string> scenList = new List<string>();
                 XPathNodeIterator iterScenario = iter.Current.Select("Scenario");
@@ -176,7 +176,7 @@ namespace PssdiagConfig
                     scenList.Add(scenname);
 
                 }
-                DefaultChoice choice = new DefaultChoice(feat, ver, Profiler, Perfmon, xevent, EvengLog, Sqldiag, scenList);
+                DefaultChoice choice = new DefaultChoice(feat, ver, Profiler, Perfmon, xevent, EventLog, Sqldiag, scenList);
                 DefaultChoiceList.Add(choice);
             }
 
