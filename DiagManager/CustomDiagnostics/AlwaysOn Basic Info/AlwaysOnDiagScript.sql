@@ -4,9 +4,6 @@ SELECT GETDATE()
 GO
 
 -- Get the information about the endpoints, owners, config, etc.
-PRINT '==========================='
-PRINT 'Database Mirroring Endpoint'
-PRINT '==========================='
 PRINT ''
 PRINT '-- AG_hadr_endpoints_principals --'
 
@@ -20,11 +17,7 @@ FROM         sys.tcp_endpoints                AS tcpe
 INNER JOIN   sys.database_mirroring_endpoints AS me   ON tcpe.endpoint_id  = me.endpoint_id 
 INNER JOIN   sys.server_principals            AS sp   ON tcpe.principal_id = sp.principal_id
 
-PRINT ''
 --Database Mirroring Endpoint Permissions
-PRINT '======================================='
-PRINT 'Database Mirroring Endpoint Permissions'
-PRINT '======================================='
 PRINT ''
 PRINT '-- AG_mirroring_endpoints_permissions --'
 SELECT cast(perm.class_desc as varchar(30)) as [ClassDesc], 
@@ -38,39 +31,31 @@ LEFT JOIN sys.server_principals prin 	ON perm.grantee_principal_id = prin.princi
 LEFT JOIN sys.tcp_endpoints     tep 	ON perm.major_id = tep.endpoint_id
 WHERE perm.class_desc = 'ENDPOINT' AND perm.permission_name = 'CONNECT' AND tep.type = 4
 
-PRINT ''
-
 --Database Mirroring States
-PRINT '======================================='
-PRINT 'Database Mirroring States'
-PRINT '======================================='
+PRINT ''
 PRINT '-- AG_mirroring_states --'
-
 SELECT database_id, mirroring_guid, mirroring_state, mirroring_role, mirroring_role_sequence, mirroring_safety_level, mirroring_safety_sequence, 
 			mirroring_witness_state, mirroring_failover_lsn, mirroring_end_of_log_lsn, mirroring_replication_lsn, mirroring_connection_timeout, mirroring_redo_queue,
 			db_name(database_id) as 'database_name', mirroring_partner_name, mirroring_partner_instance, mirroring_witness_name 
 FROM sys.database_mirroring where mirroring_guid IS NOT NULL
 
-PRINT ''
 
 --Availability Group Listeners and IP
-PRINT '==================================='
-PRINT 'Availability Group Listeners and IP'
-PRINT '==================================='
+--First the listeners, one line per listener instead of the previous multi-line per IP.
+--IPs will be broken out in the next query.
 PRINT ''
 PRINT '-- AG_hadr_ag_listeners --'
---First the listeners, one line per listener instead of the previous multi-line per IP.
--- IPs will be broken out in the next query.
 DECLARE @sql_major_version INT, @sql_major_build INT, @sql NVARCHAR(max)
 
-SELECT @sql_major_version = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 4) AS INT))
+SELECT @sql_major_version = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 4) AS INT)),
+       @sql_major_build = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 2) AS INT)) 
        
 
-SET @sql ='SELECT agl.dns_name AS [Listener_Name], ag.name AS [AG_Name] ,agl.group_id,listener_id,dns_name,port,is_conformant,ip_configuration_string_from_cluster'
+SET @sql ='SELECT agl.dns_name AS [Listener_Name], ag.name AS [AG_Name] ,agl.group_id,agl.listener_id,agl.dns_name,agl.port,agl.is_conformant,agl.ip_configuration_string_from_cluster'
 
-IF (@sql_major_version >=14) --this exists SQL 2017 and above
+IF ((@sql_major_version >=16) OR (@sql_major_version =15 AND @sql_major_build >=4073) OR (@sql_major_version =14 AND @sql_major_build >=3401) OR (@sql_major_version =13 AND @sql_major_build >=6300)) -- this exists  SQL 2019 CU8 ,SQL 2017 CU25,SQL 2016 SP3 and above
 	BEGIN
-	  SET @sql = @sql + ',is_distributed_network_name'
+	  SET @sql = @sql + ',agl.is_distributed_network_name'
 	END
 SET @sql = @sql + ' FROM sys.availability_group_listeners agl
 INNER JOIN sys.availability_groups          ag ON agl.group_id = ag.group_id'
@@ -78,55 +63,41 @@ INNER JOIN sys.availability_groups          ag ON agl.group_id = ag.group_id'
 EXEC(@sql)
 
 SET @sql = ''
-PRINT ''
-PRINT '-- AG_hadr_ag_ip_information --'
 
 --IP information which isn't fully returned via the query above.
+PRINT ''
+PRINT '-- AG_hadr_ag_ip_information --'
 SELECT        agl.dns_name AS Listener_Name, aglip.listener_id, aglip.ip_address, aglip.ip_subnet_mask, aglip.is_dhcp, aglip.network_subnet_ip, 
               aglip.network_subnet_prefix_length, aglip.network_subnet_ipv4_mask, aglip.state, aglip.state_desc
       FROM	sys.availability_group_listener_ip_addresses AS aglip 
 INNER JOIN	sys.availability_group_listeners             AS agl	   ON aglip.listener_id = agl.listener_id
 
 
-PRINT ''
-
 --ROUTING LIST INFO
-PRINT '==================================='
-PRINT 'ROUTING LIST INFO'
-PRINT '==================================='
 PRINT ''
 PRINT '-- AG_hadr_readonly_routing --'
-
-SELECT	cast(ar.replica_server_name as varchar(30)) [When This Server is Primary], 
+SELECT	cast(ar.replica_server_name as varchar(30)) [WhenThisServerIsPrimary], 
    		rl.routing_priority [Priority], 
-		cast(ar2.replica_server_name as varchar(30)) [Route to this Server],
-		ar.secondary_role_allow_connections_desc [Connections Allowed],
-		cast(ar2.read_only_routing_url as varchar(50)) as [Routing URL]
+		cast(ar2.replica_server_name as varchar(30)) [RouteToThisServer],
+		ar.secondary_role_allow_connections_desc [ConnectionsAllowed],
+		cast(ar2.read_only_routing_url as varchar(50)) as [RoutingURL]
 
       FROM sys.availability_read_only_routing_lists rl
 INNER JOIN sys.availability_replicas                ar  ON rl.replica_id = ar.replica_id
 INNER JOIN sys.availability_replicas                ar2 ON rl.read_only_replica_id = ar2.replica_id
 ORDER BY ar.replica_server_name, rl.routing_priority
 
-PRINT ''
 
 --AlwaysOn Cluster Information
-PRINT '========================'
-PRINT 'AlwaysOn Windows Cluster'
-PRINT '========================'
 PRINT ''
 PRINT '-- AG_hadr_cluster --'
-
 SELECT  cluster_name,quorum_type,quorum_type_desc,quorum_state,quorum_state_desc
 FROM sys.dm_hadr_cluster
 
-PRINT ''
+
 
 -- AlwaysOn Cluster Information
 -- Note that this information is not guaranteed to be 100% accurate or correct since Windows Server 2012+.
-PRINT '================================================'
-PRINT 'Windows Cluster Member State, Quorum and Network'
-PRINT '================================================'
 PRINT ''
 PRINT '-- AG_hadr_cluster_members --'
 SELECT        cm.member_name, cm.member_type, cm.member_type_desc, cm.member_state, cm.member_state_desc, cm.number_of_quorum_votes,
@@ -135,11 +106,7 @@ SELECT        cm.member_name, cm.member_type, cm.member_type_desc, cm.member_sta
 INNER JOIN	sys.dm_hadr_cluster_networks AS cn ON cn.member_name = cm.member_name
 PRINT ''
 
---AlwaysOn Availability Group State, Identification and Configuration
-PRINT '==================================================================='
-PRINT 'AlwaysOn Availability Group State, Identification and Configuration'
-PRINT '==================================================================='
-PRINT ''
+--AlwaysOn Availability Group State, Identification and Configuration 
 SET @sql ='SELECT	 ag.group_id, ag.name, ag.resource_id, ag.resource_group_id, ag.failure_condition_level, ag.health_check_timeout, ag.automated_backup_preference,ag.automated_backup_preference_desc'
 
 IF (@sql_major_version >=13) --these exists SQL 2016 and above
@@ -162,13 +129,9 @@ PRINT '-- AG_hadr_ag_states --'
 EXEC(@sql)
 
 SET @sql = ''
-PRINT ''
 
---AlwaysOn Availability Replica State, Identification and Configuration
-PRINT '====================================================================='
-PRINT 'AlwaysOn Availability Replica State, Identification and Configuration'
-PRINT '====================================================================='
-PRINT ''
+
+--AlwaysOn Availability Replica State, Identification and Configuration 
 SET @sql ='SELECT        arc.group_name, arc.replica_server_name, arc.node_name, ar.replica_id, ar.group_id, ar.replica_metadata_id, 
               ar.owner_sid, ar.endpoint_url, ar.availability_mode, ar.availability_mode_desc, ar.failover_mode, ar.failover_mode_desc, 
 			  ar.session_timeout, ar.primary_role_allow_connections, ar.primary_role_allow_connections_desc, ar.secondary_role_allow_connections, 
@@ -202,19 +165,15 @@ INNER JOIN	sys.dm_hadr_availability_replica_states         AS ars  ON arcs.repli
 INNER JOIN	sys.availability_replicas                       AS ar   ON ars.replica_id  = ar.replica_id 
 INNER JOIN	sys.availability_groups                         AS ag   ON ag.group_id     = arcs.group_id AND ag.name = arc.group_name
 ORDER BY CAST(arc.group_name AS varchar(30)), CAST(ars.role_desc AS varchar(30))'
+PRINT ''
 PRINT '-- AG_hadr_ag_replica_states --'
 EXEC(@sql)
 
 SET @sql = ''
 
-PRINT ''
 
---AlwaysOn Availability Database Identification, Configuration, State and Performance
-PRINT '==================================================================================='
-PRINT 'AlwaysOn Availability Database Identification, Configuration, State and Performance'
-PRINT '==================================================================================='
-PRINT ''
 
+--AlwaysOn Availability Database Identification, Configuration, State and Performance 
 SET @sql ='SELECT  ag.name AS Availability_Group, drcs.replica_id, drcs.group_database_id, drcs.database_name, drcs.is_failover_ready, drcs.is_pending_secondary_suspend, 
         drcs.is_database_joined, drcs.recovery_lsn, drcs.truncation_lsn, drs.database_id, drs.group_id, drs.is_local '
 
@@ -260,14 +219,13 @@ SET @sql = @sql + ' FROM	sys.dm_hadr_database_replica_cluster_states AS drcs
 LEFT OUTER JOIN sys.dm_hadr_auto_page_repair                AS pr  ON drs.database_id = pr.database_id 
 	 INNER JOIN	sys.availability_groups			            AS ag  ON ag.group_id     = drs.group_id
 ORDER BY drs.database_id'
+PRINT ''
 PRINT '--AG_hadr_ag_database_replica_states--'
 EXEC(@sql)
 
 SET @sql = ''
 		 
 PRINT ''
-PRINT ''
-
 PRINT '-- AG_dm_os_server_diagnostics_log_configurations --'
 SELECT        is_enabled, path, max_size, max_files
 FROM            sys.dm_os_server_diagnostics_log_configurations
@@ -284,9 +242,7 @@ SELECT cast(event_data as XML) AS EventData
   @XELFile, NULL, null, null);
 
 PRINT ''
-PRINT '==========================='
-PRINT 'AlwaysOn_health DDL Events'
-PRINT '==========================='
+PRINT '-- AG_AlwaysOn_health_alwayson_ddl_executed --'
 SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
 	EventData.value('(event/data/text)[1]', 'varchar(10)') AS DDLAction,
 	EventData.value('(event/data/text)[2]', 'varchar(10)') AS DDLPhase,
@@ -299,10 +255,7 @@ SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
 	ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime');
 
 PRINT ''
-
-PRINT '============================='
-PRINT 'AlwaysOn_health DDL FAILOVERS'
-PRINT '============================='
+PRINT '-- AG_AlwaysOn_health_failovers --'
 SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
 	EventData.value('(event/data/text)[1]', 'varchar(10)') AS DDLAction,
 	EventData.value('(event/data/text)[2]', 'varchar(10)') AS DDLPhase,
@@ -315,9 +268,7 @@ SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
 	ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime');
 
 PRINT ''
-PRINT '=========================================='
-PRINT 'AlwaysOn_health AR MGR State Change Events'
-PRINT '=========================================='
+PRINT '-- AG_AlwaysOn_health_availability_replica_manager_state_change --'
 SELECT CONVERT(char(25), EventData.value('(event/@timestamp)[1]', 'datetime'), 121) AS TimeStampUTC,
 EventData.value('(event/data/text)[1]', 'varchar(30)') AS CurrentStateDesc
 FROM #AOHealth
@@ -325,9 +276,7 @@ WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'availability_replic
 ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime');
 
 PRINT ''
-PRINT '======================================'
-PRINT 'AlwaysOn_health AR State Change Events'
-PRINT '======================================'
+PRINT '-- AG_AlwaysOn_health_availability_replica_state_change --'
 SELECT EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
 EventData.value('(event/data/value)[4]', 'varchar(20)') AS AGName,
 EventData.value('(event/data/text)[1]', 'varchar(30)') AS PrevStateDesc,
@@ -338,9 +287,7 @@ ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime');
 
 
 PRINT ''
-PRINT '======================================'
-PRINT 'Lease Expiration Events'
-PRINT '======================================'
+PRINT '-- AG_AlwaysOn_health_availability_group_lease_expired --'
 SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
     EventData.value('(event/data/value)[2]', 'varchar(max)') AS AGName,
     EventData.value('(event/data/value)[1]', 'varchar(max)') AS AG_ID
@@ -349,11 +296,6 @@ SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
     ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime');
 
 
-    
-PRINT ''
-PRINT '======================================'
-PRINT 'Error events'
-PRINT '======================================'
 SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
     EventData.value('(event/data/value)[1]', 'int') AS ErrorNum,
     EventData.value('(event/data/value)[2]', 'int') AS Severity,
@@ -368,7 +310,9 @@ SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
     WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'error_reported';
 
 	--display results from "error_reported" event data
-	WITH ErrorCTE (ErrorNum, ErrorCount, FirstDate, LastDate) AS (
+PRINT ''
+PRINT '-- AG_AlwaysOn_health_error_reported --';	
+WITH ErrorCTE (ErrorNum, ErrorCount, FirstDate, LastDate) AS (
 	SELECT ErrorNum, Count(ErrorNum), min(TimeStampUTC), max(TimeStampUTC) As ErrorCount FROM #error_reported
 	    GROUP BY ErrorNum) 
 	SELECT CAST(ErrorNum as CHAR(10)) ErrorNum,
