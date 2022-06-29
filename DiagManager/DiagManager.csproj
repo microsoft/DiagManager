@@ -350,9 +350,6 @@
     <Content Include="CustomDiagnostics\SQL Base\ClearOrphanedBLGs.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CustomDiagnostics\SQL Base\collecterrorlog.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="CustomDiagnostics\SQL Base\DefineCommonVars.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -435,6 +432,9 @@
     <Content Include="CustomDiagnostics\SQL Base\get_tasklist.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="CustomDiagnostics\SQL Base\get_errorlogs.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="CustomDiagnostics\SQL Server CPU NeverEnding Query\PlanGeneratingNeverEndingQuery.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -513,15 +513,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CustomDiagnostics\SQL Base\collecterrorlog.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="CustomDiagnostics\SQL Base\CustomDiag.XML">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CustomDiagnostics\SQL Base\errorlogs.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="CustomDiagnostics\SQL Base\MiscPssdiagInfo.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1082,26 +1076,6 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="CustomDiagnostics\SQL Base\collecterrorlog.cmd">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\SQL Base\collecterrorlog.sql">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
     <PublishFile Include="CustomDiagnostics\SQL Base\CustomDiag.XML">
       <Visible>False</Visible>
       <Group>
@@ -1138,11 +1112,21 @@
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
+      <PublishState>Exclude</PublishState>
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="CustomDiagnostics\SQL Base\get_dbccloginfo.sql">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
+    <PublishFile Include="CustomDiagnostics\SQL Base\get_errorlogs.ps1">
       <Visible>False</Visible>
       <Group>
       </Group>
