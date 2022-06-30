@@ -243,7 +243,7 @@ SELECT cast(event_data as XML) AS EventData
 
 PRINT ''
 PRINT '-- AG_AlwaysOn_health_alwayson_ddl_executed --'
-SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
+SELECT TOP 500 EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
 	EventData.value('(event/data/text)[1]', 'varchar(10)') AS DDLAction,
 	EventData.value('(event/data/text)[2]', 'varchar(10)') AS DDLPhase,
 	EventData.value('(event/data/value)[5]', 'varchar(20)') AS AGName,
@@ -252,11 +252,11 @@ SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
 	FROM #AOHealth
 	WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'alwayson_ddl_executed'
 		AND UPPER(EventData.value('(event/data/value)[3]', 'varchar(60)')) NOT LIKE '%FAILOVER%'
-	ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime');
+	ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
 
 PRINT ''
 PRINT '-- AG_AlwaysOn_health_failovers --'
-SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
+SELECT TOP 500 EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
 	EventData.value('(event/data/text)[1]', 'varchar(10)') AS DDLAction,
 	EventData.value('(event/data/text)[2]', 'varchar(10)') AS DDLPhase,
 	EventData.value('(event/data/value)[5]', 'varchar(20)') AS AGName,
@@ -265,38 +265,38 @@ SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
 	FROM #AOHealth
 	WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'alwayson_ddl_executed'
 		AND UPPER(EventData.value('(event/data/value)[3]', 'varchar(60)')) LIKE '%FAILOVER%'
-	ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime');
+	ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
 
 PRINT ''
 PRINT '-- AG_AlwaysOn_health_availability_replica_manager_state_change --'
-SELECT CONVERT(char(25), EventData.value('(event/@timestamp)[1]', 'datetime'), 121) AS TimeStampUTC,
+SELECT TOP 500 CONVERT(char(25), EventData.value('(event/@timestamp)[1]', 'datetime'), 121) AS TimeStampUTC,
 EventData.value('(event/data/text)[1]', 'varchar(30)') AS CurrentStateDesc
 FROM #AOHealth
 WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'availability_replica_manager_state_change'
-ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime');
+ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
 
 PRINT ''
 PRINT '-- AG_AlwaysOn_health_availability_replica_state_change --'
-SELECT EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
+SELECT TOP 500 EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
 EventData.value('(event/data/value)[4]', 'varchar(20)') AS AGName,
 EventData.value('(event/data/text)[1]', 'varchar(30)') AS PrevStateDesc,
 EventData.value('(event/data/text)[2]', 'varchar(30)') AS CurrentStateDesc
 FROM #AOHealth
 WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'availability_replica_state_change'
-ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime');
+ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
 
 
 PRINT ''
 PRINT '-- AG_AlwaysOn_health_availability_group_lease_expired --'
-SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
+SELECT  TOP 500 EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
     EventData.value('(event/data/value)[2]', 'varchar(max)') AS AGName,
     EventData.value('(event/data/value)[1]', 'varchar(max)') AS AG_ID
     FROM #AOHealth
     WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'availability_group_lease_expired'
-    ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime');
+    ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
 
 
-SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
+SELECT  TOP 500 EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
     EventData.value('(event/data/value)[1]', 'int') AS ErrorNum,
     EventData.value('(event/data/value)[2]', 'int') AS Severity,
     EventData.value('(event/data/value)[3]', 'int') AS State,
@@ -307,7 +307,8 @@ SELECT  EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
     EventData.value('(event/data/value)[8]', 'varchar(max)') AS ErrMessage
 	INTO #error_reported
     FROM #AOHealth
-    WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'error_reported';
+    WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'error_reported'
+	ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
 
 	--display results from "error_reported" event data
 PRINT ''
