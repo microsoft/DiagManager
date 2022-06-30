@@ -17717,7 +17717,7 @@
         <Version name="15" enabled="true"/>
       </Versions>
     </PerfmonCounter>
-    <PerfmonCounter name="PVS off-row pages allocated/sec">
+    <PerfmonCounter name="\PVS off-row pages allocated/sec">
       <Scenarios>
         <Scenario name="All" enabled="true"/>
         <Scenario name="DetailedPerf" enabled="true"/>
