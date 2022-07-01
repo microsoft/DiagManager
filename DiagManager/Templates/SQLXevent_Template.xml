@@ -218,6 +218,10 @@
 		</Versions>
 		</event>
 		<event package="sqlserver" name="broker_corrupted_message">
+		<Scenarios>
+		  <Scenario name="GeneralPerf" enabled="True"/>
+		  <Scenario name="DetailedPerf" enabled="True"/>
+		</Scenarios>
 		<Features>
 			<Feature name="SQL" enabled="true"/>
 		</Features>
@@ -270,6 +274,8 @@
 		<event package="sqlserver" name="broker_forwarded_message_dropped">
       <Scenarios>
         <Scenario name="ServiceBroker" enabled="True"/>
+        <Scenario name="GeneralPerf" enabled="True"/>
+        <Scenario name="DetailedPerf" enabled="True"/>
       </Scenarios>
       <Features>
 			<Feature name="SQL" enabled="true"/>
@@ -303,6 +309,8 @@
 		<event package="sqlserver" name="broker_message_undeliverable">
       <Scenarios>
         <Scenario name="ServiceBroker" enabled="True"/>
+        <Scenario name="GeneralPerf" enabled="True"/>
+        <Scenario name="DetailedPerf" enabled="True"/>
       </Scenarios>
 		<Features>
 			<Feature name="SQL" enabled="true"/>
