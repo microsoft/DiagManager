@@ -3,11 +3,16 @@ SET NOCOUNT ON
 USE tempdb
 GO
 
+DECLARE @sql_major_version INT
+SELECT @sql_major_version = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS varchar(20)), 4) AS INT))
+
 WHILE 1=1
 BEGIN
 
     PRINT '-- Current time'
     SELECT getdate()
+	PRINT ''
+
     DECLARE @runtime datetime
     SET @runtime = CONVERT (varchar(30), GETDATE(), 121) 
 
@@ -224,7 +229,19 @@ BEGIN
     FROM sys.dm_exec_requests
     WHERE wait_resource like '% 2:%'
     OPTION (max_grant_percent = 3, MAXDOP 2)
+	PRINT ''
 
+	IF @sql_major_version >= 15 
+	BEGIN
+		PRINT '-- dm_tran_aborted_transactions --'
+		SELECT transaction_id, 
+		  database_id, 
+		  begin_xact_lsn, 
+		  end_xact_lsn, 
+		  begin_time, 
+		  nest_aborted
+		FROM sys.dm_tran_aborted_transactions
+	END
 
     RAISERROR ('', 0, 1) WITH NOWAIT
     PRINT ''
