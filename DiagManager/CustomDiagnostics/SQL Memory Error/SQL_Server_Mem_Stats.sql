@@ -107,6 +107,8 @@ FROM     sys.dm_exec_requests r
            ON mg.resource_semaphore_id = rs.resource_semaphore_id
          CROSS APPLY sys.dm_exec_sql_text (r.sql_handle ) AS q
 ORDER BY wait_time DESC
+OPTION (max_grant_percent = 3, MAXDOP 1)
+
 RAISERROR ('', 0, 1) WITH NOWAIT
 
 

@@ -86,6 +86,7 @@ begin
 	WHERE (PlanStats.CpuRank < 50 OR PlanStats.PhysicalReadsRank < 50 OR PlanStats.DurationRank < 50)
 	  AND pa.attribute = 'dbid' 
 	ORDER BY tot_cpu_ms DESC
+	OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 
 	SET @rowcount = @@ROWCOUNT
 	SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
@@ -123,6 +124,8 @@ begin
 	INNER JOIN sys.dm_db_missing_index_details mid ON mig.index_handle = mid.index_handle
 	WHERE CONVERT (decimal (28,1), migs.avg_total_user_cost * migs.avg_user_impact * (migs.user_seeks + migs.user_scans)) > 10
 	ORDER BY migs.avg_total_user_cost * migs.avg_user_impact * (migs.user_seeks + migs.user_scans) DESC
+	OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
+
 	PRINT ''
 	PRINT ''
 
@@ -559,6 +562,8 @@ begin
 	group by query_hash
 	ORDER BY sum(total_worker_time) DESC
 	) t
+	OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
+
 	print ''
 
 
@@ -582,6 +587,7 @@ begin
 	group by query_hash
 	ORDER BY sum(total_logical_reads) DESC
 	) t
+	OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 	print ''
 
     --import in SQLNexus
@@ -601,9 +607,10 @@ begin
 		  END), CHAR(13), ' '), CHAR(10), ' '))  AS sample_statement_text
 	FROM sys.dm_exec_query_stats AS qs
 	CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) AS st
-	group by query_hash
+	GROUP BY query_hash
 	ORDER BY sum(total_elapsed_time) DESC
 	) t
+	OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 	print ''
 
 	--import in SQLNexus
@@ -620,8 +627,9 @@ begin
 		  END), CHAR(13), ' '), CHAR(10), ' '))  AS sample_statement_text
 	FROM sys.dm_exec_query_stats AS qs
 	CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) AS st
-	group by query_plan_hash, query_hash
-	ORDER BY sum(total_worker_time) DESC;
+	GROUP BY query_plan_hash, query_hash
+	ORDER BY sum(total_worker_time) DESC
+	OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 	print ''
 
 
@@ -638,7 +646,8 @@ begin
 	FROM sys.dm_exec_query_stats AS qs
 	CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) AS st
 	group by query_plan_hash, query_hash
-	ORDER BY sum(total_logical_reads) DESC;
+	ORDER BY sum(total_logical_reads) DESC
+	OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 	print ''
 
 	--import in SQLNexus
@@ -654,7 +663,8 @@ begin
 	FROM sys.dm_exec_query_stats AS qs
 	CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) AS st
 	group by query_plan_hash, query_hash
-	ORDER BY sum(total_elapsed_time) DESC;
+	ORDER BY sum(total_elapsed_time) DESC
+	OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 print ''
 
 end

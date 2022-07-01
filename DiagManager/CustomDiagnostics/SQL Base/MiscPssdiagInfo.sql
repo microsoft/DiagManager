@@ -325,5 +325,6 @@ FROM sys.dm_xe_sessions sess
 ON sess.address = evt.event_session_address
  INNER JOIN sys.trace_xe_event_map xemap
  ON evt.event_name = xemap.xe_event_name collate database_default
+OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 print ''
 go
