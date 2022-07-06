@@ -305,10 +305,10 @@
     <Content Include="CustomDiagnostics\StretchDB\StretchDB.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CustomDiagnostics\Tempdb Space and Latching\CustomDiag.XML">
+    <Content Include="CustomDiagnostics\Transactions and Tempdb Space and Latching\CustomDiag.XML">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CustomDiagnostics\Tempdb Space and Latching\TempDBAnalysis.sql">
+    <Content Include="CustomDiagnostics\Transactions and Tempdb Space and Latching\TempDB_and_Tran_Analysis.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Icon.ico" />
@@ -435,7 +435,7 @@
     <None Include="CustomDiagnostics\SQL Server CPU NeverEnding Query\PlanGeneratingNeverEndingQuery.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="CustomDiagnostics\Tempdb Space and Latching\readme.rtf">
+    <None Include="CustomDiagnostics\Transactions and Tempdb Space and Latching\readme.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="DiagManagerCodeMap.dgml" />
@@ -1340,7 +1340,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="CustomDiagnostics\Tempdb Space and Latching\CustomDiag.XML">
+    <PublishFile Include="CustomDiagnostics\Transactions and Tempdb Space and Latching\CustomDiag.XML">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -1350,7 +1350,7 @@
       <IncludeHash>True</IncludeHash>
       <FileType>File</FileType>
     </PublishFile>
-    <PublishFile Include="CustomDiagnostics\Tempdb Space and Latching\TempDBAnalysis.sql">
+    <PublishFile Include="CustomDiagnostics\Transactions and Tempdb Space and Latching\TempDB_and_Tran_Analysis.sql">
       <Visible>False</Visible>
       <Group>
       </Group>

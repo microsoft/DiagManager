@@ -1256,11 +1256,11 @@ select TOP 10000 * from sys.dm_os_latch_stats
 IF @@rowcount >= 10000 PRINT '<<<<< LIMIT OF 10000 ROWS EXCEEDED, SOME RESULTS NOT SHOWN >>>>>'
 PRINT ''
 
--- New DMV in SQL Server 2008
-PRINT '-> sys.dm_os_spinlock_stats'
-select TOP 10000 * from sys.dm_os_spinlock_stats
-IF @@rowcount >= 10000 PRINT '<<<<< LIMIT OF 10000 ROWS EXCEEDED, SOME RESULTS NOT SHOWN >>>>>'
-PRINT ''
+-- -- New DMV in SQL Server 2008
+-- PRINT '-> sys.dm_os_spinlock_stats'
+-- select TOP 10000 * from sys.dm_os_spinlock_stats
+-- IF @@rowcount >= 10000 PRINT '<<<<< LIMIT OF 10000 ROWS EXCEEDED, SOME RESULTS NOT SHOWN >>>>>'
+-- PRINT ''
 
 PRINT '-> sys.dm_os_sublatches'
 select TOP 10000 * from sys.dm_os_sublatches

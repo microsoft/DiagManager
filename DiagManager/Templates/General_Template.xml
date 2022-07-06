@@ -233,29 +233,29 @@
 
   <DefaultSetting>
     <!-- SQL Server -->
-    <DefaultChoice Feature="SQL" Version="9" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="true" >
+    <DefaultChoice Feature="SQL" Version="9" Profiler="true" Perfmon="true" XEvent="false" EventLog="true" Sqldiag="true" >
       <Scenario name="GeneralPerf"/>
     </DefaultChoice>/>
-    <DefaultChoice Feature="SQL" Version="10" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="true">
-      <Scenario name="DetailedPerf"/>
+    <DefaultChoice Feature="SQL" Version="10" Profiler="true" Perfmon="true" XEvent="false" EventLog="true" Sqldiag="true">
+      <Scenario name="GeneralPerf"/>
     </DefaultChoice>
-    <DefaultChoice Feature="SQL" Version="10.50" Profiler="true" Perfmon="true" XEvent="false" EvengLog="true" Sqldiag="true">
+    <DefaultChoice Feature="SQL" Version="10.50" Profiler="true" Perfmon="true" XEvent="false" EventLog="true" Sqldiag="true">
       <Scenario name="GeneralPerf"/>
     </DefaultChoice>
     <!-- Issue 109 - Changed Default Tracing to XEvent for 2012 + -->
-    <DefaultChoice Feature="SQL" Version="11" Profiler="false" Perfmon="true" XEvent="true" EvengLog="true" Sqldiag="true">
+    <DefaultChoice Feature="SQL" Version="11" Profiler="false" Perfmon="true" XEvent="true" EventLog="true" Sqldiag="true">
       <Scenario name="GeneralPerf"/>
     </DefaultChoice>
-    <DefaultChoice Feature="SQL" Version="12" Profiler="false" Perfmon="true" XEvent="true" EvengLog="true" Sqldiag="true">
+    <DefaultChoice Feature="SQL" Version="12" Profiler="false" Perfmon="true" XEvent="true" EventLog="true" Sqldiag="true">
       <Scenario name="GeneralPerf"/>
     </DefaultChoice>
-    <DefaultChoice Feature="SQL" Version="13" Profiler="false" Perfmon="true" XEvent="true" EvengLog="true" Sqldiag="true">
+    <DefaultChoice Feature="SQL" Version="13" Profiler="false" Perfmon="true" XEvent="true" EventLog="true" Sqldiag="true">
       <Scenario name="GeneralPerf"/>
     </DefaultChoice>
-    <DefaultChoice Feature="SQL" Version="14" Profiler="false" Perfmon="true" XEvent="true" EvengLog="true" Sqldiag="true">
+    <DefaultChoice Feature="SQL" Version="14" Profiler="false" Perfmon="true" XEvent="true" EventLog="true" Sqldiag="true">
       <Scenario name="GeneralPerf"/>
     </DefaultChoice>
-    <DefaultChoice Feature="SQL" Version="15" Profiler="false" Perfmon="true" XEvent="true" EvengLog="true" Sqldiag="true">
+    <DefaultChoice Feature="SQL" Version="15" Profiler="false" Perfmon="true" XEvent="true" EventLog="true" Sqldiag="true">
       <Scenario name="GeneralPerf"/>
     </DefaultChoice>
       

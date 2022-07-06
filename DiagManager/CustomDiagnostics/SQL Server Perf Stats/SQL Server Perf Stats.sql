@@ -159,7 +159,7 @@ RAISERROR (' ', 0, 1) WITH NOWAIT
     /* ... and also any head blockers, even though they may not be running a query at the moment. */
     OR (sess.session_id IN (SELECT blocking_session_id FROM #blockingSessions))
   /* redundant due to the use of join hints, but added here to suppress warning message */
-  OPTION (maxdop 1)  
+  OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 
   create index ix_temp_request_session_id on #tmp_requests(session_id) 
   create index ix_temp_request_transaction_id on #tmp_requests(transaction_id) 
@@ -230,7 +230,8 @@ RAISERROR (' ', 0, 1) WITH NOWAIT
     LEFT OUTER MERGE JOIN #dm_os_waiting_tasks waits ON waits.waiting_task_address = r.task_address 
     ORDER BY r.session_id, blocking_ecid
     /* redundant due to the use of join hints, but added here to suppress warning message */
-    OPTION (maxdop 1)  
+    OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
+
     SET @rowcount = @@ROWCOUNT
     SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
     IF @queryduration > @qrydurationwarnthreshold
@@ -277,7 +278,8 @@ RAISERROR (' ', 0, 1) WITH NOWAIT
         (SELECT * FROM #tmp_requests2 r2 
          WHERE r.session_id = r2.session_id AND r.request_id = r2.request_id AND r.ecid = r2.ecid AND r.wait_type = r2.wait_type 
            AND (r2.wait_duration_ms > r.wait_duration_ms OR (r2.wait_duration_ms = r.wait_duration_ms AND r2.tmprownum > r.tmprownum)))
-    
+    OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
+
 	RAISERROR (' ', 0, 1) WITH NOWAIT
     
     SET @rowcount = @@ROWCOUNT
@@ -353,8 +355,9 @@ RAISERROR (' ', 0, 1) WITH NOWAIT
           WHEN wait_type LIKE 'PAGEIOLATCH%' COLLATE Latin1_General_BIN THEN 'PAGEIOLATCH_* WAITS' 
           ELSE wait_type
         END, 40) 
-      ORDER BY SUM (wait_duration_ms) DESC;
-      
+      ORDER BY SUM (wait_duration_ms) DESC
+      OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
+
 	  RAISERROR (' ', 0, 1) WITH NOWAIT
 
       
@@ -406,6 +409,7 @@ RAISERROR (' ', 0, 1) WITH NOWAIT
         -- OR (r.is_sick > 0) -- spinloop
       )
     ORDER BY stat.total_worker_time/1000 DESC
+    OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 
 	RAISERROR (' ', 0, 1) WITH NOWAIT
 
@@ -433,6 +437,8 @@ RAISERROR (' ', 0, 1) WITH NOWAIT
           AND b2.head_blocker_session_id = CASE WHEN blocking_resource_wait_type LIKE 'COMPILE%' THEN 'COMPILE BLOCKING' ELSE head_blocker_session_id END -- same head blocker
           AND b2.blocking_wait_type = b1.blocking_resource_wait_type -- same type of blocking
       )
+      OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
+
       PRINT 'Inserted ' + CONVERT (varchar, @@ROWCOUNT) + ' new blocking chains...'
 
       -- 2) Update statistics for in-progress blocking incidents
@@ -547,7 +553,9 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
   RAISERROR ('--  dm_os_spinlock_stats --', 0, 1) WITH NOWAIT;
   SET @querystarttime = GETDATE()
 
-  SELECT /*qry2a*/ CONVERT (varchar(30), @runtime, 126) AS 'runtime', collisions, spins, spins_per_collision, sleep_time, backoffs, name FROM sys.dm_os_spinlock_stats
+  SELECT /*qry2a*/ CONVERT (varchar(30), @runtime, 126) AS 'runtime', collisions, spins, spins_per_collision, sleep_time, backoffs, name 
+  FROM sys.dm_os_spinlock_stats
+  WHERE spins > 0
 
   RAISERROR (' ', 0, 1) WITH NOWAIT;
   SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
@@ -582,7 +590,8 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
     OR ([object_name] LIKE '%:Databases%' COLLATE Latin1_General_BIN              AND instance_name = '_Total' COLLATE Latin1_General_BIN AND counter_name COLLATE Latin1_General_BIN IN ('Data File(s) Size (KB)', 'Log File(s) Size (KB)', 'Log File(s) Used Size (KB)', 'Active Transactions', 'Transactions/sec', 'Bulk Copy Throughput/sec', 'Backup/Restore Throughput/sec', 'DBCC Logical Scan Bytes/sec', 'Log Flush Wait Time', 'Log Growths', 'Log Shrinks'))
     OR ([object_name] LIKE '%:Cursor Manager by Type%' COLLATE Latin1_General_BIN AND instance_name = '_Total' COLLATE Latin1_General_BIN AND counter_name COLLATE Latin1_General_BIN IN ('Cached Cursor Counts', 'Cursor Requests/sec', 'Cursor memory usage'))
     OR ([object_name] LIKE '%:Catalog Metadata%' COLLATE Latin1_General_BIN       AND instance_name = '_Total' COLLATE Latin1_General_BIN AND counter_name COLLATE Latin1_General_BIN IN ('Cache Hit Ratio', 'Cache Hit Ratio Base', 'Cache Entries Count'))
-  
+  OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
+
   RAISERROR (' ', 0, 1) WITH NOWAIT;
 
   SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
@@ -609,7 +618,8 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
         AND ring_buffer_type = 'RING_BUFFER_SCHEDULER_MONITOR'
 		and record LIKE '%<SystemHealth>%') AS t
     ORDER BY record.value('(Record/@id)[1]', 'int') 
-   
+    OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
+
    RAISERROR (' ', 0, 1) WITH NOWAIT;
   SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
   IF @queryduration > @qrydurationwarnthreshold
@@ -630,7 +640,7 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
     FROM sys.dm_os_latch_stats 
 	WHERE waiting_requests_count > 0 OR wait_time_ms > 0 OR max_wait_time_ms > 0
     ORDER BY wait_time_ms DESC
-
+    OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 
   /* Resultset #7: File Stats Full
   ** To conserve space, output full dbname and filenames on 1st execution only. */
@@ -650,7 +660,9 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
   SET @sql = @sql + 'FROM ::fn_virtualfilestats (null, null) fs
   INNER JOIN master.dbo.sysdatabases d ON d.dbid = fs.DbId
   INNER JOIN sys.master_files f ON fs.DbId = f.database_id AND fs.FileId = f.[file_id]
-  ORDER BY AvgIOTimeMS DESC'
+  ORDER BY AvgIOTimeMS DESC
+  OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
+  '
 
   
   SET @querystarttime = GETDATE()
@@ -686,31 +698,36 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
 			+ '].[' + object_schema_name(convert(int, substring(plan_handle,8,1) + substring(plan_handle,7,1) + substring(plan_handle,6,1) + substring(plan_handle,5,1)),convert(smallint, substring(plan_handle,4,1) + substring(plan_handle,3,1)))
 			+ '].['+ object_name(convert(int, substring(plan_handle,8,1) + substring(plan_handle,7,1) + substring(plan_handle,6,1) + substring(plan_handle,5,1)),convert(smallint, substring(plan_handle,4,1) + substring(plan_handle,3,1))) + ']' 
 			else 'ad-hoc query, see notableactivequeries for text' end as 'full_object_name'
-	from sys.dm_exec_query_memory_grants
+	FROM sys.dm_exec_query_memory_grants
+    OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 
   /* Resultset #10: dm_os_memory_brokers */
   PRINT ''
   RAISERROR ('-- dm_os_memory_brokers --', 0, 1) WITH NOWAIT;
-  SELECT /*qry10*/ CONVERT (varchar(30), @runtime, 126) AS 'runtime', pool_id, allocations_kb, allocations_kb_per_sec, predicted_allocations_kb, target_allocations_kb, future_allocations_kb, overall_limit_kb, last_notification, memory_broker_type from sys.dm_os_memory_brokers
+  SELECT /*qry10*/ CONVERT (varchar(30), @runtime, 126) AS 'runtime', pool_id, allocations_kb, allocations_kb_per_sec, predicted_allocations_kb, target_allocations_kb, future_allocations_kb, overall_limit_kb, last_notification, memory_broker_type 
+  FROM sys.dm_os_memory_brokers
 
   /* Resultset #11: dm_os_schedulers 
   ** no reason to list columns since no long character columns */
   PRINT ''
   RAISERROR ('-- dm_os_schedulers --', 0, 1) WITH NOWAIT;
-  select /*qry11*/ CONVERT (varchar(30), @runtime, 126) as 'runtime', * from sys.dm_os_schedulers
+  SELECT /*qry11*/ CONVERT (varchar(30), @runtime, 126) as 'runtime', * 
+  FROM sys.dm_os_schedulers
 
 
   /* Resultset #12: dm_os_nodes */
   PRINT ''
   RAISERROR ('-- sys.dm_os_nodes --', 0, 1) WITH NOWAIT;
-  SELECT /*qry12*/ CONVERT (varchar(30), @runtime, 126) as 'runtime', node_id, memory_object_address, memory_clerk_address, io_completion_worker_address, memory_node_id, cpu_affinity_mask, online_scheduler_count, idle_scheduler_count, active_worker_count, avg_load_balance, timer_task_affinity_mask, permanent_task_affinity_mask, resource_monitor_state,/* online_scheduler_mask,*/ /*processor_group,*/ node_state_desc FROM sys.dm_os_nodes
+  SELECT /*qry12*/ CONVERT (varchar(30), @runtime, 126) as 'runtime', node_id, memory_object_address, memory_clerk_address, io_completion_worker_address, memory_node_id, cpu_affinity_mask, online_scheduler_count, idle_scheduler_count, active_worker_count, avg_load_balance, timer_task_affinity_mask, permanent_task_affinity_mask, resource_monitor_state,/* online_scheduler_mask,*/ /*processor_group,*/ node_state_desc 
+  FROM sys.dm_os_nodes
 
 
   /* Resultset #13: dm_os_memory_nodes 
   ** no reason to list columns since no long character columns */
   PRINT ''
   RAISERROR ('-- sys.dm_os_memory_nodes --', 0, 1) WITH NOWAIT;
-  SELECT /*qry13*/ CONVERT (varchar(30), @runtime, 126) as 'runtime',* FROM sys.dm_os_memory_nodes
+  SELECT /*qry13*/ CONVERT (varchar(30), @runtime, 126) as 'runtime',* 
+  FROM sys.dm_os_memory_nodes
 
 
   /* Resultset #14: Lock summary */
@@ -719,8 +736,9 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
   SET @querystarttime = GETDATE()
 
   select /*qry14*/ CONVERT (varchar(30), @runtime, 126) as 'runtime', * from 
-    (select  count (*) as 'LockCount', Resource_database_id, LEFT(resource_type,15) as 'resource_type', LEFT(request_mode,20) as 'request_mode', request_status from sys.dm_tran_locks 
-      group by  Resource_database_id, resource_type, request_mode, request_status ) t
+    (SELECT  count (*) as 'LockCount', Resource_database_id, LEFT(resource_type,15) as 'resource_type', LEFT(request_mode,20) as 'request_mode', request_status 
+     FROM sys.dm_tran_locks 
+     GROUP BY  Resource_database_id, resource_type, request_mode, request_status ) t
 
    RAISERROR (' ', 0, 1) WITH NOWAIT;
   SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
@@ -733,11 +751,13 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
   RAISERROR ('-- Thread Statistics --', 0, 1) WITH NOWAIT
   SET @querystarttime = GETDATE()
 
-  select /*qry15*/ CONVERT (varchar(30), @runtime, 126) as 'runtime', th.os_thread_id, ta.scheduler_id, ta.session_id, ta.request_id, req.command, usermode_time, kernel_time, req.cpu_time as 'req_cpu_time',  req.logical_reads,req.total_elapsed_time,
+  SELECT /*qry15*/ CONVERT (varchar(30), @runtime, 126) as 'runtime', th.os_thread_id, ta.scheduler_id, ta.session_id, ta.request_id, req.command, usermode_time, kernel_time, req.cpu_time as 'req_cpu_time',  req.logical_reads,req.total_elapsed_time,
       REPLACE (REPLACE (SUBSTRING (sql.[text], CHARINDEX ('CREATE ', CONVERT (nvarchar(512), SUBSTRING (sql.[text], 1, 1000)) COLLATE Latin1_General_BIN), 50) COLLATE Latin1_General_BIN, CHAR(10), ' '), CHAR(13), ' ') as 'QueryText'
-    from sys.dm_os_threads th join sys.dm_os_tasks ta on th.worker_address = ta.worker_address
-      left outer join sys.dm_exec_requests req on ta.session_id = req.session_id and ta.request_id = req.request_id
-      outer apply sys.dm_exec_sql_text (req.sql_handle) sql
+  FROM sys.dm_os_threads th join sys.dm_os_tasks ta on th.worker_address = ta.worker_address
+    LEFT OUTER JOIN sys.dm_exec_requests req on ta.session_id = req.session_id 
+      AND ta.request_id = req.request_id
+    OUTER APPLY sys.dm_exec_sql_text (req.sql_handle) sql
+  OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 
 	  RAISERROR (' ', 0, 1) WITH NOWAIT;
   SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
@@ -765,8 +785,8 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
   SET @querystarttime = GETDATE()
 
   SELECT /*qry17*/ CONVERT (varchar(30), @runtime, 126) AS 'runtime', COUNT(*) AS 'count', SUM(CONVERT(INT,is_open)) AS 'open count', MIN(creation_time) AS 'oldest create',[properties]
-    FROM sys.dm_exec_cursors(0)
-    GROUP BY [properties]
+  FROM sys.dm_exec_cursors(0)
+  GROUP BY [properties]
 
 	RAISERROR (' ', 0, 1) WITH NOWAIT;
   SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
@@ -806,11 +826,12 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
   SET @querystarttime = GETDATE()
 
   SELECT /*qry19*/ CONVERT (varchar(30), @runtime, 126) AS 'runtime',*  from 
-    (select  objtype, sum(cast(size_in_bytes as bigint) /cast(1024.00 as decimal(38,2)) /1024.00) 'Cache_Size_MB' , count_big (*) 'Entry_Count', isnull(db_name(cast (value as int)),'mssqlsystemresource') 'db name'
-	  from  sys.dm_exec_cached_plans AS p CROSS APPLY sys.dm_exec_plan_attributes ( plan_handle ) as t 
-      where attribute='dbid'
-      group by  isnull(db_name(cast (value as int)),'mssqlsystemresource'), objtype )  t
-    order by Entry_Count desc
+    (SELECT  objtype, sum(cast(size_in_bytes as bigint) /cast(1024.00 as decimal(38,2)) /1024.00) 'Cache_Size_MB' , count_big (*) 'Entry_Count', isnull(db_name(cast (value as int)),'mssqlsystemresource') 'db name'
+	  FROM  sys.dm_exec_cached_plans AS p CROSS APPLY sys.dm_exec_plan_attributes ( plan_handle ) as t 
+      WHERE attribute='dbid'
+      GROUP BY  isnull(db_name(cast (value as int)),'mssqlsystemresource'), objtype )  t
+  ORDER BY Entry_Count desc
+  OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 
 
 	RAISERROR (' ', 0, 1) WITH NOWAIT;
@@ -824,11 +845,11 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
   RAISERROR ('-- System Requests --', 0, 1) WITH NOWAIT
   SET @querystarttime = GETDATE()
   
-  select /*qry20*/ CONVERT (varchar(30), @runtime, 126) AS 'runtime', tr.os_thread_id, req.* 
-    from sys.dm_exec_requests req 
-	  join sys.dm_os_workers wrk  on req.task_address = wrk.task_address and req.connection_id is null
-      join sys.dm_os_threads tr on tr.worker_address=wrk.worker_address
-
+  SELECT /*qry20*/ CONVERT (varchar(30), @runtime, 126) AS 'runtime', tr.os_thread_id, req.* 
+  FROM sys.dm_exec_requests req 
+	  JOIN sys.dm_os_workers wrk  on req.task_address = wrk.task_address and req.connection_id is null
+      JOIN sys.dm_os_threads tr on tr.worker_address=wrk.worker_address
+   OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 
 	  RAISERROR (' ', 0, 1) WITH NOWAIT;
   SET @rowcount = @@ROWCOUNT
@@ -991,6 +1012,8 @@ FROM     sys.dm_exec_requests r
            ON mg.resource_semaphore_id = rs.resource_semaphore_id
          CROSS APPLY sys.dm_exec_sql_text (r.sql_handle ) AS q
 ORDER BY wait_time DESC
+OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
+
 RAISERROR ('', 0, 1) WITH NOWAIT
 
 

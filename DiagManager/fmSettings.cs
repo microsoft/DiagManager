@@ -136,18 +136,22 @@ namespace PssdiagConfig
             DiagRuntime.MainForm.SetPreferences();
         }
 
-        private void chkBoxCreateEmail_CheckedChanged(object sender, EventArgs e)
-        {
-            Globals.UserPreferences.SetCreateEmail(chkBoxCreateEmail.Checked);
-        }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             btnSave.Tag = "SaveCancel";
+            
             //get colors
             Color myColor = lblShowColor.BackColor;
             Globals.UserPreferences.SetBackgroundColor(myColor);
             Util.ResetAllControlsBackColor(DiagRuntime.MainForm, myColor);
+            
+            //enable or disable email creation
+            Globals.UserPreferences.SetCreateEmail(chkBoxCreateEmail.Checked);
+
+            //set the path selected by user
+            Globals.UserPreferences.SetDefaultPssdPath(txtDefaultPssdPath.Text);
+
             //go on saving
             Globals.UserPreferences.Save();
             DiagRuntime.MainForm.SetPreferences();

@@ -133,7 +133,7 @@
     <value>CollectEventLogs</value>
   </data>
   <data name="CollectEventLogShutdown" xml:space="preserve">
-    <value>CollectPerfmon</value>
+    <value>CollectEventLogsShutdown</value>
   </data>
   <data name="CollectEventLogsStartup" xml:space="preserve">
     <value>CollectEventLogsStartup</value>
@@ -147,11 +147,11 @@
   <data name="CollectProfiler" xml:space="preserve">
     <value>CollectProfiler</value>
   </data>
-  <data name="CollectSqldaigShutdown" xml:space="preserve">
-    <value>CollectBlockingShutdown</value>
-  </data>
   <data name="CollectSqldiag" xml:space="preserve">
     <value>CollectSqldiagStartup</value>
+  </data>
+  <data name="CollectSqldiagShutdown" xml:space="preserve">
+    <value>CollectSqldiagShutdown</value>
   </data>
   <data name="CollectSqldiagStartup" xml:space="preserve">
     <value>CollectSqldiagStartup</value>

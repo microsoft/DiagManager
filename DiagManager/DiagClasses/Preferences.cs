@@ -72,6 +72,10 @@ namespace PssdiagConfig
         {
             CreateEmailChecked = CreateEmail;
         }
+        public void SetDefaultPssdPath(string NewPssdPath)
+        {
+            DefaultPssdPath = NewPssdPath;
+        }
         public System.Drawing.Color GetBackgroundColor ()
         {
             return System.Drawing.Color.FromArgb(Argb);

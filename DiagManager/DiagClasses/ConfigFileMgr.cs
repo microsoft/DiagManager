@@ -146,7 +146,15 @@ namespace PssdiagConfig
             EventLogTypeApp.Attributes.Append(attribEventLogCollectorAppName);
 
             XmlAttribute attribEventLogCollectorAppEnabled = doc.CreateAttribute("enabled");
-            attribEventLogCollectorAppEnabled.Value = "true";
+            if (m_Setting[Res.CollectEventLogShutdown] == "true" || m_Setting[Res.CollectEventLogsStartup] == "true")
+            {
+                attribEventLogCollectorAppEnabled.Value = "true";
+            }
+            else
+            {
+                attribEventLogCollectorAppEnabled.Value = "false";
+            }
+
             EventLogTypeApp.Attributes.Append(attribEventLogCollectorAppEnabled);
 
 
@@ -159,7 +167,15 @@ namespace PssdiagConfig
             EventLogTypeSys.Attributes.Append(attribEventLogCollectorSysName);
 
             XmlAttribute attribEventLogCollectorSysEnabled = doc.CreateAttribute("enabled");
-            attribEventLogCollectorSysEnabled.Value = "true";
+            if (m_Setting[Res.CollectEventLogShutdown] == "true" || m_Setting[Res.CollectEventLogsStartup] == "true")
+            {
+                attribEventLogCollectorSysEnabled.Value = "true";
+            }
+            else
+            {
+                attribEventLogCollectorSysEnabled.Value = "false";
+            }
+
             EventLogTypeSys.Attributes.Append(attribEventLogCollectorSysEnabled);
 
 
@@ -247,7 +263,7 @@ namespace PssdiagConfig
             XmlAttribute attribSqlDiagStartup = doc.CreateAttribute("startup");
             attribSqlDiagStartup.Value = m_Setting[Res.CollectSqldiagStartup];
             XmlAttribute attribSqlDiagShutdown = doc.CreateAttribute("shutdown");
-            attribSqlDiagShutdown.Value = m_Setting[Res.CollectSqldaigShutdown];
+            attribSqlDiagShutdown.Value = m_Setting[Res.CollectSqldiagShutdown];
             node.Attributes.Append(attribSqlDiagEnabled);
             node.Attributes.Append(attribSqlDiagStartup);
             node.Attributes.Append(attribSqlDiagShutdown);

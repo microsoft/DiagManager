@@ -282,13 +282,12 @@ function main
         }
         
     
-
-    [string] $argument_list = ""
+    [string[]] $argument_array = @()
 
     if ($ServiceState -iin "stop", "start", "stop_abort")
     {
         Write-Host "ServiceState = $ServiceState"
-        $argument_list = $ServiceState    
+        $argument_array += $ServiceState   
     }
     elseif (($ServiceState -iin "--?", "/?", "?", "--help", "help") -or ($help -eq $true) )
     {
@@ -298,18 +297,43 @@ function main
     {
         
         # [/I cfgfile] = sets the configuration file, typically either sqldiag.ini or sqldiag.xml.  Default is sqldiag.xml
-        $lv_I = "/I " + $I
+        $lv_I = "/I" + $I
 
         # [/O outputpath] = sets the output folder.  Defaults to startupfolder\SQLDIAG (if the folder does not exist, the collector will attempt to create it)
-        $lv_O = "/O " + $O
+        #if this is a full directory path make sure to trim a final backslash because SQLDiag would fail to start the service if that exists
+        if ($O.Substring($O.Length -1) -eq "`\")
+        {
+          $O = $O.Substring(0,$O.Length -1)
+        }
+
+        $lv_O = "/O" + $O
+
         
         # [/P supportpath] = sets the support path folder.   By default, /P is set to the folder where the SQLdiag executable resides. 
 		# The support folder contains SQLdiag support files, such as the XML configuration file, Transact-SQL scripts, and other files that the utility uses during diagnostics collection. 
 		# If you use this option to specify an alternate support files path, SQLdiag will automatically copy the support files it requires to the specified folder if they do not already exist.
-        $lv_P = "/P " + $P    
+        $pwd = Get-Location
+        
+        if ([string]::IsNullOrWhiteSpace($P) -eq $false) 
+        {
+          #trim a final backslash because SQLDiag would fail to start the service if that exists
+          if ($P.Substring($P.Length -1) -eq "`\")
+          {
+            $P = $P.Substring(0,$P.Length -1)
+          }
+
+          $lv_P = "/P" + $P 
+        }
+
+        else
+        {
+            $lv_P = "/P" + $pwd.Path
+        }
+        
+
 
         # [/N #] = output folder management at startup #: 1 = overwrite (default), 2 = rename (format is OUTPUT_00001,...00002, etc.)
-        $lv_N = "/N " + $N
+        $lv_N = "/N" + $N
 
         # [/M machine1 [machine2 machineN]|@machinelistfile] = overrides the machines specified in the config file. When specifying more than one machine, separate each machine name with a space. "@" specifies a machine list file
         if ([string]::IsNullOrWhiteSpace($M))
@@ -318,7 +342,7 @@ function main
         }
         else 
         {
-            $lv_M = "/M " + $M    
+            $lv_M = "/M" + $M    
         }
 
 
@@ -330,12 +354,12 @@ function main
         }
         else 
         {
-            $lv_Q = "/Q "
+            $lv_Q = "/Q"
         }
         
         # [/C #] = file compression type: 0 = none (default), 1 = NTFS, 2 = CAB
 
-        $lv_C = "/C " + $C
+        $lv_C = "/C" + $C
         
         # [/G]  = generic mode -- SQL Server connectivity checks are not enforced; machine enumeration includes all servers, not just SQL Servers
         
@@ -345,7 +369,7 @@ function main
         }
         else 
         {
-            $lv_G = "/G "
+            $lv_G = "/G"
         }
         
         # [/R]  = registers the collector as a service
@@ -356,7 +380,7 @@ function main
         }
         else 
         {
-            $lv_R = "/R "
+            $lv_R = "/R"
         }
         
         # [/U]  = unregisters the collector as a service
@@ -367,7 +391,7 @@ function main
         }
         else 
         {
-            $lv_U = "/U "
+            $lv_U = "/U"
         }
 
         # [/A appname] = sets the application name to DIAG$appname.  If running as a service, this sets the service name to DIAG$appname
@@ -378,7 +402,7 @@ function main
         }
         else 
         {
-            $lv_A = "/A " + $A
+            $lv_A = "/A" + $A
         }
 
         # [/L] = continuous mode -- automatically restarts when shutdown via /X or /E
@@ -389,7 +413,7 @@ function main
         }
         else 
         {
-            $lv_L = "/L "
+            $lv_L = "/L"
         }
 
         
@@ -401,7 +425,7 @@ function main
         }
         else 
         {
-            $lv_X = "/X "
+            $lv_X = "/X"
         }
 
         
@@ -413,7 +437,7 @@ function main
         }
         else 
         {
-            $lv_B = "/B " + $B
+            $lv_B = "/B" + $B
         }
         
         # [/E [+]YYYYMMDD_HH:MM:SS]  = specifies the date/time to end data collection; "+" specifies a relative time
@@ -424,7 +448,7 @@ function main
         }
         else 
         {
-            $lv_E = "/E " + $E
+            $lv_E = "/E" + $E
         }
 
         # [/T {tcp[,port]|np|lpc|via}] = connects to sql server using the specified protocol
@@ -435,24 +459,33 @@ function main
         }
         else 
         {
-            $lv_T = "/T " + $T
+            $lv_T = "/T" + $T
         }    
 
 
-        if ($lv_U -eq "/U ")
+        if ($lv_U -eq "/U")
         {
-            $argument_list = $lv_U
+            $argument_array += $lv_U
         }
         else 
         {
             # special case if user typed /r instead of -R
             if ($ServiceState -eq "/r")
             {
-                $lv_R = "/R "
+                $lv_R = "/R"
             }
 
-            $argument_list =  $lv_I + " " + $lv_O  + " " + $lv_P + " " + $lv_N + " " + $lv_M + " " + $lv_Q + " " + $lv_C + " " + $lv_G `
-                + " " + $lv_R + " " + $lv_A  + " " + $lv_L  + " " + $lv_X + " " + $lv_B + " " + $lv_E + " " + $lv_T    
+    		[string[]] $argument_arrayTemp = @()  
+            $argument_arrayTemp = $lv_I, $lv_O, $lv_P, $lv_N, $lv_M, $lv_Q, $lv_C, $lv_G, $lv_R, $lv_A, $lv_L, $lv_X, $lv_B, $lv_E, $lv_T
+            
+		    foreach ($item in $argument_arrayTemp)
+            {
+                if (($item.Trim()) -ne "")
+			    {			
+                		    $argument_array += $item.Trim()
+			    }		
+            }
+
         }
         
     }
@@ -472,8 +505,11 @@ function main
     & .\perfmon_translate.ps1
 
     # launch the sqldiag.exe process and print the last 5 lines of the console file in case there were errors
+
     Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Executing: $sqldiag_path $argument_list"
-    Start-Process -FilePath $sqldiag_path -ArgumentList $argument_list -WindowStyle Normal -Wait
+    Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Number of parameters passed: $($argument_array.Length)"
+    & $sqldiag_path $argument_array
+
     
     $console_log = ".\output\internal\##console.log"
 

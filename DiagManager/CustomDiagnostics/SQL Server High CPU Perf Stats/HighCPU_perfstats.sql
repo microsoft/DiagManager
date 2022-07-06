@@ -47,12 +47,12 @@ BEGIN
 	print ''
 	RAISERROR ('--  high_cpu_queries --', 0, 1) WITH NOWAIT
 
-    select	CONVERT (varchar(30), @runtime, 126) as runtime, CONVERT (varchar(30), @runtime_utc, 126) as runtime_utc, req.session_id, thrd.os_thread_id, req.start_time as request_start_time, req.cpu_time, req.total_elapsed_time, req.logical_reads,
+    SELECT	CONVERT (varchar(30), @runtime, 126) as runtime, CONVERT (varchar(30), @runtime_utc, 126) as runtime_utc, req.session_id, thrd.os_thread_id, req.start_time as request_start_time, req.cpu_time, req.total_elapsed_time, req.logical_reads,
     		req.status, req.command, req.wait_type, req.wait_time, req.scheduler_id, req.granted_query_memory, tsk.task_state, tsk.context_switches_count,
     		replace(replace(substring(ISNULL(SQLText.text, ''),1,1000),CHAR(10), ' '),CHAR(13), ' ')  as batch_text, 
 			ISNULL(sess.program_name, '') as program_name, ISNULL (sess.host_name, '') as Host_name, ISNULL(sess.host_process_id,0) as session_process_id, 
     		ISNULL (conn.net_packet_size, 0) AS 'net_packet_size', LEFT (ISNULL (conn.client_net_address, ''), 20) AS 'client_net_address',
-			substring
+			SUBSTRING
     		(REPLACE
     		(REPLACE
     			(SUBSTRING
@@ -66,16 +66,16 @@ BEGIN
     					END
     					- req.statement_start_offset)/2) + 1)
     		, CHAR(10), ' '), CHAR(13), ' '), 1, 512)  AS active_statement_text 
-    from sys.dm_exec_requests req
+    FROM sys.dm_exec_requests req
     	LEFT OUTER JOIN sys.dm_exec_connections conn on conn.session_id = req.session_id
 		OUTER APPLY sys.dm_exec_sql_text (ISNULL (req.sql_handle, conn.most_recent_sql_handle)) as SQLText
-		left outer join sys.dm_exec_sessions sess on conn.session_id = sess.session_id
-		left outer join sys.dm_os_tasks tsk on sess.session_id = tsk.session_id  --including this to get task state (SPINLOOCK state is crucial)
-		inner join sys.dm_os_threads thrd ON tsk.worker_address = thrd.worker_address  
-    where sess.is_user_process = 1 
-    and req.cpu_time > 60000
+		LEFT OUTER JOIN sys.dm_exec_sessions sess on conn.session_id = sess.session_id
+		LEFT OUTER JOIN sys.dm_os_tasks tsk on sess.session_id = tsk.session_id  --including this to get task state (SPINLOOCK state is crucial)
+		INNER JOIN sys.dm_os_threads thrd ON tsk.worker_address = thrd.worker_address  
+    WHERE sess.is_user_process = 1 
+      AND req.cpu_time > 60000
 	--this is to prevent massive grants
-    option (max_grant_percent = 3, MAXDOP 1)
+    OPTION (max_grant_percent = 3, MAXDOP 1)
     
 	--flush results to client
 	RAISERROR (' ', 0, 1) WITH NOWAIT

@@ -240,12 +240,17 @@ print ''
 go
 
 IF @@MICROSOFTVERSION >= 251658240 --15.0.2000
-begin
+BEGIN
 
-print '-- sys.dm_tran_persistent_version_store_stats --'
-select * From sys.dm_tran_persistent_version_store_stats
-print ''
-end
+    print '-- sys.dm_tran_persistent_version_store_stats --'
+    SELECT * 
+    FROM sys.dm_tran_persistent_version_store_stats
+    WHERE persistent_version_store_size_kb > 0
+    print ''
+
+
+
+END
 go
 
 /*
@@ -325,5 +330,6 @@ FROM sys.dm_xe_sessions sess
 ON sess.address = evt.event_session_address
  INNER JOIN sys.trace_xe_event_map xemap
  ON evt.event_name = xemap.xe_event_name collate database_default
+OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
 print ''
 go
