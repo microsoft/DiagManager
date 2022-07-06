@@ -16,6 +16,7 @@ SELECT        tcpe.name, tcpe.endpoint_id, tcpe.principal_id, tcpe.protocol, tcp
 FROM         sys.tcp_endpoints                AS tcpe 
 INNER JOIN   sys.database_mirroring_endpoints AS me   ON tcpe.endpoint_id  = me.endpoint_id 
 INNER JOIN   sys.server_principals            AS sp   ON tcpe.principal_id = sp.principal_id
+OPTION (max_grant_percent = 3, MAXDOP 1)
 
 --Database Mirroring Endpoint Permissions
 PRINT ''
@@ -30,6 +31,7 @@ SELECT cast(perm.class_desc as varchar(30)) as [ClassDesc],
 LEFT JOIN sys.server_principals prin 	ON perm.grantee_principal_id = prin.principal_id
 LEFT JOIN sys.tcp_endpoints     tep 	ON perm.major_id = tep.endpoint_id
 WHERE perm.class_desc = 'ENDPOINT' AND perm.permission_name = 'CONNECT' AND tep.type = 4
+OPTION (max_grant_percent = 3, MAXDOP 1)
 
 --Database Mirroring States
 PRINT ''
@@ -38,6 +40,7 @@ SELECT database_id, mirroring_guid, mirroring_state, mirroring_role, mirroring_r
 			mirroring_witness_state, mirroring_failover_lsn, mirroring_end_of_log_lsn, mirroring_replication_lsn, mirroring_connection_timeout, mirroring_redo_queue,
 			db_name(database_id) as 'database_name', mirroring_partner_name, mirroring_partner_instance, mirroring_witness_name 
 FROM sys.database_mirroring where mirroring_guid IS NOT NULL
+OPTION (max_grant_percent = 3, MAXDOP 1)
 
 
 --Availability Group Listeners and IP
@@ -58,7 +61,8 @@ IF ((@sql_major_version >=16) OR (@sql_major_version =15 AND @sql_major_build >=
 	  SET @sql = @sql + ',agl.is_distributed_network_name'
 	END
 SET @sql = @sql + ' FROM sys.availability_group_listeners agl
-INNER JOIN sys.availability_groups          ag ON agl.group_id = ag.group_id'
+INNER JOIN sys.availability_groups          ag ON agl.group_id = ag.group_id 
+OPTION (max_grant_percent = 3, MAXDOP 1) '
 
 EXEC(@sql)
 
@@ -71,6 +75,7 @@ SELECT        agl.dns_name AS Listener_Name, aglip.listener_id, aglip.ip_address
               aglip.network_subnet_prefix_length, aglip.network_subnet_ipv4_mask, aglip.state, aglip.state_desc
       FROM	sys.availability_group_listener_ip_addresses AS aglip 
 INNER JOIN	sys.availability_group_listeners             AS agl	   ON aglip.listener_id = agl.listener_id
+OPTION (max_grant_percent = 3, MAXDOP 1)
 
 
 --ROUTING LIST INFO
@@ -86,6 +91,7 @@ SELECT	cast(ar.replica_server_name as varchar(30)) [WhenThisServerIsPrimary],
 INNER JOIN sys.availability_replicas                ar  ON rl.replica_id = ar.replica_id
 INNER JOIN sys.availability_replicas                ar2 ON rl.read_only_replica_id = ar2.replica_id
 ORDER BY ar.replica_server_name, rl.routing_priority
+OPTION (max_grant_percent = 3, MAXDOP 1)
 
 
 --AlwaysOn Cluster Information
@@ -93,6 +99,7 @@ PRINT ''
 PRINT '-- AG_hadr_cluster --'
 SELECT  cluster_name,quorum_type,quorum_type_desc,quorum_state,quorum_state_desc
 FROM sys.dm_hadr_cluster
+OPTION (max_grant_percent = 3, MAXDOP 1)
 
 
 
@@ -104,6 +111,8 @@ SELECT        cm.member_name, cm.member_type, cm.member_type_desc, cm.member_sta
               cn.network_subnet_ip, cn.network_subnet_ipv4_mask, cn.network_subnet_prefix_length, cn.is_public, cn.is_ipv4
       FROM	sys.dm_hadr_cluster_members  AS cm 
 INNER JOIN	sys.dm_hadr_cluster_networks AS cn ON cn.member_name = cm.member_name
+OPTION (max_grant_percent = 3, MAXDOP 1)
+
 PRINT ''
 
 --AlwaysOn Availability Group State, Identification and Configuration 
@@ -124,7 +133,8 @@ IF (@sql_major_version >=15) --this exists SQL 2019 and above
 SET @sql = @sql + ', ags.primary_replica, ags.primary_recovery_health, ags.primary_recovery_health_desc, ags.secondary_recovery_health,
 		 ags.secondary_recovery_health_desc, ags.synchronization_health, ags.synchronization_health_desc
 	  FROM	sys.availability_groups AS ag 
-INNER JOIN	sys.dm_hadr_availability_group_states AS ags ON ag.group_id = ags.group_id'
+INNER JOIN	sys.dm_hadr_availability_group_states AS ags ON ag.group_id = ags.group_id 
+OPTION (max_grant_percent = 3, MAXDOP 1)'
 PRINT '-- AG_hadr_ag_states --'
 EXEC(@sql)
 
@@ -146,8 +156,13 @@ IF (@sql_major_version >=15) --this exists SQL 2019 and above
 	  SET @sql = @sql + ', ar.read_write_routing_url'
 	END
 
-SET @sql = @sql + ' , ars.is_local, ars.role, ars.role_desc, ars.operational_state, 
-			  ars.operational_state_desc, ars.connected_state, ars.connected_state_desc, ars.recovery_health, ars.recovery_health_desc, 
+SET @sql = @sql + ' , ars.is_local, ars.role
+					, role_desc = CASE WHEN ars.role_desc IS NULL THEN N''<unknown>'' ELSE ars.role_desc END
+					, ars.operational_state
+					, operational_state_desc = CASE WHEN ars.operational_state_desc  IS NULL THEN N''<unknown>'' ELSE ars.operational_state_desc END
+					, ars.connected_state
+					, connected_state_desc =  CASE WHEN ars.connected_state_desc IS NULL THEN CASE WHEN ars.is_local = 1 THEN N''CONNECTED'' ELSE N''<unknown>'' END ELSE ars.connected_state_desc END
+					, ars.recovery_health, ars.recovery_health_desc, 
 			  ars.synchronization_health, ars.synchronization_health_desc, ars.last_connect_error_number, ars.last_connect_error_description, 
 			  ars.last_connect_error_timestamp '
 
@@ -164,7 +179,8 @@ INNER JOIN  sys.dm_hadr_availability_replica_cluster_states AS arcs ON arc.repli
 INNER JOIN	sys.dm_hadr_availability_replica_states         AS ars  ON arcs.replica_id = ars.replica_id 
 INNER JOIN	sys.availability_replicas                       AS ar   ON ars.replica_id  = ar.replica_id 
 INNER JOIN	sys.availability_groups                         AS ag   ON ag.group_id     = arcs.group_id AND ag.name = arc.group_name
-ORDER BY CAST(arc.group_name AS varchar(30)), CAST(ars.role_desc AS varchar(30))'
+ORDER BY CAST(arc.group_name AS varchar(30)), CAST(ars.role_desc AS varchar(30)) 
+OPTION (max_grant_percent = 3, MAXDOP 1)'
 PRINT ''
 PRINT '-- AG_hadr_ag_replica_states --'
 EXEC(@sql)
@@ -218,7 +234,8 @@ SET @sql = @sql + ' FROM	sys.dm_hadr_database_replica_cluster_states AS drcs
      INNER JOIN	sys.dm_hadr_database_replica_states         AS drs ON drcs.replica_id = drs.replica_id AND drcs.group_database_id = drs.group_database_id 
 LEFT OUTER JOIN sys.dm_hadr_auto_page_repair                AS pr  ON drs.database_id = pr.database_id 
 	 INNER JOIN	sys.availability_groups			            AS ag  ON ag.group_id     = drs.group_id
-ORDER BY drs.database_id'
+ORDER BY drs.database_id 
+OPTION (max_grant_percent = 3, MAXDOP 1)'
 PRINT ''
 PRINT '--AG_hadr_ag_database_replica_states--'
 EXEC(@sql)
@@ -243,72 +260,82 @@ SELECT cast(event_data as XML) AS EventData
 
 PRINT ''
 PRINT '-- AG_AlwaysOn_health_alwayson_ddl_executed --'
-SELECT TOP 500 EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
-	EventData.value('(event/data/text)[1]', 'varchar(10)') AS DDLAction,
-	EventData.value('(event/data/text)[2]', 'varchar(10)') AS DDLPhase,
-	EventData.value('(event/data/value)[5]', 'varchar(20)') AS AGName,
-	CAST(REPLACE(REPLACE(EventData.value('(event/data/value)[3]',
-		'varchar(max)'), CHAR(10), ''), CHAR(13), '') AS VARCHAR(60)) AS DDLStatement
-	FROM #AOHealth
-	WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'alwayson_ddl_executed'
-		AND UPPER(EventData.value('(event/data/value)[3]', 'varchar(60)')) NOT LIKE '%FAILOVER%'
-	ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
+SELECT TOP 500 
+EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
+EventData.value('(event/data[@name="ddl_action"]/text)[1]', 'varchar(10)') AS DDLAction,
+EventData.value('(event/data[@name="ddl_phase"]/text)[1]', 'varchar(10)') AS DDLPhase,
+EventData.value('(event/data[@name="availability_group_name"]/value)[1]', 'varchar(20)') AS AGName,
+CAST(REPLACE(REPLACE(EventData.value('(event/data[@name="statement"]/value)[1]','varchar(max)'), CHAR(10), ''), CHAR(13), '') AS VARCHAR(256)) AS DDLStatement
+FROM #AOHealth
+WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'alwayson_ddl_executed'
+	AND UPPER(EventData.value('(event/data[@name="statement"]/value)[1]','varchar(max)')) NOT LIKE '%FAILOVER%'
+ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
 
 PRINT ''
 PRINT '-- AG_AlwaysOn_health_failovers --'
-SELECT TOP 500 EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
-	EventData.value('(event/data/text)[1]', 'varchar(10)') AS DDLAction,
-	EventData.value('(event/data/text)[2]', 'varchar(10)') AS DDLPhase,
-	EventData.value('(event/data/value)[5]', 'varchar(20)') AS AGName,
-	CAST(REPLACE(REPLACE(EventData.value('(event/data/value)[3]',
-		'varchar(max)'), CHAR(10), ''), CHAR(13), '') AS VARCHAR(60)) AS DDLStatement
-	FROM #AOHealth
-	WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'alwayson_ddl_executed'
-		AND UPPER(EventData.value('(event/data/value)[3]', 'varchar(60)')) LIKE '%FAILOVER%'
-	ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
+SELECT TOP 500 
+EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
+EventData.value('(event/data[@name="ddl_action"]/text)[1]', 'varchar(10)') AS DDLAction,
+EventData.value('(event/data[@name="ddl_phase"]/text)[1]', 'varchar(10)') AS DDLPhase,
+EventData.value('(event/data[@name="availability_group_name"]/value)[1]', 'varchar(20)') AS AGName,
+CAST(REPLACE(REPLACE(EventData.value('(event/data[@name="statement"]/value)[1]','varchar(max)'), CHAR(10), ''), CHAR(13), '') AS VARCHAR(256)) AS DDLStatement
+FROM #AOHealth
+WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'alwayson_ddl_executed'
+	AND UPPER(EventData.value('(event/data[@name="statement"]/value)[1]','varchar(max)')) LIKE '%FAILOVER%'
+	AND UPPER(EventData.value('(event/data[@name="statement"]/value)[1]','varchar(max)')) NOT LIKE 'CREATE%' -- filter out AG Create
+ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC
+OPTION (max_grant_percent = 3, MAXDOP 1);
 
 PRINT ''
 PRINT '-- AG_AlwaysOn_health_availability_replica_manager_state_change --'
-SELECT TOP 500 CONVERT(char(25), EventData.value('(event/@timestamp)[1]', 'datetime'), 121) AS TimeStampUTC,
-EventData.value('(event/data/text)[1]', 'varchar(30)') AS CurrentStateDesc
+SELECT TOP 500 
+CONVERT(char(25), EventData.value('(event/@timestamp)[1]', 'datetime'), 121) AS TimeStampUTC,
+EventData.value('(event/data[@name="current_state"]/text)[1]', 'varchar(30)') AS CurrentStateDesc
 FROM #AOHealth
 WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'availability_replica_manager_state_change'
-ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
+ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC
+OPTION (max_grant_percent = 3, MAXDOP 1);
 
 PRINT ''
 PRINT '-- AG_AlwaysOn_health_availability_replica_state_change --'
-SELECT TOP 500 EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
-EventData.value('(event/data/value)[4]', 'varchar(20)') AS AGName,
-EventData.value('(event/data/text)[1]', 'varchar(30)') AS PrevStateDesc,
-EventData.value('(event/data/text)[2]', 'varchar(30)') AS CurrentStateDesc
+SELECT TOP 500 
+EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
+EventData.value('(event/data[@name="availability_group_name"]/value)[1]', 'varchar(20)') AS AGName,
+EventData.value('(event/data[@name="previous_state"]/text)[1]', 'varchar(30)') AS PrevStateDesc,
+EventData.value('(event/data[@name="current_state"]/text)[1]', 'varchar(30)') AS CurrentStateDesc
 FROM #AOHealth
 WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'availability_replica_state_change'
-ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
+ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC
+OPTION (max_grant_percent = 3, MAXDOP 1);
 
 
 PRINT ''
 PRINT '-- AG_AlwaysOn_health_availability_group_lease_expired --'
-SELECT  TOP 500 EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
-    EventData.value('(event/data/value)[2]', 'varchar(max)') AS AGName,
-    EventData.value('(event/data/value)[1]', 'varchar(max)') AS AG_ID
-    FROM #AOHealth
-    WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'availability_group_lease_expired'
-    ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
+SELECT  TOP 500 
+EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,    
+EventData.value('(event/data[@name="availability_group_name"]/value)[1]', 'varchar(20)') AS AGName,
+EventData.value('(event/data[@name="availability_group_id"]/value)[1]', 'varchar(100)') AS AG_ID
+FROM #AOHealth
+WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'availability_group_lease_expired'
+ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC
+OPTION (max_grant_percent = 3, MAXDOP 1);
 
 
-SELECT  TOP 500 EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
-    EventData.value('(event/data/value)[1]', 'int') AS ErrorNum,
-    EventData.value('(event/data/value)[2]', 'int') AS Severity,
-    EventData.value('(event/data/value)[3]', 'int') AS State,
-    EventData.value('(event/data/value)[4]', 'varchar(max)') AS UserDefined,
-    EventData.value('(event/data/text)[5]', 'varchar(max)') AS Category,
-    EventData.value('(event/data/text)[6]', 'varchar(max)') AS DestinationLog,
-    EventData.value('(event/data/value)[7]', 'varchar(max)') AS IsIntercepted,
-    EventData.value('(event/data/value)[8]', 'varchar(max)') AS ErrMessage
-	INTO #error_reported
-    FROM #AOHealth
-    WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'error_reported'
-	ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC;
+SELECT  TOP 500 
+EventData.value('(event/@timestamp)[1]', 'datetime') AS TimeStampUTC,
+EventData.value('(event/data[@name="error_number"]/value)[1]', 'int') AS ErrorNum,
+EventData.value('(event/data[@name="severity"]/value)[1]', 'int') AS Severity,
+EventData.value('(event/data[@name="state"]/value)[1]', 'int') AS State,
+EventData.value('(event/data[@name="user_defined"]/value)[1]', 'varchar(max)') AS UserDefined,
+EventData.value('(event/data[@name="category"]/text)[1]', 'varchar(max)') AS Category,
+EventData.value('(event/data[@name="destination"]/text)[1]', 'varchar(max)') AS DestinationLog,
+EventData.value('(event/data[@name="is_intercepted"]/value)[1]', 'varchar(max)') AS IsIntercepted,
+EventData.value('(event/data[@name="message"]/value)[1]', 'varchar(max)') AS ErrMessage
+INTO #error_reported
+FROM #AOHealth
+WHERE EventData.value('(event/@name)[1]', 'varchar(max)') = 'error_reported'
+ORDER BY EventData.value('(event/@timestamp)[1]', 'datetime') DESC
+OPTION (max_grant_percent = 3, MAXDOP 1);
 
 	--display results from "error_reported" event data
 PRINT ''
@@ -337,7 +364,8 @@ WITH ErrorCTE (ErrorNum, ErrorCount, FirstDate, LastDate) AS (
 	     FROM
 	    ErrorCTE ec LEFT JOIN sys.messages m on ec.ErrorNum = m.message_id
 	    and m.language_id = 1033
-	ORDER BY CAST(ErrorCount as INT) DESC;
+	ORDER BY CAST(ErrorCount as INT) DESC
+	OPTION (max_grant_percent = 3, MAXDOP 1);
 
 
 DROP TABLE #AOHealth
