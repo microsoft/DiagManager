@@ -41,8 +41,30 @@ $vLogPath = $vLogPath -replace 'ERRORLOG'
 
 Write-Output "The \LOG folder discovered is: $vLogPath"
 
+
+#build a ""server_instance"" string from "server\instance" string
+$server_instance = $Server -replace "\\", "_"
+
 # Copying ERRORLOG files
-Get-ChildItem -File -Path $vLogPath -Filter "ERRORLOG*" | Copy-Item -Destination $DestinationFolder | Out-Null
+$ErrlogFiles = Get-ChildItem -File -Path $vLogPath -Filter "ERRORLOG*" 
+
+foreach ($file in $ErrlogFiles)
+{
+   $source = $file.FullName
+   $destination = $DestinationFolder + $server_instance + "_" + $file.Name
+
+   Copy-Item -Path  $source  -Destination  $destination  | Out-Null
+}
+
 
 # Copying SQLAGENT files
-Get-ChildItem -File -Path $vLogPath -Filter "SQLAGENT*" | Copy-Item -Destination $DestinationFolder | Out-Null
+$SQLAgentlogFiles = Get-ChildItem -File -Path $vLogPath -Filter "SQLAGENT*" 
+
+
+foreach ($file in $SQLAgentlogFiles)
+{
+   $source = $file.FullName
+   $destination = $DestinationFolder + $server_instance + "_" + $file.Name
+
+   Copy-Item -Path  $source  -Destination  $destination  | Out-Null
+}
