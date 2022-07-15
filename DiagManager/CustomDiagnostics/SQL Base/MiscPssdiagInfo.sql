@@ -118,7 +118,8 @@ IF (@@MICROSOFTVERSION >= 184551476) --11.0.2100
 begin
 	exec sp_executesql N'insert into #summary select ''physical_memory_kb'', physical_memory_kb from sys.dm_os_sys_info'
 	insert into #summary values ('HadrManagerStatus', cast (SERVERPROPERTY('HadrManagerStatus') as nvarchar(max)))
-	insert into #summary values ('IsHadrEnabled', cast (SERVERPROPERTY('IsHadrEnabled') as nvarchar(max)))	
+	insert into #summary values ('IsHadrEnabled', cast (SERVERPROPERTY('IsHadrEnabled') as nvarchar(max)))
+	insert into #summary SELECT 'instant_file_initialization_enabled', instant_file_initialization_enabled from sys.dm_server_services where process_id = SERVERPROPERTY('ProcessID')
 end
 
 IF (@@MICROSOFTVERSION >= 201328592) --12.0.2000
