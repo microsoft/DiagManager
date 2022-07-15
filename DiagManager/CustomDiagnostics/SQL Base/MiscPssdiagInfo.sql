@@ -226,6 +226,7 @@ print ''
 RAISERROR ('-- Windows Group Default Databases other than master --', 0, 1) WITH NOWAIT
 select name,default_database_name from sys.server_principals where [type] = 'G' and is_disabled = 0 and default_database_name != 'master'
 go
+print ''
 
 --removed AG related dmvs as a part of issue #162
 
