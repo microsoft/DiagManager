@@ -336,7 +336,7 @@ begin
 	                 	modification_counter,
 	                 	persisted_sample_percent
 	                 from #tmpStats 
-	                 order by [database_name]'
+	                 order by [Database_Name]'
 	  
 	END
 	ELSE
@@ -356,7 +356,7 @@ begin
 	               	unfiltered_rows,
 	               	modification_counter
 	               from #tmpStats 
-	               order by [database_name]'
+	               order by [Database_Name]'
 	END
 
 	exec (@sql2)
