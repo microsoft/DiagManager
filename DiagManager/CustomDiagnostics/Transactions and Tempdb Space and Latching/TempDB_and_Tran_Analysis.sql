@@ -219,7 +219,6 @@ BEGIN
 	    blocking_session_id,          
 	    wait_type,           
 	    wait_time,   
-        wait_resource,
 	    last_wait_type,
 	    wait_resource,                  
 	    open_transaction_count,
