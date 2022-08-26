@@ -18,7 +18,7 @@ BEGIN
 
     PRINT '-- sys.dm_db_file_space_usage --'
     SELECT	@runtime AS runtime, 
-		    DB_NAME() AS DbName, 
+		    DB_NAME() AS dbname, 
 	    SUM (user_object_reserved_page_count)*8 AS usr_obj_kb,
 	    SUM (internal_object_reserved_page_count)*8 AS internal_obj_kb,
 	    SUM (version_store_reserved_page_count)*8  AS version_store_kb,
@@ -30,19 +30,19 @@ BEGIN
 
     PRINT '-- tempdb_space_usage_by_file --'
     SELECT	@runtime AS runtime, 
-            SUBSTRING(name, 0, 32) AS FileName, 
+            SUBSTRING(name, 0, 32) AS filename, 
 			physical_name,
-			size/128.0 AS CurrentSizeMB, 
-            size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS INT)/128.0 AS FreeSpaceMB
+			CONVERT(decimal(10,3),size/128.0) AS currentsize_mb, 
+            CONVERT(decimal(10,3),size/128.0 - FILEPROPERTY(name, 'SpaceUsed')/128.0) AS freespace_mb
     FROM tempdb.sys.database_files f
     PRINT ''
 
 
 	PRINT '-- transaction_perfmon_counters --'
     SELECT @runtime AS runtime, 
-			CONVERT(VARCHAR(16), DB_NAME ()) AS DbName,
+			CONVERT(VARCHAR(16), DB_NAME ()) AS dbname,
 			SUBSTRING(object_name,0,28) as object_name,
-			SUBSTRING(counter_name,0,42),
+			SUBSTRING(counter_name,0,42) as counter_name,
 			cntr_value AS counter_value
     FROM sys.dm_os_performance_counters
     WHERE Object_Name LIKE '%:Transactions%'
@@ -87,7 +87,7 @@ BEGIN
 			tsu.exec_context_id,
 			r.status,
 			r.wait_type,
-			r.wait_type,
+			r.wait_time,
 			r.cpu_time,
 		    LTRIM(RTRIM(REPLACE(REPLACE(SUBSTRING(t.text, (r.statement_start_offset/2)+1,   
 			((CASE r.statement_end_offset  
@@ -156,7 +156,7 @@ BEGIN
 		s_tst.is_local,
 		s_es.login_time,
 		s_es.last_request_end_time,
-		CONVERT(VARCHAR(36), DB_NAME (s_tdt.database_id)) AS DbName,
+		CONVERT(VARCHAR(36), DB_NAME (s_tdt.database_id)) AS dbname,
 		con.most_recent_session_id,
 		s_es.open_transaction_count,
 		s_es.status,
@@ -186,15 +186,15 @@ BEGIN
     PRINT '-- tempdb usage by objects --'
     SELECT TOP 10
            @runtime AS runtime,
-		   CONVERT(VARCHAR(16), DB_NAME ()) AS DbName,
-           DB_ID() AS DatabaseID,
-           _Objects.schema_id AS SchemaID,
-           Schema_Name(_Objects.schema_id) AS SchemaName,
-           _Objects.object_id AS ObjectID,
-           RTrim(_Objects.name) AS TableName,
-           (~(Cast(_Partitions.index_id AS Bit))) AS IsHeap,       
-           SUM(_Partitions.used_page_count) * 8192 UsedPageBytes,
-           SUM(_Partitions.reserved_page_count) * 8192 ReservedPageBytes
+		   CONVERT(VARCHAR(16), DB_NAME ()) AS dbname,
+           DB_ID() AS database_id,
+           _Objects.schema_id AS schema_id,
+           Schema_Name(_Objects.schema_id) AS schema_name,
+           _Objects.object_id AS object_id,
+           RTrim(_Objects.name) AS table_name,
+           (~(Cast(_Partitions.index_id AS Bit))) AS is_heap,       
+           SUM(_Partitions.used_page_count) * 8192/1024 used_pages_kb,
+           SUM(_Partitions.reserved_page_count) * 8192/1024 reserved_pages_kb
     FROM   sys.objects AS _Objects
     INNER JOIN sys.dm_db_partition_stats AS _Partitions
       ON (_Objects.object_id = _Partitions.object_id)
@@ -203,7 +203,7 @@ BEGIN
                   _Objects.object_id,
                   _Objects.name,
                   _Partitions.index_id
-    ORDER BY UsedPageBytes DESC
+    ORDER BY used_pages_kb DESC
     OPTION (max_grant_percent = 3, MAXDOP 2)
     PRINT ''
 
@@ -215,11 +215,10 @@ BEGIN
 	    start_time,                    
 	    status,                    
 	    command,                        
-	    CONVERT(VARCHAR(36), DB_NAME (database_id)) AS DbName,
+	    CONVERT(VARCHAR(36), DB_NAME (database_id)) AS dbname,
 	    blocking_session_id,          
 	    wait_type,           
 	    wait_time,   
-        wait_resource,
 	    last_wait_type,
 	    wait_resource,                  
 	    open_transaction_count,
@@ -234,7 +233,8 @@ BEGIN
 	IF @sql_major_version >= 15 
 	BEGIN
 		PRINT '-- dm_tran_aborted_transactions --'
-		SELECT transaction_id, 
+		SELECT @runtime AS runtime, 
+		  transaction_id, 
 		  database_id, 
 		  begin_xact_lsn, 
 		  end_xact_lsn, 
