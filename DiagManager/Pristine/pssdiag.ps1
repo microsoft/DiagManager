@@ -506,7 +506,7 @@ function main
 
     # launch the sqldiag.exe process and print the last 5 lines of the console file in case there were errors
 
-    Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Executing: $sqldiag_path $argument_list"
+    Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Executing: $sqldiag_path $argument_array"
     Write-Host "$(Get-Date -Format "MM/dd/yyyy HH:mm:ss.fff") Number of parameters passed: $($argument_array.Length)"
     & $sqldiag_path $argument_array
 
