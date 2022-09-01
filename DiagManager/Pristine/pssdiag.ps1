@@ -104,11 +104,11 @@ function FindSQLDiag ()
 		#first find out if their registry is messed up
 		ValidateCurrentVersion -ssver $sqlver
 
-		[string[]] $valid_versions = "10", "10.5", "11", "12", "13", "14", "15"
+		[string[]] $valid_versions = "10", "10.50", "11", "12", "13", "14", "15"
 
 		while ($sqlver -notin $valid_versions)
 		{
-			Write-Warning "An non-specific version is specified for SQL Server (ssver = '$sqlver') in the pssdiag.xml file. This prevents selecting correct SQLDiag.exe path."
+			Write-Warning "An invalid version is specified for SQL Server (ssver = '$sqlver') in the pssdiag.xml file. This prevents selecting correct SQLDiag.exe path."
 			$sqlver = Read-Host "Please enter the 2-digit version of your SQL Server ($valid_versions) to help locate SQLDiag.exe"
 
 		}
@@ -212,15 +212,19 @@ function ValidateCurrentVersion ([string]$ssver)
 		# get the major version value from the reg entry
 		$majVersion = $verString.Substring(0, $verString.IndexOf("."))
 
+        # for version 2008R2 number is 10.50 and we had to remove .50
+        $tempssver = $ssver.Substring(0, $ssver.IndexOf("."))
 
-		if ($majVersion -ne $ssver)
+
+
+        if ($majVersion -ne $tempssver)
 		{
 			$nonMatchCounter++
 		}
 
 	}
 
-	if ($nonMatchCounter -eq $intermediateNames.Count)
+    if ($nonMatchCounter -eq $intermediateNames.Count)
 	{
 		Write-Warning "Collection may fail. No instance was found for the version of SQL Server configured in pssdiag.xml (ssver='$ssver')."
         Write-Warning "Examine these reg keys to see if the one or more versions is different from expected version $ssver (first 2 digits in NN.n.nnnn):`n"
