@@ -213,7 +213,9 @@ function ValidateCurrentVersion ([string]$ssver)
 		$majVersion = $verString.Substring(0, $verString.IndexOf("."))
 
         # for version 2008R2 number is 10.50 and we had to remove .50
-        if ($ssver.IndexOf(".") -eq -1) #IndexOf function returns -1 for SQLs without minor version number (only 2008R2 has this number, which is 50. All others are zero). This fails on the Substring function.
+        #IndexOf function returns -1 for SQLs without minor version number (only 2008R2 has this number, which is 50. All others are zero). 
+
+        if ($ssver.IndexOf(".") -eq -1) 
         {
             $tempssver =  $ssver
 
