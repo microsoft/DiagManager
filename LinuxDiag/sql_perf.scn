@@ -53,7 +53,7 @@ SQL_COUNTERS_INTERVAL=15
 COLLECT_PERFSTATS=YES
 
 # Specify YES or NO. 
-COLLECT_EXTENDED_EVENTS=NO
+COLLECT_EXTENDED_EVENTS=YES
 # Specify which template to use for Extended Events: pssdiag_xevent_general, pssdiag_xevent_detailed, pssdiag_xevent_light
 EXTENDED_EVENT_TEMPLATE=pssdiag_xevent_general
 
