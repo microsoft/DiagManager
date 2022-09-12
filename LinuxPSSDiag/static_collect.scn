@@ -51,6 +51,10 @@ SQL_COUNTERS_INTERVAL=15
 # Collects SQL Server performance statistics , executing requests, snapshots of waitstats etc. Specify YES or NO
 COLLECT_PERFSTATS=NO
 
+# Specify the authentication mode to use for connecting to SQL instance
+# Valid values : SQL / INTEGRATED / SELECT
+SQL_CONNECT_AUTH_MODE=SELECT
+
 # Specify YES or NO. 
 COLLECT_EXTENDED_EVENTS=NO
 # Specify which template to use for Extended Events: pssdiag_xevent_general, pssdiag_xevent_detailed, pssdiag_xevent_light

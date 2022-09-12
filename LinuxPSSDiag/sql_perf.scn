@@ -40,8 +40,8 @@ COLLECT_SQL_LOGS=YES
 COLLECT_SQL_DUMPS=NO
 
 # Specify the authentication mode to use for connecting to SQL instance
-# Valid values : SQL / AD
-#SQL_CONNECT_AUTH_MODE=SQL
+# Valid values : SQL / INTEGRATED / SELECT
+SQL_CONNECT_AUTH_MODE=SELECT
 
 # Collects snapshots of sys.dm_os_performance_counters. Specify YES or NO
 # Interval is in seconds
