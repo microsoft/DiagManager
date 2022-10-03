@@ -753,11 +753,11 @@ begin
       SET @sql = 'USE [' + @dbname + ']'
       IF (@sql_major_version >13)
       BEGIN
-        SET @sql = ' INSERT INTO #temp SELECT ' + CONVERT(SYSNAME,@database_id) + ',''' + @dbname + ''', configuration_id, name, value, value_for_secondary, is_value_default FROM sys.database_scoped_configurations'
+        SET @sql = ' INSERT INTO #temp SELECT ' + CONVERT(SYSNAME,@database_id) + ',''' + @dbname + ''', configuration_id, name, value, value_for_secondary, is_value_default FROM [' + @dbname + '].sys.database_scoped_configurations'
       END
       ELSE
       BEGIN
-        SET @sql = ' INSERT INTO #temp SELECT ' + CONVERT(SYSNAME,@database_id) + ',''' + @dbname + ''', configuration_id, name, value, value_for_secondary FROM sys.database_scoped_configurations'
+        SET @sql = ' INSERT INTO #temp SELECT ' + CONVERT(SYSNAME,@database_id) + ',''' + @dbname + ''', configuration_id, name, value, value_for_secondary FROM [' + @dbname + '].sys.database_scoped_configurations'
       END
     
       --PRINT @sql
