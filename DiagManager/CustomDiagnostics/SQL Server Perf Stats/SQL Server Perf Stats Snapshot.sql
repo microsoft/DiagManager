@@ -716,6 +716,7 @@ begin
 	DECLARE @sql_major_version INT
 	DECLARE @sql_major_build INT
 	DECLARE @sql nvarchar (max)
+	DECLARE @sql2 nvarchar (max)
         
     DECLARE @dbtable TABLE (
       id INT IDENTITY (1,1) PRIMARY KEY,
@@ -751,14 +752,14 @@ begin
       WHERE id = @cont
     
       SET @sql = 'USE [' + @dbname + ']'
-      IF (@sql_major_version >13)
+      SET @sql = N' INSERT INTO #temp SELECT ' + CONVERT(SYSNAME,@database_id) + ',''' + @dbname + ''', configuration_id, name, value, value_for_secondary'
+	  
+	  IF (@sql_major_version >13)
       BEGIN
-        SET @sql = ' INSERT INTO #temp SELECT ' + CONVERT(SYSNAME,@database_id) + ',''' + @dbname + ''', configuration_id, name, value, value_for_secondary, is_value_default FROM [' + @dbname + '].sys.database_scoped_configurations'
+        SET @sql = @sql +  N', is_value_default '
       END
-      ELSE
-      BEGIN
-        SET @sql = ' INSERT INTO #temp SELECT ' + CONVERT(SYSNAME,@database_id) + ',''' + @dbname + ''', configuration_id, name, value, value_for_secondary FROM [' + @dbname + '].sys.database_scoped_configurations'
-      END
+
+	  SET @sql = @sql + N' FROM [' + @dbname + '].sys.database_scoped_configurations'
     
       --PRINT @sql
       EXEC (@sql)
@@ -767,7 +768,17 @@ begin
     
     END
     
-    SELECT database_id, CONVERT(VARCHAR(48), dbname) AS dbname, configuration_id, name, CONVERT(VARCHAR(256), value) AS value, CONVERT(VARCHAR(256),value_for_secondary) AS value_for_secondary FROM #temp
+    SET @sql2 = N' SELECT database_id, CONVERT(VARCHAR(48), dbname) AS dbname, configuration_id, name, CONVERT(VARCHAR(256), value) AS value, CONVERT(VARCHAR(256),value_for_secondary) AS value_for_secondary'
+
+    IF (@sql_major_version >13)
+    BEGIN
+	    SET @sql2 = @sql2 + N', CONVERT(VARCHAR(256),is_value_default) AS is_value_default'
+	END
+	
+	SET @sql2 = @sql2 + N' FROM #temp;'
+	
+    --PRINT @sql2
+	EXEC (@sql2)
     
     PRINT ''
 end
