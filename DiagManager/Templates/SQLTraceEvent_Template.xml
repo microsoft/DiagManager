@@ -12,7 +12,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Broker:Connection" id="138">
@@ -30,7 +33,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Broker:Conversation" id="124">
@@ -45,7 +51,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Broker:Conversation Group" id="136">
@@ -60,7 +69,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Broker:Corrupted Message" id="161">
@@ -78,7 +90,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Broker:Forwarded Message Dropped" id="140">
@@ -95,7 +110,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Broker:Forwarded Message Sent" id="139">
@@ -110,7 +128,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Broker:Message Classify" id="141">
@@ -125,7 +146,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Broker:Message Undeliverable" id="160">
@@ -142,7 +166,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Broker:Mirrored Route State Changed" id="144">
@@ -157,7 +184,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+		<Version name="14" enabled="true"/>
+		<Version name="15" enabled="true"/>
+		<Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Broker:Queue Disabled" id="143">
@@ -172,7 +202,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+		<Version name="14" enabled="true"/>
+		<Version name="15" enabled="true"/>
+		<Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Broker:Remote Message Acknowledgement" id="149">
@@ -187,7 +220,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Broker:Transmission" id="142">
@@ -202,7 +238,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -222,7 +261,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -242,7 +284,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="CursorExecute" id="74">
@@ -260,7 +305,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="CursorImplicitConversion" id="76">
@@ -278,7 +326,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="CursorOpen" id="53">
@@ -296,7 +347,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="CursorPrepare" id="70">
@@ -314,7 +368,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="CursorRecompile" id="75">
@@ -332,7 +389,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="CursorUnprepare" id="77">
@@ -350,7 +410,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -370,7 +433,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Data File Auto Shrink" id="94">
@@ -388,7 +454,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Database Mirroring Connection" id="151">
@@ -403,7 +472,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Database Mirroring State Change" id="167">
@@ -421,7 +493,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Log File Auto Grow" id="93">
@@ -439,7 +514,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Log File Auto Shrink" id="95">
@@ -457,7 +535,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -474,7 +555,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Deprecation Final Support" id="126">
@@ -489,7 +573,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -509,7 +596,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Background Job Error" id="193">
@@ -527,7 +617,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Bitmap Warning" id="212">
@@ -544,7 +637,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Blocked process report" id="137">
@@ -560,7 +656,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="CPU threshold exceeded" id="214">
@@ -576,7 +675,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Database Suspect Data Page" id="213">
@@ -591,7 +693,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="ErrorLog" id="22">
@@ -606,7 +711,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="EventLog" id="21">
@@ -624,7 +732,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Exception" id="33">
@@ -642,7 +753,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Exchange Spill Event" id="127">
@@ -660,7 +774,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Execution Warnings" id="67">
@@ -678,7 +795,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Hash Warning" id="55">
@@ -696,7 +816,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Missing Column Statistics" id="79">
@@ -714,7 +837,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Missing Join Predicate" id="80">
@@ -732,7 +858,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Sort Warnings" id="69">
@@ -750,7 +879,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="User Error Message" id="162">
@@ -768,7 +900,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -788,7 +923,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="FT:Crawl Started" id="155">
@@ -803,7 +941,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="FT:Crawl Stopped" id="156">
@@ -818,7 +959,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -837,7 +981,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Lock:Acquired" id="24">
@@ -852,7 +999,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Lock:Cancel" id="26">
@@ -867,7 +1017,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Lock:Deadlock" id="25">
@@ -882,7 +1035,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Lock:Deadlock Chain" id="59">
@@ -897,7 +1053,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Lock:Escalation" id="60">
@@ -915,7 +1074,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Lock:Released" id="23">
@@ -930,7 +1092,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Lock:Timeout" id="27">
@@ -945,7 +1110,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Lock:Timeout (timeout > 0)" id="189">
@@ -963,7 +1131,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -980,7 +1151,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Object:Created" id="46">
@@ -995,7 +1169,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Object:Deleted" id="47">
@@ -1010,7 +1187,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -1027,7 +1207,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="OLEDB DataRead Event" id="121">
@@ -1042,7 +1225,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="OLEDB Errors" id="61">
@@ -1060,7 +1246,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="OLEDB Provider Information" id="194">
@@ -1075,7 +1264,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="OLEDB QueryInterface Event" id="120">
@@ -1090,7 +1282,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -1110,7 +1305,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Degree of Parallelism" id="28">
@@ -1125,7 +1323,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Performance statistics" id="165">
@@ -1140,7 +1341,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Plan Guide Successful" id="217">
@@ -1157,7 +1361,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Plan Guide Unsuccessful" id="218">
@@ -1173,7 +1380,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Showplan All" id="97">
@@ -1188,7 +1398,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Showplan All For Query Compile" id="169">
@@ -1203,7 +1416,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Showplan Statistics Profile" id="98">
@@ -1219,7 +1435,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Showplan Text" id="96">
@@ -1234,7 +1453,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Showplan Text (Unencoded)" id="68">
@@ -1249,7 +1471,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Showplan XML" id="122">
@@ -1264,7 +1489,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Showplan XML For Query Compile" id="168">
@@ -1280,7 +1508,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Showplan XML Statistics Profile" id="146">
@@ -1296,7 +1527,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SQL:FullTextQuery" id="123">
@@ -1311,7 +1545,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -1331,7 +1568,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -1348,7 +1588,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="QN: Parameter table" id="200">
@@ -1363,7 +1606,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="QN: Subscription" id="199">
@@ -1378,7 +1624,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="QN: Scenario" id="201">
@@ -1393,7 +1642,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -1410,7 +1662,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Scan:Stopped" id="52">
@@ -1425,7 +1680,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -1442,7 +1700,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Add Login to Server Role Event" id="108">
@@ -1457,7 +1718,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Add Member to DB Role Event" id="110">
@@ -1472,7 +1736,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Add Role Event" id="111">
@@ -1487,7 +1754,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Addlogin Event" id="104">
@@ -1502,7 +1772,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit App Role Change Password Event" id="112">
@@ -1517,7 +1790,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Backup/Restore Event" id="115">
@@ -1535,7 +1811,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Broker Conversation" id="158">
@@ -1553,7 +1832,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Broker Login" id="159">
@@ -1571,7 +1853,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Change Audit Event" id="117">
@@ -1586,7 +1871,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Change Database Owner" id="152">
@@ -1601,7 +1889,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Database Management Event" id="128">
@@ -1616,7 +1907,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Database Mirroring Login" id="154">
@@ -1631,7 +1925,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Database Object Access Event" id="180">
@@ -1646,7 +1943,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Database Object GDR Event" id="172">
@@ -1661,7 +1961,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Database Object Management Event" id="129">
@@ -1676,7 +1979,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Database Object Take Ownership Event" id="135">
@@ -1691,7 +1997,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Database Operation Event" id="178">
@@ -1706,7 +2015,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Database Principal Impersonation Event" id="133">
@@ -1721,7 +2033,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Database Principal Management Event" id="130">
@@ -1736,7 +2051,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Database Scope GDR Event" id="102">
@@ -1751,7 +2069,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit DBCC Event" id="116">
@@ -1769,7 +2090,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Fulltext" id="235">
@@ -1784,7 +2108,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Login" id="14">
@@ -1802,7 +2129,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Login Change Password Event" id="107">
@@ -1817,7 +2147,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Login Change Property Event" id="106">
@@ -1832,7 +2165,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Login Failed" id="20">
@@ -1850,7 +2186,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Login GDR Event" id="105">
@@ -1865,7 +2204,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Logout" id="15">
@@ -1883,7 +2225,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Object Derived Permission Event" id="118">
@@ -1898,7 +2243,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Schema Object Access Event" id="114">
@@ -1913,7 +2261,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Schema Object GDR Event" id="103">
@@ -1928,7 +2279,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Schema Object Management Event" id="131">
@@ -1943,7 +2297,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Schema Object Take Ownership Event" id="153">
@@ -1958,7 +2315,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Server Alter Trace Event" id="175">
@@ -1973,7 +2333,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Server Object GDR Event" id="171">
@@ -1988,7 +2351,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Server Object Management Event" id="176">
@@ -2003,7 +2369,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Server Object Take Ownership Event" id="134">
@@ -2018,7 +2387,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Server Operation Event" id="173">
@@ -2033,7 +2405,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Server Principal Impersonation Event" id="132">
@@ -2048,7 +2423,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Server Principal Management Event" id="177">
@@ -2063,7 +2441,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Server Scope GDR Event" id="170">
@@ -2078,7 +2459,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Server Starts And Stops" id="18">
@@ -2094,7 +2478,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Audit Statement Permission Event" id="113">
@@ -2109,7 +2496,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -2129,7 +2519,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Server Memory Change" id="81">
@@ -2147,7 +2540,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Trace File Close" id="150">
@@ -2165,7 +2561,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -2185,7 +2584,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="PreConnect:Completed" id="216">
@@ -2203,7 +2605,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="PreConnect:Starting" id="215">
@@ -2221,7 +2626,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -2241,7 +2649,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="RPC:Completed" id="10">
@@ -2260,7 +2671,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="RPC:Starting" id="11">
@@ -2278,7 +2692,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SP:CacheHit" id="38">
@@ -2293,7 +2710,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SP:CacheInsert" id="35">
@@ -2308,7 +2728,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SP:CacheMiss" id="34">
@@ -2324,7 +2747,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SP:CacheRemove" id="36">
@@ -2340,7 +2766,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SP:Completed" id="43">
@@ -2356,7 +2785,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SP:Recompile" id="37">
@@ -2372,7 +2804,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SP:Starting" id="42">
@@ -2388,7 +2823,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SP:StmtCompleted" id="45">
@@ -2404,7 +2842,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SP:StmtStarting" id="44">
@@ -2420,7 +2861,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -2440,7 +2884,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SQLTransaction" id="50">
@@ -2456,7 +2903,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="TM: Begin Tran completed" id="182">
@@ -2474,7 +2924,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="TM: Begin Tran starting" id="181">
@@ -2490,7 +2943,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="TM: Commit Tran completed" id="186">
@@ -2508,7 +2964,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="TM: Commit Tran starting" id="185">
@@ -2524,7 +2983,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="TM: Promote Tran completed" id="184">
@@ -2542,7 +3004,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="TM: Promote Tran starting" id="183">
@@ -2558,7 +3023,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="TM: Rollback Tran completed" id="188">
@@ -2576,7 +3044,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="TM: Rollback Tran starting" id="187">
@@ -2594,7 +3065,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="TM: Save Tran completed" id="192">
@@ -2612,7 +3086,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="TM: Save Tran starting" id="191">
@@ -2628,7 +3105,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="TransactionLog" id="54">
@@ -2643,7 +3123,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -2661,7 +3144,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Prepare SQL" id="71">
@@ -2679,7 +3165,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SQL:BatchCompleted" id="12">
@@ -2698,7 +3187,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SQL:BatchStarting" id="13">
@@ -2716,7 +3208,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SQL:StmtCompleted" id="41">
@@ -2732,7 +3227,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SQL:StmtRecompile" id="166">
@@ -2750,7 +3248,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="SQL:StmtStarting" id="40">
@@ -2766,7 +3267,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="Unprepare SQL" id="73">
@@ -2784,7 +3288,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="XQuery Static Type" id="198">
@@ -2799,7 +3306,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
@@ -2816,7 +3326,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="UserConfigurable:1" id="83">
@@ -2831,7 +3344,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="UserConfigurable:2" id="84">
@@ -2846,7 +3362,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="UserConfigurable:3" id="85">
@@ -2861,7 +3380,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="UserConfigurable:4" id="86">
@@ -2876,7 +3398,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="UserConfigurable:5" id="87">
@@ -2891,7 +3416,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="UserConfigurable:6" id="88">
@@ -2906,7 +3434,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="UserConfigurable:7" id="89">
@@ -2921,7 +3452,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="UserConfigurable:8" id="90">
@@ -2936,7 +3470,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
     <Event name="UserConfigurable:9" id="91">
@@ -2951,7 +3488,10 @@
         <Version name="10.50" enabled="true"/>
         <Version name="11" enabled="true"/>
         <Version name="12" enabled="true"/>
-        <Version name="13" enabled="true"/> <Version name="14" enabled="true"/> <Version name="15" enabled="true"/>
+        <Version name="13" enabled="true"/>
+        <Version name="14" enabled="true"/>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Event>
   </EventType>
