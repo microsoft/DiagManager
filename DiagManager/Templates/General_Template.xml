@@ -7,7 +7,8 @@
     <Version name="12" friendlyname="SQL 2014"  enabled="true"  />
     <Version name="13" friendlyname="SQL 2016"  enabled="true" />
     <Version name="14" friendlyname="SQL 2017"  enabled="true" />
-    <Version name="15" friendlyname="SQL 2019"  enabled="true" />  
+    <Version name="15" friendlyname="SQL 2019"  enabled="true" />
+    <Version name="16" friendlyname="SQL 2022"  enabled="true" />
   </Versions>
   <Features>
     
@@ -30,6 +31,7 @@
         <Version name="13" enabled="true"/>
         <Version name="14" enabled="true"/>
         <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
 
     </Scenario>
@@ -49,6 +51,7 @@
         <Version name="13" enabled="true"/>
         <Version name="14" enabled="true"/>
         <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Scenario>
     <Scenario name="DetailedPerf" friendlyname="Detailed Performance" target="file" DefaultChecked="false" description="Captures perf stats scripts, perfmon plus XEvent or Profiler trace which can be excessive including statement level events!">
@@ -64,8 +67,9 @@
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
         <Version name="14" enabled="true"/>
-        <Version name="15" enabled="true"/>      
-     </Versions>
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
+      </Versions>
 
     </Scenario>
     
@@ -80,7 +84,8 @@
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
         <Version name="14" enabled="true"/>
-        <Version name="15" enabled="true"/>      
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
 
     </Scenario>
@@ -99,7 +104,8 @@
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
         <Version name="14" enabled="true"/>
-        <Version name="15" enabled="true"/>      
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
 
     </Scenario>
@@ -125,7 +131,8 @@
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
         <Version name="14" enabled="true"/>
-        <Version name="15" enabled="true"/>      
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>        
       </Versions>
 
     </Scenario>
@@ -142,7 +149,8 @@
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
         <Version name="14" enabled="true"/>
-        <Version name="15" enabled="true"/>      
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>        
       </Versions>
 
     </Scenario>
@@ -156,7 +164,8 @@
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
         <Version name="14" enabled="true"/>
-        <Version name="15" enabled="true"/>      
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Scenario>
 
@@ -171,7 +180,8 @@
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
         <Version name="14" enabled="true"/>
-        <Version name="15" enabled="true"/>      
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Scenario>
 
@@ -196,7 +206,8 @@
       <Versions>
         <Version name="13" enabled="true"/>
         <Version name="14" enabled="true"/>
-        <Version name="15" enabled="true"/>      
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
     </Scenario>
 
@@ -210,7 +221,8 @@
         <Version name="12" enabled="true"/>
         <Version name="13" enabled="true"/>
         <Version name="14" enabled="true"/>
-        <Version name="15" enabled="true"/>      
+        <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
 
     </Scenario>
@@ -225,6 +237,7 @@
         <Version name="13" enabled="true"/>
         <Version name="14" enabled="true"/>
         <Version name="15" enabled="true"/>
+        <Version name="16" enabled="true"/>
       </Versions>
 
     </Scenario>
@@ -258,8 +271,9 @@
     <DefaultChoice Feature="SQL" Version="15" Profiler="false" Perfmon="true" XEvent="true" EventLog="true" Sqldiag="true">
       <Scenario name="GeneralPerf"/>
     </DefaultChoice>
-      
-  
+    <DefaultChoice Feature="SQL" Version="16" Profiler="false" Perfmon="true" XEvent="true" EventLog="true" Sqldiag="true">
+      <Scenario name="GeneralPerf"/>
+    </DefaultChoice>
   
   </DefaultSetting>
 </DiagMgr>

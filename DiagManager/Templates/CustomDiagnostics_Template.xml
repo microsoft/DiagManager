@@ -16,7 +16,8 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -33,7 +34,8 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -51,7 +53,8 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -70,7 +73,8 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -88,7 +92,8 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -105,7 +110,8 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
   </CustomGroup> />
   
@@ -121,7 +127,8 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -137,7 +144,7 @@
     <Versions>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
     </Versions>
     
   </CustomGroup> />
@@ -150,8 +157,6 @@
       <Scenario name="All" enabled="true"/>
     </Scenarios>
     <Features>
-
-      
       <Feature name="SQL" enabled="true"/>
     </Features>
     <Versions>
@@ -163,7 +168,6 @@
 
   <CustomGroup name="Linked Server" enabled="true">
     <Scenarios>
-
     </Scenarios>
     <Features>
       <Feature name="SQL" enabled="true"/>
@@ -174,7 +178,8 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -224,7 +229,8 @@
       <Version name="12" enabled="false"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -245,7 +251,8 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
 
   </CustomGroup> />
@@ -273,14 +280,7 @@
       <Feature name="SQL" enabled="true"/>
     </Features>
     <Versions>
-      <Version name="9" enabled="true"/>
-      <Version name="10" enabled="true"/>
-      <Version name="10.50" enabled="true"/>
-      <Version name="11" enabled="true"/>
-      <Version name="12" enabled="true"/>
-      <Version name="13" enabled="true"/>
-      <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="All" enabled="true"/>
     </Versions>
 
   </CustomGroup> />
@@ -295,14 +295,7 @@
       <Feature name="SQL" enabled="true"/>
     </Features>
     <Versions>
-      <Version name="9" enabled="true"/>
-      <Version name="10" enabled="true"/>
-      <Version name="10.50" enabled="true"/>
-      <Version name="11" enabled="true"/>
-      <Version name="12" enabled="true"/>
-      <Version name="13" enabled="true"/>
-      <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="All" enabled="true"/>
     </Versions>
 
   </CustomGroup> />
@@ -319,14 +312,7 @@
       <Feature name="SQL" enabled="true"/>
     </Features>
     <Versions>
-      <Version name="9" enabled="true"/>
-      <Version name="10" enabled="true"/>
-      <Version name="10.50" enabled="true"/>
-      <Version name="11" enabled="true"/>
-      <Version name="12" enabled="true"/>
-      <Version name="13" enabled="true"/>
-      <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="All" enabled="true"/>
     </Versions>
 
   </CustomGroup> /> 
@@ -340,7 +326,8 @@
     <Versions>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
 
   </CustomGroup> />
@@ -358,7 +345,8 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -375,7 +363,8 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -392,7 +381,8 @@
       <Version name="12" enabled="true"/>
       <Version name="13" enabled="true"/>
       <Version name="14" enabled="true"/>
-	  <Version name="15" enabled="true"/>
+      <Version name="15" enabled="true"/>
+      <Version name="16" enabled="true"/>
     </Versions>
   </CustomGroup> />
 
@@ -411,8 +401,9 @@
     <Version name="11" enabled="false"/>
     <Version name="12" enabled="false"/>
     <Version name="13" enabled="true"/>
-    <Version name="14" enabled="true"/> 
+    <Version name="14" enabled="true"/>
     <Version name="15" enabled="true"/>
+    <Version name="16" enabled="true"/>
   </Versions>
 </CustomGroup> />
 
@@ -433,6 +424,7 @@
     <Version name="13" enabled="true"/>
     <Version name="14" enabled="true"/>
     <Version name="15" enabled="true"/>
+    <Version name="16" enabled="true"/>
   </Versions>
 </CustomGroup> />
 
