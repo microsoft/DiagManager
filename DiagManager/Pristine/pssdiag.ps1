@@ -104,7 +104,7 @@ function FindSQLDiag ()
 		#first find out if their registry is messed up
 		ValidateCurrentVersion -ssver $sqlver
 
-		[string[]] $valid_versions = "10", "10.50", "11", "12", "13", "14", "15"
+		[string[]] $valid_versions = "10", "10.50", "11", "12", "13", "14", "15", "16"
 
 		while ($sqlver -notin $valid_versions)
 		{
