@@ -59,6 +59,7 @@ namespace PssdiagConfig
             Application.ThreadException += new ThreadExceptionEventHandler(eh.OnThreadException);
 
             Application.EnableVisualStyles();
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new PssdiagConfig.fmDiagManager());
 
