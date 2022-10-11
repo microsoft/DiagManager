@@ -3246,6 +3246,74 @@ GO
 go
 
 
+IF OBJECT_ID('dbo.sp_trace16','P') IS NOT NULL
+  DROP PROC dbo.sp_trace16
+GO
+PRINT ''
+RAISERROR ('===== Creating sp_trace16', 0, 1) WITH NOWAIT
+GO
+CREATE PROC dbo.sp_trace16 @OnOff varchar(4)='/?',
+@FileName sysname=NULL,
+@TraceName sysname='tsqltrace',
+@Options int=2,
+@MaxFileSize bigint=4000,
+@StopTime datetime=NULL,
+@FileCount int=NULL,
+@TraceType int=0,
+@Events varchar(300)=
+--  11 - RPC:Starting
+--  13 - SQL:BatchStarting
+--  14 - Connect
+--  15 - Disconnect
+--  16 - Attention
+--  17 - Existing Connection
+--  33 - Exception
+--  42 - SP:Starting
+--  43 - SP:Completed
+--  45 - SP:StmtCompleted
+--  55 - Hash Warning
+--  67 - Execution Warnings
+--  69 - Sort Warnings
+--  79 - Missing Column Statistics
+--  80 - Missing Join Predicate
+'11,13,14,15,16,17,33,42,43,45,55,67,69,79,80',
+@Cols varchar(300)=
+-- All columns
+'1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,',
+@IncludeTextFilter sysname=NULL, @ExcludeTextFilter sysname=NULL,
+@IncludeObjIdFilter int=NULL, @ExcludeObjIdFilter int=NULL,
+@IncludeObjNameFilter sysname=NULL, @ExcludeObjNameFilter sysname=NULL,
+@IncludeHostFilter sysname=NULL, @ExcludeHostFilter sysname=NULL, 
+@IncludeSpidFilter int=NULL, @ExcludeSpidFilter int=NULL,  
+@IncludeDatabaseIDFilter sysname=NULL, @ExcludeDatabaseIDFilter sysname=NULL,
+@IncludeDatabaseNameFilter sysname=NULL, @ExcludeDatabaseNameFilter sysname=NULL,
+@TraceId int = NULL,
+@AppName sysname='SQLDIAG'
+AS
+BEGIN
+
+exec dbo.sp_trace11 @OnOff, @FileName, @TraceName, @Options, @MaxFileSize, 
+						@StopTime, @FileCount, @TraceType, @Events, @Cols,
+						@IncludeTextFilter, @ExcludeTextFilter,
+						@IncludeObjIdFilter, @ExcludeObjIdFilter,
+						@IncludeObjNameFilter, @ExcludeObjNameFilter,
+						@IncludeHostFilter, @ExcludeHostFilter, 
+						@IncludeSpidFilter, @ExcludeSpidFilter,  
+						@IncludeDatabaseIDFilter, @ExcludeDatabaseIDFilter,
+						@IncludeDatabaseNameFilter, @ExcludeDatabaseNameFilter,
+						@TraceId,
+						@AppName
+END
+GO
+
+IF (CHARINDEX('16.0.',@@VERSION)<>0) AND (OBJECT_ID('dbo.sp_trace16','P') IS NULL) 
+	RAISERROR('Error creating sp_trace16',16,127)
+GO
+go
+
+
+
+
 
 /*
 
@@ -3982,7 +4050,7 @@ begin
    begin
       print ''
       print 'DBCC INPUTBUFFER FOR SPID ' + @spid
-      exec ('dbcc inputbuffer (' + @spid + ')')
+      exec ('DBCC INPUTBUFFER (' + @spid + ')')
 
       fetch next from ibuffer into @spid, @blocked
    end
@@ -4501,20 +4569,20 @@ GO
 IF (CHARINDEX('12.0.',@@VERSION)<>0) AND (OBJECT_ID('dbo.sp_sqldiag_cleanup12') IS NULL) 
 	RAISERROR('Error creating sp_sqldiag_cleanup12',16,127)
 GO
-create procedure sp_killpssdiagSessions
+CREATE PROCEDURE sp_killpssdiagSessions
 as
-declare curSession
-CURSOR for select 'kill ' + cast( session_id as varchar(max)) from sys.dm_exec_sessions where host_name = 'pssdiag' and program_name='SQLCMD' and session_id <> @@spid
-open curSession
-declare @sql varchar(max)
-fetch next from curSession into @sql
-while @@FETCH_STATUS = 0
-begin
-	exec (@sql)
-	fetch next from curSession into @sql
-end
-close curSession
-deallocate curSession
+DECLARE curSession
+CURSOR FOR SELECT 'kill ' + cast( session_id as varchar(max)) FROM sys.dm_exec_sessions WHERE host_name = 'pssdiag' AND program_name='SQLCMD' AND session_id <> @@spid
+OPEN curSession
+DECLARE @sql varchar(max)
+FETCH NEXT FROM curSession INTO @sql
+WHILE @@FETCH_STATUS = 0
+BEGIN
+	EXEC (@sql)
+	FETCH NEXT FROM curSession INTO @sql
+END
+CLOSE curSession
+DEALLOCATE curSession
 
-go
+GO
 

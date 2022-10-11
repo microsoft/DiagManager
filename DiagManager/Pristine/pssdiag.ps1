@@ -104,7 +104,7 @@ function FindSQLDiag ()
 		#first find out if their registry is messed up
 		ValidateCurrentVersion -ssver $sqlver
 
-		[string[]] $valid_versions = "10", "10.50", "11", "12", "13", "14", "15"
+		[string[]] $valid_versions = "10", "10.50", "11", "12", "13", "14", "15", "16"
 
 		while ($sqlver -notin $valid_versions)
 		{
@@ -475,11 +475,12 @@ function main
         {
             $lv_T = "/T" + $T
         }    
-
-
+        
+        [string[]] $argument_arrayTemp = @()  
+		
         if ($lv_U -eq "/U")
         {
-            $argument_array += $lv_U
+            $argument_arrayTemp = $lv_A, $lv_U
         }
         else 
         {
@@ -488,18 +489,16 @@ function main
             {
                 $lv_R = "/R"
             }
-
-    		[string[]] $argument_arrayTemp = @()  
-            $argument_arrayTemp = $lv_I, $lv_O, $lv_P, $lv_N, $lv_M, $lv_Q, $lv_C, $lv_G, $lv_R, $lv_A, $lv_L, $lv_X, $lv_B, $lv_E, $lv_T
             
-		    foreach ($item in $argument_arrayTemp)
+            $argument_arrayTemp = $lv_I, $lv_O, $lv_P, $lv_N, $lv_M, $lv_Q, $lv_C, $lv_G, $lv_R, $lv_A, $lv_L, $lv_X, $lv_B, $lv_E, $lv_T
+        }
+        
+        foreach ($item in $argument_arrayTemp)
+        {
+            if (($item.Trim()) -ne "")
             {
-                if (($item.Trim()) -ne "")
-			    {			
-                		    $argument_array += $item.Trim()
-			    }		
-            }
-
+                $argument_array += $item.Trim()
+            }		
         }
         
     }
