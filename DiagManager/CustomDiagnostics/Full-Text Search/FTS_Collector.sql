@@ -179,7 +179,7 @@ PRINT '************************************************************'
 PRINT ''
 GO
 
-sp_msforeachdb 'IF EXISTS (select * from ?.sys.fulltext_catalogs) BEGIN PRINT ''======== DatabaseName: ?'' SELECT cat.name AS [CatalogName], cat.fulltext_catalog_id AS [CatalogID],
+sp_msforeachdb 'IF EXISTS (select * from [?].sys.fulltext_catalogs) BEGIN PRINT ''======== DatabaseName: ?'' SELECT cat.name AS [CatalogName], cat.fulltext_catalog_id AS [CatalogID],
 FULLTEXTCATALOGPROPERTY(cat.name,''LogSize'') AS [ErrorLogSize], 
 FULLTEXTCATALOGPROPERTY(cat.name,''IndexSize'') AS [FullTextIndexSize], 
 FULLTEXTCATALOGPROPERTY(cat.name,''ItemCount'') AS [ItemCount], 
@@ -201,10 +201,10 @@ tbl.crawl_end_date AS [LastCrawlENDDate],
 ISNULL(cat.path,N'''') AS [CatalogRootPath] /*, 
 CAST((select (case when exists(select distinct object_id from sys.fulltext_indexes fti where cat.fulltext_catalog_id = fti.fulltext_catalog_id and OBJECTPROPERTY(object_id, ''IsTable'')=1) 
 then 1 else 0 end)) AS bit) AS [HasFullTextIndexedTables]*/
-FROM ?.sys.fulltext_catalogs AS cat 
-LEFT OUTER JOIN ?.sys.filegroups AS fg ON cat.data_space_id = fg.data_space_id 
-LEFT OUTER JOIN ?.sys.database_principals AS dp ON cat.principal_id=dp.principal_id 
-LEFT OUTER JOIN ?.sys.fulltext_indexes AS tbl ON cat.fulltext_catalog_id = tbl.fulltext_catalog_id PRINT '''' END'
+FROM [?].sys.fulltext_catalogs AS cat 
+LEFT OUTER JOIN [?].sys.filegroups AS fg ON cat.data_space_id = fg.data_space_id 
+LEFT OUTER JOIN [?].sys.database_principals AS dp ON cat.principal_id=dp.principal_id 
+LEFT OUTER JOIN [?].sys.fulltext_indexes AS tbl ON cat.fulltext_catalog_id = tbl.fulltext_catalog_id PRINT '''' END'
 
 GO
 
@@ -215,7 +215,7 @@ PRINT ''
 
 GO
 
-sp_msforeachdb 'IF EXISTS (select * from ?.sys.fulltext_indexes where is_enabled=1) BEGIN PRINT ''======== DatabaseName: ?'' SELECT /*Object_name(fti.object_id) AS ''TableName''*/ sobj.name as [TableName], cat.name AS [CatalogName],
+sp_msforeachdb 'IF EXISTS (select * from [?].sys.fulltext_indexes where is_enabled=1) BEGIN PRINT ''======== DatabaseName: ?'' SELECT /*Object_name(fti.object_id) AS ''TableName''*/ sobj.name as [TableName], cat.name AS [CatalogName],
 CAST(fti.is_enabled AS bit) AS [IsEnabled],
 OBJECTPROPERTY(fti.object_id,''TableFullTextPopulateStatus'') AS [PopulationStatus],
 (case change_tracking_state when ''M'' then 1 when ''A'' then 2 else 0 end) AS [ChangeTracking],
@@ -224,12 +224,11 @@ OBJECTPROPERTY(fti.object_id,''TableFullTextDocsProcessed'') AS [DocumentsProces
 OBJECTPROPERTY(fti.object_id,''TableFullTextPendingChanges'') AS [PendingChanges],
 OBJECTPROPERTY(fti.object_id,''TableFullTextFailCount'') AS [NumberOfFailures],
 si.name AS [UniqueIndexName]
-FROM
-?.sys.tables AS tbl
-INNER JOIN ?.sys.fulltext_indexes AS fti ON fti.object_id=tbl.object_id
-INNER JOIN ?.sys.fulltext_catalogs AS cat ON cat.fulltext_catalog_id = fti.fulltext_catalog_id
-INNER JOIN ?.sys.indexes AS si ON si.index_id=fti.unique_index_id and si.object_id=fti.object_id
-INNER JOIN ?.sys.sysobjects as sobj ON fti.object_id=sobj.id
+FROM [?].sys.tables AS tbl
+INNER JOIN [?].sys.fulltext_indexes AS fti ON fti.object_id=tbl.object_id
+INNER JOIN [?].sys.fulltext_catalogs AS cat ON cat.fulltext_catalog_id = fti.fulltext_catalog_id
+INNER JOIN [?].sys.indexes AS si ON si.index_id=fti.unique_index_id and si.object_id=fti.object_id
+INNER JOIN [?].sys.sysobjects as sobj ON fti.object_id=sobj.id
 PRINT '''' END'
 
 GO
@@ -240,13 +239,12 @@ PRINT '*************************************************************************
 PRINT ''
 GO
 
-sp_msforeachdb 'IF EXISTS (select * from ?.sys.fulltext_index_columns) BEGIN PRINT ''======== DatabaseName: ?'' SELECT col.name AS [ColumnName], /*object_name(icol.object_id)*/ sobj.name AS [TableName]
-FROM
-?.sys.tables AS tbl
-INNER JOIN ?.sys.fulltext_indexes AS fti ON fti.object_id=tbl.object_id
-INNER JOIN ?.sys.fulltext_index_columns AS icol ON icol.object_id=fti.object_id
-INNER JOIN ?.sys.columns AS col ON col.object_id = icol.object_id and col.column_id = icol.column_id
-INNER JOIN ?.sys.sysobjects as sobj ON icol.object_id=sobj.id
+sp_msforeachdb 'IF EXISTS (select * from [?].sys.fulltext_index_columns) BEGIN PRINT ''======== DatabaseName: ?'' SELECT col.name AS [ColumnName], /*object_name(icol.object_id)*/ sobj.name AS [TableName]
+FROM [?].sys.tables AS tbl
+INNER JOIN [?].sys.fulltext_indexes AS fti ON fti.object_id=tbl.object_id
+INNER JOIN [?].sys.fulltext_index_columns AS icol ON icol.object_id=fti.object_id
+INNER JOIN [?].sys.columns AS col ON col.object_id = icol.object_id and col.column_id = icol.column_id
+INNER JOIN [?].sys.sysobjects as sobj ON icol.object_id=sobj.id
 PRINT '''' END'
 GO
 
@@ -256,13 +254,12 @@ PRINT '***************************************************'
 PRINT ''
 GO
 
-sp_msforeachdb 'IF EXISTS (select * from ?.sys.fulltext_indexes where is_enabled=1) BEGIN PRINT ''======== DatabaseName: ?'' SELECT tbl.object_id as [ObjectID], tbl.name as [TableName], col.name AS [ColumnName], sl.name AS [WordBreaker_Language], sl.lcid AS [LCID]
-FROM
-?.sys.tables AS tbl
-INNER JOIN ?.sys.fulltext_indexes AS fti ON fti.object_id=tbl.object_id
-INNER JOIN ?.sys.fulltext_index_columns AS icol ON icol.object_id=fti.object_id
-INNER JOIN ?.sys.columns AS col ON col.object_id = icol.object_id and col.column_id = icol.column_id
-INNER JOIN ?.sys.fulltext_languages AS sl ON sl.lcid=icol.language_id
+sp_msforeachdb 'IF EXISTS (select * from [?].sys.fulltext_indexes where is_enabled=1) BEGIN PRINT ''======== DatabaseName: ?'' SELECT tbl.object_id as [ObjectID], tbl.name as [TableName], col.name AS [ColumnName], sl.name AS [WordBreaker_Language], sl.lcid AS [LCID]
+FROM [?].sys.tables AS tbl
+INNER JOIN [?].sys.fulltext_indexes AS fti ON fti.object_id=tbl.object_id
+INNER JOIN [?].sys.fulltext_index_columns AS icol ON icol.object_id=fti.object_id
+INNER JOIN [?].sys.columns AS col ON col.object_id = icol.object_id and col.column_id = icol.column_id
+INNER JOIN [?].sys.fulltext_languages AS sl ON sl.lcid=icol.language_id
 PRINT '''' END'
 
 GO
@@ -336,8 +333,8 @@ declare @listcount int
 declare @sql nvarchar(100)
 declare @sql2 nvarchar(100)
 
-set @sql = 'select COUNT(*) from ' +@dbname+ '.sys.fulltext_stoplists'
-set @sql2 = 'select COUNT(*) from ' +@dbname+ '.sys.fulltext_stopwords'
+set @sql = 'select COUNT(*) from [' +@dbname+ '].sys.fulltext_stoplists'
+set @sql2 = 'select COUNT(*) from [' +@dbname+ '].sys.fulltext_stopwords'
 --select @stopcount (select COUNT(*) from sys.fulltext_stoplists)
 --select @listcount (select COUNT(*) from sys.fulltext_stopwords)
 
@@ -352,7 +349,7 @@ end
 
 else
 begin
-set @sql = 'select stoplist_id,name from ' +@dbname+ '.sys.fulltext_stoplists'
+set @sql = 'select stoplist_id,name from [' +@dbname+ '].sys.fulltext_stoplists'
 print 'StopLists for Database: ' + @dbname
 exec(@sql)
 print ''
@@ -365,7 +362,7 @@ print ''
 end
 else
 begin
-set @sql2 = 'select * from ' +@dbname+ '.sys.fulltext_stopwords'
+set @sql2 = 'select * from [' +@dbname+ '].sys.fulltext_stopwords'
 print 'StopWords for Database: ' + @dbname
 exec (@sql2)
 
