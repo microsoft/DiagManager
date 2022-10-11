@@ -1,9 +1,3 @@
-# run example
-# powershell.exe -ExecutionPolicy Bypass   .\SqlBaseUtil.ps1 GetWindowsHotfix
-param(
-  [string]$OutputPath
-)
-
 function Replicate ([string] $char, [int] $cnt)
 {
     $finalstring = $char * $cnt;
@@ -72,40 +66,6 @@ $Blankstring =   Replicate " " 50;
 Write-Output $Blankstring;
 }
 
-function GetFilterDrivers () 
-{
-   
-    try {
-        
-
-        #filter drivers
-        
-        $argument_list = " filters"
-        #throw 'abc'
-        $executable = "fltmc.exe "
-        
-        Start-Process -FilePath $executable -ArgumentList $argument_list -WindowStyle Hidden
-
-
-        #filters instance
-        $argument_list = " instances"
-                
-        Start-Process -FilePath $executable -ArgumentList $argument_list -WindowStyle Hidden
-
-    }
-    catch {
-        Write-Host $_.ErrorID 
-        Write-Host $_.Exception.Message
-        return
-    }
-
-}
-
-# main function 
-
 GetWindowsHotfix
-GetFilterDrivers
-
-
 
 Write-Output $ComputerName;
