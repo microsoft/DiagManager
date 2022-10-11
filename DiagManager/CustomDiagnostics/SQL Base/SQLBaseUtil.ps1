@@ -82,10 +82,62 @@ function GetEventLogs()
 	Get-EventLog -log Application -Computer $servers   -newest 3000  |Format-Table -Property *  -AutoSize |Out-String -Width 20000  |out-file $file
 }
 
+function GetFilterDrivers () 
+{
+    #Write-LogDebug "Inside" $MyInvocation.MyCommand
+
+    #[console]::TreatControlCAsInput = $true
+
+    #$server = hostname
+
+    try {
+        #$partial_output_file_name = CreatePartialOutputFilename ($server)
+        #$partial_error_output_file_name = CreatePartialErrorOutputFilename($server)
+    
+        #Write-LogDebug "The partial_error_output_file_name is $partial_error_output_file_name" -DebugLogLevel 3
+        #Write-LogDebug "The partial_output_file_name is $partial_output_file_name" -DebugLogLevel 3
+
+        #in case CTRL+C is pressed
+        #HandleCtrlC
+
+        #filter drivers
+        #$collector_name = "FLTMC_Filters"
+        #$output_file = BuildFinalOutputFile -output_file_name $partial_output_file_name -collector_name $collector_name -needExtraQuotes $false
+        #$error_file = BuildFinalErrorFile -partial_error_output_file_name $partial_error_output_file_name -collector_name $collector_name  
+        $argument_list = " filters"
+        $executable = "fltmc.exe"
+        #Write-LogInformation "Executing Collector: $collector_name"
+        Start-Process $executable -ArgumentList $argument_list -WindowStyle Minimized
+
+
+        #filters instance
+        #$collector_name = "FLTMC_Instances"
+        #$output_file = BuildFinalOutputFile -output_file_name $partial_output_file_name -collector_name $collector_name -needExtraQuotes $false
+        #$error_file = BuildFinalErrorFile -partial_error_output_file_name $partial_error_output_file_name -collector_name $collector_name  
+        $executable = "fltmc.exe"
+        $argument_list = " instances"
+        #Write-LogInformation "Executing Collector: $collector_name"
+        
+        Start-Process $executable -ArgumentList $argument_list -WindowStyle Minimized
+
+    }
+    catch {
+        Write-Host $_.ErrorID 
+        Write-Host $_.Exception.Message
+        return
+    }
+
+}
+
 # main function 
 if ($InvokeMethod -eq "GetWindowsHotfix")
 {
     GetWindowsHotfix
+}
+
+elseif ($InvokeMethod -eq "GetFilterDrivers") 
+{
+    GetFilterDrivers
 }
 
 
