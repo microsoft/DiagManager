@@ -823,9 +823,21 @@ BEGIN
 		RAISERROR ('', 0, 1) WITH NOWAIT
 	END
 END
+GO
+
+IF OBJECT_ID ('#sp_perf_stats_snapshot16','P') IS NOT NULL
+   DROP PROCEDURE #sp_perf_stats_snapshot16
+GO
+
+CREATE PROCEDURE #sp_perf_stats_snapshot16
+as
+BEGIN
+	exec #sp_perf_stats_snapshot15
+END
+GO
 
 
-go
+
 
 /*****************************************************************
 *                   main loop   perf statssnapshot               *
