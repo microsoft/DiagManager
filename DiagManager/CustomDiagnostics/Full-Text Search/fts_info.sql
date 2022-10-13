@@ -176,7 +176,3 @@ else
 begin
 	print 'Some information was not collected because the SQL Server version was prior to SQL 2000 RTM'
 end
-
-
-
-
