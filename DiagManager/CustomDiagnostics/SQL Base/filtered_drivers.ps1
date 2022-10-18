@@ -23,8 +23,5 @@ if (($argument -eq "filters") -or ($argument -eq "instances"))
     }
     
 }
-Write-Host $_.ErrorID 
-Write-Host $_.Exception.Message
-return
 
 Write-Output $ComputerName;
