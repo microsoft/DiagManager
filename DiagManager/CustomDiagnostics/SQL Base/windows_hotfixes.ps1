@@ -1,10 +1,3 @@
-# run example
-# powershell.exe -ExecutionPolicy Bypass   .\SqlBaseUtil.ps1 GetWindowsHotfix
-param(
-  [string]$InvokeMethod,
-  [string]$OutputPath
-)
-
 function Replicate ([string] $char, [int] $cnt)
 {
     $finalstring = $char * $cnt;
@@ -73,20 +66,6 @@ $Blankstring =   Replicate " " 50;
 Write-Output $Blankstring;
 }
 
-
-function GetEventLogs()
-{
-	$servers ="."
-	$date = ( get-date ).ToString('yyyyMMdd');
-	$file = New-Item -type file "c:\temp\test1.txt" -Force;
-	Get-EventLog -log Application -Computer $servers   -newest 3000  |Format-Table -Property *  -AutoSize |Out-String -Width 20000  |out-file $file
-}
-
-# main function 
-if ($InvokeMethod -eq "GetWindowsHotfix")
-{
-    GetWindowsHotfix
-}
-
+GetWindowsHotfix
 
 Write-Output $ComputerName;

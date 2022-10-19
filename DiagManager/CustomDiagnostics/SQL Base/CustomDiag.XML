@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="yes"?>
 <CustomTasks>
   <CustomTask enabled="true" groupname="SQL Base" taskname="ClearOrphanedBLGs" type="Utility" point="Startup" wait="No" cmd="ClearOrphanedBLGs.cmd %appname% &quot;%output_path%&quot; &gt; &quot;%internal_output_name%.OUT&quot; 2&gt;&amp;1" />
-  <CustomTask enabled="true" groupname="SQL Base" taskname="Windows_Hotfix_List" type="Utility" point="Startup" wait="No" cmd="powershell.exe -File .\SqlBaseUtil.ps1 GetWindowsHotfix  &gt; &quot;%output_name%.OUT&quot; 2&gt;&amp;1" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Windows_Hotfix_List" type="Utility" point="Startup" wait="No" cmd="powershell.exe -File .\windows_hotfixes.ps1 GetWindowsHotfix  &gt; &quot;%output_name%.OUT&quot; 2&gt;&amp;1" />
   <CustomTask enabled="true" groupname="SQL Base" taskname="TraceFlagHelperProcs" type="TSQL_Script" point="Startup" wait="Yes" cmd="TraceFlagHelperProcs.tem" />
   <CustomTask enabled="true" groupname="SQL Base" taskname="RestoreTraceFlagOrigValues" type="TSQL_Command" point="Shutdown" wait="No" cmd="EXEC tempdb.dbo.sp_diag_trace_flag_restore '%appname%'" />
   <CustomTask enabled="true" groupname="SQL Base" taskname="Power Plan" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="cscript.exe PowerPlan.VBS &gt; &quot;%output_name%.txt&quot;  2&gt;&amp;1" pollinginterval="0" />
@@ -15,5 +15,6 @@
   <CustomTask enabled="true" groupname="SQL Base" taskname="Windows 2008 or R2 cluster log" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="powershell -command &quot;&amp; {cluster log /g /Span:10080 /Copy:&apos;%output_path%&apos;}&quot;"  pollinginterval="0" />
   <CustomTask enabled="true" groupname="SQL Base" taskname="DBCC LogInfo" type="TSQL_Script" point="Shutdown" wait="OnlyOnShutdown" cmd="get_dbccloginfo.sql" pollinginterval="0" />
   <CustomTask enabled="true" groupname="SQL Base" taskname="TaskList" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="powershell.exe -File .\get_tasklist.ps1 &gt; &quot;%output_name%.TXT&quot; 2&gt;&amp;1" />
-
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Fltmc_filters" type="Utility" point="Startup" wait="No" cmd="powershell.exe -File .\filtered_drivers.ps1 filters %output_name%.OUT" />
+  <CustomTask enabled="true" groupname="SQL Base" taskname="Fltmc_instances" type="Utility" point="Startup" wait="No" cmd="powershell.exe -File .\filtered_drivers.ps1 instances %output_name%.OUT" />
 </CustomTasks>
