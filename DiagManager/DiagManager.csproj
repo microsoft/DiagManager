@@ -363,9 +363,6 @@
     <Content Include="CustomDiagnostics\SQL Server Perf Stats\TopCPUQueryShowPlanXML.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CustomDiagnostics\AlwaysOn Basic Info\AlwaysOnGetClusterLogs.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="CustomDiagnostics\AlwaysOn Basic Info\readme.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -565,16 +562,6 @@
   </ItemGroup>
   <ItemGroup>
     <PublishFile Include="CustomDiagnostics\AlwaysOn Basic Info\AlwaysOnDiagScript.sql">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\AlwaysOn Basic Info\AlwaysOnGetClusterLogs.cmd">
       <Visible>False</Visible>
       <Group>
       </Group>
