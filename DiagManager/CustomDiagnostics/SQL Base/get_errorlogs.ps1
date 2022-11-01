@@ -58,9 +58,9 @@ foreach ($file in $ErrlogFiles)
    if ($file.Length -ge 1073741824)
    {
      Write-Output $destination_head_tail
-     Get-Content $source -TotalCount 300 | Set-Content -Path $destination_head_tail | Out-Null
+     Get-Content $source -TotalCount 500 | Set-Content -Path $destination_head_tail | Out-Null
      Add-Content -Value "`n   <<... middle part of file not captured because the file is too large (>1 GB) ...>>`n" -Path $destination_head_tail | Out-Null
-     Get-Content $source -Tail 300 | Add-Content -Path $destination_head_tail | Out-Null
+     Get-Content $source -Tail 500 | Add-Content -Path $destination_head_tail | Out-Null
    }
    elseif ($file.Length -gt 0)
    {
