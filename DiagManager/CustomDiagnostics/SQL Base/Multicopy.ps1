@@ -1,13 +1,22 @@
 ﻿param(
-  [string]$source_path,
-  [string]$destination_path,
-  [string]$file_name
+  [Parameter(Position=0)]
+  [string]$sourcePath,
+  [Parameter(Position=1)]
+  [string]$destinationPath,
+  [Parameter(Position=2)]
+  [string]$serverName
 )
 
- 
-$count = @(Get-ChildItem -Path $source_path -Filter $file_name).Count
 
-If ($count -gt 0)
-{
-Copy-Item -Path $source_path -Destination $destination_path -Filter $file_name
-}
+Get-ChildItem $sourcePath -FILE | ForEach-Object { 
+		$newfileName = $serverName + "_" + $_.Name
+ 
+		$newfileName = Join-path $destinationPath $newfileName
+
+	Try { 
+				Copy-Item -Path $_.FullName -Destination $newFileName -ErrorAction Stop
+		}		
+	Catch {
+				$_.Exception.Message | Out-File -FilePath "c:\temp\error.txt" -Append
+		}
+	}
