@@ -5099,6 +5099,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Pin Reads/sec">
@@ -5114,6 +5115,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Read Aheads/sec">
@@ -20031,6 +20033,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Mirrored Write Transactions/sec">
@@ -20454,6 +20457,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Backup/Restore Throughput/sec">
@@ -20474,6 +20478,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Bulk Copy Rows/sec">
@@ -20494,6 +20499,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Bulk Copy Throughput/sec">
@@ -20514,6 +20520,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Commit table entries">
@@ -20534,6 +20541,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Data File(s) Size (KB)">
@@ -20554,6 +20562,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\DBCC Logical Scan Bytes/sec">
@@ -20574,6 +20583,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Group Commit Time/sec">
@@ -20594,6 +20604,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Bytes Flushed/sec">
@@ -20614,6 +20625,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Cache Hit Ratio">
@@ -20634,6 +20646,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Cache Hit Ratio Base">
@@ -20654,6 +20667,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Cache Reads/sec">
@@ -20674,6 +20688,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log File(s) Size (KB)">
@@ -20694,6 +20709,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log File(s) Used Size (KB)">
@@ -20714,6 +20730,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Flush Wait Time">
@@ -20734,6 +20751,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Flush Waits/sec">
@@ -20754,6 +20772,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Flush Write Time (ms)">
@@ -20774,6 +20793,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Flushes/sec">
@@ -20794,6 +20814,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Growths">
@@ -20814,6 +20835,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Pool Cache Misses/sec">
@@ -20834,6 +20856,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Pool Disk Reads/sec">
@@ -20854,6 +20877,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Pool Requests/sec">
@@ -20874,6 +20898,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Shrinks">
@@ -20894,6 +20919,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Truncations">
@@ -20914,6 +20940,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Writer Queue Time/sec">
@@ -20934,6 +20961,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Writer Writes/sec">
@@ -20954,6 +20982,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Percent Log Used">
@@ -20974,6 +21003,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Repl. Pending Xacts">
@@ -20994,6 +21024,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Repl. Trans. Rate">
@@ -21014,6 +21045,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Shrink Data Movement Bytes/sec">
@@ -21034,6 +21066,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Tracked transactions/sec">
@@ -21054,6 +21087,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Transactions/sec">
@@ -21074,6 +21108,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Write Transactions/sec">
@@ -21094,6 +21129,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Databases Active parallel redo threads">
@@ -21114,6 +21150,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\PVS in-row diff generated/sec">
@@ -21134,6 +21171,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\PVS in-row diff retrieved/sec">
@@ -21154,6 +21192,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\PVS off-row pages allocated/sec">
@@ -21174,6 +21213,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\PVS off-row pages deleted/sec">
@@ -21194,6 +21234,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\PVS off-row record generated/sec">
@@ -21214,6 +21255,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\PVS off-row record retrieved/sec">
@@ -21234,6 +21276,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\WPR add lsn bucket miss">
@@ -21254,6 +21297,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\WPR bucket swaps">
@@ -21274,6 +21318,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\WPR stale check bucket miss">
@@ -21294,6 +21339,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -23201,6 +23247,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Granted Workspace Memory (KB)">
@@ -23221,6 +23268,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Lock Blocks">
@@ -23241,6 +23289,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Lock Blocks Allocated">
@@ -23557,6 +23606,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Database Node Memory (KB)">
@@ -24819,6 +24869,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Errors/sec">
@@ -24862,6 +24913,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Predictions/sec">
@@ -24882,6 +24934,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -29564,6 +29617,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -29581,6 +29635,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\% Usage Peak">
@@ -29596,6 +29651,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -29613,6 +29669,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\% Usage Peak">
@@ -29628,6 +29685,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -38908,6 +38966,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Alignment Fixups/sec">
@@ -44342,6 +44401,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cursor deletes/sec">
@@ -44362,6 +44422,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cursor inserts/sec">
@@ -44382,6 +44443,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cursor scans started/sec">
@@ -44402,6 +44464,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cursor unique violations/sec">
@@ -44422,6 +44485,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cursor updates/sec">
@@ -44442,6 +44506,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cursor write conflicts/sec">
@@ -44462,6 +44527,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Dusty corner scan retries/sec (user-issued)">
@@ -44482,6 +44548,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Expired rows removed/sec">
@@ -44502,6 +44569,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Expired rows touched/sec">
@@ -44522,6 +44590,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows returned/sec">
@@ -44542,6 +44611,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows touched/sec">
@@ -44562,6 +44632,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Tentatively-deleted rows touched/sec">
@@ -44582,6 +44653,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -44604,6 +44676,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cursor deletes/sec">
@@ -44624,6 +44697,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cursor inserts/sec">
@@ -44644,6 +44718,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cursor scans started/sec">
@@ -44664,6 +44739,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cursor unique violations/sec">
@@ -44684,6 +44760,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cursor updates/sec">
@@ -44704,6 +44781,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cursor write conflicts/sec">
@@ -44724,6 +44802,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Dusty corner scan retries/sec (user-issued)">
@@ -44744,6 +44823,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Expired rows removed/sec">
@@ -44764,6 +44844,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Expired rows touched/sec">
@@ -44784,6 +44865,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows returned/sec">
@@ -44804,6 +44886,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows touched/sec">
@@ -44824,6 +44907,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Tentatively-deleted rows touched/sec">
@@ -44844,6 +44928,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -44866,6 +44951,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Avg Transaction Segment Large Data Size">
@@ -44886,6 +44972,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Avg Transaction Segment Size">
@@ -44906,6 +44993,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Flush Thread 256K Queue Depth">
@@ -44926,6 +45014,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Flush Thread 4K Queue Depth">
@@ -44946,6 +45035,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Flush Thread 64K Queue Depth">
@@ -44966,6 +45056,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Flush Thread Frozen IOs/sec (256K)">
@@ -44986,6 +45077,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Flush Thread Frozen IOs/sec (4K)">
@@ -45006,6 +45098,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Flush Thread Frozen IOs/sec (64K)">
@@ -45026,6 +45119,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IoPagePool256K Free List Count">
@@ -45046,6 +45140,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IoPagePool256K Total Allocated">
@@ -45066,6 +45161,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IoPagePool4K Free List Count">
@@ -45086,6 +45182,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IoPagePool4K Total Allocated">
@@ -45106,6 +45203,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IoPagePool64K Free List Count">
@@ -45126,6 +45224,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IoPagePool64K Total Allocated">
@@ -45146,6 +45245,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 256K Expand Count">
@@ -45166,6 +45266,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 256K IOs Outstanding">
@@ -45186,6 +45287,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 256K Page Fill %/Page Flushed">
@@ -45206,6 +45308,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 256K Write Bytes/sec">
@@ -45226,6 +45329,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 4K Expand Count">
@@ -45246,6 +45350,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 4K IOs Outstanding">
@@ -45266,6 +45371,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 4K Page Fill %/Page Flushed">
@@ -45286,6 +45392,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 4K Write Bytes/sec">
@@ -45306,6 +45413,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 64K Expand Count">
@@ -45326,6 +45434,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 64K IOs Outstanding">
@@ -45346,6 +45455,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 64K Page Fill %/Page Flushed">
@@ -45366,6 +45476,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 64K Write Bytes/sec">
@@ -45386,6 +45497,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Num Merges">
@@ -45406,6 +45518,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Num Merges/sec">
@@ -45426,6 +45539,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Num Serializations">
@@ -45446,6 +45560,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Num Serializations/sec">
@@ -45466,6 +45581,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Tail Cache Page Count">
@@ -45486,6 +45602,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Tail Cache Page Count Peak">
@@ -45506,6 +45623,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -45528,6 +45646,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Avg Transaction Segment Large Data Size">
@@ -45548,6 +45667,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Avg Transaction Segment Size">
@@ -45568,6 +45688,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Flush Thread 256K Queue Depth">
@@ -45588,6 +45709,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Flush Thread 4K Queue Depth">
@@ -45608,6 +45730,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Flush Thread 64K Queue Depth">
@@ -45628,6 +45751,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Flush Thread Frozen IOs/sec (256K)">
@@ -45648,6 +45772,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Flush Thread Frozen IOs/sec (4K)">
@@ -45668,6 +45793,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Flush Thread Frozen IOs/sec (64K)">
@@ -45688,6 +45814,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IoPagePool256K Free List Count">
@@ -45708,6 +45835,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IoPagePool256K Total Allocated">
@@ -45728,6 +45856,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IoPagePool4K Free List Count">
@@ -45748,6 +45877,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IoPagePool4K Total Allocated">
@@ -45768,6 +45898,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IoPagePool64K Free List Count">
@@ -45788,6 +45919,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\IoPagePool64K Total Allocated">
@@ -45808,6 +45940,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 256K Expand Count">
@@ -45828,6 +45961,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 256K IOs Outstanding">
@@ -45848,6 +45982,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 256K Page Fill %/Page Flushed">
@@ -45868,6 +46003,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 256K Write Bytes/sec">
@@ -45888,6 +46024,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 4K Expand Count">
@@ -45908,6 +46045,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 4K IOs Outstanding">
@@ -45928,6 +46066,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 4K Page Fill %/Page Flushed">
@@ -45948,6 +46087,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 4K Write Bytes/sec">
@@ -45968,6 +46108,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 64K Expand Count">
@@ -45988,6 +46129,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 64K IOs Outstanding">
@@ -46008,6 +46150,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 64K Page Fill %/Page Flushed">
@@ -46028,6 +46171,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\MtLog 64K Write Bytes/sec">
@@ -46048,6 +46192,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Num Merges">
@@ -46068,6 +46213,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Num Merges/sec">
@@ -46088,6 +46234,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Num Serializations">
@@ -46108,6 +46255,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Num Serializations/sec">
@@ -46128,6 +46276,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Tail Cache Page Count">
@@ -46148,6 +46297,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Tail Cache Page Count Peak">
@@ -46168,6 +46318,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -47114,6 +47265,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Insufficient Credits Waits/sec">
@@ -47134,6 +47286,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Io Issued/sec">
@@ -47154,6 +47307,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Blocks/sec">
@@ -47174,6 +47328,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Missed Credit Slots">
@@ -47194,6 +47349,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Stale Rate Object Waits/sec">
@@ -47214,6 +47370,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Total Rate Objects Published">
@@ -47234,6 +47391,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -47256,6 +47414,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Insufficient Credits Waits/sec">
@@ -47276,6 +47435,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Io Issued/sec">
@@ -47296,6 +47456,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log Blocks/sec">
@@ -47316,6 +47477,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Missed Credit Slots">
@@ -47336,6 +47498,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Stale Rate Object Waits/sec">
@@ -47356,6 +47519,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Total Rate Objects Published">
@@ -47376,6 +47540,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -48111,6 +48276,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Dusty corner scan retries/sec (GC-issued)">
@@ -48131,6 +48297,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Main GC work items/sec">
@@ -48151,6 +48318,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Parallel GC work items/sec">
@@ -48171,6 +48339,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows processed/sec">
@@ -48191,6 +48360,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows processed/sec (first in bucket and removed)">
@@ -48211,6 +48381,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows processed/sec (first in bucket)">
@@ -48231,6 +48402,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows processed/sec (marked for unlink)">
@@ -48251,6 +48423,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows processed/sec (no sweep needed)">
@@ -48271,6 +48444,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Sweep expired rows removed/sec">
@@ -48291,6 +48465,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Sweep expired rows touched/sec">
@@ -48311,6 +48486,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Sweep expiring rows touched/sec">
@@ -48331,6 +48507,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Sweep rows touched/sec">
@@ -48351,6 +48528,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Sweep scans started/sec">
@@ -48371,6 +48549,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -48393,6 +48572,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Dusty corner scan retries/sec (GC-issued)">
@@ -48413,6 +48593,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Main GC work items/sec">
@@ -48433,6 +48614,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Parallel GC work items/sec">
@@ -48453,6 +48635,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows processed/sec">
@@ -48473,6 +48656,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows processed/sec (first in bucket and removed)">
@@ -48493,6 +48677,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows processed/sec (first in bucket)">
@@ -48513,6 +48698,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows processed/sec (marked for unlink)">
@@ -48533,6 +48719,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Rows processed/sec (no sweep needed)">
@@ -48553,6 +48740,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Sweep expired rows removed/sec">
@@ -48573,6 +48761,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Sweep expired rows touched/sec">
@@ -48593,6 +48782,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Sweep expiring rows touched/sec">
@@ -48613,6 +48803,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Sweep rows touched/sec">
@@ -48633,6 +48824,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Sweep scans started/sec">
@@ -48653,6 +48845,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -48957,6 +49150,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Checkpoints Closed">
@@ -48977,6 +49171,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Checkpoints Completed">
@@ -48997,6 +49192,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Core Merges Completed">
@@ -49017,6 +49213,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Merge Policy Evaluations">
@@ -49037,6 +49234,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Merge Requests Outstanding">
@@ -49057,6 +49255,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Merges Abandoned">
@@ -49077,6 +49276,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Merges Installed">
@@ -49097,6 +49297,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Total Files Merged">
@@ -49117,6 +49318,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -49139,6 +49341,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Checkpoints Closed">
@@ -49159,6 +49362,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Checkpoints Completed">
@@ -49179,6 +49383,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Core Merges Completed">
@@ -49199,6 +49404,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Merge Policy Evaluations">
@@ -49219,6 +49425,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Merge Requests Outstanding">
@@ -49239,6 +49446,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Merges Abandoned">
@@ -49259,6 +49467,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Merges Installed">
@@ -49279,6 +49488,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Total Files Merged">
@@ -49299,6 +49509,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -49503,6 +49714,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log bytes written/sec">
@@ -49523,6 +49735,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log records written/sec">
@@ -49543,6 +49756,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -49565,6 +49779,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log bytes written/sec">
@@ -49585,6 +49800,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Log records written/sec">
@@ -49605,6 +49821,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -49838,6 +50055,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Dusty corner scan retries/sec (Phantom-issued)">
@@ -49858,6 +50076,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Phantom expired rows removed/sec">
@@ -49878,6 +50097,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Phantom expired rows touched/sec">
@@ -49898,6 +50118,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Phantom expiring rows touched/sec">
@@ -49918,6 +50139,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Phantom rows touched/sec">
@@ -49938,6 +50160,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Phantom scans started/sec">
@@ -49958,6 +50181,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -49980,6 +50204,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Dusty corner scan retries/sec (Phantom-issued)">
@@ -50000,6 +50225,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Phantom expired rows removed/sec">
@@ -50020,6 +50246,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Phantom expired rows touched/sec">
@@ -50040,6 +50267,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Phantom expiring rows touched/sec">
@@ -50060,6 +50288,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Phantom rows touched/sec">
@@ -50080,6 +50309,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Phantom scans started/sec">
@@ -50100,6 +50330,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -50497,6 +50728,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cascading aborts/sec">
@@ -50517,6 +50749,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Commit dependencies taken/sec">
@@ -50537,6 +50770,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Read-only transactions prepared/sec">
@@ -50557,6 +50791,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Save point refreshes/sec">
@@ -50577,6 +50812,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Save point rollbacks/sec">
@@ -50597,6 +50833,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Save points created/sec">
@@ -50617,6 +50854,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Transaction validation failures/sec">
@@ -50637,6 +50875,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Transactions aborted by user/sec">
@@ -50657,6 +50896,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Transactions aborted/sec">
@@ -50677,6 +50917,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Transactions created/sec">
@@ -50697,6 +50938,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="false"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -50719,6 +50961,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Cascading aborts/sec">
@@ -50739,6 +50982,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Commit dependencies taken/sec">
@@ -50759,6 +51003,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Read-only transactions prepared/sec">
@@ -50779,6 +51024,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Save point refreshes/sec">
@@ -50799,6 +51045,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Save point rollbacks/sec">
@@ -50819,6 +51066,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Save points created/sec">
@@ -50839,6 +51087,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Transaction validation failures/sec">
@@ -50859,6 +51108,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Transactions aborted by user/sec">
@@ -50879,6 +51129,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Transactions aborted/sec">
@@ -50899,6 +51150,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Transactions created/sec">
@@ -50919,6 +51171,7 @@
 				<Version name="13" enabled="false"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="false"/>
+				<Version name="16" enabled="false"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
@@ -51158,6 +51411,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Delta Rowgroups Closed" enabled="false">
@@ -51172,6 +51426,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Delta Rowgroups Compressed" enabled="false">
@@ -51186,6 +51441,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Total Rowgroups Compressed" enabled="false">
@@ -51200,6 +51456,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Total Rowgroups Merge Compressed" enabled="false">
@@ -51214,6 +51471,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Total Rowgroups Fit For Merge" enabled="false">
@@ -51228,6 +51486,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Total Delete Buffers Migrated" enabled="false">
@@ -51242,6 +51501,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Total Merge Policy Evaluations" enabled="false">
@@ -51256,6 +51516,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Total Source Rowgroups Merged" enabled="false">
@@ -51270,6 +51531,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 		<PerfmonCounter name="\Segment Cache Hit Ratio" enabled="false">
@@ -51284,6 +51546,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter> />
 		<PerfmonCounter name="\Segment Reads/Sec" enabled="false">
@@ -51298,6 +51561,7 @@
 				<Version name="13" enabled="true"/>
 				<Version name="14" enabled="true"/>
 				<Version name="15" enabled="true"/>
+				<Version name="16" enabled="true"/>
 			</Versions>
 		</PerfmonCounter>
 	</PerfmonObject>
