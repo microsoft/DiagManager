@@ -2,7 +2,5 @@
 <CustomTasks>
   
   <CustomTask enabled="true" groupname="PolyBase" taskname="PolyBase DMVs" type="TSQL_Script" point="Shutdown" wait="OnlyOnShutdown" cmd="PolyBase.SQL" pollinginterval="0" />
-  <CustomTask enabled="true" groupname="PolyBase" taskname="PolyBase Log Copy" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="powershell.exe -File .\Multicopy.ps1  &quot;%sspath%Log\Polybase\*.Log&quot; %output_path% %server_instance%" />
-  
-  <!-->CustomTask enabled="true" groupname="PolyBase" taskname="PolyBase Log Copy" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="MultiCopy.cmd &quot;%sspath%Log\Polybase\*.*&quot; &quot;%output_name%_&quot;" /-->
+  <CustomTask enabled="true" groupname="PolyBase" taskname="PolyBase Log Copy" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="powershell.exe -File .\Multicopy.ps1  &quot;%sspath%Log\Polybase\*.*&quot; %output_path% %server_instance%" />
 </CustomTasks>
