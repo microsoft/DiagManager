@@ -25,12 +25,6 @@ if ($serverName -Like '*\*')
   $serverName = Get-InstanceNameOnly -NetnamePlusInstance $serverName 
 }
 
-#$errorFile = "c:\temp\copyFileError.txt"
-#If (Test-Path $errorFile)
-#{
-#   Remove-Item $errorFile
-#}
-
 Get-ChildItem $sourcePath -FILE | ForEach-Object { 
 		$newfileName = $serverName + "_" + $_.Name
 		
@@ -40,6 +34,6 @@ Get-ChildItem $sourcePath -FILE | ForEach-Object {
 				Copy-Item -Path $_.FullName -Destination $newFileName -ErrorAction Stop
 		}		
 	Catch {
-				Write-Output $_.Exception.Message #| Out-File -FilePath $errorFile -Append
+				Write-Output $_.Exception.Message 
 		}
 	}
