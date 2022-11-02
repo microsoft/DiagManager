@@ -20,11 +20,7 @@ function Get-InstanceNameOnly([string]$NetnamePlusInstance)
     }
 }
 
-if ($serverName -notlike '*\*')
-{
-  Return $serverName
-} 
- else
+if ($serverName -Like '*\*')
 {
   $serverName = Get-InstanceNameOnly -NetnamePlusInstance $serverName 
 }
@@ -37,7 +33,7 @@ If (Test-Path $errorFile)
 
 Get-ChildItem $sourcePath -FILE | ForEach-Object { 
 		$newfileName = $serverName + "_" + $_.Name
- 
+		
 		$newfileName = Join-path $destinationPath $newfileName
 
 	Try { 

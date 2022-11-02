@@ -1,5 +1,5 @@
 <?xml version="1.0" standalone="yes"?>
 <CustomTasks>
   <CustomTask enabled="true" groupname="AlwaysOnAGs" taskname="AGConfig_Info" type="TSQL_Script" point="Startup" wait="OnlyOnShutdown" cmd="AlwaysOnDiagScript.sql" />
-  <CustomTask enabled="true" groupname="AlwaysOnAGs" taskname="AlwaysOnHealth_XEL" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="MultiCopy.cmd &quot;%sspath%Log\AlwaysOn*.xel&quot; &quot;%output_name%_&quot;" />
+  <CustomTask enabled="true" groupname="AlwaysOnAGs" taskname="AlwaysOnHealth_XEL" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="powershell.exe -File .\Multicopy.ps1 &quot;%sspath%Log\AlwaysOn*.xel&quot; %output_path% %server_instance%" />
 </CustomTasks>
