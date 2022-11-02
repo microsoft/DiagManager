@@ -115,6 +115,13 @@ namespace PssdiagConfig
 
         }
 
+        //get the entire list of custom diagnostics
+        public static List<DiagCategory> GetFullCustomDiagsList(this List<DiagCategory> list)
+        {
+                return list;
+        }
+
+
         public static List<DiagItem> GetCheckedDiagItemList(this List<DiagCategory> list)
         {
             List<DiagItem> itemList = new List<DiagItem>();

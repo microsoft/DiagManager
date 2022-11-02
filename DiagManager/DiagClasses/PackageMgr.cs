@@ -399,22 +399,52 @@ namespace PssdiagConfig
             configMgr.SaveConfig(m_tempDirectory + @"\pssdiag.xml");
 
 
-            // copy custom diagnostics
+            // copy custom diagnostics files 
 
-            List<DiagCategory> selectedcustomDiagList = m_userchoice.CustomDiagCategoryList.GetCheckedCategoryList();
+            string srcGroup;
+            string srcFileToCopy;
 
+            //get the full list of custom diagnostics
+            List<DiagCategory> fullCustomDiagList = m_userchoice.CustomDiagCategoryList.GetFullCustomDiagsList();
 
-            foreach (DiagCategory cat in selectedcustomDiagList)
+            //go through the list to determine which ones are fully selected and which partially
+            foreach (DiagCategory custGroup in fullCustomDiagList)
             {
-                string src = Globals.ExePath + @"\CustomDiagnostics\" + cat.Name;
-                Globals.CopyDir(src, m_tempDirectory);
+                //if the entire custom group is selected (all task boxes checked) get all files from there
+                if (custGroup.IsChecked == true)
+                {
+                    srcGroup = Globals.ExePath + @"\CustomDiagnostics\" + custGroup.Name;
+                    Globals.CopyDir(srcGroup, m_tempDirectory);
+                    Globals.CopyDir(srcGroup + @"\" + m_userchoice[Res.Platform], m_tempDirectory);
 
-                Globals.CopyDir(src + @"\" + m_userchoice[Res.Platform], m_tempDirectory);
+                }
+
+                //If entire custom collector is not checked, it is possible that individual tasks within it are selected.
+                //Check for individual tasks and copy the files for the entire customer collect so this task can be executed.
+                //Since we don't maintain a list of file names associated with each task, it is not possible to copy
+                //just the file name for that task. But the pssdiag.xml is configured for the execution of 
+                //only the selected task. Once the loop finds one selected task, we can leave the loop and move on to next group
+
+                else
+                {
+                    foreach(DiagItem customTask in custGroup.DiagEventList)
+                    {
+                        if (customTask.IsChecked)
+                        {
+                            srcGroup = Globals.ExePath + @"\CustomDiagnostics\" + custGroup.Name;
+                            Globals.CopyDir(srcGroup, m_tempDirectory);
+                            Globals.CopyDir(srcGroup + @"\" + m_userchoice[Res.Platform], m_tempDirectory);
+                            break;
+                        }
+                        
+                    }
+                }
+
 
             }
 
+            //Copy Pristine folder into destination
 
-            //Copy Pristine
             Globals.CopyDir(Globals.ExePath + @"\Pristine", m_tempDirectory);
             Globals.CopyDir(Globals.ExePath + @"\Pristine\" + m_userchoice[Res.Platform], m_tempDirectory);
             Globals.CopyDir(Globals.ExePath + @"\Pristine\" + m_userchoice[Res.Version] + @"\"+ m_userchoice[Res.Platform], m_tempDirectory);
