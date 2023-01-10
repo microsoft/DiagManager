@@ -7,6 +7,7 @@
   [string]$serverName
 )
 
+
 function Get-InstanceNameOnly([string]$NetnamePlusInstance)
 {
     try 
