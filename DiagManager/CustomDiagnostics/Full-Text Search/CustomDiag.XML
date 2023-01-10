@@ -6,5 +6,5 @@
 	<CustomTask enabled="true" groupname="Full Text Search" taskname="Reg_Services_MSSGTHRSVC" type="Reg_Query" point="Startup" wait="OnlyOnShutdown" cmd="HKLM\SYSTEM\CurrentControlSet\Services\MSSGTHRSVC" />
 	<CustomTask enabled="true" groupname="Full Text Search" taskname="SearchSetup.log" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="copy /Y &quot;%TEMP%\SearchSetup.log&quot; &quot;%output_name%.LOG&quot; &gt; NUL 2&gt;&amp;1" />
 	<CustomTask enabled="true" groupname="Full Text Search" taskname="Reg_Software_Microsoft_Search" type="Reg_Query" point="Startup" wait="OnlyOnShutdown" cmd="HKLM\SOFTWARE\Microsoft\Search" />
-	<CustomTask enabled="true" groupname="Full Text Search" taskname= "copy setup files" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="powershell.exe -File .\Multicopy.ps1 &quot;%windir%\sqlsp*.log&quot; %output_path% %server_instance%" />
+	<CustomTask enabled="true" groupname="Full Text Search" taskname= "copy setup files" type="Utility" point="Startup" wait="OnlyOnShutdown" cmd="powershell.exe -File .\Multicopy.ps1 &quot;%windir%\sqlsp*.log&quot; %output_path% %server%" />
   </CustomTasks>
