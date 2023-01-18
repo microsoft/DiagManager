@@ -7,27 +7,22 @@
   [string]$serverName
 )
 
-function Get-InstanceNameOnly([string]$NetnamePlusInstance)
-{
-    try 
-    {
-        $selectedSqlInstance = $NetnamePlusInstance.Substring($NetnamePlusInstance.IndexOf("\") + 1)
-        return $selectedSqlInstance         
-    }
-    catch 
-    {
-        Write-Output "Exception in Get-InstanceNameOnly: $_.Exception.Message)"
-    }
-}
-
 if ($serverName -Like '*\*')
 {
-  $serverName = Get-InstanceNameOnly -NetnamePlusInstance $serverName 
+  $serverName = $serverName -replace"\\","_"
 }
 
 Get-ChildItem $sourcePath -FILE | ForEach-Object { 
-		$newfileName = $serverName + "_" + $_.Name
-		
+
+		If ([String]::IsNullOrEmpty($serverName))
+		{
+			$newFileName = $_.Name
+		}
+		else
+		{
+			$newfileName = $serverName + "_" + $_.Name
+		}
+
 		$newfileName = Join-path $destinationPath $newfileName
 
 	Try { 
