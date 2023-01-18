@@ -7,18 +7,6 @@
   [string]$serverName
 )
 
-<#function Get-InstanceNameOnly([string]$NetnamePlusInstance)
-{
-    try 
-    {
-        $selectedSqlInstance = $NetnamePlusInstance.Substring($NetnamePlusInstance.IndexOf("\") + 1)
-        return $selectedSqlInstance         
-    }
-    catch 
-    {
-        Write-Output "Exception in Get-InstanceNameOnly: $_.Exception.Message)"
-    }#>
-
 if ($serverName -Like '*\*')
 {
   $serverName = $serverName -replace"\\","_"
