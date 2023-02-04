@@ -703,85 +703,83 @@ IF OBJECT_ID ('#sp_perf_stats_snapshot13','P') IS NOT NULL
 GO
 
 CREATE PROCEDURE #sp_perf_stats_snapshot13
-as
-begin
+AS
+BEGIN
 	exec #sp_perf_stats_snapshot12
 
 	PRINT '-- sys.database_scoped_configurations --'
 
-    DECLARE @database_id INT
-    DECLARE @dbname SYSNAME
-    DECLARE @cont INT
-    DECLARE @maxcont INT
+	DECLARE @database_id INT
+	DECLARE @dbname SYSNAME
+	DECLARE @cont INT
+	DECLARE @maxcont INT
 	DECLARE @sql_major_version INT
 	DECLARE @sql_major_build INT
 	DECLARE @sql nvarchar (max)
-	DECLARE @sql2 nvarchar (max)
-        
-    DECLARE @dbtable TABLE (
-      id INT IDENTITY (1,1) PRIMARY KEY,
-      database_id INT,
-      dbname SYSNAME
-    )
-    
-    SELECT @sql_major_version = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS VARCHAR(20)), 4) AS INT)), 
-    	   @sql_major_build = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS VARCHAR(20)), 2) AS INT)) 
-    
-    INSERT INTO @dbtable
-    SELECT database_id, name FROM sys.databases WHERE state_desc='ONLINE' AND name NOT IN ('model','tempdb') ORDER BY name
-    
-    SET @cont = 1
-    SET @maxcont = (SELECT MAX(id) FROM @dbtable)
-    
-    SELECT  @database_id as database_id , @dbname as dbname, configuration_id, name, value, value_for_secondary--, is_value_default 
-    INTO #temp
-    FROM sys.database_scoped_configurations
-    WHERE 1=0
-    
-    IF (@sql_major_version >13)
-    BEGIN
-      ALTER TABLE #temp ADD is_value_default BIT
-    END
-    
-    WHILE (@cont<=@maxcont)
-    BEGIN
-    
-      SELECT @database_id = database_id,
-             @dbname = dbname 
-      FROM @dbtable
-      WHERE id = @cont
-    
-      SET @sql = 'USE [' + @dbname + ']'
-      SET @sql = N' INSERT INTO #temp SELECT ' + CONVERT(SYSNAME,@database_id) + ',''' + @dbname + ''', configuration_id, name, value, value_for_secondary'
-	  
-	  IF (@sql_major_version >13)
-      BEGIN
-        SET @sql = @sql +  N', is_value_default '
-      END
+	DECLARE @is_value_default BIT
+		
+	DECLARE @dbtable TABLE (
+	id INT IDENTITY (1,1) PRIMARY KEY,
+	database_id INT,
+	dbname SYSNAME
+	)
+	
+	SELECT @sql_major_version = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS VARCHAR(20)), 4) AS INT)), 
+		@sql_major_build = (CAST(PARSENAME(CAST(SERVERPROPERTY('ProductVersion') AS VARCHAR(20)), 2) AS INT)) 
+	
+	INSERT INTO @dbtable
+	SELECT database_id, name FROM sys.databases WHERE state_desc='ONLINE' AND name NOT IN ('model','tempdb') ORDER BY name
+	
+	SET @cont = 1
+	SET @maxcont = (SELECT MAX(id) FROM @dbtable)
 
-	  SET @sql = @sql + N' FROM [' + @dbname + '].sys.database_scoped_configurations'
-    
-      --PRINT @sql
-      EXEC (@sql)
-    
-      SET @cont = @cont + 1
-    
-    END
-    
-    SET @sql2 = N' SELECT database_id, CONVERT(VARCHAR(48), dbname) AS dbname, configuration_id, name, CONVERT(VARCHAR(256), value) AS value, CONVERT(VARCHAR(256),value_for_secondary) AS value_for_secondary'
-
-    IF (@sql_major_version >13)
-    BEGIN
-	    SET @sql2 = @sql2 + N', CONVERT(VARCHAR(256),is_value_default) AS is_value_default'
+	--create the schema
+	SELECT  @database_id as database_id , @dbname as dbname, configuration_id, name, value, value_for_secondary, @is_value_default AS is_value_default 
+	INTO #db_scoped_config
+	FROM sys.database_scoped_configurations
+	WHERE 1=0
+	
+	--insert from all databases
+	WHILE (@cont<=@maxcont)
+	BEGIN
+	
+	SELECT @database_id = database_id,
+			@dbname = dbname 
+	FROM @dbtable
+	WHERE id = @cont
+	
+	SET @sql = 'USE [' + @dbname + ']'
+	IF (@sql_major_version > 13)
+	BEGIN
+		SET @sql = ' INSERT INTO #db_scoped_config SELECT ' + CONVERT(VARCHAR,@database_id) + ',''' + @dbname + ''', configuration_id, name, value, value_for_secondary, is_value_default FROM sys.database_scoped_configurations'
+	END
+	ELSE
+	BEGIN
+		SET @sql = ' INSERT INTO #db_scoped_config SELECT ' + CONVERT(VARCHAR,@database_id) + ',''' + @dbname + ''', configuration_id, name, value, value_for_secondary, NULL FROM sys.database_scoped_configurations'
 	END
 	
-	SET @sql2 = @sql2 + N' FROM #temp;'
 	
-    --PRINT @sql2
-	EXEC (@sql2)
-    
-    PRINT ''
-end
+	EXEC (@sql)
+	
+	SET @cont = @cont + 1
+	
+	END
+	
+	SELECT 
+		database_id, 
+		CONVERT(VARCHAR(48), dbname) AS dbname, 
+		configuration_id, 
+		name, 
+		CONVERT(VARCHAR(256), value) AS value, 
+		CONVERT(VARCHAR(256),value_for_secondary) AS value_for_secondary, 
+		is_value_default 
+	FROM #db_scoped_config
+	
+	PRINT ''
+END
+
+
+
 
 
 go
