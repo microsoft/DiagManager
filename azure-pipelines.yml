@@ -24,6 +24,7 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+
 - task: CodeQL3000Init@0
 
 - task: VSBuild@1
@@ -41,13 +42,16 @@ steps:
     TreatSignatureUpdateFailureAs: 'Warning'
     SignatureFreshness: 'UpToDate'
     TreatStaleSignatureAs: 'Error'
-- task: APIScan@2
-  inputs:
-    softwareFolder: '$(Build.StagingDirectory)'
-    softwareBuildNum: '$(Build.BuildId)'
-    symbolsFolder: 'SRV*http://symweb'
-    softwareName: 'DiagManager'
-    softwareVersionNum: '$(Build.SourceVersion)'
+
+#- task: APIScan@2
+#  inputs:
+#    softwareFolder: '$(Build.StagingDirectory)'
+#    softwareBuildNum: '$(Build.BuildId)'
+#    symbolsFolder: 'SRV*https://symweb'
+#    softwareName: 'DiagManager'
+#    softwareVersionNum: '$(Build.SourceVersion)'
+    
+
 - task: AutoApplicability@1
   inputs:
     VerboseWriter: true
