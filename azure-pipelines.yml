@@ -69,8 +69,10 @@ steps:
     ram: '16384'
     addProjectDirToScanningExclusionList: true
 
-- task: CodeSign@1
 
+- task: CodeSign@1
+  inputs:
+    FailIfNoTargetsFound: 'false'
 
 
 
