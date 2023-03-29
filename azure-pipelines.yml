@@ -93,11 +93,14 @@ steps:
   inputs:
     GdnBreakAllTools: true
 
+
 - task: RoslynAnalyzers@3
   inputs:
     userProvideBuildInfo: 'autoMsBuildInfo'
     setupCommandlinePicker: 'vs2019'
     rulesetName: 'Required'
+  env:
+    SYSTEM_ACCESSTOKEN: $(system.accesstoken)
 
 - task: InferSharp@1
   inputs:
