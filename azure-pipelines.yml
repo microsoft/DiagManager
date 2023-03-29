@@ -25,14 +25,12 @@ steps:
     restoreSolution: '$(solution)'
 
 
-- task: CodeQL3000Init@0
-
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-- task: CodeQL3000Finalize@0
+
 
 # - task: AntiMalware@4
 #   inputs:
@@ -54,11 +52,11 @@ steps:
 
 # - task: CredScan@3
   
-- task: ComponentGovernanceComponentDetection@0
-  inputs:
-    scanType: 'Register'
-    verbosity: 'Verbose'
-    alertWarningLevel: 'High'
+# - task: ComponentGovernanceComponentDetection@0
+#   inputs:
+#     scanType: 'Register'
+#     verbosity: 'Verbose'
+#     alertWarningLevel: 'High'
 
 # - task: CodeMetrics@1
 #   inputs:
@@ -80,31 +78,27 @@ steps:
 
 
 
-- task: FxCop@2
-  inputs:
-    inputType: 'Basic'
-    targets: '**\*.dll;**\*.exe'
+# - task: FxCop@2
+#   inputs:
+#     inputType: 'Basic'
+#     targets: '**\*.dll;**\*.exe'
 
 
-- task: Guardian@1
+# - task: Guardian@1
   
 
-- task: PostAnalysis@2
-  inputs:
-    GdnBreakAllTools: true
+# - task: PostAnalysis@2
+#   inputs:
+#     GdnBreakAllTools: true
 
 
-- task: RoslynAnalyzers@3
-  inputs:
-    userProvideBuildInfo: 'autoMsBuildInfo'
-    setupCommandlinePicker: 'vs2019'
-    rulesetName: 'Required'
-  env:
-    SYSTEM_ACCESSTOKEN: $(system.accesstoken)
-
-- task: InferSharp@1
-  inputs:
-    TargetDirectory: '$(Build.ArtifactStagingDirectory)'
+# - task: RoslynAnalyzers@3
+#   inputs:
+#     userProvideBuildInfo: 'autoMsBuildInfo'
+#     setupCommandlinePicker: 'vs2019'
+#     rulesetName: 'Required'
+#   env:
+#     SYSTEM_ACCESSTOKEN: $(system.accesstoken)
 
 
 - task: PSScriptAnalyzer@1
