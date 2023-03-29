@@ -32,73 +32,73 @@ steps:
     configuration: '$(buildConfiguration)'
 
 
-# - task: AntiMalware@4
-#   inputs:
-#     InputType: 'Basic'
-#     ScanType: 'CustomScan'
-#     FileDirPath: '$(Build.StagingDirectory)'
-#     TreatSignatureUpdateFailureAs: 'Warning'
-#     SignatureFreshness: 'UpToDate'
-#     TreatStaleSignatureAs: 'Error'
+- task: AntiMalware@4
+  inputs:
+    InputType: 'Basic'
+    ScanType: 'CustomScan'
+    FileDirPath: '$(Build.StagingDirectory)'
+    TreatSignatureUpdateFailureAs: 'Warning'
+    SignatureFreshness: 'UpToDate'
+    TreatStaleSignatureAs: 'Error'
 
    
 
-# - task: AutoApplicability@1
-#   inputs:
-#     VerboseWriter: true
-#     ExternalRelease: true
-#     IsSoftware: true
+- task: AutoApplicability@1
+  inputs:
+    VerboseWriter: true
+    ExternalRelease: true
+    IsSoftware: true
 
 
-# - task: CredScan@3
+- task: CredScan@3
   
-# - task: ComponentGovernanceComponentDetection@0
-#   inputs:
-#     scanType: 'Register'
-#     verbosity: 'Verbose'
-#     alertWarningLevel: 'High'
+- task: ComponentGovernanceComponentDetection@0
+  inputs:
+    scanType: 'Register'
+    verbosity: 'Verbose'
+    alertWarningLevel: 'High'
 
-# - task: CodeMetrics@1
-#   inputs:
-#     Files: '$(Build.SourcesDirectory)\**\*.exe;$(Build.SourcesDirectory)\**\*.dll'
+- task: CodeMetrics@1
+  inputs:
+    Files: '$(Build.SourcesDirectory)\**\*.exe;$(Build.SourcesDirectory)\**\*.dll'
 
-# - task: Semmle@1
-#   inputs:
-#     sourceCodeDirectory: '$(Build.SourcesDirectory)'
-#     language: 'csharp'
-#     querySuite: 'Recommended'
-#     timeout: '1800'
-#     ram: '16384'
-#     addProjectDirToScanningExclusionList: true
-
-
-# - task: CodeSign@1
-#   inputs:
-#     FailIfNoTargetsFound: 'false'
+- task: Semmle@1
+  inputs:
+    sourceCodeDirectory: '$(Build.SourcesDirectory)'
+    language: 'csharp'
+    querySuite: 'Recommended'
+    timeout: '1800'
+    ram: '16384'
+    addProjectDirToScanningExclusionList: true
 
 
-
-# - task: FxCop@2
-#   inputs:
-#     inputType: 'Basic'
-#     targets: '**\*.dll;**\*.exe'
+- task: CodeSign@1
+  inputs:
+    FailIfNoTargetsFound: 'false'
 
 
-# - task: Guardian@1
+
+- task: FxCop@2
+  inputs:
+    inputType: 'Basic'
+    targets: '**\*.dll;**\*.exe'
+
+
+- task: Guardian@1
   
 
-# - task: PostAnalysis@2
-#   inputs:
-#     GdnBreakAllTools: true
+- task: PostAnalysis@2
+  inputs:
+    GdnBreakAllTools: true
 
 
-# - task: RoslynAnalyzers@3
-#   inputs:
-#     userProvideBuildInfo: 'autoMsBuildInfo'
-#     setupCommandlinePicker: 'vs2019'
-#     rulesetName: 'Required'
-#   env:
-#     SYSTEM_ACCESSTOKEN: $(system.accesstoken)
+- task: RoslynAnalyzers@3
+  inputs:
+    userProvideBuildInfo: 'autoMsBuildInfo'
+    setupCommandlinePicker: 'vs2019'
+    rulesetName: 'Required'
+  env:
+    SYSTEM_ACCESSTOKEN: $(system.accesstoken)
 
 
 - task: PSScriptAnalyzer@1
