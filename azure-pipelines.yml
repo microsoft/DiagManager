@@ -93,8 +93,9 @@ steps:
    Function: 'analyze'
    TargetPattern: 'binskimPattern'
    AnalyzeTargetBinskim: |
-     $(Build.ArtifactStagingDirectory)/**.dll
-     $(Build.ArtifactStagingDirectory)/**.exe
+     '$(Build.ArtifactStagingDirectory)/**.dll'
+     '$(Build.ArtifactStagingDirectory)/**.exe'
+
 
 - task: FxCop@2
   inputs:
