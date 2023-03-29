@@ -46,16 +46,13 @@ steps:
     softwareFolder: '$(Build.StagingDirectory)'
     softwareBuildNum: '$(Build.BuildId)'
     symbolsFolder: 'SRV*http://symweb'
+    softwareName: 'DiagManager'
+    softwareVersionNum: '$(Build.SourceVersion)'
 - task: AutoApplicability@1
   inputs:
     VerboseWriter: true
     ExternalRelease: true
     IsSoftware: true
-- task: Bandit@1
-  inputs:
-    targetsType: 'guardianGlob'
-    targets: 'f|**/*.py;-|.gdn/**'
-    ruleset: 'guardian'
 
 - task: BinSkim@4
   inputs:
@@ -65,9 +62,7 @@ steps:
     AnalyzeTargetGlob: '$(Build.ArtifactStagingDirectory)/**.dll;$(Build.ArtifactStagingDirectory)/**.exe;'
 
 
-- task: CodeInspector@2
-  inputs:
-    ProductId: '59b7062b-7db3-4c47-b5c7-0a27bcb2e108'
+
 - task: CodeMetrics@1
   inputs:
     Files: '$(Build.SourcesDirectory)\**\*.exe;$(Build.SourcesDirectory)\**\*.dll'
@@ -91,20 +86,10 @@ steps:
   inputs:
     targets: '$(Build.SourcesDirectory)'
 
-- task: ESLint@2
-  inputs:
-    toolVersion: '8.0.0-latest'
-    TargetType: 'eslint'
-    ExitOnFatalError: true
-
-- task: Flawfinder@2
-  inputs:
-    targetPatternType: 'flawfinderPattern'
-    targetFlawfinderPattern: '$(Build.SourcesDirectory)'
-
 - task: FxCop@2
   inputs:
-    inputType: 'CommandLine'
+    inputType: 'Basic'
+    targets: '**\*.dll;**\*.exe'
 
 
 - task: Guardian@1
