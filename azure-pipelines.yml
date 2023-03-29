@@ -54,7 +54,11 @@ steps:
 
 - task: CredScan@3
   
-
+- task: ComponentGovernanceComponentDetection@0
+  inputs:
+    scanType: 'Register'
+    verbosity: 'Verbose'
+    alertWarningLevel: 'High'
 
 - task: CodeMetrics@1
   inputs:
