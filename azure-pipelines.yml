@@ -87,21 +87,15 @@ steps:
 #     TargetPattern: 'guardianGlob'
 #     AnalyzeTargetGlob: '$(Build.ArtifactStagingDirectory)/**.dll;$(Build.ArtifactStagingDirectory)/**.exe;'
     
-#- task: BinSkim@4
-#  inputs:
-#    InputType: 'Basic'
-#    Function: 'analyze'
-#    TargetPattern: 'binskimPattern'
-#    AnalyzeTargetBinskim: |
-#      $(Build.ArtifactStagingDirectory)/**.dll
-#      $(Build.ArtifactStagingDirectory)/**.exe
-
 - task: BinSkim@4
-  inputs:
-    InputType: 'Basic'
-    Function: 'analyze'
-    TargetPattern: 'binskimPattern'
-    AnalyzeTargetBinskim: '*.dll *.exe'
+ inputs:
+   InputType: 'Basic'
+   Function: 'analyze'
+   TargetPattern: 'binskimPattern'
+   AnalyzeTargetBinskim: |
+     $(Build.ArtifactStagingDirectory)/**.dll
+     $(Build.ArtifactStagingDirectory)/**.exe
+
 - task: FxCop@2
   inputs:
     inputType: 'Basic'
