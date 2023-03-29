@@ -43,14 +43,7 @@ steps:
     SignatureFreshness: 'UpToDate'
     TreatStaleSignatureAs: 'Error'
 
-#- task: APIScan@2
-#  inputs:
-#    softwareFolder: '$(Build.StagingDirectory)'
-#    softwareBuildNum: '$(Build.BuildId)'
-#    symbolsFolder: 'SRV*https://symweb'
-#    softwareName: 'DiagManager'
-#    softwareVersionNum: '$(Build.SourceVersion)'
-    
+   
 
 - task: AutoApplicability@1
   inputs:
@@ -58,13 +51,9 @@ steps:
     ExternalRelease: true
     IsSoftware: true
 
-- task: BinSkim@4
-  inputs:
-    InputType: 'Basic'
-    Function: 'analyze'
-    TargetPattern: 'guardianGlob'
-    AnalyzeTargetGlob: '$(Build.ArtifactStagingDirectory)/**.dll;$(Build.ArtifactStagingDirectory)/**.exe;'
 
+- task: CredScan@3
+  
 
 
 - task: CodeMetrics@1
@@ -83,12 +72,16 @@ steps:
 - task: CodeSign@1
 
 
-- task: CredScan@3
-  
 
-- task: Detekt@1
+
+- task: BinSkim@4
   inputs:
-    targets: '$(Build.SourcesDirectory)'
+    InputType: 'Basic'
+    Function: 'analyze'
+    TargetPattern: 'guardianGlob'
+    AnalyzeTargetGlob: '$(Build.ArtifactStagingDirectory)\**.dll;$(Build.ArtifactStagingDirectory)\**.exe;'
+    
+
 
 - task: FxCop@2
   inputs:
@@ -105,40 +98,14 @@ steps:
 
 - task: RoslynAnalyzers@3
   inputs:
-    userProvideBuildInfo: 'msBuildInfo'
-    msBuildVersion: '16.0'
-    msBuildArchitecture: 'amd64'
-
-- task: SdtReport@2
-  inputs:
-    GdnExportAllTools: true
+    userProvideBuildInfo: 'autoMsBuildInfo'
+    setupCommandlinePicker: 'vs2019'
+    rulesetName: 'Required'
 
 - task: InferSharp@1
   inputs:
     TargetDirectory: '$(Build.ArtifactStagingDirectory)'
 
-- task: MSRD@1
-  inputs:
-    OSPlatformType: 'Windows'
-    WindowsEdition: 'Server 2008 R2'
-    TestDriverExeType: 'x86'
-    TestDriverParameters: '"%testfile%"'
-    ClosesItself: true
-    MaxDurationInSeconds: '5'
-    CanRunRepeat: true
-    CanTestDriverBeRenamed: false
-    SingleOsProcess: false
-
-- task: ModernCop@2
-  inputs:
-    InputType: 'CommandLine'
-    arguments: '/dir:"$(Build.SourcesDirectory)" /groups:sdl'
-
-
-- task: PoliCheck@2
-  inputs:
-    targetType: 'F'
-    targetArgument: '$(Build.SourcesDirectory)'
 
 - task: PSScriptAnalyzer@1
   inputs:
@@ -146,35 +113,8 @@ steps:
     Settings: 'required'
     Recurse: true
 
-
-- task: PublishSecurityAnalysisLogs@3
-  inputs:
-    ArtifactName: 'CodeAnalysisLogs'
-    ArtifactType: 'Container'
-    AllTools: true
-    ToolLogsNotFoundAction: 'Standard'
-
-
-- task: SDLNativeRules@2
-  inputs:
-    userProvideBuildInfo: 'auto'
-
-- task: SpotBugs@1
-  inputs:
-    inputType: 'guardianGlob'
-    targetClassGlob: '**.jar;-|.gdn/**;'
-    ruleset: 'sdlRecommemded'
-    effort: 'max'
-
 - task: VulnerabilityAssessment@0
 
-
-
-- task: DropSync@1
-  inputs:
-    DropSource: 'cloudbuild'
-    CloudBuildSource: 'task'
-    DropMetadataContainerName: 'DropMetadata'
 
 - task: VSTest@2
   inputs:
