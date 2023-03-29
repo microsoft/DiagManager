@@ -64,9 +64,10 @@ steps:
     TargetPattern: 'guardianGlob'
     AnalyzeTargetGlob: '$(Build.ArtifactStagingDirectory)/**.dll;$(Build.ArtifactStagingDirectory)/**.exe;'
 
+
 - task: CodeInspector@2
   inputs:
-
+    ProductId: '59b7062b-7db3-4c47-b5c7-0a27bcb2e108'
 - task: CodeMetrics@1
   inputs:
     Files: '$(Build.SourcesDirectory)\**\*.exe;$(Build.SourcesDirectory)\**\*.dll'
@@ -81,13 +82,10 @@ steps:
     addProjectDirToScanningExclusionList: true
 
 - task: CodeSign@1
-  inputs:
+
 
 - task: CredScan@3
-  inputs:
-
-- task: CSRF@1
-  inputs:
+  
 
 - task: Detekt@1
   inputs:
@@ -110,7 +108,7 @@ steps:
 
 
 - task: Guardian@1
-  inputs:
+  
 
 - task: PostAnalysis@2
   inputs:
@@ -180,9 +178,6 @@ steps:
     effort: 'max'
 
 - task: VulnerabilityAssessment@0
-
-- task: WebScout@1
-  inputs:
 
 
 
