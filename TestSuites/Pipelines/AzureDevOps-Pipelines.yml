@@ -1,0 +1,127 @@
+# .NET Desktop
+
+
+# Build and run tests for .NET Desktop or Windows classic desktop solutions.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  Codeql.Enabled: true
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+
+- task: AntiMalware@4
+  inputs:
+    InputType: 'Basic'
+    ScanType: 'CustomScan'
+    FileDirPath: '$(Build.StagingDirectory)'
+    TreatSignatureUpdateFailureAs: 'Warning'
+    SignatureFreshness: 'UpToDate'
+    TreatStaleSignatureAs: 'Error'
+
+   
+
+- task: AutoApplicability@1
+  inputs:
+    VerboseWriter: true
+    ExternalRelease: true
+    IsSoftware: true
+
+
+- task: CredScan@3
+  
+- task: ComponentGovernanceComponentDetection@0
+  inputs:
+    scanType: 'Register'
+    verbosity: 'Verbose'
+    alertWarningLevel: 'High'
+
+- task: CodeMetrics@1
+  inputs:
+    Files: '$(Build.SourcesDirectory)\**\*.exe;$(Build.SourcesDirectory)\**\*.dll'
+
+- task: Semmle@1
+  inputs:
+    sourceCodeDirectory: '$(Build.SourcesDirectory)'
+    language: 'csharp'
+    querySuite: 'Recommended'
+    timeout: '1800'
+    ram: '16384'
+    addProjectDirToScanningExclusionList: true
+
+
+- task: CodeSign@1
+  inputs:
+    FailIfNoTargetsFound: 'false'
+
+
+
+- task: FxCop@2
+  inputs:
+    inputType: 'Basic'
+    targets: '**\*.dll;**\*.exe'
+
+
+- task: Guardian@1
+  
+
+- task: PostAnalysis@2
+  inputs:
+    GdnBreakAllTools: true
+
+
+- task: RoslynAnalyzers@3
+  inputs:
+    userProvideBuildInfo: 'autoMsBuildInfo'
+    setupCommandlinePicker: 'vs2019'
+    rulesetName: 'Required'
+  env:
+    SYSTEM_ACCESSTOKEN: $(system.accesstoken)
+
+
+- task: PSScriptAnalyzer@1
+  inputs:
+    Path: '$(Build.SourcesDirectory)'
+    Settings: 'required'
+    Recurse: true
+
+- task: VulnerabilityAssessment@0
+
+# - task: PublishSecurityAnalysisLogs@3
+#   inputs:
+#     ArtifactName: 'CodeAnalysisLogs'
+#     ArtifactType: 'Container'
+#     PublishProcessedResults: true
+#     AllTools: true
+#     ToolLogsNotFoundAction: 'Standard'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
