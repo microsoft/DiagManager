@@ -109,7 +109,18 @@ steps:
 
 - task: VulnerabilityAssessment@0
 
+# - task: PublishSecurityAnalysisLogs@3
+#   inputs:
+#     ArtifactName: 'CodeAnalysisLogs'
+#     ArtifactType: 'Container'
+#     PublishProcessedResults: true
+#     AllTools: true
+#     ToolLogsNotFoundAction: 'Standard'
 
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
