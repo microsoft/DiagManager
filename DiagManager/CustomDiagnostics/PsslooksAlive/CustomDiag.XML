@@ -1,6 +1,0 @@
-<?xml version="1.0" standalone="yes"?>
-<CustomTasks>
-  <CustomTask enabled="true" groupname="PSSLooksAlive" taskname="PSSLooksAliveLauncher" type="Utility" point="Startup" wait="No" cmd="StartFromPSSDIAG.bat %server% %server_instance% &quot;%instance%&quot; &quot;%output_path%&quot; %authmode% %ssuser% %sspwd% %ssver% &gt; &quot;%internal_output_name%.TXT&quot; 2&gt;&amp;1" />
-  <CustomTask enabled="true" groupname="PSSLooksAlive" taskname="ConnectivityTest" type="Utility" point="Startup" wait="No" cmd="ConnectivityTest.bat %server% %server_instance% &quot;%instance%&quot; &quot;%output_path%&quot; %authmode% %ssuser% %sspwd% %ssver% &gt; &quot;%output_name%.TXT&quot; 2&gt;&amp;1" />
-  <CustomTask enabled="true" groupname="PSSLooksAlive" taskname="cluster.log" type="Utility" point="Shutdown" wait="OnlyOnShutdown" cmd="copy /Y &quot;%windir%\cluster\cluster.log&quot; &quot;%output_path%_%COMPUTERNAME%_CLUSTER.LOG&quot; &gt; NUL 2&gt;&amp;1" />
-</CustomTasks>
