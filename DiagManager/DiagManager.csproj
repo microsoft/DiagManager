@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <SupportUrl>http://diagmanager.codeplex.com</SupportUrl>
+    <SupportUrl>https://github.com/microsoft/DiagManager/</SupportUrl>
     <ProductName>Pssdiag &amp; Sqldiag Configuration Manager</ProductName>
     <PublisherName>Microsoft Product Support</PublisherName>
     <SuiteName>Pssdiag &amp; Sqldiag Configuration Manager</SuiteName>
@@ -36,6 +36,7 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+	<HighEntropyVA>true</HighEntropyVA>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
