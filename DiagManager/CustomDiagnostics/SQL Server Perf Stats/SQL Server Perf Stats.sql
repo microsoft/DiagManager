@@ -599,26 +599,12 @@ CREATE PROCEDURE sp_perf_stats_infrequent @runtime datetime, @prevruntime dateti
     PRINT 'DebugPrint: perfstats2 qry3 - ' + CONVERT (varchar, @queryduration) + 'ms' + CHAR(13) + CHAR(10)
 
 
-  /* Resultset #4: SQL processor utilization */
+  /* Resultset #4: SQL processor utilization  - this got removed as it is not longer valid*/
   PRINT ''
-  RAISERROR ('-- Recent SQL Processor Utilization (Health Records) --', 0, 1) WITH NOWAIT;
   SELECT @querystarttime = GETDATE(), @msticks = ms_ticks from sys.dm_os_sys_info
   SET @mstickstime = @querystarttime
   
-  SELECT  /*qry4*/
-      CONVERT (varchar(30), @runtime, 126) AS 'runtime', 
-      record.value('(Record/@id)[1]', 'int') AS 'record_id',
-      CONVERT (varchar, DATEADD (ms, -1 * (@msticks - [timestamp]),@mstickstime), 126) AS 'EventTime', [timestamp], 
-      record.value('(Record/SchedulerMonitorEvent/SystemHealth/SystemIdle)[1]', 'int') AS 'system_idle_cpu',
-      record.value('(Record/SchedulerMonitorEvent/SystemHealth/ProcessUtilization)[1]', 'int') AS 'sql_cpu_utilization' 
-    FROM (
-      SELECT timestamp, CONVERT (xml, record) AS 'record' 
-      FROM sys.dm_os_ring_buffers 
-      WHERE [timestamp] > @prevmsticks
-        AND ring_buffer_type = 'RING_BUFFER_SCHEDULER_MONITOR'
-		and record LIKE '%<SystemHealth>%') AS t
-    ORDER BY record.value('(Record/@id)[1]', 'int') 
-    OPTION (MAX_GRANT_PERCENT = 3, MAXDOP 1)
+ 
 
    RAISERROR (' ', 0, 1) WITH NOWAIT;
   SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
