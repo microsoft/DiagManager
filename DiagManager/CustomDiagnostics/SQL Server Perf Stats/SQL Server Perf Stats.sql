@@ -997,7 +997,7 @@ FROM     sys.dm_exec_requests r
          INNER JOIN sys.dm_exec_query_resource_semaphores rs
            ON mg.resource_semaphore_id = rs.resource_semaphore_id
          CROSS APPLY sys.dm_exec_sql_text (r.sql_handle ) AS q
-OPTION (MAXDOP 1, LOOP JOIN) -- join hint is to minimize a memory grant for this query 
+OPTION (MAXDOP 1, LOOP JOIN, FORCE ORDER ) -- join hint is to minimize a memory grant for this query 
 
 RAISERROR ('', 0, 1) WITH NOWAIT
 
