@@ -308,9 +308,6 @@
     <Content Include="Pristine\MSDiagProcs.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pristine\OutputCurTime.vbs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Pristine\rtrim.vbs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -338,9 +335,6 @@
       <LastGenOutput>Res.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="CustomDiagnostics\SQL Base\ClearOrphanedBLGs.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="CustomDiagnostics\SQL Base\DefineCommonVars.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -416,9 +410,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Pristine\GetSQLInstancePID.CMD">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\OutputCurTime.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Pristine\run_in_dir.cmd">
