@@ -91,13 +91,6 @@ steps:
     GdnExportHtmlFile: true
     GdnExportAllTools: true
 
-- task: PublishSecurityAnalysisLogs@3
-  inputs:
-    ArtifactName: 'CodeAnalysisLogs'
-    ArtifactType: 'Container'
-    PublishProcessedResults: true
-    AllTools: true
-    ToolLogsNotFoundAction: 'Standard'
 
 
 - task: RoslynAnalyzers@3
@@ -120,6 +113,15 @@ steps:
 - task: PostAnalysis@2
   inputs:
     GdnBreakAllTools: true
+
+
+- task: PublishSecurityAnalysisLogs@3
+  inputs:
+    ArtifactName: 'CodeAnalysisLogs'
+    ArtifactType: 'Container'
+    PublishProcessedResults: true
+    AllTools: true
+    ToolLogsNotFoundAction: 'Standard'
 
 # - task: PublishSecurityAnalysisLogs@3
 #   inputs:
