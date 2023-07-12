@@ -86,6 +86,10 @@ steps:
 
 - task: Guardian@1
   
+- task: SdtReport@2
+  inputs:
+    GdnExportHtmlFile: true
+    GdnExportAllTools: true
 
 - task: PostAnalysis@2
   inputs:
