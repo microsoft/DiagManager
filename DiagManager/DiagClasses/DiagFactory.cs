@@ -244,6 +244,7 @@ namespace PssdiagConfig
             XPathNodeIterator iterLocalTemplates = iter.Current.Select("Scenarios/Scenario");
             evt.EnabledTemplate = GetLocalScenarioList(iterLocalTemplates);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -256,194 +257,225 @@ namespace PssdiagConfig
         {
             List<DiagCategory> catList = new List<DiagCategory>();
 
-            XPathDocument traceDoc = new XPathDocument(XmlFile); //new XPathDocument("TraceEvents.xml");
-            XPathNavigator rootnav = traceDoc.CreateNavigator();
 
-            
-            XPathNodeIterator iter = rootnav.Select(CatClause); //rootnav.Select("TraceEvents/EventType");
-            while (iter.MoveNext())
+            if (File.Exists(XmlFile))
             {
-                string catname = iter.Current.GetAttribute("name", "");
-                DiagCategory cat = new DiagCategory(iter.Current.Name, catname);
-                catList.Add(cat);
-                PopulateTemplateFeatureVersion(iter, cat);
 
-           
-
-                XPathNodeIterator iterEvents = iter.Current.Select(EventClause);  // iter.Current.Select("Event");
-                while (iterEvents.MoveNext())
+                using (XmlReader xmlReader = XmlReader.Create(XmlFile))
                 {
-                    string evtname = iterEvents.Current.GetAttribute("name", "");
+                    XPathDocument traceDoc = new XPathDocument(xmlReader); //new XPathDocument("TraceEvents.xml");
+                    XPathNavigator rootnav = traceDoc.CreateNavigator();
 
-                    DiagItem evt = null; //set to NULL because it will create child event for each type
 
-                    if (evtType == EventType.TraceEvent)
+                    XPathNodeIterator iter = rootnav.Select(CatClause); //rootnav.Select("TraceEvents/EventType");
+                    while (iter.MoveNext())
                     {
-                        string trcid = iterEvents.Current.GetAttribute("id", "");
-                        TraceEvent trcevt = new TraceEvent(cat, iterEvents.Current.Name, evtname, trcid);
-                        evt = trcevt;
-                    }
-                    else if (evtType == EventType.Perfmon)
-                    {
-                        evt = new DiagItem(cat, iterEvents.Current.Name, evtname);
-                    }
-                    else if (evtType == EventType.XEvent)
-                    {
-                        string evtpackage = iterEvents.Current.GetAttribute("package", "");
-                        evt = new Xevent(cat, iterEvents.Current.Name, evtname, evtpackage);
-                        //read field elements from eventfields section
-                        XPathNodeIterator iterEventFields = iterEvents.Current.Select("eventfields/field");
-                        while (iterEventFields.MoveNext())
+                        string catname = iter.Current.GetAttribute("name", "");
+                        DiagCategory cat = new DiagCategory(iter.Current.Name, catname);
+                        catList.Add(cat);
+                        PopulateTemplateFeatureVersion(iter, cat);
+
+
+
+                        XPathNodeIterator iterEvents = iter.Current.Select(EventClause);  // iter.Current.Select("Event");
+                        while (iterEvents.MoveNext())
                         {
-                            string name = iterEventFields.Current.GetAttribute("name", "");
-                            bool autoinclude = Convert.ToBoolean(iterEventFields.Current.GetAttribute("AutoInclude", ""));
-                            bool isnum = Convert.ToBoolean(iterEventFields.Current.GetAttribute("IsNum", ""));
-                            EventField evtField = new EventField(name, autoinclude, isnum);
-                            (evt as Xevent).EventFieldList.Add(evtField);
-                        }
-                        //read action elements from eventactions section
-                        XPathNodeIterator iterEventActions = iterEvents.Current.Select("eventactions/action");
-                        while (iterEventActions.MoveNext())
-                        {
-                            string package = iterEventActions.Current.GetAttribute("package", "");
-                            string name = iterEventActions.Current.GetAttribute("name", "");
-                            EventAction evtAction = new EventAction(package, name);
-                            (evt as Xevent).EventActionList.Add(evtAction);
-                        }
-                    }
-                    else
-                    {
-                        throw new ArgumentException("GetEventCategoryList doesn't know how to handle this type of event yet");
-                    }
+                            string evtname = iterEvents.Current.GetAttribute("name", "");
 
-                    PopulateTemplateFeatureVersion(iterEvents, evt);
-                    cat.DiagEventList.Add(evt);
+                            DiagItem evt = null; //set to NULL because it will create child event for each type
+
+                            if (evtType == EventType.TraceEvent)
+                            {
+                                string trcid = iterEvents.Current.GetAttribute("id", "");
+                                TraceEvent trcevt = new TraceEvent(cat, iterEvents.Current.Name, evtname, trcid);
+                                evt = trcevt;
+                            }
+                            else if (evtType == EventType.Perfmon)
+                            {
+                                evt = new DiagItem(cat, iterEvents.Current.Name, evtname);
+                            }
+                            else if (evtType == EventType.XEvent)
+                            {
+                                string evtpackage = iterEvents.Current.GetAttribute("package", "");
+                                evt = new Xevent(cat, iterEvents.Current.Name, evtname, evtpackage);
+                                //read field elements from eventfields section
+                                XPathNodeIterator iterEventFields = iterEvents.Current.Select("eventfields/field");
+                                while (iterEventFields.MoveNext())
+                                {
+                                    string name = iterEventFields.Current.GetAttribute("name", "");
+                                    bool autoinclude = Convert.ToBoolean(iterEventFields.Current.GetAttribute("AutoInclude", ""));
+                                    bool isnum = Convert.ToBoolean(iterEventFields.Current.GetAttribute("IsNum", ""));
+                                    EventField evtField = new EventField(name, autoinclude, isnum);
+                                    (evt as Xevent).EventFieldList.Add(evtField);
+                                }
+                                //read action elements from eventactions section
+                                XPathNodeIterator iterEventActions = iterEvents.Current.Select("eventactions/action");
+                                while (iterEventActions.MoveNext())
+                                {
+                                    string package = iterEventActions.Current.GetAttribute("package", "");
+                                    string name = iterEventActions.Current.GetAttribute("name", "");
+                                    EventAction evtAction = new EventAction(package, name);
+                                    (evt as Xevent).EventActionList.Add(evtAction);
+                                }
+                            }
+                            else
+                            {
+                                throw new ArgumentException("GetEventCategoryList doesn't know how to handle this type of event yet");
+                            }
+
+                            PopulateTemplateFeatureVersion(iterEvents, evt);
+                            cat.DiagEventList.Add(evt);
+                        }
+                    }
                 }
+
+            }
+            else
+            {
+                throw new Exception("File " + XmlFile + "does not exist");
             }
 
             return catList;
-
         }
 
         
 
         public static DiagCategory GetCustomGroup (string CustomGroupName, string filename)
         {
+            XmlReader xmlReader = null;
+            XmlReader xmlReader2 = null;
 
-            //AS currently doesn't support public release
-            if (!string.IsNullOrEmpty(CustomGroupName)  &&  (DiagRuntime.IsPublicVersion  == true  && CustomGroupName.ToUpper().Contains("ANALYSIS")))
+            try
             {
-                return null;
 
-            }
-            DiagCategory cat;
-            if (CustomGroupName != null)
-
-            { 
-                cat = new DiagCategory("CustomGroup", CustomGroupName);
-            }
-            else
-            {
-                cat = new DiagCategory("CustomGroup", "PlaceHolder"); //will change later
-            }
-
-            //we need to fake a custom xml file for TSQL Scripts to make it easier to develop
-
-
-
-            XPathDocument doc;
-
-            string CustomGroupDir = Path.GetDirectoryName(filename);
-            string[] sqlfiles = Directory.GetFiles(CustomGroupDir, "*.sql");
-            
-            if (File.Exists (filename))
-            { 
-                doc = new XPathDocument(filename);
-            }
-            else if (sqlfiles.Length > 0)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append("<?xml version=\"1.0\" standalone=\"yes\"?>\n\r");
-                sb.Append("<CustomTasks>\n\r");
-
-                foreach (string file in sqlfiles)
+                //AS currently doesn't support public release
+                if (!string.IsNullOrEmpty(CustomGroupName) && (DiagRuntime.IsPublicVersion == true && CustomGroupName.ToUpper().Contains("ANALYSIS")))
                 {
-                    string fileNameOnly = Path.GetFileName(file);
-                    string format = "<CustomTask enabled = \"true\" groupname = \"{0}\" taskname = \"{1}\" type = \"TSQL_Script\" point = \"Startup\" wait = \"No\" cmd = \"{2}\" pollinginterval = \"0\" />";
-                    sb.AppendFormat(format, cat.Name, fileNameOnly, fileNameOnly);
+                    return null;
+
+                }
+                DiagCategory cat;
+                if (CustomGroupName != null)
+
+                {
+                    cat = new DiagCategory("CustomGroup", CustomGroupName);
+                }
+                else
+                {
+                    cat = new DiagCategory("CustomGroup", "PlaceHolder"); //will change later
+                }
+
+                //we need to fake a custom xml file for TSQL Scripts to make it easier to develop
+                XPathDocument doc;
+
+                string CustomGroupDir = Path.GetDirectoryName(filename);
+                string[] sqlfiles = Directory.GetFiles(CustomGroupDir, "*.sql");
+
+                if (File.Exists(filename))
+                {
+                    xmlReader = XmlReader.Create(filename);
+                    doc = new XPathDocument(xmlReader);
+                }
+                else if (sqlfiles.Length > 0)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("<?xml version=\"1.0\" standalone=\"yes\"?>\n\r");
+                    sb.Append("<CustomTasks>\n\r");
+
+                    foreach (string file in sqlfiles)
+                    {
+                        string fileNameOnly = Path.GetFileName(file);
+                        string format = "<CustomTask enabled = \"true\" groupname = \"{0}\" taskname = \"{1}\" type = \"TSQL_Script\" point = \"Startup\" wait = \"No\" cmd = \"{2}\" pollinginterval = \"0\" />";
+                        sb.AppendFormat(format, cat.Name, fileNameOnly, fileNameOnly);
+
+
+                    }
+                    sb.Append("</CustomTasks>");
+
+                    StringReader strReader = new StringReader(sb.ToString());
+                    xmlReader2 = XmlReader.Create(strReader);
+
+                    doc = new XPathDocument(xmlReader2);
+                }
+                else
+                {
+                    throw new Exception("Invalid Custom Diagnostics group: '" + ((CustomGroupName == null) ? "NULL" : CustomGroupName) + "'");
+                }
+
+
+
+                XPathNavigator rootnav = doc.CreateNavigator();
+
+                XPathNodeIterator iter = rootnav.Select("CustomTasks/CustomTask ");
+
+
+                while (iter.MoveNext())
+                {
+                    string groupname = iter.Current.GetAttribute("groupname", "");
+
+                    //reading it from the file
+                    if (CustomGroupName == null)
+                    {
+                        cat.Name = groupname;
+                    }
+
+                    string taskname = iter.Current.GetAttribute("taskname", "");
+                    string type = iter.Current.GetAttribute("type", "");
+                    string point = iter.Current.GetAttribute("point", "");
+                    string wait = iter.Current.GetAttribute("wait", "");
+                    string cmd = iter.Current.GetAttribute("cmd", "");
+                    string strpollinginterval = iter.Current.GetAttribute("pollinginterval", "");
+
+                    Int32 pollinginterval = 0;
+                    if (!string.IsNullOrEmpty(strpollinginterval))
+                    {
+                        pollinginterval = Convert.ToInt32(iter.Current.GetAttribute("pollinginterval", ""));
+                    }
+
+                    /*
+                    if (groupname != cat.Name)
+                    {
+                        throw new ArgumentException(string.Format("The custom diagnotics group name supplied from file directory doesn't match the xml definition.  file directory is {0} and the xml group name is {1}", cat.Name, groupname));
+                    }*/
+
+
+                    CustomTask task = new CustomTask(cat, "CustomTask", taskname, type, point, wait, cmd, pollinginterval);
+                    cat.DiagEventList.Add(task);
+
+
+                    //merge file system and config xml files
+                    XPathDocument doc2 = new XPathDocument(@"Templates\CustomDiagnostics_Template.xml");
+                    XPathNavigator rootnav2 = doc2.CreateNavigator();
+                    XPathNodeIterator iter2 = rootnav2.Select(string.Format("CustomDiagnostics/CustomGroup[@name=\"{0}\"]/Scenarios/Scenario", cat.Name));
+
+                    task.EnabledTemplate = GetLocalScenarioList(iter2);
+
+                    XPathNodeIterator iterVersion = rootnav2.Select(string.Format("CustomDiagnostics/CustomGroup[@name=\"{0}\"]/Versions/Version", cat.Name));
+
+                    task.EnabledVersions = GetLocalVersionList(iterVersion);  // GlobalVersionList;
+
+                    XPathNodeIterator iterFeature = rootnav2.Select(string.Format("CustomDiagnostics/CustomGroup[@name=\"{0}\"]/Features/Feature", cat.Name));
+                    task.EnabledFeatures = GetLocalFeatureList(iterFeature);// GlobalFeatureList;
 
 
                 }
-                sb.Append("</CustomTasks>");
 
-                StringReader stream = new StringReader(sb.ToString());
+                return cat;
 
-                doc = new XPathDocument(stream);
             }
-            else
+            finally
             {
-                throw new Exception("Invalid Custom Diagnostics group: '" + ((CustomGroupName == null) ? "NULL" : CustomGroupName) + "'");
-            }
-
-
-
-            XPathNavigator rootnav = doc.CreateNavigator();
-
-            XPathNodeIterator iter = rootnav.Select("CustomTasks/CustomTask ");
-
-
-            while (iter.MoveNext())
-            {
-                string groupname = iter.Current.GetAttribute("groupname", "");
-                
-                //reading it from the file
-                if (CustomGroupName == null)
+                if (xmlReader != null)
                 {
-                    cat.Name = groupname;
+                    xmlReader.Close();
                 }
 
-                string taskname = iter.Current.GetAttribute("taskname", "");
-                string type = iter.Current.GetAttribute("type", "");
-                string point = iter.Current.GetAttribute("point", "");
-                string wait = iter.Current.GetAttribute("wait", "");
-                string cmd = iter.Current.GetAttribute("cmd", "");
-                string strpollinginterval = iter.Current.GetAttribute("pollinginterval", "");
-
-                Int32 pollinginterval = 0;
-                if (!string.IsNullOrEmpty(strpollinginterval))
+                if (xmlReader2 != null)
                 {
-                    pollinginterval = Convert.ToInt32(iter.Current.GetAttribute("pollinginterval", ""));
+                    xmlReader2.Close();
                 }
 
-                /*
-                if (groupname != cat.Name)
-                {
-                    throw new ArgumentException(string.Format("The custom diagnotics group name supplied from file directory doesn't match the xml definition.  file directory is {0} and the xml group name is {1}", cat.Name, groupname));
-                }*/
-
-
-                CustomTask task = new CustomTask(cat, "CustomTask", taskname, type, point, wait, cmd, pollinginterval);
-                cat.DiagEventList.Add(task);
-
-
-                //merge file system and config xml files
-                XPathDocument doc2 = new XPathDocument(@"Templates\CustomDiagnostics_Template.xml");
-                XPathNavigator rootnav2 = doc2.CreateNavigator();
-                XPathNodeIterator iter2 = rootnav2.Select(string.Format("CustomDiagnostics/CustomGroup[@name=\"{0}\"]/Scenarios/Scenario", cat.Name));
-
-                task.EnabledTemplate = GetLocalScenarioList(iter2);
-
-                XPathNodeIterator iterVersion = rootnav2.Select(string.Format("CustomDiagnostics/CustomGroup[@name=\"{0}\"]/Versions/Version", cat.Name));
-
-                task.EnabledVersions = GetLocalVersionList(iterVersion);  // GlobalVersionList;
-
-                XPathNodeIterator iterFeature = rootnav2.Select(string.Format("CustomDiagnostics/CustomGroup[@name=\"{0}\"]/Features/Feature", cat.Name));
-                task.EnabledFeatures = GetLocalFeatureList (iterFeature);// GlobalFeatureList;
-
-
             }
-            return cat;
-
 
         }
 
