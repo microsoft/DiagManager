@@ -6,7 +6,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
 trigger:
-- VariosMinorFixes_and_PortsFromSQLLogScout_pijocoder_020323
+- master
 
 pool:
   vmImage: 'windows-latest'
