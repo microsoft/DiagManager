@@ -37,6 +37,7 @@ A "contributor" is any person that distributes its contribution under this licen
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using System.Xml.XPath;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -201,8 +202,9 @@ namespace PssdiagConfig
         public static XPathNodeIterator GetXPathIterator (string XmlText, string SelectText)
         { 
         //"<event package=\"sqlserver\" name=\"parallel_scan_range_returned\" version=\"11\" general=\"false\" detail=\"false\" replay=\"false\" />"
-            TextReader reader = new StringReader(XmlText);
-            XPathDocument doc = new XPathDocument(reader);
+            TextReader strReader = new StringReader(XmlText);
+            XmlReader xmlReader = XmlReader.Create(strReader, new XmlReaderSettings() { XmlResolver = null });
+            XPathDocument doc = new XPathDocument(xmlReader);
             XPathNavigator rootnav = doc.CreateNavigator();
             return rootnav.Select(SelectText);
         }

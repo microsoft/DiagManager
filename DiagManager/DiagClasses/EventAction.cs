@@ -73,8 +73,9 @@ namespace PssdiagConfig
         public EventAction(string EventFieldElement)
         {
             //"<event package=\"sqlserver\" name=\"parallel_scan_range_returned\" version=\"11\" general=\"false\" detail=\"false\" replay=\"false\" />"
-            TextReader reader = new StringReader("<root>" + EventFieldElement + "</root>");
-            XPathDocument doc = new XPathDocument(reader);
+            TextReader strReader = new StringReader("<root>" + EventFieldElement + "</root>");
+            XmlReader xmlReader = XmlReader.Create(strReader, new XmlReaderSettings() { XmlResolver = null });
+            XPathDocument doc = new XPathDocument(xmlReader);
             XPathNavigator rootnav = doc.CreateNavigator();
             XPathNodeIterator iterEventField = rootnav.Select("//action");
 

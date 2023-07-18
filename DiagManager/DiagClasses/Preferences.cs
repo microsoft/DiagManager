@@ -117,12 +117,15 @@ namespace PssdiagConfig
             if (File.Exists(userPreferenceFile))
             {
                 try
-                { 
-                XmlSerializer SerializerObj = new XmlSerializer(typeof(Preferences));
-                FileStream ReadFileStream = new FileStream(userPreferenceFile, FileMode.Open, FileAccess.Read, FileShare.Read);
-                Preferences LoadedObj = (Preferences)SerializerObj.Deserialize(ReadFileStream);
-                ReadFileStream.Close();
-                return LoadedObj;
+                {
+                    XmlSerializer SerializerObj = new XmlSerializer(typeof(Preferences));
+                    FileStream ReadFileStream = new FileStream(userPreferenceFile, FileMode.Open, FileAccess.Read, FileShare.Read);
+
+                    XmlReader xmlReader = XmlReader.Create(ReadFileStream, new XmlReaderSettings() { XmlResolver = null });
+                    Preferences LoadedObj = (Preferences)SerializerObj.Deserialize(xmlReader);
+
+                    ReadFileStream.Close();
+                    return LoadedObj;
                 }
                 catch (Exception ex)
                 {
