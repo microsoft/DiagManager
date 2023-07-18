@@ -344,6 +344,7 @@ namespace PssdiagConfig
         {
             XmlReader xmlReader = null;
             XmlReader xmlReader2 = null;
+            XmlReader xmlReaderCustDiagTmplt = null;
 
             try
             {
@@ -373,7 +374,8 @@ namespace PssdiagConfig
 
                 if (File.Exists(filename))
                 {
-                    xmlReader = XmlReader.Create(filename);
+                    XmlReaderSettings settings = new XmlReaderSettings() { XmlResolver = null };
+                    xmlReader = XmlReader.Create(filename, settings);
                     doc = new XPathDocument(xmlReader);
                 }
                 else if (sqlfiles.Length > 0)
@@ -393,7 +395,7 @@ namespace PssdiagConfig
                     sb.Append("</CustomTasks>");
 
                     StringReader strReader = new StringReader(sb.ToString());
-                    xmlReader2 = XmlReader.Create(strReader);
+                    xmlReader2 = XmlReader.Create(strReader, new XmlReaderSettings() { XmlResolver = null });
 
                     doc = new XPathDocument(xmlReader2);
                 }
@@ -444,7 +446,10 @@ namespace PssdiagConfig
 
 
                     //merge file system and config xml files
-                    XPathDocument doc2 = new XPathDocument(@"Templates\CustomDiagnostics_Template.xml");
+
+                    xmlReaderCustDiagTmplt = XmlReader.Create(@"Templates\CustomDiagnostics_Template.xml", new XmlReaderSettings() { XmlResolver = null });
+                    XPathDocument doc2 = new XPathDocument(xmlReaderCustDiagTmplt);
+
                     XPathNavigator rootnav2 = doc2.CreateNavigator();
                     XPathNodeIterator iter2 = rootnav2.Select(string.Format("CustomDiagnostics/CustomGroup[@name=\"{0}\"]/Scenarios/Scenario", cat.Name));
 
@@ -475,6 +480,10 @@ namespace PssdiagConfig
                     xmlReader2.Close();
                 }
 
+                if(xmlReaderCustDiagTmplt != null)
+                {
+                    xmlReaderCustDiagTmplt.Close();
+                }
             }
 
         }
@@ -510,56 +519,58 @@ namespace PssdiagConfig
             //GlobalPlatformList.Add(new Platform("ia64", "ia64"));
             GlobalPlatformList.Add(new Platform("x64", "x64"));
 
-
-            XPathDocument doc = new XPathDocument(@"Templates\General_Template.xml");
-            XPathNavigator rootnav = doc.CreateNavigator();
-
-            //global version
-            XPathNodeIterator iter = rootnav.Select("DiagMgr/Versions/Version");
-            GlobalVersionList = GetGlobalVersionList(iter);
-
-
-            //global features
-            iter = rootnav.Select("DiagMgr/Features/Feature");
-             GlobalFeatureList = GetGlobalFeatureList(iter);
-
-            
-            //global templates
-            iter = rootnav.Select("DiagMgr/Scenarios/Scenario");
-            while (iter.MoveNext())
+            using (XmlReader xmlReaderGenTmplt = XmlReader.Create(@"Templates\General_Template.xml", new XmlReaderSettings() { XmlResolver = null }))
             {
-                string name = iter.Current.GetAttribute("name", "");
-                string friendlname = iter.Current.GetAttribute("friendlyname", "");
-                string target = iter.Current.GetAttribute("target", "");
-                string description =                    iter.Current.GetAttribute("description", "");
-                
 
-                bool defaultchecked = Convert.ToBoolean(iter.Current.GetAttribute("DefaultChecked", ""));
+                XPathDocument doc = new XPathDocument(xmlReaderGenTmplt);
+                XPathNavigator rootnav = doc.CreateNavigator();
 
-                Scenario temp = new Scenario(name, friendlname, target, defaultchecked, description);
+                //global version
+                XPathNodeIterator iter = rootnav.Select("DiagMgr/Versions/Version");
+                GlobalVersionList = GetGlobalVersionList(iter);
 
-                XPathNodeIterator iterChildren = iter.Current.Select("Features/Feature");
-                temp.EnabledFeatures = GetLocalFeatureList(iterChildren);
-                iterChildren = iter.Current.Select("Versions/Version");
-                temp.EnabledVersions =                GetLocalVersionList(iterChildren);
-                GlobalScenarioList.Add(temp);
+
+                //global features
+                iter = rootnav.Select("DiagMgr/Features/Feature");
+                GlobalFeatureList = GetGlobalFeatureList(iter);
+
+
+                //global templates
+                iter = rootnav.Select("DiagMgr/Scenarios/Scenario");
+                while (iter.MoveNext())
+                {
+                    string name = iter.Current.GetAttribute("name", "");
+                    string friendlname = iter.Current.GetAttribute("friendlyname", "");
+                    string target = iter.Current.GetAttribute("target", "");
+                    string description = iter.Current.GetAttribute("description", "");
+
+
+                    bool defaultchecked = Convert.ToBoolean(iter.Current.GetAttribute("DefaultChecked", ""));
+
+                    Scenario temp = new Scenario(name, friendlname, target, defaultchecked, description);
+
+                    XPathNodeIterator iterChildren = iter.Current.Select("Features/Feature");
+                    temp.EnabledFeatures = GetLocalFeatureList(iterChildren);
+                    iterChildren = iter.Current.Select("Versions/Version");
+                    temp.EnabledVersions = GetLocalVersionList(iterChildren);
+                    GlobalScenarioList.Add(temp);
+                }
+
+                SQLTraceEventCategoryList = GetEventCategoryList(@"Templates\SQLTraceEvent_Template.xml", "TraceEvents/EventType", "Event", EventType.TraceEvent);
+
+                //ASTraceEventCategoryList = GetEventCategoryList(@"Templates\ASTraceEvent_Template.xml", "TraceEvents/EventType", "Event", EventType.TraceEvent);
+                SQLPerfmonCounterCategoryList = GetEventCategoryList(@"Templates\SQLPerfmon_Template.xml", "PerfmonCounters/PerfmonObject", "PerfmonCounter", EventType.Perfmon);
+
+                //ASPerfmonCounterCategoryList = GetEventCategoryList(@"Templates\ASPerfmon_Template.xml", "PerfmonCounters/PerfmonObject", "PerfmonCounter", EventType.Perfmon);
+
+
+                XEventCategoryList = GetEventCategoryList(@"Templates\SQLXevent_Template.xml", "XEvents/category", "event", EventType.XEvent);
+
+
+                CustomDiagnosticsCategoryList = GetCustomDiagnostics();
+
+                //CustomDiagnosticsCategoryList = GetEventCategoryList(@"Templates\CustomDiagnostics_Template.xml", "CustomDiagnostics/CustomGroup", "CustomTask", EventType.CustomDiagnostics);
             }
-
-            SQLTraceEventCategoryList = GetEventCategoryList(@"Templates\SQLTraceEvent_Template.xml", "TraceEvents/EventType", "Event", EventType.TraceEvent);
-
-            //ASTraceEventCategoryList = GetEventCategoryList(@"Templates\ASTraceEvent_Template.xml", "TraceEvents/EventType", "Event", EventType.TraceEvent);
-            SQLPerfmonCounterCategoryList = GetEventCategoryList(@"Templates\SQLPerfmon_Template.xml", "PerfmonCounters/PerfmonObject", "PerfmonCounter", EventType.Perfmon);
-
-            //ASPerfmonCounterCategoryList = GetEventCategoryList(@"Templates\ASPerfmon_Template.xml", "PerfmonCounters/PerfmonObject", "PerfmonCounter", EventType.Perfmon);
-
-
-            XEventCategoryList = GetEventCategoryList(@"Templates\SQLXevent_Template.xml", "XEvents/category", "event", EventType.XEvent);
-
-
-            CustomDiagnosticsCategoryList = GetCustomDiagnostics();
-
-            //CustomDiagnosticsCategoryList = GetEventCategoryList(@"Templates\CustomDiagnostics_Template.xml", "CustomDiagnostics/CustomGroup", "CustomTask", EventType.CustomDiagnostics);
-
         }
         
 
