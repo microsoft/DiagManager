@@ -94,20 +94,24 @@ namespace PssdiagConfig
             GlobalEventTemplateList.Init();// Initialize it just once
 
         }
+
         private static void SetGlobalActionList()
         {
-            TextReader reader = new StringReader(OriginalXeventText);
-            XPathDocument doc = new XPathDocument(reader);
-            XPathNavigator rootnav = doc.CreateNavigator();
-            XPathNodeIterator iter = rootnav.Select("DiagMgr/events/GlobalActions/action");
+            TextReader strReader = new StringReader(OriginalXeventText);
 
-            while (iter.MoveNext())
+            using (XmlReader xmlRdr = XmlReader.Create(strReader, new XmlReaderSettings() { XmlResolver = null }))
             {
-                GlobalActionList.Add(new EventAction(iter.Current.OuterXml));
+                XPathDocument doc = new XPathDocument(xmlRdr);
+                XPathNavigator rootnav = doc.CreateNavigator();
+                XPathNodeIterator iter = rootnav.Select("DiagMgr/events/GlobalActions/action");
+
+                while (iter.MoveNext())
+                {
+                    GlobalActionList.Add(new EventAction(iter.Current.OuterXml));
+                }
             }
-
-
         }
+
         private static void SetGlobalFilterList()
         {
             XPathNodeIterator iter = Util.GetXPathIterator(OriginalXeventText, "DiagMgr/events/filters/filter");
