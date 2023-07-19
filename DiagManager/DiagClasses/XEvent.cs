@@ -64,66 +64,101 @@ namespace PssdiagConfig
         {
             this.Package = package;
         }
+
         public Xevent(string EventElement)
         {
-            //"<event package=\"sqlserver\" name=\"parallel_scan_range_returned\" version=\"11\" general=\"false\" detail=\"false\" replay=\"false\" />"
-            TextReader reader = new StringReader("<root>" + EventElement + "</root>");
-            XPathDocument doc = new XPathDocument(reader);
-            XPathNavigator rootnav = doc.CreateNavigator();
-            XPathNodeIterator iterEvent = rootnav.Select("/root/event");
+            XmlReader xmlReaderEvt = null;
+            XmlReader xmlReaderActions = null;
+            XmlReader xmlReaderFields = null;
 
-            int counter = 0;
-            while (iterEvent.MoveNext())
+            try
             {
+                //"<event package=\"sqlserver\" name=\"parallel_scan_range_returned\" version=\"11\" general=\"false\" detail=\"false\" replay=\"false\" />"
+                TextReader strReader = new StringReader("<root>" + EventElement + "</root>");
+                xmlReaderEvt = XmlReader.Create(strReader, new XmlReaderSettings() { XmlResolver = null });
+                XPathDocument doc = new XPathDocument(xmlReaderEvt);
 
-                XPathNavigator eventNav = iterEvent.Current;
-                this.EnabledSQLVersion = Convert.ToInt32(eventNav.GetAttribute("version", ""));
-                this.Name = iterEvent.Current.GetAttribute("name", "");
+                XPathNavigator rootnav = doc.CreateNavigator();
+                XPathNodeIterator iterEvent = rootnav.Select("/root/event");
 
-                foreach (Scenario evtTemp in XMgr.GlobalEventTemplateList)
+                int counter = 0;
+                while (iterEvent.MoveNext())
                 {
-                    string templateName = evtTemp.Name;
-                    bool tempEnabled = Convert.ToBoolean(iterEvent.Current.GetAttribute(evtTemp.Name, ""));
-                    if (tempEnabled)
+
+                    XPathNavigator eventNav = iterEvent.Current;
+                    this.EnabledSQLVersion = Convert.ToInt32(eventNav.GetAttribute("version", ""));
+                    this.Name = iterEvent.Current.GetAttribute("name", "");
+
+                    foreach (Scenario evtTemp in XMgr.GlobalEventTemplateList)
                     {
-                        EventOnlyTemplateList.Add(evtTemp);
+                        string templateName = evtTemp.Name;
+                        bool tempEnabled = Convert.ToBoolean(iterEvent.Current.GetAttribute(evtTemp.Name, ""));
+                        if (tempEnabled)
+                        {
+                            EventOnlyTemplateList.Add(evtTemp);
+                        }
                     }
+
+                    this.Package = iterEvent.Current.GetAttribute("package", "");
+                    // read and populate the field elements from eventfields section
+                    TextReader readerFields = new StringReader("<root>" + EventElement + "</root>");
+                    xmlReaderFields = XmlReader.Create(readerFields, new XmlReaderSettings() { XmlResolver = null });
+                    XPathDocument docFields = new XPathDocument(xmlReaderFields);
+
+                    XPathNavigator navFields = docFields.CreateNavigator();
+                    XPathNodeIterator iterFields = navFields.Select("//eventfields/field");
+                    while (iterFields.MoveNext())
+                    {
+                        XPathNavigator navField = iterFields.Current;
+                        EventFieldList.Add(new EventField(navField.OuterXml));
+                    }
+
+                    //read and poulate the action elements from eventactions section
+                    TextReader readerActions = new StringReader("<root>" + EventElement + "</root>");
+                    xmlReaderActions = XmlReader.Create(readerActions, new XmlReaderSettings() { XmlResolver = null });
+                    XPathDocument docActions = new XPathDocument(xmlReaderActions);
+
+                    XPathNavigator navActions = docActions.CreateNavigator();
+                    XPathNodeIterator iterActions = navActions.Select("//eventactions/action");
+                    while (iterActions.MoveNext())
+                    {
+                        XPathNavigator navAction = iterActions.Current;
+                        EventActionList.Add(new EventAction(navAction.OuterXml));
+                    }
+
+                    counter++;
+
                 }
 
-                this.Package = iterEvent.Current.GetAttribute("package", "");
-                // read and populate the field elements from eventfields section
-                TextReader readerFields = new StringReader("<root>" + EventElement + "</root>");
-                XPathDocument docFields = new XPathDocument(readerFields);
-                XPathNavigator navFields = docFields.CreateNavigator();
-                XPathNodeIterator iterFields = navFields.Select("//eventfields/field");
-                while (iterFields.MoveNext())
+                if (counter != 1)
                 {
-                    XPathNavigator navField = iterFields.Current;
-                    EventFieldList.Add(new EventField(navField.OuterXml));
+                    throw new ArgumentException("The XML passed for XEvent is not valid and should only contain one record");
                 }
-                //read and poulate the action elements from eventactions section
-                TextReader readerActions = new StringReader("<root>" + EventElement + "</root>");
-                XPathDocument docActions = new XPathDocument(readerActions);
-                XPathNavigator navActions = docActions.CreateNavigator();
-                XPathNodeIterator iterActions = navActions.Select("//eventactions/action");
-                while (iterActions.MoveNext())
-                {
-                    XPathNavigator navAction = iterActions.Current;
-                    EventActionList.Add(new EventAction(navAction.OuterXml));
-                }
-
-                counter++;
 
             }
 
-            if (counter != 1)
+            finally
             {
-                throw new ArgumentException("The XML passed for XEvent is not valid and should only contain one record");
+                if (xmlReaderEvt != null)
+                {
+                    xmlReaderEvt.Close();
+                }
+
+                if (xmlReaderActions != null)
+                {
+                    xmlReaderActions.Close();
+                }
+
+                if (xmlReaderFields != null)
+                {
+                    xmlReaderFields.Close();
+                }
             }
         }
 
         //0 is event name 1 is the set for event files 2 = action 3 = where
         private string AddEventTextTemplate = "ADD EVENT {0} ( {1}   {2}   {3} )";
+
         //ADD EVENT sqlserver.sql_batch_completed(SET collect_batch_text=(1)     ACTION(package0.collect_current_thread_id,package0.event_sequence,sqlserver.client_app_name,sqlserver.client_hostname,sqlserver.client_pid,sqlserver.database_id,sqlserver.database_name,sqlserver.is_system,sqlserver.nt_username,sqlserver.query_hash,sqlserver.request_id,sqlserver.server_principal_name,sqlserver.session_id,sqlserver.session_nt_username,sqlserver.session_server_principal_name,sqlserver.sql_text,sqlserver.transaction_id,sqlserver.username)     WHERE ([cpu_time]>(99)))
         public string AddEventActionText()
         {
