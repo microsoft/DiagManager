@@ -82,8 +82,10 @@ namespace PssdiagConfig
 
             //throw new Exception("Scenario contrsuct taking XML shouldn't be used");
             //"<event package=\"sqlserver\" name=\"parallel_scan_range_returned\" version=\"11\" general=\"false\" detail=\"false\" replay=\"false\" />"
-            TextReader reader = new StringReader("<root>" + XmlElement + "</root>");
-            XPathDocument doc = new XPathDocument(reader);
+            TextReader strReader = new StringReader("<root>" + XmlElement + "</root>");
+            XmlReader xmlReader = XmlReader.Create(strReader, new XmlReaderSettings() { XmlResolver = null });
+            XPathDocument doc = new XPathDocument(xmlReader);
+
             XPathNavigator rootnav = doc.CreateNavigator();
             XPathNodeIterator iterEventField = rootnav.Select("//EventTemplate");
 

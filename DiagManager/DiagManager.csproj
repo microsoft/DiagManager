@@ -14,6 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
+    <HighEntropyVA>true</HighEntropyVA>
     <PublishUrl>c:\pssdiag\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
-    <SupportUrl>http://diagmanager.codeplex.com</SupportUrl>
+    <SupportUrl>https://github.com/microsoft/DiagManager/</SupportUrl>
     <ProductName>Pssdiag &amp; Sqldiag Configuration Manager</ProductName>
     <PublisherName>Microsoft Product Support</PublisherName>
     <SuiteName>Pssdiag &amp; Sqldiag Configuration Manager</SuiteName>
@@ -93,6 +94,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -237,16 +239,6 @@
     <Content Include="CustomDiagnostics\SystemInfo\CustomDiag.XML">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\CustomDiag.XML">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\LooksAliveBatch.sql">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\Readme.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="CustomDiagnostics\Query Store\CustomDiag.XML">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -316,9 +308,6 @@
     <Content Include="Pristine\MSDiagProcs.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pristine\OutputCurTime.vbs">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Pristine\rtrim.vbs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -344,10 +333,8 @@
     <EmbeddedResource Include="Res.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Res.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="CustomDiagnostics\SQL Base\ClearOrphanedBLGs.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="CustomDiagnostics\SQL Base\DefineCommonVars.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -391,33 +378,6 @@
     <Content Include="CustomDiagnostics\Linked Server\readme.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\AutoUserDump.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\build.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\DoLooksAlive.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\ManualUserDump.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\readme.rtf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\SetupVars.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\StartFromPSSDiag.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\StartPSS.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CustomDiagnostics\PsslooksAlive\ConnectivityTest.bat">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="CustomDiagnostics\SystemInfo\get_systeminfo.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -440,12 +400,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="DiagManagerCodeMap.dgml" />
-    <Content Include="Pristine\multicopy.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\multicopyr.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Pristine\GetAllSQLInstancePIDS.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -458,16 +412,7 @@
     <Content Include="Pristine\GetSQLInstancePID.CMD">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pristine\OutputCurTime.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Pristine\run_in_dir.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\sql_module_list.cmd">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Pristine\WaitForExe.cmd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Pristine\SetSqlEnvVariables.cmd">
@@ -855,126 +800,6 @@
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="CustomDiagnostics\PolyBase\PolyBase.sql">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\PsslooksAlive\AutoUserDump.bat">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\PsslooksAlive\build.cmd">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\PsslooksAlive\ConnectivityTest.bat">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\PsslooksAlive\CustomDiag.XML">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\PsslooksAlive\DoLooksAlive.bat">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\PsslooksAlive\LooksAliveBatch.sql">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\PsslooksAlive\ManualUserDump.bat">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\PsslooksAlive\readme.rtf">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\PsslooksAlive\Readme.txt">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\PsslooksAlive\SetupVars.bat">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\PsslooksAlive\StartFromPSSDiag.bat">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="CustomDiagnostics\PsslooksAlive\StartPSS.bat">
       <Visible>False</Visible>
       <Group>
       </Group>
@@ -1505,16 +1330,6 @@
       <FileType>File</FileType>
     </PublishFile>
     <PublishFile Include="Pristine\sql_module_list.cmd">
-      <Visible>False</Visible>
-      <Group>
-      </Group>
-      <TargetPath>
-      </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
-      <FileType>File</FileType>
-    </PublishFile>
-    <PublishFile Include="Pristine\WaitForExe.cmd">
       <Visible>False</Visible>
       <Group>
       </Group>

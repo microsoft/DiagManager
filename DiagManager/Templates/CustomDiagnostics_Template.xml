@@ -199,20 +199,6 @@
   </CustomGroup> />
 
 
-  <CustomGroup name="PsslooksAlive" enabled="true">
-    <Scenarios>
-      <Scenario name="All" enabled="false"/>
-    </Scenarios>
-    <Features>
-      <Feature name="SQL" enabled="true"/>
-    </Features>
-    <Versions>
-      <Version name="All" enabled="true"/>
-    </Versions>
-
-  </CustomGroup> />
-
-
   <CustomGroup name="Query Store" enabled="true">
 
     <Scenarios>

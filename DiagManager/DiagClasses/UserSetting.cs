@@ -155,31 +155,34 @@ namespace PssdiagConfig
         }
         private void SetDefault()
         {
-            XPathDocument doc = new XPathDocument(@"Templates\General_Template.xml");
-            XPathNavigator rootnav = doc.CreateNavigator();
-            XPathNodeIterator iter = rootnav.Select("DiagMgr/DefaultSetting/DefaultChoice");
-
-            while (iter.MoveNext())
+            using (XmlReader xmlReaderGenTmplt = XmlReader.Create(@"Templates\General_Template.xml", new XmlReaderSettings() { XmlResolver = null }))
             {
-                string feat = iter.Current.GetAttribute("Feature", "");
-                string ver = iter.Current.GetAttribute("Version", "");
-                bool Profiler = Convert.ToBoolean(iter.Current.GetAttribute("Profiler", ""));
-                bool Perfmon = Convert.ToBoolean(iter.Current.GetAttribute("Perfmon", ""));
-                bool xevent = Convert.ToBoolean(iter.Current.GetAttribute("XEvent", ""));
-                bool EventLog = Convert.ToBoolean(iter.Current.GetAttribute("EventLog", ""));
-                bool Sqldiag = Convert.ToBoolean(iter.Current.GetAttribute("Sqldiag", ""));
-                List<string> scenList = new List<string>();
-                XPathNodeIterator iterScenario = iter.Current.Select("Scenario");
-                while (iterScenario.MoveNext())
+
+                XPathDocument doc = new XPathDocument(xmlReaderGenTmplt);
+                XPathNavigator rootnav = doc.CreateNavigator();
+                XPathNodeIterator iter = rootnav.Select("DiagMgr/DefaultSetting/DefaultChoice");
+
+                while (iter.MoveNext())
                 {
-                    string scenname = iterScenario.Current.GetAttribute("name", "").ToString();
-                    scenList.Add(scenname);
+                    string feat = iter.Current.GetAttribute("Feature", "");
+                    string ver = iter.Current.GetAttribute("Version", "");
+                    bool Profiler = Convert.ToBoolean(iter.Current.GetAttribute("Profiler", ""));
+                    bool Perfmon = Convert.ToBoolean(iter.Current.GetAttribute("Perfmon", ""));
+                    bool xevent = Convert.ToBoolean(iter.Current.GetAttribute("XEvent", ""));
+                    bool EventLog = Convert.ToBoolean(iter.Current.GetAttribute("EventLog", ""));
+                    bool Sqldiag = Convert.ToBoolean(iter.Current.GetAttribute("Sqldiag", ""));
+                    List<string> scenList = new List<string>();
+                    XPathNodeIterator iterScenario = iter.Current.Select("Scenario");
+                    while (iterScenario.MoveNext())
+                    {
+                        string scenname = iterScenario.Current.GetAttribute("name", "").ToString();
+                        scenList.Add(scenname);
 
+                    }
+                    DefaultChoice choice = new DefaultChoice(feat, ver, Profiler, Perfmon, xevent, EventLog, Sqldiag, scenList);
+                    DefaultChoiceList.Add(choice);
                 }
-                DefaultChoice choice = new DefaultChoice(feat, ver, Profiler, Perfmon, xevent, EventLog, Sqldiag, scenList);
-                DefaultChoiceList.Add(choice);
             }
-
         }
         //just for serialization/deserialization
         public UserSetting()
@@ -232,7 +235,9 @@ namespace PssdiagConfig
             {
                 FileStream stream = File.OpenRead(FileName); 
                 XmlSerializer serializer = new XmlSerializer(typeof(UserSetting));
-                setting = serializer.Deserialize(stream) as UserSetting;
+
+                XmlReader xmlReader = XmlReader.Create(stream, new XmlReaderSettings() { XmlResolver = null });
+                setting = serializer.Deserialize(xmlReader) as UserSetting;
 
                 stream.Close();
 

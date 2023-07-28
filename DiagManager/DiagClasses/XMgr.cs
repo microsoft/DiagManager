@@ -94,20 +94,24 @@ namespace PssdiagConfig
             GlobalEventTemplateList.Init();// Initialize it just once
 
         }
+
         private static void SetGlobalActionList()
         {
-            TextReader reader = new StringReader(OriginalXeventText);
-            XPathDocument doc = new XPathDocument(reader);
-            XPathNavigator rootnav = doc.CreateNavigator();
-            XPathNodeIterator iter = rootnav.Select("DiagMgr/events/GlobalActions/action");
+            TextReader strReader = new StringReader(OriginalXeventText);
 
-            while (iter.MoveNext())
+            using (XmlReader xmlRdr = XmlReader.Create(strReader, new XmlReaderSettings() { XmlResolver = null }))
             {
-                GlobalActionList.Add(new EventAction(iter.Current.OuterXml));
+                XPathDocument doc = new XPathDocument(xmlRdr);
+                XPathNavigator rootnav = doc.CreateNavigator();
+                XPathNodeIterator iter = rootnav.Select("DiagMgr/events/GlobalActions/action");
+
+                while (iter.MoveNext())
+                {
+                    GlobalActionList.Add(new EventAction(iter.Current.OuterXml));
+                }
             }
-
-
         }
+
         private static void SetGlobalFilterList()
         {
             XPathNodeIterator iter = Util.GetXPathIterator(OriginalXeventText, "DiagMgr/events/filters/filter");
@@ -122,41 +126,43 @@ namespace PssdiagConfig
         public XMgr(string XEventText)
         {
             OriginalXeventText = XEventText;
-            TextReader reader = new StringReader(XEventText);
-            XPathDocument doc = new XPathDocument(reader);
-            XPathNavigator rootnav = doc.CreateNavigator();
-            XPathNodeIterator iterCat = rootnav.Select("DiagMgr/events/category");
-
-            while (iterCat.MoveNext())
+            TextReader strReader = new StringReader(XEventText);
+            using (XmlReader xmlRdr = XmlReader.Create(strReader, new XmlReaderSettings() { XmlResolver = null }))
             {
+                XPathDocument doc = new XPathDocument(xmlRdr);
 
-                string name = iterCat.Current.GetAttribute("name", "").ToString();
-                DiagCategory cat = new DiagCategory("category", name);
-                XPathNavigator eventNav = iterCat.Current.CreateNavigator();
-                XPathNodeIterator iterEvent = eventNav.Select("event");
-                while (iterEvent.MoveNext())
+                XPathNavigator rootnav = doc.CreateNavigator();
+                XPathNodeIterator iterCat = rootnav.Select("DiagMgr/events/category");
+
+                while (iterCat.MoveNext())
                 {
 
-                    /*Xevent evt = new Xevent();
-                    evt.Name = iterEvent.Current.GetAttribute("name", "");
-                    
-                    evt.Package = iterEvent.Current.GetAttribute("package", "");
-                    evt.General = Convert.ToBoolean(iterEvent.Current.GetAttribute("general", ""));
-                    evt.Detailed = Convert.ToBoolean(iterEvent.Current.GetAttribute("detail", ""));
-                    evt.Replay = Convert.ToBoolean(iterEvent.Current.GetAttribute("replay", ""));
-                    */
-                    cat.XEventList_DONOTUSE.Add(new Xevent(iterEvent.Current.OuterXml));
+                    string name = iterCat.Current.GetAttribute("name", "").ToString();
+                    DiagCategory cat = new DiagCategory("category", name);
+                    XPathNavigator eventNav = iterCat.Current.CreateNavigator();
+                    XPathNodeIterator iterEvent = eventNav.Select("event");
+                    while (iterEvent.MoveNext())
+                    {
 
-                    //Xevent xevt2 = ObjectCopier.Clone<Xevent>(new Xevent(iterEvent.Current.OuterXml));
-                    //MessageBox.Show(xevt2.Name);
+                        /*Xevent evt = new Xevent();
+                        evt.Name = iterEvent.Current.GetAttribute("name", "");
+
+                        evt.Package = iterEvent.Current.GetAttribute("package", "");
+                        evt.General = Convert.ToBoolean(iterEvent.Current.GetAttribute("general", ""));
+                        evt.Detailed = Convert.ToBoolean(iterEvent.Current.GetAttribute("detail", ""));
+                        evt.Replay = Convert.ToBoolean(iterEvent.Current.GetAttribute("replay", ""));
+                        */
+                        cat.XEventList_DONOTUSE.Add(new Xevent(iterEvent.Current.OuterXml));
+
+                        //Xevent xevt2 = ObjectCopier.Clone<Xevent>(new Xevent(iterEvent.Current.OuterXml));
+                        //MessageBox.Show(xevt2.Name);
+
+                    }
+                    CategoryList.Add(cat);
 
                 }
-                CategoryList.Add(cat);
-
-
-
+                // PrintInfo();
             }
-            // PrintInfo();
         }
 
         public void PrintInfo()

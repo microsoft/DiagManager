@@ -37,6 +37,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using System.IO;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
@@ -76,40 +77,46 @@ namespace DiagUtil
         {
             try
             {
+
                 bool is64bit = false;
-                XmlDocument ConfigDoc = new XmlDocument();
-                ConfigDoc.Load(@"pssdiag.xml");
-                string sqlver = ConfigDoc["dsConfig"]["Collection"]["Machines"]["Machine"]["Instances"]["Instance"].Attributes["ssver"].Value;
 
-                // SQL 2008 and 2008 R2 share the same tools so we call the same routine for both versions
-                if (sqlver == "10.50")
-                    sqlver = "10";
-
-                string plat = ConfigDoc["dsConfig"]["DiagMgrInfo"]["IntendedPlatform"].InnerText;
-
-
-                String x86Env = Environment.GetEnvironmentVariable("CommonProgramFiles(x86)");
-
-                if (x86Env != null)
+                using (XmlReader xmlReader = XmlReader.Create(@"pssdiag.xml", new XmlReaderSettings() {XmlResolver = null } ))
                 {
-                    is64bit = true;
+                    XmlDocument ConfigDoc = new XmlDocument() { XmlResolver = null };
+                    ConfigDoc.Load(xmlReader);
+
+                    string sqlver = ConfigDoc["dsConfig"]["Collection"]["Machines"]["Machine"]["Instances"]["Instance"].Attributes["ssver"].Value;
+
+                    // SQL 2008 and 2008 R2 share the same tools so we call the same routine for both versions
+                    if (sqlver == "10.50")
+                        sqlver = "10";
+
+                    string plat = ConfigDoc["dsConfig"]["DiagMgrInfo"]["IntendedPlatform"].InnerText;
+
+
+                    String x86Env = Environment.GetEnvironmentVariable("CommonProgramFiles(x86)");
+
+                    if (x86Env != null)
+                    {
+                        is64bit = true;
+                    }
+
+                    string tools = (string)Registry.GetValue(string.Format(@"HKEY_LOCAL_MACHINE\" + @"SOFTWARE\Microsoft\Microsoft SQL Server\{0}0\Tools\ClientSetup", sqlver), "Path", null);
+                    string toolswow = (string)Registry.GetValue(string.Format(@"HKEY_LOCAL_MACHINE\" + @"SOFTWARE\Wow6432Node\Microsoft\Microsoft SQL Server\{0}0\Tools\ClientSetup", sqlver), "Path", null);
+
+                    string toolsbin = tools;
+                    if (is64bit == true && plat.Trim().ToUpper() == "I386" && System.IO.File.Exists(toolswow)) //last condition: if a pure 2008 R2 is isntalled sqldiag.exe WOW is not shipped
+                    {
+                        toolsbin = toolswow;
+                    }
+
+                    if (!System.IO.File.Exists(toolsbin + "sqldiag.exe"))
+                    {
+                        System.Windows.Forms.MessageBox.Show("Unable to find SQL Server client tools such as sqldiag.exe from this machine.  Data collection will fail");
+                    }
+
+                    Console.WriteLine(sqlver + "~" + toolsbin);
                 }
-
-                string tools = (string)Registry.GetValue(string.Format(@"HKEY_LOCAL_MACHINE\" + @"SOFTWARE\Microsoft\Microsoft SQL Server\{0}0\Tools\ClientSetup", sqlver), "Path", null);
-                string toolswow = (string)Registry.GetValue(string.Format(@"HKEY_LOCAL_MACHINE\" + @"SOFTWARE\Wow6432Node\Microsoft\Microsoft SQL Server\{0}0\Tools\ClientSetup", sqlver), "Path", null);
-
-                string toolsbin = tools;
-                if (is64bit == true && plat.Trim().ToUpper() == "I386" && System.IO.File.Exists(toolswow)) //last condition: if a pure 2008 R2 is isntalled sqldiag.exe WOW is not shipped
-                {
-                    toolsbin = toolswow;
-                }
-
-                if (!System.IO.File.Exists(toolsbin + "sqldiag.exe"))
-                {
-                    System.Windows.Forms.MessageBox.Show("Unable to find SQL Server client tools such as sqldiag.exe from this machine.  Data collection will fail");
-                }
-
-                Console.WriteLine(sqlver + "~" + toolsbin);
             }
             catch (Exception ex)
             {
@@ -120,19 +127,29 @@ namespace DiagUtil
         }
         static void TransfromInternatioinalPerfmonCounters()
         {
+
             string inputXml = "pssdiag.xml";
-            string outputXml = "pssdiag.xml";
+            string outputTempXml = "pssdiag_new_temp.xml";
+            XmlDocument pssdiagDoc = null;
+
             CounterDictionary counterDictionary = new CounterDictionary();
             counterDictionary.Init();
-            //Read XML and change counters
-            XmlDocument pssdiagDoc = new XmlDocument();
-            pssdiagDoc.Load(inputXml);
 
-            XmlTranslator translator = new XmlTranslator(counterDictionary);
-            translator.Translate(pssdiagDoc);
-            pssdiagDoc.Save(outputXml);
+            using (XmlReader xmlReader = XmlReader.Create(inputXml, new XmlReaderSettings() { XmlResolver = null }))
+            {
+                //Read XML and change counters
+                pssdiagDoc = new XmlDocument() { XmlResolver = null };
+                pssdiagDoc.Load(xmlReader);
 
+                XmlTranslator translator = new XmlTranslator(counterDictionary);
+                translator.Translate(pssdiagDoc);
+                pssdiagDoc.Save(outputTempXml);
+            }
 
+            // To overwrite the destination file if it already exists with the content of the new translated counters
+            // then delete the pssdiag_new_temp.xml file
+            File.Copy(outputTempXml, inputXml, true);
+            File.Delete(outputTempXml);
 
         }
     }

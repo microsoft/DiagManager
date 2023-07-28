@@ -36,15 +36,12 @@ A "contributor" is any person that distributes its contribution under this licen
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml;
 using System.Xml.XPath;
 using System.Diagnostics;
 using System.Windows.Forms;
-
+using System.Runtime.Serialization.Json;
 
 namespace PssdiagConfig
 {
@@ -205,8 +202,9 @@ namespace PssdiagConfig
         public static XPathNodeIterator GetXPathIterator (string XmlText, string SelectText)
         { 
         //"<event package=\"sqlserver\" name=\"parallel_scan_range_returned\" version=\"11\" general=\"false\" detail=\"false\" replay=\"false\" />"
-            TextReader reader = new StringReader(XmlText);
-            XPathDocument doc = new XPathDocument(reader);
+            TextReader strReader = new StringReader(XmlText);
+            XmlReader xmlReader = XmlReader.Create(strReader, new XmlReaderSettings() { XmlResolver = null });
+            XPathDocument doc = new XPathDocument(xmlReader);
             XPathNavigator rootnav = doc.CreateNavigator();
             return rootnav.Select(SelectText);
         }
@@ -249,7 +247,7 @@ namespace PssdiagConfig
     public static class ObjectCopier
     {
         /// <summary>
-        /// Perform a deep Copy of the object.
+        /// Perform a deep Copy of the object using serialization/deserialization
         /// </summary>
         /// <typeparam name="T">The type of object being copied.</typeparam>
         /// <param name="source">The object instance to copy.</param>
@@ -267,13 +265,16 @@ namespace PssdiagConfig
                 return default(T);
             }
 
-            IFormatter formatter = new BinaryFormatter();
+            DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(T));
+            
+
             Stream stream = new MemoryStream();
             using (stream)
             {
-                formatter.Serialize(stream, source);
+                jsonSerializer.WriteObject(stream, source);
+
                 stream.Seek(0, SeekOrigin.Begin);
-                return (T)formatter.Deserialize(stream);
+                return (T)jsonSerializer.ReadObject(stream);
             }
         }
     }
