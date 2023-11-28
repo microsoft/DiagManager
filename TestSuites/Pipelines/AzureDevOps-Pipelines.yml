@@ -115,13 +115,9 @@ steps:
     GdnBreakAllTools: true
 
 
-# - task: PublishSecurityAnalysisLogs@3
-#   inputs:
-#     ArtifactName: 'CodeAnalysisLogs'
-#     ArtifactType: 'Container'
-#     PublishProcessedResults: true
-#     AllTools: true
-#     ToolLogsNotFoundAction: 'Standard'
+- task: ManifestGeneratorTask@0
+  inputs:
+    BuildDropPath: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishPipelineArtifact@1
   inputs:
