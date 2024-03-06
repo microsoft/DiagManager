@@ -119,10 +119,10 @@ steps:
   inputs:
     BuildDropPath: '$(Build.ArtifactStagingDirectory)'
 
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    publishLocation: 'pipeline'
+# - task: PublishPipelineArtifact@1
+#   inputs:
+#     targetPath: '$(Pipeline.Workspace)'
+#     publishLocation: 'pipeline'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
