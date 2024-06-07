@@ -46,109 +46,105 @@ extends:
         # Define the steps that the pipeline will run.
         # In most cases, copy and paste the steps from the original pipeline.
         steps:
-        # - task: NuGetToolInstaller@1
+        - task: NuGetToolInstaller@1
 
-        # - task: NuGetCommand@2
-        #   inputs:
-        #     restoreSolution: '$(solution)'
-
-
-        # - task: VSBuild@1
-        #   inputs:
-        #     solution: '$(solution)'
-        #     platform: '$(buildPlatform)'
-        #     configuration: '$(buildConfiguration)'
+        - task: NuGetCommand@2
+          inputs:
+            restoreSolution: '$(solution)'
 
 
-        # - task: AntiMalware@4
-        #   inputs:
-        #     InputType: 'Basic'
-        #     ScanType: 'CustomScan'
-        #     FileDirPath: '$(Build.StagingDirectory)'
-        #     TreatSignatureUpdateFailureAs: 'Warning'
-        #     SignatureFreshness: 'UpToDate'
-        #     TreatStaleSignatureAs: 'Error'
+        - task: VSBuild@1
+          inputs:
+            solution: '$(solution)'
+            platform: '$(buildPlatform)'
+            configuration: '$(buildConfiguration)'
+
+
+        - task: AntiMalware@4
+          inputs:
+            InputType: 'Basic'
+            ScanType: 'CustomScan'
+            FileDirPath: '$(Build.StagingDirectory)'
+            TreatSignatureUpdateFailureAs: 'Warning'
+            SignatureFreshness: 'UpToDate'
+            TreatStaleSignatureAs: 'Error'
 
           
 
-        # - task: AutoApplicability@1
-        #   inputs:
-        #     VerboseWriter: true
-        #     ExternalRelease: true
-        #     IsSoftware: true
+        - task: AutoApplicability@1
+          inputs:
+            VerboseWriter: true
+            ExternalRelease: true
+            IsSoftware: true
 
 
-        # - task: CredScan@3
+        - task: CredScan@3
           
-        # - task: ComponentGovernanceComponentDetection@0
-        #   inputs:
-        #     scanType: 'Register'
-        #     verbosity: 'Verbose'
-        #     alertWarningLevel: 'High'
+        - task: ComponentGovernanceComponentDetection@0
+          inputs:
+            scanType: 'Register'
+            verbosity: 'Verbose'
+            alertWarningLevel: 'High'
 
-        # - task: CodeMetrics@1
-        #   inputs:
-        #     Files: '$(Build.SourcesDirectory)\**\*.exe;$(Build.SourcesDirectory)\**\*.dll'
+        - task: CodeMetrics@1
+          inputs:
+            Files: '$(Build.SourcesDirectory)\**\*.exe;$(Build.SourcesDirectory)\**\*.dll'
 
-        # - task: Semmle@1
-        #   inputs:
-        #     sourceCodeDirectory: '$(Build.SourcesDirectory)'
-        #     language: 'csharp'
-        #     querySuite: 'Recommended'
-        #     timeout: '1800'
-        #     ram: '16384'
-        #     addProjectDirToScanningExclusionList: true
+        - task: Semmle@1
+          inputs:
+            sourceCodeDirectory: '$(Build.SourcesDirectory)'
+            language: 'csharp'
+            querySuite: 'Recommended'
+            timeout: '1800'
+            ram: '16384'
+            addProjectDirToScanningExclusionList: true
 
-        # - task: CodeSign@1
-        #   inputs:
-        #     FailIfNoTargetsFound: 'false'
+        - task: CodeSign@1
+          inputs:
+            FailIfNoTargetsFound: 'false'
 
-        # - task: FxCop@2
-        #   inputs:
-        #     inputType: 'Basic'
-        #     targets: '**\*.dll;**\*.exe'
+        - task: FxCop@2
+          inputs:
+            inputType: 'Basic'
+            targets: '**\*.dll;**\*.exe'
 
-        # - task: Guardian@1
+        - task: Guardian@1
           
-        # - task: SdtReport@2
-        #   inputs:
-        #     GdnExportHtmlFile: true
-        #     GdnExportAllTools: true
+        - task: SdtReport@2
+          inputs:
+            GdnExportHtmlFile: true
+            GdnExportAllTools: true
 
-        # - task: RoslynAnalyzers@3
-        #   inputs:
-        #     userProvideBuildInfo: 'autoMsBuildInfo'
-        #     setupCommandlinePicker: 'vs2019'
-        #     rulesetName: 'Required'
-        #   env:
-        #     SYSTEM_ACCESSTOKEN: $(system.accesstoken)
-
-
-        # - task: PSScriptAnalyzer@1
-        #   inputs:
-        #     Path: '$(Build.SourcesDirectory)'
-        #     Settings: 'required'
-        #     Recurse: true
-
-        # - task: VulnerabilityAssessment@0
-
-        # - task: PostAnalysis@2
-        #   inputs:
-        #     GdnBreakAllTools: true
+        - task: RoslynAnalyzers@3
+          inputs:
+            userProvideBuildInfo: 'autoMsBuildInfo'
+            setupCommandlinePicker: 'vs2019'
+            rulesetName: 'Required'
+          env:
+            SYSTEM_ACCESSTOKEN: $(system.accesstoken)
 
 
-        # - task: ManifestGeneratorTask@0
-        #   inputs:
-        #     BuildDropPath: '$(Build.ArtifactStagingDirectory)'
+        - task: PSScriptAnalyzer@1
+          inputs:
+            Path: '$(Build.SourcesDirectory)'
+            Settings: 'required'
+            Recurse: true
 
-        # # - task: PublishPipelineArtifact@1
-        # #   inputs:
-        # #     targetPath: '$(Pipeline.Workspace)'
-        # #     publishLocation: 'pipeline'
-        # - task: VSTest@2
-        #   inputs:
-        #     platform: '$(buildPlatform)'
-        #     configuration: '$(buildConfiguration)'
+        - task: VulnerabilityAssessment@0
+
+        - task: PostAnalysis@2
+          inputs:
+            GdnBreakAllTools: true
+
+
+        - task: ManifestGeneratorTask@0
+          inputs:
+            BuildDropPath: '$(Build.ArtifactStagingDirectory)'
+
+        - task: VSTest@2
+          inputs:
+            platform: '$(buildPlatform)'
+            configuration: '$(buildConfiguration)'
 
         - task: PowerShell@2
           inputs:
