@@ -41,8 +41,8 @@ extends:
         templateContext:
           outputs:
           - output: pipelineArtifact
-            targetPath: $(System.DefaultWorkingDirectory)/Samples
-            artifactName: artifactName
+            targetPath: $(System.ArtifactStagingDirectory)
+            artifactName: DiagManagerPipelineArtifacts
         # Define the steps that the pipeline will run.
         # In most cases, copy and paste the steps from the original pipeline.
         steps:
