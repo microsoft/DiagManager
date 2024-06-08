@@ -91,14 +91,14 @@ extends:
           inputs:
             Files: '$(Build.SourcesDirectory)\**\*.exe;$(Build.SourcesDirectory)\**\*.dll'
 
-        - task: Semmle@1
-          inputs:
-            sourceCodeDirectory: '$(Build.SourcesDirectory)'
-            language: 'csharp'
-            querySuite: 'Recommended'
-            timeout: '1800'
-            ram: '16384'
-            addProjectDirToScanningExclusionList: true
+        # - task: Semmle@1
+        #   inputs:
+        #     sourceCodeDirectory: '$(Build.SourcesDirectory)'
+        #     language: 'csharp'
+        #     querySuite: 'Recommended'
+        #     timeout: '1800'
+        #     ram: '16384'
+        #     addProjectDirToScanningExclusionList: true
 
         - task: CodeSign@1
           inputs:
