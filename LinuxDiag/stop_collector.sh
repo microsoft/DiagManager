@@ -10,7 +10,7 @@ sql_stop_xevent()
 {
 if [[ $COLLECT_EXTENDED_EVENTS == [Yy][eE][sS]  ]]; then
 	echo -e "$(date -u +"%T %D") Stopping Extended events Collection if started..." | tee -a $pssdiag_log
-        /opt/mssql-tools*/bin/sqlcmd -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"pssdiag_xevent_stop.sql" -o"$outputdir/${1}_${2}_Stop_XECollection.out"
+        $(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1)  -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"pssdiag_xevent_stop.sql" -o"$outputdir/${1}_${2}_Stop_XECollection.out"
 fi
 }
 
@@ -18,7 +18,7 @@ sql_stop_trace()
 {
 if [[ $COLLECT_SQL_TRACE == [Yy][eE][sS]  ]]; then
         echo -e "$(date -u +"%T %D") Stopping SQL Trace Collection if started..." | tee -a $pssdiag_log
-        /opt/mssql-tools*/bin/sqlcmd -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"pssdiag_trace_stop.sql" -o"$outputdir/${1}_${2}_Stop_TraceCollection.out"
+        $(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1)  -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"pssdiag_trace_stop.sql" -o"$outputdir/${1}_${2}_Stop_TraceCollection.out"
 fi
 }
 
@@ -46,7 +46,7 @@ sql_collect_alwayson()
 {
 if [[ $COLLECT_SQL_HA_LOGS == [Yy][eE][sS]  ]]; then
         echo -e "$(date -u +"%T %D") Collecting SQL AlwaysOn configuration at Shutdown..." | tee -a $pssdiag_log
-        /opt/mssql-tools*/bin/sqlcmd -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_AlwaysOnDiagScript.sql" -o"$outputdir/${1}_${2}_SQL_AlwaysOnDiag_Shutdown.out"
+        $(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1)  -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_AlwaysOnDiagScript.sql" -o"$outputdir/${1}_${2}_SQL_AlwaysOnDiag_Shutdown.out"
 fi
 }
 
@@ -54,26 +54,26 @@ sql_collect_querystore()
 {
 if [[ $COLLECT_QUERY_STORE == [Yy][eE][sS]  ]]; then
         echo -e "$(date -u +"%T %D") Collecting SQL Query Store information at Shutdown..." | tee -a $pssdiag_log
-        /opt/mssql-tools*/bin/sqlcmd -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_QueryStore.sql" -o"$outputdir/${1}_${2}_SQL_QueryStore_Shutdown.out"
+        $(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1)  -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_QueryStore.sql" -o"$outputdir/${1}_${2}_SQL_QueryStore_Shutdown.out"
 fi
 }
 
 sql_collect_perfstats_snapshot()
 {
         echo -e "$(date -u +"%T %D") Collecting Perf Stats Snapshot at Shutdown..." | tee -a $pssdiag_log
-        /opt/mssql-tools*/bin/sqlcmd -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_Perf_Stats_Snapshot.sql" -o"$outputdir/${1}_${2}_SQL_Perf_Stats_Snapshot_Shutdown.out"
+        $(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1)  -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_Perf_Stats_Snapshot.sql" -o"$outputdir/${1}_${2}_SQL_Perf_Stats_Snapshot_Shutdown.out"
 }
 
 sql_collect_config()
 {
 	echo -e "$(date -u +"%T %D") Collecting SQL Configuration Snapshot at Shutdown..." | tee -a $pssdiag_log
-        /opt/mssql-tools*/bin/sqlcmd -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_Configuration.sql" -o"$outputdir/${1}_${2}_SQL_Configuration_Shutdown.out"
+        $(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1)  -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_Configuration.sql" -o"$outputdir/${1}_${2}_SQL_Configuration_Shutdown.out"
 }
 
 sql_collect_pal_DMVs()
 {
         echo -e "$(date -u +"%T %D") Collecting PAL DMVs Snapshot at Shutdown..." | tee -a $pssdiag_log
-        /opt/mssql-tools*/bin/sqlcmd -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_DMV_PAL_Snapshots.sql" -o"$outputdir/${1}_${2}_SQL_DMV_PAL_Snapshots_Shutdown.out"
+        $(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1)  -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_DMV_PAL_Snapshots.sql" -o"$outputdir/${1}_${2}_SQL_DMV_PAL_Snapshots_Shutdown.out"
 }
 
 # end of function definitions

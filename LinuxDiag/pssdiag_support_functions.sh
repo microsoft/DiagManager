@@ -260,7 +260,7 @@ sql_connect()
 			read -r -p $'\e[1;34mEnter SQL UserName: \e[0m' sqluser
 			read -s -r -p $'\e[1;34mEnter User Password: \e[0m' pass
 			echo "" | tee -a $pssdiag_log
-			/opt/mssql-tools*/bin/sqlcmd -S$SQL_SERVER_NAME -U$sqluser -P$pass -C -Q"select @@version" 2>&1 >/dev/null
+			$(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME -U$sqluser -P$pass -C -Q"select @@version" 2>&1 >/dev/null
 			if [[ $? -eq 0 ]]; then
 				sqlconnect=1
 				echo -e "\x1B[32mConnection was successful....\x1B[0m" | tee -a $pssdiag_log
@@ -280,7 +280,7 @@ sql_connect()
 		if [ ${1} == "host_instance" ]; then
 			SQL_SERVER_NAME="${HOSTNAME},${3}"
 		fi
-		/opt/mssql-tools*/bin/sqlcmd -S$SQL_SERVER_NAME -E -C -Q"select @@version" 2>&1 >/dev/null
+		$(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME -E -C -Q"select @@version" 2>&1 >/dev/null
     	if [[ $? -eq 0 ]]; then   	
 			sqlconnect=1;
 			CONN_AUTH_OPTIONS='-E'
