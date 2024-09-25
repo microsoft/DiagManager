@@ -17,17 +17,18 @@ COLLECT_OS_LOGS=YES
 #COLLECT_SETUP_LOGS=NO
 
 # Collect OS HA related OS files and logs
-#COLLECT_OS_HA_LOGS=NO
+COLLECT_OS_HA_LOGS=YES
 
 # Collect OS security, encryption and AD files and logs
-#COLLECT_OS_SEC_AD_LOGS=NO
+COLLECT_OS_SEC_AD_LOGS=YES
 
 #########################
 # SECTION FOR SQL SERVER
 #########################
 
-# Specify the authentication mode to use for connecting to SQL instance
-# Valid values : SQL / AD / AUTO
+# Specify the authentication mode to use for connecting to SQL instance, with NONE pssdiag will ask which method to use, the case of multi-instance setup
+# Valid values : SQL / AD / NONE
+# Do not change, this is set dynamically by PSSDiag 
 SQL_CONNECT_AUTH_MODE=SQL
 
 
@@ -36,13 +37,13 @@ COLLECT_HOST_SQL_INSTANCE=YES
 
 # Used if SQL Server is running as a container
 # This value is either a specific Container Name (not ID)  or the value "ALL" which monitors all SQL containers
-COLLECT_CONTAINER=NO
+COLLECT_CONTAINER=ALL
 
 # Gets all SQL errorlogs, .xel files under the log folder ( system health etc). Specify YES or NO.
 COLLECT_SQL_LOGS=YES
 
 # Collects SQL Server Dump Files - Note output can be fairly large depending on the number of dumps
-COLLECT_SQL_DUMPS=NO
+COLLECT_SQL_DUMPS=YES
 
 # Collects snapshots of sys.dm_os_performance_counters. Specify YES or NO
 # Interval is in seconds
@@ -63,7 +64,7 @@ COLLECT_SQL_TRACE=NO
 SQL_TRACE_TEMPLATE=pssdiag_trace_general
 
 # Specify whether we need to extract QDS/Query Store information from this server
-COLLECT_QUERY_STORE=NO
+COLLECT_QUERY_STORE=YES
 
 # Collects various memory related DMVS. Specify YES or NO.
 COLLECT_SQL_MEM_STATS=NO
@@ -72,9 +73,9 @@ COLLECT_SQL_MEM_STATS=NO
 COLLECT_SQL_HA_LOGS=YES
 
 # Collects SQL security, encryption and AD related settings and log
-#COLLECT_SQL_SEC_AD_LOGS=NO
+COLLECT_SQL_SEC_AD_LOGS=YES
 
-# If you want any other custom collection, set this to YES and change the my_custom_collector.sql file to include your queries.
+# If you want any other custom collection, set this to YES and change the my_custom_collector.sql file to include your queries. only for sql_perf.scn based scenarios
 CUSTOM_COLLECTOR=NO
 
 ##########################
@@ -89,7 +90,3 @@ CUSTOM_COLLECTOR=NO
 ##################
 
 # collect ssis specific information
-
-
-
-

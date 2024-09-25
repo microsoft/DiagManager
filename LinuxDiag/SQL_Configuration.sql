@@ -654,8 +654,10 @@ print '--trace event details--'
 
 
 go
+
 print ''
 print '--XEvent Session Details--'
 select sess.name 'session_name', event_name  from sys.dm_xe_sessions sess join sys.dm_xe_session_events evt on sess.address = evt.event_session_address
 print ''
 go
+

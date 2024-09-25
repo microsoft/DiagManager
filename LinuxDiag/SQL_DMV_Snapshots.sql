@@ -346,6 +346,10 @@ GO
     SET @runtime = GETDATE()
     SET @msg = 'Start time: ' + CONVERT (varchar(30), @runtime, 126)
     
+    PRINT ''
+    PRINT 'Start time: ' + CONVERT (varchar (30), GETDATE(), 126)
+    PRINT ''
+    
     -- Collect sp_perf_stats_infrequent10 every minute
     IF @i = 0
       EXEC sp_perf_stats_infrequent12 @runtime = @runtime, @firstrun = 1
