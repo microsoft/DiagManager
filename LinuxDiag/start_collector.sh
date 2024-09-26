@@ -10,7 +10,7 @@ sql_collect_perfstats()
         if [[ $COLLECT_PERFSTATS == [Yy][eE][sS] ]] ; then
                 #Start regular PerfStats script as a background job
                 echo -e "$(date -u +"%T %D") Starting SQL Perf Stats script as a background job...." | tee -a $pssdiag_log
-                `$(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_Perf_Stats.sql" -o"$outputdir/${1}_${2}_SQL_Perf_Stats_Output.out"` &
+                `$(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_Perf_Stats.sql" -o"$outputdir/${1}_${2}_SQL_Perf_Stats.out"` &
                 mypid=$!
                 #printf "%s\n" "$mypid" >> $outputdir/pssdiag_stoppids_sql_collectors.txt
 		sleep 5s
@@ -46,7 +46,7 @@ sql_collect_memstats()
         if [[ $COLLECT_SQL_MEM_STATS == [Yy][eE][sS] ]] ; then
                 #Start SQL Memory Status script as a background job
                 echo -e "$(date -u +"%T %D") Starting SQL Memory Status script as a background job.... " | tee -a $pssdiag_log
-                `$(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_Mem_Stats.sql" -o"$outputdir/${1}_${2}_SQL_Mem_Stats_Output.out"` &
+                `$(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_Mem_Stats.sql" -o"$outputdir/${1}_${2}_SQL_Mem_Stats.out"` &
                 mypid=$!
                 #printf "%s\n" "$mypid" >> $outputdir/pssdiag_stoppids_sql_collectors.txt
 		sleep 5s
@@ -349,10 +349,10 @@ if [[ -z "$scenario" ]] && [[ "$is_instance_inside_container_active" == "YES" ]]
 	echo    "|   |                          |from the SQL without collecting any performance data.                      |"
 	echo -e "|   |                          |\x1B[34m(Default) \x1B[0m                                                                 |"
 	echo    "|---|--------------------------|---------------------------------------------------------------------------|"
-	echo    "| 2 |sql_perf_light_kube.scn   |Collects lightweight performance data from SQL, suitable for extended use. |"
-	echo    "|---|--------------------------|---------------------------------------------------------------------------|"
-	echo    "| 3 |sql_perf_minimal_kube.scn |Collects minimal performance data from SQL without extended events         |"
+	echo    "| 2 |sql_perf_minimal_kube.scn |Collects minimal performance data from SQL without extended events         |"
 	echo    "|   |                          |suitable for extended use.                                                 |"
+	echo    "|---|--------------------------|---------------------------------------------------------------------------|"
+	echo    "| 3 |sql_perf_light_kube.scn   |Collects lightweight performance data from SQL, suitable for extended use. |"
 	echo    "|---|--------------------------|---------------------------------------------------------------------------|"
 	echo    "| 4 |sql_perf_general_kube.scn |Collects general performance data from SQL, suitable for 15 to 20-minute   |"
 	echo    "|   |                          |collection periods, covering most scenarios.                               |"

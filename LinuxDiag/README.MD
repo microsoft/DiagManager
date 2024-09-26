@@ -87,7 +87,7 @@ In the case when SQL container is deployed to Kubernetes, you can run PSSDiag fr
 | 1 |static_collect_kube.scn   |Passive data collection approach,focusing solely on copying standard logs    |
 |   |                          |from SQL without collecting any performance data.                            |
 |   |                          |(Default)                                                                    |
-| 2 |sql_perf_light_minimal.scn|Collects lightweight performance data from SQL without extended events       |
+| 2 |sql_perf_minimal_kube.scn |Collects lightweight performance data from SQL without extended events       |
 |   |                          |suitable for extended use.                                                   |
 | 2 |sql_perf_light_kube.scn   |Collects lightweight performance data from SQL, suitable for extended use.   |
 | 3 |sql_perf_general_kube.scn |Collects general performance data from SQL, suitable for 15 to 20-minute     |
@@ -182,7 +182,7 @@ you are Not limited by the default secarions, you can create your own based on y
 |SQL      |COLLECT_PERFSTATS         |YES/NO               |PAL DMVs                          |mssql-tool* (sqlcmd)    |NO                    |YES                      |YES                    |NO                       |NO                        |
 |SQL      |COLLECT_SQL_COUNTERS      |YES/NO               |sys.dm_os_performance_counters    |mssql-tool* (sqlcmd)    |NO                    |NO                       |YES                    |YES                      |YES                       |
 |SQL      |SQL_COUNTERS_INTERVAL     |YES/NO               |sys.dm_os_performance_counters    |                        |NA                    |NA                       |15 seconds             |15 seconds               |15 seconds                |
-|SQL      |COLLECT_QUERY_STORE       |YES/NO               |Query store                       |mssql-tool* (sqlcmd)    |NO                    |NO                       |NO                     |NO                       |YES                       |
+|SQL      |COLLECT_QUERY_STORE       |YES/NO               |Query store                       |mssql-tool* (sqlcmd)    |YES                   |YES                      |YES                    |YES                       |YES                       |
 |SQL      |COLLECT_SQL_MEM_STATS     |YES/NO               |Memory DMV                        |mssql-tool* (sqlcmd)    |YES                   |YES                      |YES                    |YES                      |YES                       |
 |SQL      |COLLECT_SQL_HA_LOGS       |YES/NO               |Alwayson configuration            |mssql-tool* (sqlcmd)    |NO                    |NO                       |NO                     |NO                       |YES                       |
 |SQL      |COLLECT_SQL_SEC_AD_LOGS   |YES/NO               |AD Related Settings, mssql.keytab |                        |NO                    |NO                       |NO                     |NO                       |YES                       |
