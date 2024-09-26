@@ -162,6 +162,7 @@ if [[ ! -z "$scenario" ]] && [[ "$is_instance_inside_container_active" == "NO" ]
 	echo "" 
 	echo "Valid options are:" 
 	echo "  static_collect.scn"
+	echo "  sql_perf_minimal.scn"
 	echo "  sql_perf_light.scn"
 	echo "  sql_perf_general.scn"
 	echo "  sql_perf_detailed.scn"
@@ -195,6 +196,7 @@ if [[ ! -z "$scenario" ]] && [[ "$is_instance_inside_container_active" == "YES" 
 	echo "" 
 	echo "Valid options are:" 
 	echo "  static_collect_kube.scn"
+	echo "  sql_perf_minimal_kube.scn"
 	echo "  sql_perf_light_kube.scn"
 	echo "  sql_perf_general_kube.scn"
 	echo "  sql_perf_detailed_kube.scn"	
@@ -248,31 +250,37 @@ if [[ -z "$scenario" ]] && [[ "$is_instance_inside_container_active" == "NO" ]];
 	echo    "| 1 |static_collect.scn     |Passive data collection approach,focusing solely on copying standard logs from|"
 	echo -e "|   |                       |the OS and SQL without collecting any performance data. \x1B[34m(Default)\x1B[0m             |"
 	echo    "|---|-----------------------|------------------------------------------------------------------------------|"
-	echo    "| 2 |sql_perf_light.scn     |Collects lightweight performance data from SQL and the operating system,      |"
+	echo    "| 2 |sql_perf_minimal.scn   |Collects minimal performance data from SQL without extended events            |"
 	echo    "|   |                       |suitable for extended use.                                                    |"
 	echo    "|---|-----------------------|------------------------------------------------------------------------------|"
-	echo    "| 3 |sql_perf_general.scn   |Collects general performance data from SQL and the OS, suitable for           |"
+	echo    "| 3 |sql_perf_light.scn     |Collects lightweight performance data from SQL and the operating system,      |"
+	echo    "|   |                       |suitable for extended use.                                                    |"
+	echo    "|---|-----------------------|------------------------------------------------------------------------------|"
+	echo    "| 4 |sql_perf_general.scn   |Collects general performance data from SQL and the OS, suitable for           |"
 	echo    "|   |                       |15 to 20-minute collection periods, covering most scenarios.                  |"
 	echo    "|---|-----------------------|------------------------------------------------------------------------------|"
-	echo    "| 4 |sql_perf_detailed.scn  |Collects detailed performance data from SQL and the OS;avoid using this method|"
+	echo    "| 5 |sql_perf_detailed.scn  |Collects detailed performance data from SQL and the OS;avoid using this method|"
 	echo    "|   |                       |for extended periods as it generates a large amount of data.                  |"
 	echo    "|---|-----------------------|------------------------------------------------------------------------------|"
 	echo ""
 	scn_user_selected=""
-	while [[ ${scn_user_selected} != [1-4] ]]
+	while [[ ${scn_user_selected} != [1-5] ]]
 	do
-		read -r -p $'\e[1;34mSelect a Scenario [1-4] (Enter to select the default "static_collect.scn"): \e[0m' scn_user_selected
+		read -r -p $'\e[1;34mSelect a Scenario [1-5] (Enter to select the default "static_collect.scn"): \e[0m' scn_user_selected
 		scn_user_selected=${scn_user_selected:-1}
 		if [[ ${scn_user_selected} == 1 ]]; then
 			scenario="static_collect.scn"
 		fi
 		if [[ ${scn_user_selected} == 2 ]]; then
-			scenario="sql_perf_light.scn"
+			scenario="sql_perf_minimal.scn"
 		fi
 		if [[ ${scn_user_selected} == 3 ]]; then
-			scenario="sql_perf_general.scn"
+			scenario="sql_perf_light.scn"
 		fi
 		if [[ ${scn_user_selected} == 4 ]]; then
+			scenario="sql_perf_general.scn"
+		fi
+		if [[ ${scn_user_selected} == 5 ]]; then
 			scenario="sql_perf_detailed.scn"
 		fi
 		echo ""
@@ -343,28 +351,34 @@ if [[ -z "$scenario" ]] && [[ "$is_instance_inside_container_active" == "YES" ]]
 	echo    "|---|--------------------------|---------------------------------------------------------------------------|"
 	echo    "| 2 |sql_perf_light_kube.scn   |Collects lightweight performance data from SQL, suitable for extended use. |"
 	echo    "|---|--------------------------|---------------------------------------------------------------------------|"
-	echo    "| 3 |sql_perf_general_kube.scn |Collects general performance data from SQL, suitable for 15 to 20-minute   |"
+	echo    "| 3 |sql_perf_minimal_kube.scn |Collects minimal performance data from SQL without extended events         |"
+	echo    "|   |                          |suitable for extended use.                                                 |"
+	echo    "|---|--------------------------|---------------------------------------------------------------------------|"
+	echo    "| 4 |sql_perf_general_kube.scn |Collects general performance data from SQL, suitable for 15 to 20-minute   |"
 	echo    "|   |                          |collection periods, covering most scenarios.                               |"
 	echo    "|---|--------------------------|---------------------------------------------------------------------------|"
-	echo    "| 4 |sql_perf_detailed_kube.scn|Collects detailed performance data from SQL; avoid using this method for   |"
+	echo    "| 5 |sql_perf_detailed_kube.scn|Collects detailed performance data from SQL; avoid using this method for   |"
 	echo    "|   |                          |extended periods as it generates a large amount of data.                   |"
 	echo    "|---|--------------------------|---------------------------------------------------------------------------|"
 	echo ""
 	scn_user_selected=""
-	while [[ ${scn_user_selected} != [1-4] ]]
+	while [[ ${scn_user_selected} != [1-5] ]]
 	do
-		read -r -p $'\e[1;34mSelect a Scenario [1-4] (Enter to select the default "static_collect_kube.scn"): \e[0m' scn_user_selected
+		read -r -p $'\e[1;34mSelect a Scenario [1-5] (Enter to select the default "static_collect_kube.scn"): \e[0m' scn_user_selected
 		scn_user_selected=${scn_user_selected:-1}
 		if [[ ${scn_user_selected} == 1 ]]; then
 			scenario="static_collect_kube.scn"
 		fi
 		if [[ ${scn_user_selected} == 2 ]]; then
-			scenario="sql_perf_light_kube.scn"
+			scenario="sql_perf_minimal_kube.scn"
 		fi
 		if [[ ${scn_user_selected} == 3 ]]; then
-			scenario="sql_perf_general_kube.scn"
+			scenario="sql_perf_light_kube.scn"
 		fi
 		if [[ ${scn_user_selected} == 4 ]]; then
+			scenario="sql_perf_general_kube.scn"
+		fi
+		if [[ ${scn_user_selected} == 5 ]]; then
 			scenario="sql_perf_detailed_kube.scn"
 		fi
 		echo ""

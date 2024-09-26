@@ -209,44 +209,45 @@ sql_connect()
 		return $sqlconnect
 	fi
 	
-	authentication_mode=${4}
-	authentication_mode_x=$authentication_mode
+	auth_mode=${4}
 	CONN_AUTH_OPTIONS=''
 	sqlconnect=0
 
-	if [[ $is_instance_inside_container_active == "YES" ]]; then authentication_mode="SQL"; fi
+	#force SQL Authentication when PSSDiag is running from inside Container
+	if [[ $is_instance_inside_container_active == "YES" ]]; then auth_mode="SQL"; fi
 
-	#Supporting NONE Mode
-	while [[ "${authentication_mode}" != "SQL" ]] && [[ "${authentication_mode}" != "AD" ]]; do
+	#if the user selected NONE Mode, ask then about what they need to use to this instance we are trying to connect to
+	while [[ "${auth_mode}" != "SQL" ]] && [[ "${auth_mode}" != "AD" ]]; do
 		read -r -p $'\e[1;34mSelect Authentication Mode: 1 SQL Authentication (Default), 2 AD Authentication: \e[0m' lmode
 		lmode=${lmode:-1}
 		if [ 1 = $lmode ]; then
-			authentication_mode="SQL"
+			auth_mode="SQL"
 		fi
 		if [ 2 = $lmode ]; then
-			authentication_mode="AD"
+			auth_mode="AD"
 		fi
 	done 
 
 	#Check if we have valid AD ticket before moving forward
-	#inside container this command might not exists, so check upfront
+	#making sure that klist is installed
 	if ( command -v klist 2>&1 >/dev/null ); then 
 		check_ad_cache=$(klist -l | tail -n +3 | awk '!/Expired/' | wc -l)
-		if [[ "$check_ad_cache" == 0 ]] && [[ "$authentication_mode" == "AD" ]]; then
-			echo -e "\x1B[33mWarning: AD Authentication was selected as Authention mode to connect to sql, however, no Kerberos credentials found in default cache, they may have expired"  
+		if [[ "$check_ad_cache" == 0 ]] && [[ "$auth_mode" == "AD" ]]; then
+			echo -e "\x1B[33mWarning: AD Authentication was selected as Authentication mode to connect to sql, however, no Kerberos credentials found in default cache, they may have expired"  
 			echo -e "Warning: AD Authentication will fail"
 			echo -e "to correct this, run 'sudo kinit user@DOMAIN.COM' in a separate terminal with AD user that is allowed to connect to sql server, then press enter in this terminal. \x1B[0m" 
 			read -p "Press enter to continue"
 		fi
 	fi
 
-	echo -e "Establishing SQL connection to ${1} ${2} and port ${3} using ${authentication_mode} authentication mode" | tee -a $pssdiag_log
+	echo -e "Establishing SQL connection to ${1} ${2} and port ${3} using ${auth_mode} authentication mode" | tee -a $pssdiag_log
 	
-	#Test SQL Authentication
-	if [[ $authentication_mode = "SQL" ]]; then
+	#Test SQL Authentication, we allow them to try few times using SQL Auth
+	if [[ $auth_mode = "SQL" ]]; then
 		while [[ $attempt_num -le $MAX_ATTEMPTS ]]
 		do
 			#container do not connect using thier names if they do not have DNS record. so safer to connect using local host and container port
+			## all of them its safer to use HOSTNAME, leaving this condition per instance type for now... force HOSTNAME
 			if [ ${1} == "container_instance" ]; then
 				SQL_SERVER_NAME="${HOSTNAME},${3}"
 			fi
@@ -285,10 +286,13 @@ sql_connect()
 			sqlconnect=1;
 			CONN_AUTH_OPTIONS='-E'
 			echo -e "\x1B[32mConnection was successful....\x1B[0m" | tee -a $pssdiag_log
+		else
+			#in case AD Authentication fails, try again using SQL Authentication for this particular instance 
+			echo -e "\x1B[33mWarning: AD Authentication fail, trying again using SQL Authentication for ${2}"
+			sql_connect ${1} ${2} ${3} "SQL"
 		fi
 	fi
 	#set the orginal connect method to allow the next instance to select its own method
-	authentication_mode=$authentication_mode_x
 	#echo -e "\x1B[34m============================================================================================================\x1B[0m" | tee -a $pssdiag_log
 	return $sqlconnect	
 }

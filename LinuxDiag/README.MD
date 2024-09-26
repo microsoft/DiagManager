@@ -12,14 +12,14 @@ As you can imagine there are various pre-requisites to be able to perform this d
 ## Prerequisites
 You need to have the ability to execute these scripts with elevated permissions using the sudo command, as many data points require administrator-level access. You must be able to connect to the SQL Server instance using sysadmin credentials.
 
-For all deployments types, **mssql-tools18** is required. For more details, refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools).
+For all deployments types **sqlcmd** is required, its part of **mssql-tools** or **mssql-tools18**. For more details, refer to the [Microsoft documentation](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools).
 - for Docker and host, it must be installed on the host machine. 
 - For Kubernetes, it must be installed directly on the SQL container.
 
 	- **sqlcmd:**, use the following commands based on your distribution:
-		- For RHEL:`sudo yum install mssql-tools18`
-		- For Ubuntu:`sudo apt-get update && sudo apt-get install mssql-tools18` 
-		- For SUSE:`sudo zypper install mssql-tools18`
+		- For RHEL:`sudo yum install mssql-tools18` or `sudo yum install mssql-tools`
+		- For Ubuntu:`sudo apt install mssql-tools18` or `sudo apt install mssql-tools`
+		- For SUSE:`sudo zypper install mssql-tools18` or `sudo zypper install mssql-tools`
 
 Several Linux commands and utilities are necessary for data collection. **sysstat**, **iotop**, **lsof** and **bzip2**
 - For Docker and host, these tools must be installed on the host machine.
@@ -69,11 +69,13 @@ when running PSSDiag from host machine, PSSDiag will collect information from bo
 |---|--------------------------|------------------------------------------------------------------------------|
 | 1 |static_collect.scn        |Passive data collection approach,focusing solely on copying standard logs from|
 |   |                          |the OS and SQL without collecting any performance data. (Default)             |
-| 2 |sql_perf_light.scn        |Collects lightweight performance data from SQL and the operating system,      |
+| 2 |sql_perf_minimal.scn      |Collects lightweight performance data from SQL without extended events        |
 |   |                          |suitable for extended use.                                                    |
-| 3 |sql_perf_general.scn      |Collects general performance data from SQL and the OS, suitable for           |
+| 3 |sql_perf_light.scn        |Collects lightweight performance data from SQL and the operating system,      |
+|   |                          |suitable for extended use.                                                    |
+| 4 |sql_perf_general.scn      |Collects general performance data from SQL and the OS, suitable for           |
 |   |                          |15 to 20-minute collection periods, covering most scenarios.                  |
-| 4 |sql_perf_detailed.scn     |Collects detailed performance data from SQL and the OS;avoid using this method|
+| 5 |sql_perf_detailed.scn     |Collects detailed performance data from SQL and the OS;avoid using this method|
 |   |                          |for extended periods as it generates a large amount of data.                  |
 
 In the case when SQL container is deployed to Kubernetes, you can run PSSDiag from within the container collect information from the container using one of the following scenarios:
@@ -85,6 +87,8 @@ In the case when SQL container is deployed to Kubernetes, you can run PSSDiag fr
 | 1 |static_collect_kube.scn   |Passive data collection approach,focusing solely on copying standard logs    |
 |   |                          |from SQL without collecting any performance data.                            |
 |   |                          |(Default)                                                                    |
+| 2 |sql_perf_light_minimal.scn|Collects lightweight performance data from SQL without extended events       |
+|   |                          |suitable for extended use.                                                   |
 | 2 |sql_perf_light_kube.scn   |Collects lightweight performance data from SQL, suitable for extended use.   |
 | 3 |sql_perf_general_kube.scn |Collects general performance data from SQL, suitable for 15 to 20-minute     |
 |   |                          |collection periods, covering most scenarios.                                 |
@@ -160,46 +164,48 @@ PSSDiag has the following scenarios:
 
 you are Not limited by the default secarions, you can create your own based on your requirments and pass it as argument to pssdiag
 
-|**Area** |**Control Setting**       |**Accepted values**  |**Description**                   |**pre-req**             |**static_collect.scn**|**sql_perf_light.scn** |**sql_perf_general.scn** |**sql_perf_detailed.scn** |
-|---------|--------------------------|---------------------|----------------------------------|------------------------|----------------------|-----------------------|-------------------------|--------------------------|
-|SQL      |COLLECT_HOST_SQL_INSTANCE |YES/NO               |Collect from host SQL instance    |                        |YES                   |YES                    |YES                      |YES                       |
-|SQL      |COLLECT_CONTAINER         |NO/CONTAINERNAME/ALL |Collect from container instance   |                        |ALL                   |ALL                    |ALL                      |ALL                       |
-|SQL      |COLLECT_SQL_LOGS          |YES/NO               |SQL errorlogs                     |                        |YES                   |YES                    |YES                      |YES                       |
-|SQL      |COLLECT_SQL_LOGS          |YES/NO               |mssql.conf                        |                        |YES                   |YES                    |YES                      |YES                       |
-|SQL      |COLLECT_SQL_LOGS          |YES/NO               |Default extended events           |                        |YES                   |YES                    |YES                      |YES                       |
-|SQL      |COLLECT_SQL_LOGS          |YES/NO               |SQL Server configuration          |mssql-tool18 (sqlcmd)   |YES                   |YES                    |YES                      |YES                       |
-|SQL      |COLLECT_SQL_DUMPS         |YES/NO               |SQL dumps                         |                        |YES                   |YES                    |YES                      |YES                       |
-|SQL      |COLLECT_EXTENDED_EVENTS   |YES/NO               |Extended events                   |mssql-tool18 (sqlcmd)   |NA                    |YES                    |YES                      |YES                       |
-|SQL      |EXTENDED_EVENT_TEMPLATE   |YES/NO               |Extended events template used     |mssql-tool18 (sqlcmd)   |NA                    |pssdiag_xevent_light   |pssdiag_xevent_general   |pssdiag_xevent_detailed   |
-|SQL      |COLLECT_SQL_TRACE         |YES/NO               |SQL Trace                         |mssql-tool18 (sqlcmd)   |NA                    |NO                     |NO                       |NO                        |
-|SQL      |SQL_TRACE_TEMPLATE        |YES/NO               |SQL Trace template used           |                        |NA                    |pssdiag_trace_light    |pssdiag_trace_general    |pssdiag_trace_detailed    |
-|SQL      |COLLECT_PERFSTATS         |YES/NO               |waits, blocking                   |mssql-tool18 (sqlcmd)   |NO                    |YES                    |NO                       |NO                        |
-|SQL      |COLLECT_SQL_COUNTERS      |YES/NO               |sys.dm_os_performance_counters    |mssql-tool18 (sqlcmd)   |NO                    |NO                     |NO                       |YES                       |
-|SQL      |SQL_COUNTERS_INTERVAL     |YES/NO               |sys.dm_os_performance_counters    |                        |NA                    |15 seconds             |15 seconds               |15 seconds                |
-|SQL      |COLLECT_QUERY_STORE       |YES/NO               |Query store                       |mssql-tool18 (sqlcmd)   |NO                    |NO                     |NO                       |YES                       |
-|SQL      |COLLECT_SQL_MEM_STATS     |YES/NO               |Memory DMV                        |mssql-tool18 (sqlcmd)   |NO                    |NO                     |NO                       |YES                       |
-|SQL      |COLLECT_SQL_HA_LOGS       |YES/NO               |Alwayson configuration            |mssql-tool18 (sqlcmd)   |NO                    |NO                     |NO                       |YES                       |
-|SQL      |COLLECT_SQL_SEC_AD_LOGS   |YES/NO               |AD Related Settings, mssql.keytab |                        |NO                    |NO                     |NO                       |YES                       |
-|SQL      |CUSTOM_COLLECTOR          |YES/NO               |Custom collector                  |                        |NO                    |YES                    |YES                      |YES                       |
-|OS       |COLLECT_OS_CONFIG         |YES/NO               |Volume map                        |                        |YES                   |YES                    |YES                      |YES                       |
-|OS       |COLLECT_OS_CONFIG         |YES/NO               |Disk map                          |                        |YES                   |YES                    |YES                      |YES                       |
-|OS       |COLLECT_OS_CONFIG         |YES/NO               |Storage information               |                        |YES                   |YES                    |YES                      |YES                       |
-|OS       |COLLECT_OS_CONFIG         |YES/NO               |Running processes                 |                        |YES                   |YES                    |YES                      |YES                       |
-|OS       |COLLECT_OS_CONFIG         |YES/NO               |Drivers                           |                        |YES                   |YES                    |YES                      |YES                       |
-|OS       |COLLECT_OS_CONFIG         |YES/NO               |Netstat output                    |                        |YES                   |YES                    |YES                      |YES                       |
-|OS       |COLLECT_OS_CONFIG         |YES/NO               |Network Card information          |                        |YES                   |YES                    |YES                      |YES                       |
-|OS       |COLLECT_OS_CONFIG         |YES/NO               |Firewall configuration            |                        |YES                   |YES                    |YES                      |YES                       |
-|OS       |COLLECT_OS_COUNTERS       |YES/NO               |iostat/mpstat/pidstat/sar         |iotop, sysstat          |NA                    |YES                    |YES                      |YES                       |
-|OS       |OS_COUNTERS_INTERVAL      |YES/NO               |iostat/mpstat/pidstat/sar         |                        |NA                    |15 seconds             |15 seconds               |15 seconds                |
-|OS       |COLLECT_OS_LOGS           |YES/NO               |syslogs, kern.log                 |                        |NO                    |YES                    |YES                      |YES                       |
-|Kerberos |COLLECT_OS_SEC_AD_LOGS    |YES/NO               |krb5.conf                         |                        |YES                   |YES                    |YES                      |YES                       |
-|Kerberos |COLLECT_OS_SEC_AD_LOGS    |YES/NO               |sssd.conf                         |                        |YES                   |YES                    |YES                      |YES                       |
-|Kerberos |COLLECT_OS_SEC_AD_LOGS    |YES/NO               |krb5.keytab                       |                        |YES                   |YES                    |YES                      |YES                       |
-|Kerberos |COLLECT_OS_SEC_AD_LOGS    |YES/NO               |LDAP realms                       |                        |YES                   |YES                    |YES                      |YES                       |
-|Kerberos |COLLECT_OS_SEC_AD_LOGS    |YES/NO               |Default krb5 and sssd logs        |                        |YES                   |YES                    |YES                      |YES                       |
-|Kerberos |COLLECT_OS_SEC_AD_LOGS    |YES/NO               |LDAP realms                       |                        |YES                   |YES                    |YES                      |YES                       |
-|Cluster  |COLLECT_OS_HA_LOGS        |YES/NO               |Pacemakeer cluster logs           |pcs                     |YES                   |YES                    |YES                      |YES                       |
-|Cluster  |COLLECT_OS_HA_LOGS        |YES/NO               |Pacemaker resouces status         |pcs                     |YES                   |YES                    |YES                      |YES                       |
+|**Area** |**Control Setting**       |**Accepted values**  |**Description**                   |**pre-req**             |**static_collect.scn**|**sql_perf_minimal.scn** |**sql_perf_light.scn** |**sql_perf_general.scn** |**sql_perf_detailed.scn** |
+|---------|--------------------------|---------------------|----------------------------------|------------------------|----------------------|-------------------------|-----------------------|-------------------------|--------------------------|
+|SQL      |COLLECT_HOST_SQL_INSTANCE |YES/NO               |Collect from host SQL instance    |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|SQL      |COLLECT_CONTAINER         |NO/CONTAINERNAME/ALL |Collect from container instance   |                        |ALL                   |ALL                      |ALL                    |ALL                      |ALL                       |
+|SQL      |COLLECT_SQL_LOGS          |YES/NO               |SQL errorlogs, Agent              |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|SQL      |COLLECT_SQL_LOGS          |YES/NO               |PAL logs                          |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|SQL      |COLLECT_SQL_LOGS          |YES/NO               |mssql.conf                        |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|SQL      |COLLECT_SQL_LOGS          |YES/NO               |Default extended events           |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|SQL      |COLLECT_SQL_LOGS          |YES/NO               |SQL Server configuration          |mssql-tool* (sqlcmd)    |YES                   |YES                      |YES                    |YES                      |YES                       |
+|SQL      |COLLECT_SQL_DUMPS         |YES/NO               |SQL dumps                         |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|SQL      |COLLECT_EXTENDED_EVENTS   |YES/NO               |Extended events                   |mssql-tool* (sqlcmd)    |NA                    |YES                      |YES                    |YES                      |YES                       |
+|SQL      |EXTENDED_EVENT_TEMPLATE   |YES/NO               |Extended events template used     |mssql-tool* (sqlcmd)    |NA                    |NO                       |pssdiag_xevent_light   |pssdiag_xevent_general   |pssdiag_xevent_detailed   |
+|SQL      |COLLECT_SQL_TRACE         |YES/NO               |SQL Trace                         |mssql-tool* (sqlcmd)    |NA                    |NO                       |NO                     |NO                       |NO                        |
+|SQL      |SQL_TRACE_TEMPLATE        |YES/NO               |SQL Trace template used           |                        |NA                    |NO                       |NO                     |NO                       |NO                        |
+|SQL      |COLLECT_PERFSTATS         |YES/NO               |waits, blocking                   |mssql-tool* (sqlcmd)    |NO                    |YES                      |YES                    |NO                       |NO                        |
+|SQL      |COLLECT_PERFSTATS         |YES/NO               |PAL DMVs                          |mssql-tool* (sqlcmd)    |NO                    |YES                      |YES                    |NO                       |NO                        |
+|SQL      |COLLECT_SQL_COUNTERS      |YES/NO               |sys.dm_os_performance_counters    |mssql-tool* (sqlcmd)    |NO                    |NO                       |YES                    |YES                      |YES                       |
+|SQL      |SQL_COUNTERS_INTERVAL     |YES/NO               |sys.dm_os_performance_counters    |                        |NA                    |NA                       |15 seconds             |15 seconds               |15 seconds                |
+|SQL      |COLLECT_QUERY_STORE       |YES/NO               |Query store                       |mssql-tool* (sqlcmd)    |NO                    |NO                       |NO                     |NO                       |YES                       |
+|SQL      |COLLECT_SQL_MEM_STATS     |YES/NO               |Memory DMV                        |mssql-tool* (sqlcmd)    |YES                   |YES                      |YES                    |YES                      |YES                       |
+|SQL      |COLLECT_SQL_HA_LOGS       |YES/NO               |Alwayson configuration            |mssql-tool* (sqlcmd)    |NO                    |NO                       |NO                     |NO                       |YES                       |
+|SQL      |COLLECT_SQL_SEC_AD_LOGS   |YES/NO               |AD Related Settings, mssql.keytab |                        |NO                    |NO                       |NO                     |NO                       |YES                       |
+|SQL      |CUSTOM_COLLECTOR          |YES/NO               |Custom collector                  |                        |NO                    |YES                      |YES                    |YES                      |YES                       |
+|OS       |COLLECT_OS_CONFIG         |YES/NO               |Volume map                        |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|OS       |COLLECT_OS_CONFIG         |YES/NO               |Disk map                          |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|OS       |COLLECT_OS_CONFIG         |YES/NO               |Storage information               |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|OS       |COLLECT_OS_CONFIG         |YES/NO               |Running processes                 |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|OS       |COLLECT_OS_CONFIG         |YES/NO               |Drivers                           |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|OS       |COLLECT_OS_CONFIG         |YES/NO               |Netstat output                    |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|OS       |COLLECT_OS_CONFIG         |YES/NO               |Network Card information          |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|OS       |COLLECT_OS_CONFIG         |YES/NO               |Firewall configuration            |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|OS       |COLLECT_OS_COUNTERS       |YES/NO               |iostat/mpstat/pidstat/sar         |iotop, sysstat          |NA                    |YES                      |YES                    |YES                      |YES                       |
+|OS       |OS_COUNTERS_INTERVAL      |YES/NO               |iostat/mpstat/pidstat/sar         |                        |NA                    |15 seconds               |15 seconds             |15 seconds               |15 seconds                |
+|OS       |COLLECT_OS_LOGS           |YES/NO               |syslogs, kern.log                 |                        |NO                    |YES                      |YES                    |YES                      |YES                       |
+|Kerberos |COLLECT_OS_SEC_AD_LOGS    |YES/NO               |krb5.conf                         |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|Kerberos |COLLECT_OS_SEC_AD_LOGS    |YES/NO               |sssd.conf                         |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|Kerberos |COLLECT_OS_SEC_AD_LOGS    |YES/NO               |krb5.keytab                       |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|Kerberos |COLLECT_OS_SEC_AD_LOGS    |YES/NO               |LDAP realms                       |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|Kerberos |COLLECT_OS_SEC_AD_LOGS    |YES/NO               |Default krb5 and sssd logs        |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|Kerberos |COLLECT_OS_SEC_AD_LOGS    |YES/NO               |LDAP realms                       |                        |YES                   |YES                      |YES                    |YES                      |YES                       |
+|Cluster  |COLLECT_OS_HA_LOGS        |YES/NO               |Pacemakeer cluster logs           |pcs                     |YES                   |YES                      |YES                    |YES                      |YES                       |
+|Cluster  |COLLECT_OS_HA_LOGS        |YES/NO               |Pacemaker resouces status         |pcs                     |YES                   |YES                      |YES                    |YES                      |YES                       |
 
 
 **Important Note:** 

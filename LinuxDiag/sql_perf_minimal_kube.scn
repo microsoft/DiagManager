@@ -3,7 +3,7 @@
 ###############################
 
 # Collects Operating System Configuration, values are YES or NO
-COLLECT_OS_CONFIG=YES
+COLLECT_OS_CONFIG=NO
 
 # Collects OS level counters (iostat,mpstats,cpustat,etc). Specify YES or NO
 # Interval of collection is in seconds
@@ -11,16 +11,16 @@ COLLECT_OS_COUNTERS=NO
 OS_COUNTERS_INTERVAL=15
 
 # Collect OS log files
-COLLECT_OS_LOGS=YES
+COLLECT_OS_LOGS=NO
 
 # Collect setup related files
 #COLLECT_SETUP_LOGS=YES
 
 # Collect OS HA related OS files and logs
-COLLECT_OS_HA_LOGS=YES
+COLLECT_OS_HA_LOGS=NO
 
 # Collect OS security, encryption and AD files and logs
-COLLECT_OS_SEC_AD_LOGS=YES
+COLLECT_OS_SEC_AD_LOGS=NO
 
 #########################
 # SECTION FOR SQL SERVER
@@ -37,7 +37,7 @@ COLLECT_HOST_SQL_INSTANCE=YES
 
 # Used if SQL Server is running as a container
 # This value is either a specific Container Name (not ID)  or the value "ALL" which monitors all SQL containers
-COLLECT_CONTAINER=ALL
+COLLECT_CONTAINER=NO
 
 # Gets all SQL errorlogs, .xel files under the log folder ( system health etc). Specify YES or NO.
 COLLECT_SQL_LOGS=YES
