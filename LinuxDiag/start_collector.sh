@@ -553,7 +553,7 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" == "YES" ]];then
 		sqlconnect=$?
 		if [[ $sqlconnect -ne 1 ]]; then
 			echo -e "\x1B[31mTesting the connection to host instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-			echo -e "Please refer to the above lines for connectivity errors...\x1B[0m" | tee -a $pssdiag_log
+			echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
 		else
 			sql_collect_perfstats "${HOSTNAME}" "host_instance"
 			sql_collect_counters "${HOSTNAME}" "host_instance"
@@ -582,7 +582,7 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" == "YES" ]];then
 		sqlconnect=$?
 		if [[ $sqlconnect -ne 1 ]]; then
 			echo -e "\x1B[31mTesting the connection to instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-			echo -e "Please refer to the above lines for connectivity errors...\x1B[0m" | tee -a $pssdiag_log
+			echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
 		else
 			sql_collect_perfstats "${HOSTNAME}" "instance"
 			sql_collect_counters "${HOSTNAME}" "instance"
@@ -613,7 +613,7 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
         	sqlconnect=$?
 	        if [[ $sqlconnect -ne 1 ]]; then
         	        echo -e "\x1B[31mTesting the connection to container instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-					echo -e "Please refer to the above lines for connectivity errors...\x1B[0m" | tee -a $pssdiag_log
+					echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
 	        else
            	    sql_collect_perfstats "${dockername}" "container_instance"      
 				sql_collect_counters "${dockername}" "container_instance"
@@ -640,7 +640,7 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
         	        sqlconnect=$?
                 	if [[ $sqlconnect -ne 1 ]]; then
                         	echo -e "\x1B[31mTesting the connection to container instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-							echo -e "Please refer to the above lines for connectivity errors...\x1B[0m" | tee -a $pssdiag_log
+							echo -e "Please refer to the above lines for connectivity and authentication errors...\x1B[0m" | tee -a $pssdiag_log
 	                else
 						sql_collect_perfstats "${dockername}" "container_instance"
                 	    sql_collect_counters "${dockername}" "container_instance"

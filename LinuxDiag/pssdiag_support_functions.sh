@@ -288,7 +288,7 @@ sql_connect()
 			echo -e "\x1B[32mConnection was successful....\x1B[0m" | tee -a $pssdiag_log
 		else
 			#in case AD Authentication fails, try again using SQL Authentication for this particular instance 
-			echo -e "\x1B[33mWarning: AD Authentication fail, trying again using SQL Authentication for ${2}"
+			echo -e "\x1B[33mWarning: AD Authentication failed, refer to the above lines for errors, switching to SQL Authentication for ${2}"
 			sql_connect ${1} ${2} ${3} "SQL"
 		fi
 	fi

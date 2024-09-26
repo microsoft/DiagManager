@@ -172,7 +172,7 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" == "YES" ]];then
                 sqlconnect=$?
                 if [[ $sqlconnect -ne 1 ]]; then
         	        echo -e "\x1B[31mTesting the connection to host instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-			echo -e "Please refer to the above lines for connectivity errors...\x1B[0m" | tee -a $pssdiag_log
+			echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
                 else
                         sql_stop_xevent "${HOSTNAME}" "host_instance" 
                         sql_stop_trace "${HOSTNAME}" "host_instance" 
@@ -201,7 +201,7 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" == "YES" ]];then
                 sqlconnect=$?
                 if [[ $sqlconnect -ne 1 ]]; then
         	        echo -e "\x1B[31mTesting the connection to instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-			echo -e "Please refer to the above lines for connectivity errors...\x1B[0m" | tee -a $pssdiag_log
+			echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
                 else
                         sql_stop_xevent "${HOSTNAME}" "instance" 
                         sql_stop_trace "${HOSTNAME}" "instance" 
@@ -236,7 +236,7 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
                         sqlconnect=$?
                         if [[ $sqlconnect -ne 1 ]]; then
                                 echo -e "\x1B[31mTesting the connection to container instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-                                echo -e "Please refer to the above lines for connectivity errors...\x1B[0m" | tee -a $pssdiag_log
+                                echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
                         else
                                 sql_stop_xevent "${dockername}" "container_instance" 
                                 sql_stop_trace "${dockername}" "container_instance" 
@@ -265,7 +265,7 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
                                 sqlconnect=$?
                                 if [[ $sqlconnect -ne 1 ]]; then
                                         echo -e "\x1B[31mTesting the connection to container instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-                                        echo -e "Please refer to the above lines for connectivity errors...\x1B[0m" | tee -a $pssdiag_log
+                                        echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
                                 else
                                         sql_stop_xevent "${dockername}" "container_instance" 
                                         sql_stop_trace "${dockername}" "container_instance" 
