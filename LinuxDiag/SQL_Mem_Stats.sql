@@ -221,6 +221,15 @@ BEGIN TRY
   RAISERROR ('', 0, 1) WITH NOWAIT
 
 
+  PRINT '-- dm_os_sys_memory'
+  SELECT CONVERT (varchar(30), @runtime, 121) as runtime, * FROM sys.dm_os_sys_memory
+  RAISERROR ('', 0, 1) WITH NOWAIT
+
+  PRINT '-- dm_os_process_memory'
+  SELECT CONVERT (varchar(30), @runtime, 121) as runtime, * FROM sys.dm_os_process_memory
+  RAISERROR ('', 0, 1) WITH NOWAIT
+
+
   PRINT '-- dm_os_memory_clerks'
   SELECT CONVERT (varchar(30), @runtime, 121) as runtime, * FROM sys.dm_os_memory_clerks
   RAISERROR ('', 0, 1) WITH NOWAIT

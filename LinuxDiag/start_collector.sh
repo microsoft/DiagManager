@@ -15,7 +15,9 @@ sql_collect_perfstats()
                 #printf "%s\n" "$mypid" >> $outputdir/pssdiag_stoppids_sql_collectors.txt
 		sleep 5s
                 pgrep -P $mypid  >> $outputdir/pssdiag_stoppids_sql_collectors.txt
-                `$(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_DMV_Snapshots.sql" -o"$outputdir/${1}_${2}_SQL_DMV_Snapshots.out"` &
+
+				echo -e "$(date -u +"%T %D") Starting SQL Linux Stats script as a background job...." | tee -a $pssdiag_log
+                `$(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_Linux_Stats.sql" -o"$outputdir/${1}_${2}_SQL_Linux_Stats.out"` &
                 mypid=$!
                 #printf "%s\n" "$mypid" >> $outputdir/pssdiag_stoppids_sql_collectors.txt
 		sleep 5s
@@ -107,15 +109,15 @@ sql_collect_config()
         $(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_Configuration.sql" -o"$outputdir/${1}_${2}_SQL_Configuration_Startup.out"
 }
 
-sql_collect_pal_DMVs()
+sql_collect_linux_snapshot()
 {
-        echo -e "$(date -u +"%T %D") Collecting PAL DMVs Snapshot at Startup..." | tee -a $pssdiag_log
-        $(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_DMV_PAL_Snapshots.sql" -o"$outputdir/${1}_${2}_SQL_DMV_PAL_Snapshots_Startup.out"
+        echo -e "$(date -u +"%T %D") Collecting SQL Linux Snapshot at Startup..." | tee -a $pssdiag_log
+        $(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_Linux_Snapshot.sql" -o"$outputdir/${1}_${2}_SQL_Linux_Snapshot_Startup.out"
 }
 
 sql_collect_perfstats_snapshot()
 {
-        echo -e "$(date -u +"%T %D") Collecting Perf Stats Snapshot at Startup..." | tee -a $pssdiag_log
+        echo -e "$(date -u +"%T %D") Collecting SQL Perf Stats Snapshot at Startup..." | tee -a $pssdiag_log
         $(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME $CONN_AUTH_OPTIONS -C -i"SQL_Perf_Stats_Snapshot.sql" -o"$outputdir/${1}_${2}_SQL_Perf_Stats_Snapshot_Startup.out"
 }
 
@@ -546,7 +548,7 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" == "YES" ]];then
 			sql_collect_xevent "${HOSTNAME}" "host_instance"
 			sql_collect_trace "${HOSTNAME}" "host_instance"
 			sql_collect_config "${HOSTNAME}" "host_instance"
-			sql_collect_pal_DMVs "${HOSTNAME}" "host_instance"
+			sql_collect_linux_snapshot "${HOSTNAME}" "host_instance"
 			sql_collect_perfstats_snapshot "${HOSTNAME}" "host_instance"
 
 
@@ -575,7 +577,7 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" == "YES" ]];then
 			sql_collect_xevent "${HOSTNAME}" "instance"
 			sql_collect_trace "${HOSTNAME}" "instance"
 			sql_collect_config "${HOSTNAME}" "instance"
-			sql_collect_pal_DMVs "${HOSTNAME}" "instance"
+			sql_collect_linux_snapshot "${HOSTNAME}" "instance"
 			sql_collect_perfstats_snapshot "${HOSTNAME}" "instance"
 		fi
 	fi
@@ -606,7 +608,7 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
                 sql_collect_xevent "${dockername}" "container_instance"
 				sql_collect_trace "${dockername}" "container_instance"
 				sql_collect_config "${dockername}" "container_instance"
-				sql_collect_pal_DMVs "${dockername}" "container_instance"
+				sql_collect_linux_snapshot "${dockername}" "container_instance"
 				sql_collect_perfstats_snapshot "${dockername}" "container_instance"
 	        fi
 	# we finished processing the requested container
@@ -633,7 +635,7 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
                 	    sql_collect_xevent "${dockername}" "container_instance"
 						sql_collect_trace "${dockername}" "container_instance"
 						sql_collect_config "${dockername}" "container_instance"
-        	            sql_collect_pal_DMVs "${dockername}" "container_instance"
+        	            sql_collect_linux_snapshot "${dockername}" "container_instance"
 						sql_collect_perfstats_snapshot "${dockername}" "container_instance"
 	                fi
                 done;
