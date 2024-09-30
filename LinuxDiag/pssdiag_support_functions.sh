@@ -258,14 +258,14 @@ sql_connect()
 				SQL_SERVER_NAME="${HOSTNAME},${3}"
 			fi
 			#prompt for credentials for SQL authentication
-			read -r -p $'\e[1;34mEnter SQL UserName: \e[0m' sqluser
-			read -s -r -p $'\e[1;34mEnter User Password: \e[0m' pass
+			read -r -p $'\e[1;34mEnter SQL UserName: \e[0m' XsrX
+			read -s -r -p $'\e[1;34mEnter User Password: \e[0m' XssX
 			echo "" | tee -a $pssdiag_log
-			$(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME -U$sqluser -P$pass -C -Q"select @@version" 2>&1 >/dev/null
+			$(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME -U$XsrX -P$XssX -C -Q"select @@version" 2>&1 >/dev/null
 			if [[ $? -eq 0 ]]; then
 				sqlconnect=1
 				echo -e "\x1B[32mConnection was successful....\x1B[0m" | tee -a $pssdiag_log
-				CONN_AUTH_OPTIONS="-U$sqluser -P$pass"
+				CONN_AUTH_OPTIONS="-U$XsrX -P$XssX"
 				break
 			else
 				echo -e "\x1B[31mLogin Attempt failed - Attempt ${attempt_num} of ${MAX_ATTEMPTS}, Please try again\x1B[0m" | tee -a $pssdiag_log
