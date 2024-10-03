@@ -70,14 +70,6 @@ extends:
             SignatureFreshness: 'UpToDate'
             TreatStaleSignatureAs: 'Error'
 
-          
-
-        - task: AutoApplicability@1
-          inputs:
-            VerboseWriter: true
-            ExternalRelease: true
-            IsSoftware: true
-
 
         - task: CredScan@3
           
