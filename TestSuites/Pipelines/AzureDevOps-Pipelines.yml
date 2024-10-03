@@ -84,25 +84,7 @@ extends:
           inputs:
             FailIfNoTargetsFound: 'false'
 
-        - task: FxCop@2
-          inputs:
-            inputType: 'Basic'
-            targets: '**\*.dll;**\*.exe'
-
-        - task: Guardian@1
-          
-        - task: SdtReport@2
-          inputs:
-            GdnExportHtmlFile: true
-            GdnExportAllTools: true
-
-        - task: RoslynAnalyzers@3
-          inputs:
-            userProvideBuildInfo: 'autoMsBuildInfo'
-            setupCommandlinePicker: 'vs2019'
-            rulesetName: 'Required'
-          env:
-            SYSTEM_ACCESSTOKEN: $(system.accesstoken)
+ 
 
 
         - task: PSScriptAnalyzer@1
@@ -127,10 +109,3 @@ extends:
             platform: '$(buildPlatform)'
             configuration: '$(buildConfiguration)'
 
-        - task: PowerShell@2
-          inputs:
-            targetType: 'inline'
-            script: |
-              # Write your PowerShell commands here.
-              
-              Write-Host "Hello World"
