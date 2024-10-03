@@ -53,52 +53,11 @@ extends:
           inputs:
             restoreSolution: '$(solution)'
 
-
         - task: VSBuild@1
           inputs:
             solution: '$(solution)'
             platform: '$(buildPlatform)'
             configuration: '$(buildConfiguration)'
-
-
-        - task: AntiMalware@4
-          inputs:
-            InputType: 'Basic'
-            ScanType: 'CustomScan'
-            FileDirPath: '$(Build.StagingDirectory)'
-            TreatSignatureUpdateFailureAs: 'Warning'
-            SignatureFreshness: 'UpToDate'
-            TreatStaleSignatureAs: 'Error'
-
-
-        - task: CredScan@3
-          
-        - task: ComponentGovernanceComponentDetection@0
-          inputs:
-            scanType: 'Register'
-            verbosity: 'Verbose'
-            alertWarningLevel: 'High'
-
-
-        - task: CodeSign@1
-          inputs:
-            FailIfNoTargetsFound: 'false'
-
- 
-
-
-        - task: PSScriptAnalyzer@1
-          inputs:
-            Path: '$(Build.SourcesDirectory)'
-            Settings: 'required'
-            Recurse: true
-
-        - task: VulnerabilityAssessment@0
-
-        - task: PostAnalysis@2
-          inputs:
-            GdnBreakAllTools: true
-
 
         - task: ManifestGeneratorTask@0
           inputs:
