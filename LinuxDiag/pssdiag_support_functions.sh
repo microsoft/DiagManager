@@ -258,8 +258,8 @@ sql_connect()
 				SQL_SERVER_NAME="${HOSTNAME},${3}"
 			fi
 			#prompt for credentials for SQL authentication
-			read -r -p $'\e[1;34mEnter SQL UserName: \e[0m' XsrX
-			read -s -r -p $'\e[1;34mEnter User Password: \e[0m' XssX
+			read -r -p $'\e[1;34mEnter SQL U$er_N@me: \e[0m' XsrX
+			read -s -r -p $'\e[1;34mEnter P@$$w0rd: \e[0m' XssX
 			echo "" | tee -a $pssdiag_log
 			$(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME -U$XsrX -P$XssX -C -Q"select @@version" 2>&1 >/dev/null
 			if [[ $? -eq 0 ]]; then
