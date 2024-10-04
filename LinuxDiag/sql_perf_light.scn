@@ -7,14 +7,14 @@ COLLECT_OS_CONFIG=YES
 
 # Collects OS level counters (iostat,mpstats,cpustat,etc). Specify YES or NO
 # Interval of collection is in seconds
-COLLECT_OS_COUNTERS=NO
+COLLECT_OS_COUNTERS=YES
 OS_COUNTERS_INTERVAL=15
 
 # Collect OS log files
 COLLECT_OS_LOGS=YES
 
 # Collect setup related files
-#COLLECT_SETUP_LOGS=NO
+#COLLECT_SETUP_LOGS=YES
 
 # Collect OS HA related OS files and logs
 COLLECT_OS_HA_LOGS=YES
@@ -31,9 +31,9 @@ COLLECT_OS_SEC_AD_LOGS=YES
 # Do not change, this is set dynamically by PSSDiag 
 SQL_CONNECT_AUTH_MODE=SQL
 
-
 # Collect information about the SQL Server instance running on this local  host machine ( not as a container). Specify YES or NO.
 COLLECT_HOST_SQL_INSTANCE=YES
+
 
 # Used if SQL Server is running as a container
 # This value is either a specific Container Name (not ID)  or the value "ALL" which monitors all SQL containers
@@ -47,27 +47,27 @@ COLLECT_SQL_DUMPS=YES
 
 # Collects snapshots of sys.dm_os_performance_counters. Specify YES or NO
 # Interval is in seconds
-COLLECT_SQL_COUNTERS=NO
+COLLECT_SQL_COUNTERS=YES
 SQL_COUNTERS_INTERVAL=15
 
 # Collects SQL Server performance statistics , executing requests, snapshots of waitstats etc. Specify YES or NO
-COLLECT_PERFSTATS=NO
+COLLECT_PERFSTATS=YES
 
 # Specify YES or NO. 
-COLLECT_EXTENDED_EVENTS=NO
+COLLECT_EXTENDED_EVENTS=YES
 # Specify which template to use for Extended Events: pssdiag_xevent_general, pssdiag_xevent_detailed, pssdiag_xevent_light
-EXTENDED_EVENT_TEMPLATE=pssdiag_xevent_general
+EXTENDED_EVENT_TEMPLATE=pssdiag_xevent_light
 
 # Specify YES or NO. 
 COLLECT_SQL_TRACE=NO
 # Specify which template to use for SQL Trace: pssdiag_trace_general, pssdiag_trace_detailed, pssdiag_trace_light, pssdiag_trace_replication
-SQL_TRACE_TEMPLATE=pssdiag_trace_general
+SQL_TRACE_TEMPLATE=pssdiag_trace_light
 
 # Specify whether we need to extract QDS/Query Store information from this server
 COLLECT_QUERY_STORE=YES
 
 # Collects various memory related DMVS. Specify YES or NO.
-COLLECT_SQL_MEM_STATS=NO
+COLLECT_SQL_MEM_STATS=YES
 
 # Collects SQL related HA logs
 COLLECT_SQL_HA_LOGS=YES
@@ -75,8 +75,8 @@ COLLECT_SQL_HA_LOGS=YES
 # Collects SQL security, encryption and AD related settings and log
 COLLECT_SQL_SEC_AD_LOGS=YES
 
-# If you want any other custom collection, set this to YES and change the my_custom_collector.sql file to include your queries. only for sql_perf.scn based scenarios
-CUSTOM_COLLECTOR=NO
+# If you want any other custom collection, set this to YES and change the my_custom_collector.sql file to include your queries.
+CUSTOM_COLLECTOR=YES
 
 ##########################
 # SECTION FOR SQL AGENT
