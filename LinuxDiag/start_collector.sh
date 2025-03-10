@@ -309,7 +309,7 @@ if [[ -z "$authentication_mode" ]] && [[ "$is_instance_inside_container_active" 
 	echo    "+---+-----------------------+------------------------------------------------------------------------------+"
 	echo    "|No |Authentication Mode    |Description                                                                   |"
 	echo    "+---+-----------------------+------------------------------------------------------------------------------+"
-	echo -e "| 1 |SQL                    |Use SQL Athentication. \x1B[34m(Default)\x1B[0m                                              |"
+	echo -e "| 1 |SQL                    |Use SQL Authentication. \x1B[34m(Default)\x1B[0m                                              |"
 	echo    "+---+-----------------------+------------------------------------------------------------------------------+"
 	echo    "| 2 |AD                     |Use AD Authentication                                                         |"
 	echo    "+---+-----------------------+------------------------------------------------------------------------------+"
@@ -480,7 +480,7 @@ pssdiag_log="$outputdir/pssdiag.log"
 mkdir -p $working_dir/output
 chmod a+w $working_dir/output
 cp pssdiag*.conf $working_dir/output
-echo -e "\x1B[2;34m============================================================================================================\x1B[0m" >> $pssdiag_log
+echo -e "\x1B[2;34m============================================================================================================\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 echo -e "$(date -u +"%T %D") Executing PSSDiag on ${HOSTNAME}"  >> $pssdiag_log
 echo -e "$(date -u +"%T %D") Scenario file used ${scenario}" >> $pssdiag_log
 echo -e "$(date -u +"%T %D") Authentication mode used ${authentication_mode}" >> $pssdiag_log
@@ -499,7 +499,7 @@ echo "$(date -u +"%T %D") is using podamn without docker engine? ${is_podman_sql
 echo "$(date -u +"%T %D") Are we running inside container? ${is_instance_inside_container_active}" >> $pssdiag_log
 echo "$(date -u +"%T %D") PSSDiag version? ${script_version}" >> $pssdiag_log
 echo "$(date -u +"%T %D") BASH_VERSION? ${BASH_VERSION}" >> $pssdiag_log
-echo -e "\x1B[2;34m============================================= Starting PSSDiag =============================================\x1B[0m" | tee -a $pssdiag_log
+echo -e "\x1B[2;34m============================================= Starting PSSDiag =============================================\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 
 
 # if we just need a snapshot of logs, we do not need to invoke background collectors
@@ -548,11 +548,11 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" == "YES" ]];then
 		SQL_LISTEN_PORT=$(get_sql_listen_port "host_instance")
 		#SQL_SERVER_NAME="$HOSTNAME,$SQL_LISTEN_PORT"
 		echo -e "" | tee -a $pssdiag_log
-		echo -e "\x1B[7mCollecting startup information from host instance $HOSTNAME and port ${SQL_LISTEN_PORT}...\x1B[0m" | tee -a $pssdiag_log
+		echo -e "\x1B[7mCollecting startup information from host instance $HOSTNAME and port ${SQL_LISTEN_PORT}...\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 		sql_connect "host_instance" "${HOSTNAME}" "${SQL_LISTEN_PORT}" "${authentication_mode}"
 		sqlconnect=$?
 		if [[ $sqlconnect -ne 1 ]]; then
-			echo -e "\x1B[31mTesting the connection to host instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
+			echo -e "\x1B[31mTesting the connection to host instance using $authentication_mode authentication failed." | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 			echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
 		else
 			sql_collect_perfstats "${HOSTNAME}" "host_instance"
@@ -577,12 +577,12 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" == "YES" ]];then
 	if [ "${is_instance_inside_container_active}" == "YES" ]; then
 	    SQL_SERVER_NAME="$HOSTNAME,1433"
 		echo -e "" | tee -a $pssdiag_log
-		echo -e "\x1B[7mCollecting startup information from instance $HOSTNAME and port 1433...\x1B[0m" | tee -a $pssdiag_log
+		echo -e "\x1B[7mCollecting startup information from instance $HOSTNAME and port 1433...\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 		sql_connect "instance" "${HOSTNAME}" "1433" "${authentication_mode}"
 		sqlconnect=$?
 		if [[ $sqlconnect -ne 1 ]]; then
-			echo -e "\x1B[31mTesting the connection to instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-			echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
+			echo -e "\x1B[31mTesting the connection to instance using $authentication_mode authentication failed." | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
+			echo -e "Please refer to the above lines for errors...\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 		else
 			sql_collect_perfstats "${HOSTNAME}" "instance"
 			sql_collect_counters "${HOSTNAME}" "instance"
@@ -608,12 +608,12 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
             get_docker_mapped_port "${dockerid}"
  	        #SQL_SERVER_NAME="$dockername,$dockerport"
 			echo -e "" | tee -a $pssdiag_log
-			echo -e "\x1B[7mCollecting startup information from container instance ${dockername} and port ${dockerport}\x1B[0m" | tee -a $pssdiag_log
+			echo -e "\x1B[7mCollecting startup information from container instance ${dockername} and port ${dockerport}\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 	        sql_connect "container_instance" "${dockername}" "${dockerport}" "${authentication_mode}"
         	sqlconnect=$?
 	        if [[ $sqlconnect -ne 1 ]]; then
-        	        echo -e "\x1B[31mTesting the connection to container instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-					echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
+        	        echo -e "\x1B[31mTesting the connection to container instance using $authentication_mode authentication failed." | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
+					echo -e "Please refer to the above lines for errors...\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 	        else
            	    sql_collect_perfstats "${dockername}" "container_instance"      
 				sql_collect_counters "${dockername}" "container_instance"
@@ -635,12 +635,12 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
                 	get_docker_mapped_port "${dockerid}"
 	                #SQL_SERVER_NAME="$dockername,$dockerport"
 					echo -e ""  | tee -a $pssdiag_log
-					echo -e "\x1B[7mCollecting startup information from container_instance ${dockername} and port ${dockerport}\x1B[0m" | tee -a $pssdiag_log
+					echo -e "\x1B[7mCollecting startup information from container_instance ${dockername} and port ${dockerport}\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 	                sql_connect "container_instance" "${dockername}" "${dockerport}" "${authentication_mode}"
         	        sqlconnect=$?
                 	if [[ $sqlconnect -ne 1 ]]; then
-                        	echo -e "\x1B[31mTesting the connection to container instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-							echo -e "Please refer to the above lines for connectivity and authentication errors...\x1B[0m" | tee -a $pssdiag_log
+                        	echo -e "\x1B[31mTesting the connection to container instance using $authentication_mode authentication failed." | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
+							echo -e "Please refer to the above lines for connectivity and authentication errors...\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 	                else
 						sql_collect_perfstats "${dockername}" "container_instance"
                 	    sql_collect_counters "${dockername}" "container_instance"
@@ -667,16 +667,16 @@ printf "%s\n" "$anchorpid" >> $outputdir/pssdiag_stoppids_os_collectors.txt
 pgrep -P $anchorpid  >> $outputdir/pssdiag_stoppids_os_collectors.txt
 # anchor
 
-echo -e "\x1B[2;34m==============================  Startup Completd, Data Collection in Progress ==============================\x1B[0m" | tee -a $pssdiag_log
+echo -e "\x1B[2;34m==============================  Startup Completd, Data Collection in Progress ==============================\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 echo -e "" | tee -a $pssdiag_log
-echo -e "\033[0;33m############################################################################################################\033[0;31m" | tee -a $pssdiag_log
-echo -e "\033[0;33m#                 Please reproduce the problem now and then stop data collection afterwards                #\033[0;31m" | tee -a $pssdiag_log
-echo -e "\033[0;33m############################################################################################################\033[0;31m" | tee -a $pssdiag_log
+echo -e "\033[0;33m############################################################################################################\033[0;31m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
+echo -e "\033[0;33m#                 Please reproduce the problem now and then stop data collection afterwards                #\033[0;31m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
+echo -e "\033[0;33m############################################################################################################\033[0;31m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 echo -e "" | tee -a $pssdiag_log
 if [ "${is_instance_inside_container_active}" == "NO" ]; then
-	echo -e "\033[1;33m    Performance collectors have started in the background. to stop them run 'sudo ./stop_collector.sh'...   \033[0m" | tee -a $pssdiag_log
+	echo -e "\033[1;33m    Performance collectors have started in the background. to stop them run 'sudo ./stop_collector.sh'...   \033[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 else
-	echo -e "\033[1;33m    Performance collectors have started in the background. to stop them run './stop_collector.sh'...   \033[0m" | tee -a $pssdiag_log
+	echo -e "\033[1;33m    Performance collectors have started in the background. to stop them run './stop_collector.sh'...   \033[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 fi
 echo -e "" | tee -a $pssdiag_log
 exit 0

@@ -88,7 +88,7 @@ pssdiag_inside_container_get_instance_status
 
 #Checks: make sure we have a valid authentication entered, we are running with system that has systemd
 if [[ ! -z "$authentication_mode" ]] && [[ $is_instance_inside_container_active == "NO" ]] && [[ "$authentication_mode" != "SQL" ]] && [[ "$authentication_mode" != "AD" ]] && [[ "$authentication_mode" != "NONE" ]]; then
-	echo -e "\x1B[33mwarning: wrong authentication mode (first argument passed to PSSDiag)\x1B[0m"
+	echo -e "\x1B[33mwarning: Invalid authentication mode (first argument passed to PSSDiag)\x1B[0m"
 	echo "" 
 	echo "Valid options are:" 
 	echo "  SQL"
@@ -101,7 +101,7 @@ fi
 
 #Checks: make sure we have a valid authentication entered, we are running with system that has no systemd
 if [[ ! -z "$authentication_mode" ]] && [[ $is_instance_inside_container_active == "YES" ]] && [[ "$authentication_mode" != "SQL" ]]; then
-	echo -e "\x1B[33mwarning: wrong authentication mode (first argument passed to PSSDiag)\x1B[0m"
+	echo -e "\x1B[33mwarning: Invalid authentication mode (first argument passed to PSSDiag)\x1B[0m"
 	echo "" 
 	echo "Valid options are:" 
 	echo "  SQL"
@@ -117,7 +117,7 @@ NOW=`date +"%m_%d_%Y_%H_%M"`
 # kills all the PID's stored in the file
 # after all work is done, remove the PID files
 
-echo -e "\x1B[2;34m============================================= Stopping PSSDiag =============================================\x1B[0m" | tee -a $pssdiag_log
+echo -e "\x1B[2;34m============================================= Stopping PSSDiag =============================================\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 
 if [[ -f $outputdir/pssdiag_stoppids_sql_collectors.txt ]]; then
 	echo "$(date -u +"%T %D") Starting to stop background processes that were collecting sql data..." | tee -a $pssdiag_log
@@ -167,12 +167,12 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" == "YES" ]];then
                 SQL_LISTEN_PORT=$(get_sql_listen_port "host_instance")
                 SQL_SERVER_NAME="$HOSTNAME,$SQL_LISTEN_PORT"
                 echo -e "" | tee -a $pssdiag_log
-                echo -e "\x1B[7mCollecting information from host instance $HOSTNAME and port $SQL_LISTEN_PORT...\x1B[0m" | tee -a $pssdiag_log
+                echo -e "\x1B[7mCollecting information from host instance $HOSTNAME and port $SQL_LISTEN_PORT...\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
                 sql_connect "host_instance" "${HOSTNAME}" "${SQL_LISTEN_PORT}" "${authentication_mode}"
                 sqlconnect=$?
                 if [[ $sqlconnect -ne 1 ]]; then
-        	        echo -e "\x1B[31mTesting the connection to host instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-			echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
+        	        echo -e "\x1B[31mTesting the connection to host instance using $authentication_mode authentication failed." | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
+			echo -e "Please refer to the above lines for errors...\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
                 else
                         sql_stop_xevent "${HOSTNAME}" "host_instance" 
                         sql_stop_trace "${HOSTNAME}" "host_instance" 
@@ -196,12 +196,12 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" == "YES" ]];then
 	if [ "${is_instance_inside_container_active}" == "YES" ]; then
                 SQL_SERVER_NAME="$HOSTNAME,1433"
                 echo -e "" | tee -a $pssdiag_log
-                echo -e "\x1B[7mCollecting information from instance $HOSTNAME and port 1433...\x1B[0m" | tee -a $pssdiag_log
+                echo -e "\x1B[7mCollecting information from instance $HOSTNAME and port 1433...\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
                 sql_connect "instance" "${HOSTNAME}" "1433" "${authentication_mode}"
                 sqlconnect=$?
                 if [[ $sqlconnect -ne 1 ]]; then
-        	        echo -e "\x1B[31mTesting the connection to instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-			echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
+        	        echo -e "\x1B[31mTesting the connection to instance using $authentication_mode authentication failed." | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
+			echo -e "Please refer to the above lines for errors...\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
                 else
                         sql_stop_xevent "${HOSTNAME}" "instance" 
                         sql_stop_trace "${HOSTNAME}" "instance" 
@@ -231,12 +231,12 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
                         #SQL_SERVER_NAME="$HOSTNAME,$dockerport"    
                         SQL_SERVER_NAME="$dockername,$dockerport"
                         echo -e "" | tee -a $pssdiag_log
-                        echo -e "\x1B[7mCollecting information from container instance ${dockername} and port ${dockerport}\x1B[0m" | tee -a $pssdiag_log
+                        echo -e "\x1B[7mCollecting information from container instance ${dockername} and port ${dockerport}\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
                         sql_connect "container_instance" "${dockername}" "${dockerport}" "${authentication_mode}"
                         sqlconnect=$?
                         if [[ $sqlconnect -ne 1 ]]; then
-                                echo -e "\x1B[31mTesting the connection to container instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
-                                echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
+                                echo -e "\x1B[31mTesting the connection to container instance using $authentication_mode authentication failed." | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
+                                echo -e "Please refer to the above lines for errors...\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
                         else
                                 sql_stop_xevent "${dockername}" "container_instance" 
                                 sql_stop_trace "${dockername}" "container_instance" 
@@ -260,11 +260,11 @@ if [[ "$COLLECT_CONTAINER" != "NO" ]]; then
                                 get_docker_mapped_port "${dockerid}"
                                 SQL_SERVER_NAME="$dockername,$dockerport"
                                 echo -e "" | tee -a $pssdiag_log
-                                echo -e "\x1B[7mCollecting information from container instance ${dockername} and port ${dockerport}\x1B[0m" | tee -a $pssdiag_log
+                                echo -e "\x1B[7mCollecting information from container instance ${dockername} and port ${dockerport}\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
                                 sql_connect "container_instance" "${dockername}" "${dockerport}" "${authentication_mode}"
                                 sqlconnect=$?
                                 if [[ $sqlconnect -ne 1 ]]; then
-                                        echo -e "\x1B[31mTesting the connection to container instance using $authentication_mode authentication failed." | tee -a $pssdiag_log
+                                        echo -e "\x1B[31mTesting the connection to container instance using $authentication_mode authentication failed." | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
                                         echo -e "Please refer to the above lines for errors...\x1B[0m" | tee -a $pssdiag_log
                                 else
                                         sql_stop_xevent "${dockername}" "container_instance" 
@@ -285,7 +285,7 @@ fi
 
 echo -e "" | tee -a $pssdiag_log
 
-echo -e "\x1B[2;34m======================================== Collecting Static Logs ============================================\x1B[0m" | tee -a $pssdiag_log
+echo -e "\x1B[2;34m======================================== Collecting Static Logs ============================================\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 
 #collect basic machine configuration
 if [[ $COLLECT_OS_CONFIG == "YES" ]]; then
@@ -321,10 +321,10 @@ if [[ "$COLLECT_SQL_SEC_AD_LOGS" == "YES" ]]; then
 	./collect_sql_ad_logs.sh
 fi
 
-echo -e "\x1B[2;34m=======================================  Creating Compressed Archive =======================================\x1B[0m" | tee -a $pssdiag_log
+echo -e "\x1B[2;34m=======================================  Creating Compressed Archive =======================================\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 #zip up output directory
-tar -zcf "output_${HOSTNAME}_${NOW}.tar.bz2" output
+tar -cjf "output_${HOSTNAME}_${NOW}.tar.bz2" output
 echo -e "***Data collected is in the file output_${HOSTNAME}_${NOW}.tar.bz2 ***" | tee -a $pssdiag_log
-echo -e "\x1B[2;34m=================================================== Done ===================================================\x1B[0m" | tee -a $pssdiag_log
+echo -e "\x1B[2;34m=================================================== Done ===================================================\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 
 

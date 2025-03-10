@@ -80,7 +80,7 @@ else
     if [ -e "/etc/krb5.conf" ]; then
         DEFAULT_LOG=$(get_conf_optionx '/etc/krb5.conf' 'logging' 'default' 'FILE:/var/log/krb5/krb5kdc.log') | cut -d ":" -f2 | cut -d "=" -f2
         KDC_LOG=$(get_conf_optionx '/etc/krb5.conf' 'logging' 'kdc' 'FILE:/var/log/krb5/krb5kdc.log') | cut -d ":" -f2 | cut -d "=" -f2
-        ADMIN_SERVER_LOG=$(get_conf_optionx '/etc/krb5.conf' 'logging' 'admin_server ' 'FILE:/var/log/krb5/krb5kdc.log') | cut -d ":" -f2 | cut -d "=" -f2
+        ADMIN_SERVER_LOG=$(get_conf_optionx '/etc/krb5.conf' 'logging' 'admin_server' 'FILE:/var/log/krb5/krb5kdc.log') | cut -d ":" -f2 | cut -d "=" -f2
     fi
 
     sh -c 'tar -cjf "$0/$3_os_krb5_$1.tar.bz2" /var/lib/sss/pubconf/krb5.include.d/* "${KRB5_TRACE}" "@{DEFAULT_LOG}" "${KDC_LOG}" "${ADMIN_SERVER_LOG}" --ignore-failed-read --absolute-names 2>/dev/null'  "$outputdir" "$NOW" "$SYSLOGPATH" "$HOSTNAME"

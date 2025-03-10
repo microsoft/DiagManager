@@ -535,7 +535,7 @@ BEGIN
 
 		--import in SQLNexus	
 		print '-- top 10 CPU by query_hash --'
-		select getdate() as runtime, *  --into tbl_QueryHashByCPU
+		select /*getdate() as runtime,*/ *  --into tbl_QueryHashByCPU
 		from
 		(
 		SELECT TOP 10 query_hash, COUNT (distinct query_plan_hash) as 'distinct query_plan_hash count',
@@ -560,7 +560,7 @@ BEGIN
 
 		--import in SQLNexus
 		print '-- top 10 logical reads by query_hash --'
-		select getdate() as runtime, *  --into tbl_QueryHashByLogicalReads
+		select /*getdate() as runtime,*/ *  --into tbl_QueryHashByLogicalReads
 		from
 		(
 		SELECT TOP 10 query_hash, 
@@ -583,7 +583,7 @@ BEGIN
 
 		--import in SQLNexus
 		print '-- top 10 elapsed time by query_hash --'
-		select getdate() as runtime, * -- into tbl_QueryHashByElapsedTime
+		select /*getdate() as runtime,*/ * -- into tbl_QueryHashByElapsedTime
 		from
 		(
 		SELECT TOP 10 query_hash, 
@@ -606,7 +606,7 @@ BEGIN
 
 		--import in SQLNexus
 		print '-- top 10 CPU by query_plan_hash and query_hash --'
-		SELECT TOP 10 getdate() as runtime, query_plan_hash, query_hash, 
+		SELECT TOP 10 /*getdate() as runtime,*/ query_plan_hash, query_hash, 
 		COUNT (distinct query_plan_hash) as 'distinct query_plan_hash count',
 		sum(execution_count) as 'execution_count', 
 			sum(total_worker_time) as 'total_worker_time',
@@ -626,7 +626,7 @@ BEGIN
 
 		--import in SQLNexus
 		print '-- top 10 logical reads by query_plan_hash and query_hash --'
-		SELECT TOP 10 getdate() as runtime, query_plan_hash, query_hash, sum(execution_count) as 'execution_count',  
+		SELECT TOP 10 /*getdate() as runtime,*/ query_plan_hash, query_hash, sum(execution_count) as 'execution_count',  
 			sum(total_worker_time) as 'total_worker_time',
 			SUM(total_elapsed_time) as 'total_elapsed_time',
 			SUM (total_logical_reads) as 'total_logical_reads',
@@ -643,7 +643,7 @@ BEGIN
 
 		--import in SQLNexus
 		print '-- top 10 elapsed time  by query_plan_hash and query_hash --'
-		SELECT TOP 10 getdate() as runtime, query_plan_hash, query_hash, sum(execution_count) as 'execution_count', 
+		SELECT TOP 10 /*getdate() as runtime,*/ query_plan_hash, query_hash, sum(execution_count) as 'execution_count', 
 			sum(total_worker_time) as 'total_worker_time',
 			SUM(total_elapsed_time) as 'total_elapsed_time',
 			SUM (total_logical_reads) as 'total_logical_reads',
