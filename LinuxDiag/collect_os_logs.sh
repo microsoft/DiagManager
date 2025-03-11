@@ -29,15 +29,15 @@ if (echo "$(readlink /sbin/init)" | grep systemd >/dev/null 2>&1); then
 	# Tar command zips all log files specified, to add any other log files add to end of the command.
 	case $linuxdistro in
 	"ubuntu" | "debian")
-		sh -c 'tar -cjf "$0/$3_os_syslogs_$1.tar.bz2" $2/syslog* $2/kern* $2/auth*.* $2/dpkg* --ignore-failed-read --absolute-names 2>/dev/null' "$outputdir" "$NOW" "$SYSLOGPATH" "$HOSTNAME"
+		sh -c 'tar -cjf "$0/$3_os_syslogs_$1.tar.bz2" $2/syslog* $2/sysstat/* $2/kern* $2/auth*.* $2/dpkg* --ignore-failed-read --absolute-names 2>/dev/null' "$outputdir" "$NOW" "$SYSLOGPATH" "$HOSTNAME"
 		;;
 	
 	"rhel" | "centos")
-		sh -c 'tar -cjf "$0/$3_os_syslogs_$1.tar.bz2" $2/message* $2/cron* $2/secure* $2/kdump* $2/boot.log $2/yum* $2/dnf* --ignore-failed-read --absolute-names 2>/dev/null' "$outputdir" "$NOW" "$SYSLOGPATH" "$HOSTNAME"
+		sh -c 'tar -cjf "$0/$3_os_syslogs_$1.tar.bz2" $2/message* $2/sa/* $2/cron* $2/secure* $2/kdump* $2/boot.log $2/yum* $2/dnf* --ignore-failed-read --absolute-names 2>/dev/null' "$outputdir" "$NOW" "$SYSLOGPATH" "$HOSTNAME"
 		;;
 
 	"sles" | "suse" )
-		sh -c 'tar -cjf "$0/$3_os_syslogs_$1.tar.bz2" $2/message* $2/cron* $2/secure* $2/kdump* $2/warn* $2/boot.log $2/zypper* --ignore-failed-read --absolute-names 2>/dev/null' "$outputdir" "$NOW" "$SYSLOGPATH" "$HOSTNAME"
+		sh -c 'tar -cjf "$0/$3_os_syslogs_$1.tar.bz2" $2/message* $2/sa/* $2/cron* $2/secure* $2/kdump* $2/warn* $2/boot.log $2/zypper* --ignore-failed-read --absolute-names 2>/dev/null' "$outputdir" "$NOW" "$SYSLOGPATH" "$HOSTNAME"
 		;;
 	*) ;;
 

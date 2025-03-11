@@ -16,7 +16,7 @@ dockername=$2
 docker_has_mssqlconf=$(docker exec --user root ${dockername} sh -c "(ls /var/opt/mssql/mssql.conf >> /dev/null 2>&1 && echo YES) || echo NO")
 
 #Collecting errorlog
-echo -e "$(date -u +"%T %D") Collecting errorlog system_health trc logs : $dockername..." | tee -a $pssdiag_log
+echo -e "$(date -u +"%T %D") Collecting errorlog system_health alwayson_health trc logs : $dockername..." | tee -a $pssdiag_log
 if [[ "${docker_has_mssqlconf}" == "YES" ]]; then
 	SQL_ERRORLOG=$(get_docker_conf_optionx '/var/opt/mssql/mssql.conf' 'filelocation' 'errorlogfile' '/var/opt/mssql/log/errorlog' $dockername)
 	SQL_LOG_DIR=$(dirname $SQL_ERRORLOG)
@@ -25,10 +25,11 @@ else
 	SQL_LOG_DIR=$(dirname $SQL_ERRORLOG)
 fi
 
+
 if hash bzip2 2>/dev/null; then
-	docker exec $dockerid sh -c "cd ${SQL_LOG_DIR} && tar -cf - errorlog* system_health*.xel log*.trc" | bzip2 > $outputdir/${dockername}_container_instance_sql_logs.bz2
+	docker exec $dockerid sh -c "cd ${SQL_LOG_DIR} && tar -cf - errorlog* *_health*.xel HkEngineEventFile*.xel log*.trc" | bzip2 > $outputdir/${dockername}_container_instance_sql_logs.bz2
 else
-	docker exec $dockerid sh -c "cd ${SQL_LOG_DIR} && tar -cf - errorlog* system_health*.xel log*.trc" | $outputdir/${dockername}_container_instance_sql_logs.tar
+	docker exec $dockerid sh -c "cd ${SQL_LOG_DIR} && tar -cf - errorlog* *_health*.xel HkEngineEventFile*.xel log*.trc" | $outputdir/${dockername}_container_instance_sql_logs.tar
 fi
 
 #Collecting sqlagents logs
@@ -76,6 +77,8 @@ fi
 
 #Script is starting
 echo -e "$(date -u +"%T %D") Starting sql logs collection..." | tee -a $pssdiag_log
+
+NOW=`date +"%m_%d_%Y"`					  
 
 if [[ -d "$1" ]] ; then
 	outputdir="$1"
@@ -129,7 +132,7 @@ fi
 if [[ "$COLLECT_HOST_SQL_INSTANCE" = "YES" ]]; then
 	#Collecting errorlog* system_health*.xel log*.trc
 	get_host_instance_status
-	#only check if its installed, if its installed then regradlesss if its active or note we need to collect the logs 
+	#only check if its installed, if its installed then regradlesss if its active or not we need to collect the logs 
 	if [ "${is_host_instance_service_installed}" == "YES" ]; then
 		if [ -e "/var/opt/mssql/mssql.conf" ]; then
 			SQL_ERRORLOG=$(get_conf_optionx '/var/opt/mssql/mssql.conf' 'filelocation' 'errorlogfile' '/var/opt/mssql/log/errorlog')
@@ -140,14 +143,15 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" = "YES" ]]; then
 		fi
 
 		if [ -d "$SQL_LOG_DIR" ]; then
-			echo -e "$(date -u +"%T %D") Collecting errorlog system_health trc from host instance : ${HOSTNAME}..." | tee -a $pssdiag_log
+			echo -e "$(date -u +"%T %D") Collecting errorlog system_health alwayson_health trc from host instance : ${HOSTNAME}..." | tee -a $pssdiag_log
+#			sh -c 'tar -cjf "$0/$3_host_instance_sql_logs_$1.tar.bz2" $2/errorlog* $2/system_health*.xel $2/alwayson_health*.xel*.xel $2/log*.trc --ignore-failed-read --absolute-names 2>/dev/null' "$outputdir" "$NOW" "$SQL_LOG_DIR" "$HOSTNAME"			
 			if hash bzip2 2>/dev/null; then
 				current_dir="$PWD"
-				sh -c "cd ${SQL_LOG_DIR} && tar -cf - errorlog* system_health*.xel log*.trc" | bzip2 > $outputdir/${HOSTNAME}_host_instance_sql_logs.bz2
+				sh -c "cd ${SQL_LOG_DIR} && tar -cf - errorlog* *_health*.xel HkEngineEventFile*.xel log*.trc " | bzip2 > $outputdir/${HOSTNAME}_host_instance_sql_logs.bz2
 				cd ${current_dir}
 			else
 				current_dir="$PWD"
-				sh -c "cd ${SQL_LOG_DIR} && tar -cf - errorlog* system_health*.xel log*.trc" | $outputdir/${HOSTNAME}_host_instance_sql_logs.tar
+				sh -c "cd ${SQL_LOG_DIR} && tar -cf - errorlog* *_health*.xel HkEngineEventFile*.xel log*.trc " | $outputdir/${HOSTNAME}_host_instance_sql_logs.tar
 				cd ${current_dir}
 			fi
 		fi
@@ -162,9 +166,10 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" = "YES" ]]; then
 		fi
 		if [ -d "$SQL_AGENTLOG_DIR" ]; then
 			echo -e "$(date -u +"%T %D") Collecting sqlagent logs from from host instance : ${HOSTNAME}..." | tee -a $pssdiag_log
+#			sh -c 'tar -cjf "$0/$3_host_instance_sqlagent_logs_$1.tar.bz2" $2/sqlagent* --ignore-failed-read --absolute-names 2>/dev/null' "$outputdir" "$NOW" "$SQL_AGENTLOG_DIR" "$HOSTNAME"
 			if hash bzip2 2>/dev/null; then
 				current_dir="$PWD"
-				sh -c "cd ${SQL_AGENTLOG_DIR} && tar -cf - sqlagent*" | bzip2 > $outputdir/${HOSTNAME}_host_instance_sqlagnet_logs.bz2
+				sh -c "cd ${SQL_AGENTLOG_DIR} && tar -cf - sqlagent*" | bzip2 > $outputdir/${HOSTNAME}_host_instance_sqlagent_logs.bz2
 				cd ${current_dir}
 			else
 				current_dir="$PWD"
@@ -180,6 +185,7 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" = "YES" ]]; then
 			PAL_LOG_DIR=$(dirname $PAL_LOG)
 			PAL_LOG=$(basename $PAL_LOG)
 			if [ -d "$PAL_LOG_DIR" ]; then
+#			sh -c 'tar -cjf "$0/$3_host_instance_pal_logs_$1.tar.bz2" $2/$4* --ignore-failed-read --absolute-names 2>/dev/null' "$outputdir" "$NOW" "$PAL_LOG_DIR" "$HOSTNAME" "$PAL_LOG"				
 				if hash bzip2 2>/dev/null; then
 					current_dir="$PWD"
 					sh -c "cd ${PAL_LOG_DIR} && tar -cf - ${PAL_LOG}*" | bzip2 > $outputdir/${HOSTNAME}_host_instance_pal_logs.bz2
@@ -212,14 +218,14 @@ if [[ "$COLLECT_HOST_SQL_INSTANCE" = "YES" ]]; then
 		SQL_ERRORLOG="/var/opt/mssql/log/errorlog"
 		SQL_LOG_DIR=$(dirname $SQL_ERRORLOG)
 		if [ -d "$SQL_LOG_DIR" ]; then
-			echo -e "$(date -u +"%T %D") Collecting errorlog system_health trc from instance : ${HOSTNAME}..." | tee -a $pssdiag_log
+			echo -e "$(date -u +"%T %D") Collecting errorlog system_health alwayson_health trc from instance : ${HOSTNAME}..." | tee -a $pssdiag_log
 			if hash bzip2 2>/dev/null; then
 				current_dir="$PWD"
-				sh -c "cd ${SQL_LOG_DIR} && tar -cf - errorlog* system_health*.xel log*.trc sqlagent*" | bzip2 > $outputdir/${HOSTNAME}_instance_sql_logs.bz2
+				sh -c "cd ${SQL_LOG_DIR} && tar -cf - errorlog* *_health*.xel HkEngineEventFile*.xel log*.trc" | bzip2 > $outputdir/${HOSTNAME}_instance_sql_logs.bz2
 				cd ${current_dir}
 			else
 				current_dir="$PWD"
-				sh -c "cd ${SQL_LOG_DIR} && tar -cf - errorlog* system_health*.xel log*.trc sqlagent*" | $outputdir/${HOSTNAME}_host_instance_sql_logs.tar
+				sh -c "cd ${SQL_LOG_DIR} && tar -cf - errorlog* *_health*.xel HkEngineEventFile*.xel log*.trc" | $outputdir/${HOSTNAME}_host_instance_sql_logs.tar
 				cd ${current_dir}
 			fi
 		fi

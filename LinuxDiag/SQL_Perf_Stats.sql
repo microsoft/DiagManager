@@ -782,33 +782,6 @@ CREATE PROCEDURE #sp_perf_stats_infrequent @runtime datetime, @prevruntime datet
     IF @queryduration > @qrydurationwarnthreshold
       PRINT 'DebugPrint: perfstats2 qry17 - ' + CONVERT (varchar, @queryduration) + 'ms' + CHAR(13) + CHAR(10)
 
-
-    /* Resultset #18:  dm_os_ring_buffers for connectivity
-    ** return all rows on first run and then after only new rows in later runs */
-    PRINT ''
-    RAISERROR ('-- dm_os_ring_buffers --', 0, 1) WITH NOWAIT;
-    SET @querystarttime = GETDATE()
-
-    SET @sql = '
-      SELECT /*' + @procname + ':18*/  
-          CONVERT (varchar(30), @runtime, 126) AS runtime, 
-      CONVERT (varchar(23), DATEADD (ms, -1 * (@MSTICKS - [timestamp]), @mstickstime), 126) AS EventTime, 
-      [record] 
-        FROM sys.dm_os_ring_buffers 
-        WHERE ring_buffer_type in (''RING_BUFFER_CONNECTIVITY'',''RING_BUFFER_SECURITY_ERROR'')
-          AND [timestamp] > @lastmsticks 
-        ORDER BY [timestamp]'
-
-    EXEC sp_executesql @sql, N'@runtime datetime, @lastmsticks bigint, @msticks bigint, @mstickstime datetime', @runtime = @runtime, @lastmsticks = @lastmsticks, @msticks = @msticks, @mstickstime = @mstickstime
-
-
-    RAISERROR (' ', 0, 1) WITH NOWAIT;
-    SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
-    SET @lastmsticks = @msticks
-    IF @queryduration > @qrydurationwarnthreshold
-      PRINT 'DebugPrint: perfstats2 qry18 - ' + CONVERT (varchar, @queryduration) + 'ms' + CHAR(13) + CHAR(10)
-
-
     /* Resultset #19: Plan Cache Stats */
     PRINT ''
     RAISERROR ('-- Plan Cache Stats --', 0, 1) WITH NOWAIT;

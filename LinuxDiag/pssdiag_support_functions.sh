@@ -1,6 +1,6 @@
 #!/bin/bash
 
-script_version="20241001"
+script_version="20250301"
 MSSQL_CONF="/var/opt/mssql/mssql.conf"
 outputdir="$PWD/output"
 #SQL_LOG_DIR=${SQL_LOG_DIR:-"/var/opt/mssql/log"}
@@ -197,7 +197,7 @@ get_servicemanager_and_sqlservicestatus()
 
 sql_connect()
 {
-	echo -e "\x1B[2;34m============================================================================================================\x1B[0m" | tee -a $pssdiag_log
+	echo -e "\x1B[2;34m============================================================================================================\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 
 	MAX_ATTEMPTS=3
 	attempt_num=1
@@ -264,11 +264,11 @@ sql_connect()
 			$(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1) -S$SQL_SERVER_NAME -U$XsrX -P$XssX -C -Q"select @@version" 2>&1 >/dev/null
 			if [[ $? -eq 0 ]]; then
 				sqlconnect=1
-				echo -e "\x1B[32mConnection was successful....\x1B[0m" | tee -a $pssdiag_log
+				echo -e "\x1B[32mConnection was successful....\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 				CONN_AUTH_OPTIONS="-U$XsrX -P$XssX"
 				break
 			else
-				echo -e "\x1B[31mLogin Attempt failed - Attempt ${attempt_num} of ${MAX_ATTEMPTS}, Please try again\x1B[0m" | tee -a $pssdiag_log
+				echo -e "\x1B[31mLogin Attempt failed - Attempt ${attempt_num} of ${MAX_ATTEMPTS}, Please try again\x1B[0m" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 			fi
 			attempt_num=$(( attempt_num + 1 ))
 		done
@@ -288,7 +288,7 @@ sql_connect()
 			echo -e "\x1B[32mConnection was successful....\x1B[0m" | tee -a $pssdiag_log
 		else
 			#in case AD Authentication fails, try again using SQL Authentication for this particular instance 
-			echo -e "\x1B[33mWarning: AD Authentication failed for ${1} ${2}, refer to the above lines for errors, switching to SQL Authentication for ${1} ${2}" | tee -a $pssdiag_log
+			echo -e "\x1B[33mWarning: AD Authentication failed for ${1} ${2}, refer to the above lines for errors, switching to SQL Authentication for ${1} ${2}" | sed -e 's/\x1b\[[0-9;]*m//g' | tee -a $pssdiag_log
 			sql_connect ${1} ${2} ${3} "SQL"
 		fi
 	fi
@@ -372,14 +372,16 @@ while IFS= read -r line; do
 	if [[ "${config_section}" == "${2}" ]]; then
 		config_section_found=1
 	fi
-	option=$(echo ${line} | cut -d " " -f1)
+	option=$(echo ${line} | cut -d "=" -f1 | xargs )
 	if [[ "${config_section_found}" == 1 ]] && [[ "${option}" == "${3}" ]]; then
-		result=$(echo ${line//"$option"/} | tr -d '=') 
+		result=$(echo ${line//"$option"/} | tr -d '=' | xargs) 
 		break 
 	fi
 done < $1
-if [ -z "${result}" ]; then
-	echo "$(date -u +"%T %D") Reading host ${HOSTNAME} conf read from option ${1} option ${2} ${3}: ${result:-$4}">>$pssdiag_log
+if [ "${result}" ]; then
+	echo "$(date -u +"%T %D") Host instance ${HOSTNAME} conf file ${1} setting option [${2}] ${3} is set to : ${result}">>$pssdiag_log
+else
+	echo "$(date -u +"%T %D") Host instance ${HOSTNAME} conf file ${1} setting option [${2}] ${3} is not set in the conf file, using the default : ${4}">>$pssdiag_log
 fi
 echo ${result:-$4} 
 }
@@ -400,17 +402,19 @@ while IFS= read -r line; do
 	if [[ "${config_section}" == "${2}" ]]; then
 		config_section_found=1
 	fi
-	option=$(echo ${line} | cut -d " " -f1)
+	option=$(echo ${line} | cut -d "=" -f1 | xargs)
 	if [[ "${config_section_found}" == 1 ]] && [[ "${option}" == "${3}" ]]; then
-		result=$(echo ${line//"$option"/} | tr -d '=') 
+		result=$(echo ${line//"$option"/} | tr -d '=' | xargs) 
 		break 
 	fi
 done < "$tmpcontainertmpfile"
 
 #Remove tmpcontainertmpfile
 rm "$tmpcontainertmpfile"
-if [ -z "${result}" ]; then
-	echo "$(date -u +"%T %D") Reading container ${5} conf read from ${1} option ${2} ${3}: ${result:-$4}">>$pssdiag_log
+if [ "${result}" ]; then
+	echo "$(date -u +"%T %D") Container instance ${5} conf file ${1} setting option [${2}] ${3} is set to : ${result}">>$pssdiag_log
+else
+	echo "$(date -u +"%T %D") Container instance ${5} conf file ${1} setting option [${2}] ${3} is not set in the conf file, using the default : ${4}">>$pssdiag_log
 fi
 echo ${result:-$4} 
 }
