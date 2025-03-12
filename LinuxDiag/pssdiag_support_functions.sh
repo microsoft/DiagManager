@@ -368,7 +368,7 @@ get_conf_optionx()
 unset result
 unset config_section_found
 while IFS= read -r line; do
-	config_section=$(echo "${line}" | tr -d '[]')
+	config_section=$(echo "${line}" | tr -d '[]' | xargs)
 	if [[ "${config_section}" == "${2}" ]]; then
 		config_section_found=1
 	fi
@@ -398,7 +398,7 @@ tmpcontainertmpfile="./$(uuidgen).pssdiag.mssql.conf.tmp"
 echo "$(docker exec --user root ${5} sh -c "cat ${1}")" > "$tmpcontainertmpfile"
 
 while IFS= read -r line; do
-	config_section=$(echo "${line}" | tr -d '[]')
+	config_section=$(echo "${line}" | tr -d '[]' | xargs)
 	if [[ "${config_section}" == "${2}" ]]; then
 		config_section_found=1
 	fi

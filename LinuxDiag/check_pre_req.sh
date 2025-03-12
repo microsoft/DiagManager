@@ -99,6 +99,17 @@ if ( command -v curl 2>&1 >/dev/null ); then
 		echo -e "\x1B[33mA new version of PSSDiag for Linux is now available. You can find it at the following link https://github.com/microsoft/DiagManager/releases?q=Linux&expanded=true.\x1B[0m" 
 	fi  
 fi
+
+# check if bzip2 is installed
+check_bzip2="0"
+if ( !( hash bzip2 2>/dev/null ) ); then
+        echo -e "\x1B[31mThe program bzip2 is not installed on this system and is required for the data collection." 
+        check_bzip2="0"
+else
+        check_bzip2="1"
+fi
+
+
 # check if sqlcmd is installed, we need this to execute TSQL scripts [for future we need to expand or make generic to use any available sql command line tool]
 check_sqlcmd="0"
 if [[ ! -f $(ls -1 /opt/mssql-tools*/bin/sqlcmd | tail -n -1 2>/dev/null) ]] && [[ "$PRE_CHECK_SQL" == "YES" ]] ; then
@@ -132,7 +143,7 @@ if ( !( hash lsof 2>/dev/null ) ); then
 fi
 
 # now ask the user what they want to do if any program is absent
-if (( ("$check_sqlcmd" == "0") || ( "$check_iotop" == "0" ) || ( "$check_sysstat" == "0" ) )); then
+if (( ("$check_sqlcmd" == "0") || ( "$check_iotop" == "0" ) || ( "$check_sysstat" == "0" ) || ( "$check_bzip2" == "0" ) )); then
 	echo -e "If you do not have all the required programs installed data collection will not be reliable and complete! \x1B[0m" 
 	read -p "Do you want to continue with data collection? Type Y or N : " check_input
 	if [[ $check_input = [Yy] ]] 
