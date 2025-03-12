@@ -239,7 +239,7 @@ however, If you have multiple instances running on the **same machine**, whether
 	drwxr-xr-x    2 root root    6 Aug  4 15:31 pssdiag
 	```
 	
-2. extract the content using `tar -xvf pssdiag_<version>.tar`
+2. extract the content to /tmp/pssdiag using `tar -xvf pssdiag_<version>.tar -C /`
 3. Make sure all *.sh has x attribute using `chmod a+x *.sh`
 
 ### Starting PSSDiag
