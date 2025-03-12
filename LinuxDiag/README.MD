@@ -240,7 +240,7 @@ however, If you have multiple instances running on the **same machine**, whether
 	```
 	
 2. extract the content to /tmp/pssdiag using `tar -xvf pssdiag_<version>.tar -C /`
-3. Make sure all *.sh has x attribute using `chmod a+x *.sh`
+3. Make sure all *.sh has x attribute, if needed run `chmod a+x *.sh`
 
 ### Starting PSSDiag
 
