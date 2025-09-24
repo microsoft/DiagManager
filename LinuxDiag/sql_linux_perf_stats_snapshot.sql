@@ -12,8 +12,7 @@ SET NUMERIC_ROUNDABORT OFF
 GO
 
 /*******************************************************************
-perf stats snapshot
-
+SQL Server Linux Stats Snapshot
 ********************************************************************/
 use tempdb
 go
@@ -290,6 +289,8 @@ GO
 /*****************************************************************
 *                          main loop                             *
 ******************************************************************/
+
+  -- Main loop
 
 IF OBJECT_ID ('#sp_Run_Linux_Snapshot','P') IS NOT NULL
    DROP PROCEDURE #sp_Run_Linux_Snapshot

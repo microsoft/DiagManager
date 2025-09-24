@@ -4,24 +4,34 @@
 source ./pssdiag_support_functions.sh
 
 #Starting the script
-echo "$(date -u +"%T %D") Starting os logs collection..." | tee -a $pssdiag_log
+logger "Starting host OS logs collectors" "info_blue" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
 
 #collect SQL errorlogs
 SYSLOGPATH=/var/log
 NOW=`date +"%m_%d_%Y"`
 mkdir -p $PWD/output
 outputdir=$PWD/output
+if [ "$EUID" -eq 0 ]; then
+  group=$(id -gn "$SUDO_USER")
+  chown "$SUDO_USER:$group" "$outputdir" -R
+else
+	chown $(id -u):$(id -g) "$outputdir" -R
+fi
 
 #get service manager type
 
 #Check if I am running on host/systemd
 if (echo "$(readlink /sbin/init)" | grep systemd >/dev/null 2>&1); then
-	echo "$(date -u +"%T %D") Collecting dmesg log, journalctl, system logs..." | tee -a $pssdiag_log
-	dmesg > $outputdir/${HOSTNAME}_os_dmesg.out
-	journalctl | tail -n1000 > $outputdir/${HOSTNAME}_os.journalctl.out
-	journalctl -u mssql-server > $outputdir/${HOSTNAME}_host_instance_journalctl.out
-	journalctl -u docker > $outputdir/${HOSTNAME}_os_docker.journalctl.out
-	journalctl -u podman > $outputdir/${HOSTNAME}_os_podman.journalctl.out
+	logger "Collecting dmesg log, journalctl, system logs" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
+
+	# Collect dmesg and journalctl logs only if we run with sudo
+	if [ "$EUID" -eq 0 ]; then
+		dmesg > $outputdir/${HOSTNAME}_os_dmesg.info 2>/dev/null 
+		journalctl | tail -n1000 > $outputdir/${HOSTNAME}_os.journalctl.info 2>/dev/null 
+		journalctl -u mssql-server > $outputdir/${HOSTNAME}_host_instance_journalctl.info 2>/dev/null 
+		journalctl -u docker > $outputdir/${HOSTNAME}_os_docker.journalctl.info 2>/dev/null 
+		journalctl -u podman > $outputdir/${HOSTNAME}_os_podman.journalctl.info 2>/dev/null 
+	fi
 
 	# this is required to figure out version of distro so that System log files are collected appropriately in the following case statement
 	linuxdistro=`cat /etc/os-release | grep -i '^ID=' | head -n1 | awk -F'=' '{print $2}' | sed 's/"//g'`
@@ -48,9 +58,9 @@ get_servicemanager_and_sqlservicestatus "host_instance"
 
 #supporting the case when PSSDiag run from within Kubernetes container
 if [[ "${servicemanager}" == "supervisord" ]]; then
-	echo -e "$(date -u +"%T %D") Collecting Supervisor, provisioner, agent logs..." | tee -a $pssdiag_log
+	logger "Collecting dmesg log, Supervisor, provisioner, agent logs" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
 	
-	dmesg > $outputdir/${HOSTNAME}_dmesg.out
+	dmesg > $outputdir/${HOSTNAME}_dmesg.info
 
 	# this is required to figure out version of distro so that System log files are collected appropriately in the following case statement
 	linuxdistro=`cat /etc/os-release | grep -i '^ID=' | head -n1 | awk -F'=' '{print $2}' | sed 's/"//g'`
@@ -70,3 +80,4 @@ if [[ "${servicemanager}" == "supervisord" ]]; then
 	esac
 fi
 
+exit 0

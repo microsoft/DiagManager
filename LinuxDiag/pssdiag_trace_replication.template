@@ -1,4 +1,4 @@
--- this stored procedure is created from MSDiagprocs.sql
+-- this stored procedure is created from msdiagprocs.sql
 -- please make sure that script runs before launching this
 -- this trace captures all events necessary for tracking replication activity and troubleshooting
 

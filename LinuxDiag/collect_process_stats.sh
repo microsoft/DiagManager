@@ -14,9 +14,16 @@ OS_COUNTERS_INTERVAL=$1
 working_dir="$PWD"
 mkdir -p $PWD/output
 outputdir=$PWD/output
+if [ "$EUID" -eq 0 ]; then
+  group=$(id -gn "$SUDO_USER")
+  chown "$SUDO_USER:$group" "$outputdir" -R
+else
+	chown $(id -u):$(id -g) "$outputdir" -R
+fi
 
 date >> $outputdir/${HOSTNAME}_os_process_pidstat.perf
 
-pidstat -d -h -I -u -w -r $OS_COUNTERS_INTERVAL >> $outputdir/${HOSTNAME}_os_process_pidstat.perf &
-printf "%s\n" "$!" >> $outputdir/pssdiag_stoppids_os_collectors.txt
+LC_TIME=en_US.UTF-8 pidstat -d -h -I -u -w -r $OS_COUNTERS_INTERVAL >> $outputdir/${HOSTNAME}_os_process_pidstat.perf &
+printf "%s\n" "$!" >> $outputdir/pssdiag_stoppids_os_collectors.log
 
+exit 0

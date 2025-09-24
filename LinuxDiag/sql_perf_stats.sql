@@ -21,7 +21,7 @@ go
 IF OBJECT_ID ('#sp_perf_stats','P') IS NOT NULL
    DROP PROCEDURE #sp_perf_stats
 GO
-CREATE PROCEDURE #sp_perf_stats @appname sysname='sqllogscout', @runtime datetime, @prevruntime datetime, @IsLite bit=0 
+CREATE PROCEDURE #sp_perf_stats @appname sysname='pssdiag', @runtime datetime, @prevruntime datetime, @IsLite bit=0 
 AS 
  SET NOCOUNT ON
   DECLARE @msg varchar(100)
@@ -976,7 +976,7 @@ IF OBJECT_ID ('#sp_perf_stats10','P') IS NOT NULL
    DROP PROCEDURE #sp_perf_stats10
 GO
 go
-CREATE PROCEDURE #sp_perf_stats10 @appname sysname='sqllogscout', @runtime datetime, @prevruntime datetime, @IsLite bit =0 
+CREATE PROCEDURE #sp_perf_stats10 @appname sysname='pssdiag', @runtime datetime, @prevruntime datetime, @IsLite bit =0 
 AS 
 BEGIN
 	EXEC #sp_perf_stats @appname, @runtime, @prevruntime, @IsLite
@@ -987,7 +987,7 @@ IF OBJECT_ID ('#sp_perf_stats11','P') IS NOT NULL
    DROP PROCEDURE #sp_perf_stats11
 GO
 go
-CREATE PROCEDURE #sp_perf_stats11 @appname sysname='sqllogscout', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
+CREATE PROCEDURE #sp_perf_stats11 @appname sysname='pssdiag', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
 AS 
 BEGIN
 	EXEC #sp_perf_stats10 @appname, @runtime, @prevruntime, @IsLite
@@ -999,7 +999,7 @@ IF OBJECT_ID ('#sp_perf_stats12','P') IS NOT NULL
    DROP PROCEDURE #sp_perf_stats12
 GO
 go
-CREATE PROCEDURE #sp_perf_stats12 @appname sysname='sqllogscout', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
+CREATE PROCEDURE #sp_perf_stats12 @appname sysname='pssdiag', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
 AS 
 BEGIN
 	EXEC #sp_perf_stats11 @appname, @runtime, @prevruntime, @IsLite
@@ -1011,7 +1011,7 @@ IF OBJECT_ID ('#sp_perf_stats13','P') IS NOT NULL
    DROP PROCEDURE #sp_perf_stats13
 GO
 go
-CREATE PROCEDURE #sp_perf_stats13 @appname sysname='sqllogscout', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
+CREATE PROCEDURE #sp_perf_stats13 @appname sysname='pssdiag', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
 AS 
 BEGIN
 	EXEC #sp_perf_stats12 @appname, @runtime, @prevruntime, @IsLite
@@ -1021,7 +1021,7 @@ IF OBJECT_ID ('#sp_perf_stats14','P') IS NOT NULL
    DROP PROCEDURE #sp_perf_stats14
 GO
 go
-CREATE PROCEDURE #sp_perf_stats14 @appname sysname='sqllogscout', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
+CREATE PROCEDURE #sp_perf_stats14 @appname sysname='pssdiag', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
 AS 
 BEGIN
 	EXEC #sp_perf_stats13 @appname, @runtime, @prevruntime, @IsLite
@@ -1031,7 +1031,7 @@ IF OBJECT_ID ('#sp_perf_stats15','P') IS NOT NULL
    DROP PROCEDURE #sp_perf_stats15
 GO
 go
-CREATE PROCEDURE #sp_perf_stats15 @appname sysname='sqllogscout', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
+CREATE PROCEDURE #sp_perf_stats15 @appname sysname='pssdiag', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
 AS 
 BEGIN
 	EXEC #sp_perf_stats14 @appname, @runtime, @prevruntime, @IsLite
@@ -1046,6 +1046,13 @@ BEGIN
 	EXEC #sp_perf_stats15 @appname, @runtime, @prevruntime, @IsLite
 END
 GO
+CREATE PROCEDURE #sp_perf_stats17 @appname sysname='PSSDIAG', @runtime datetime, @prevruntime datetime , @IsLite bit =0 
+AS 
+BEGIN
+	EXEC #sp_perf_stats16 @appname, @runtime, @prevruntime, @IsLite
+END
+GO
+
 IF OBJECT_ID ('#sp_perf_stats_infrequent10','P') IS NOT NULL
    DROP PROCEDURE #sp_perf_stats_infrequent10
 GO
@@ -1105,6 +1112,15 @@ IF OBJECT_ID ('#sp_perf_stats_infrequent16','P') IS NOT NULL
    DROP PROCEDURE #sp_perf_stats_infrequent16
 GO
 CREATE PROCEDURE #sp_perf_stats_infrequent16 @runtime datetime, @prevruntime datetime, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
+AS 
+BEGIN
+	EXEC #sp_perf_stats_infrequent15 @runtime, @prevruntime, @lastmsticks output, @firstrun, @IsLite
+END
+GO
+IF OBJECT_ID ('#sp_perf_stats_infrequent17','P') IS NOT NULL
+   DROP PROCEDURE #sp_perf_stats_infrequent17
+GO
+CREATE PROCEDURE #sp_perf_stats_infrequent17 @runtime datetime, @prevruntime datetime, @lastmsticks bigint output, @firstrun tinyint = 0, @IsLite bit =0 
 AS 
 BEGIN
 	EXEC #sp_perf_stats_infrequent15 @runtime, @prevruntime, @lastmsticks output, @firstrun, @IsLite
@@ -1173,6 +1189,12 @@ BEGIN
 	EXEC #sp_perf_stats_reallyinfrequent15 @runtime, @firstrun , @IsLite
 END
 GO
+CREATE PROCEDURE #sp_perf_stats_reallyinfrequent17 @runtime datetime, @firstrun int = 0 , @IsLite bit =0 
+AS 
+BEGIN
+	EXEC #sp_perf_stats_reallyinfrequent16 @runtime, @firstrun , @IsLite
+END
+GO
 
 IF OBJECT_ID ('#sp_Run_PerfStats','P') IS NOT NULL
    DROP PROCEDURE #sp_Run_PerfStats
@@ -1184,7 +1206,7 @@ AS
   PRINT 'Starting SQL Server Perf Stats Script...'
   SET LANGUAGE us_english
   PRINT '-- Script Source --'
-  SELECT 'SQL Server Perf Stats Script' AS script_name, '$Revision: 16 $ ($Change: ? $)' AS revision
+  SELECT 'SQL Server Perf Stats Script' AS script_name, '17' AS revision
   PRINT ''
   PRINT '-- Script and Environment Details --'
   PRINT 'Name                     Value'
@@ -1194,9 +1216,9 @@ AS
   PRINT 'SQL Version (SP)         ' + CONVERT (varchar, SERVERPROPERTY ('ProductVersion')) + ' (' + CONVERT (varchar, SERVERPROPERTY ('ProductLevel')) + ')'
   PRINT 'Edition                  ' + CONVERT (varchar, SERVERPROPERTY ('Edition'))
   PRINT 'Script Name              SQL Server Perf Stats Script'
-  PRINT 'Script File Name         $File: SQL_Server_Perf_Stats.sql $'
-  PRINT 'Revision                 $Revision: 16 $ ($Change: ? $)'
-  PRINT 'Last Modified            $Date: 2015/10/15  $'
+  PRINT 'Script File Name         File: sql_perf_stats.sql'
+  PRINT 'Revision                 Revision: 17'
+  PRINT 'Last Modified            Date: 2025/9/19'
   PRINT 'Script Begin Time        ' + CONVERT (varchar(30), GETDATE(), 126) 
   PRINT 'Current Database         ' + DB_NAME()
   PRINT '@@SPID                   ' + LTRIM(STR(@@SPID))
@@ -1234,8 +1256,8 @@ AS
       RAISERROR (@msg, 0, 1) WITH NOWAIT
     
       -- Collect #sp_perf_stats every 10 seconds
-      --EXEC dbo.#sp_perf_stats @appname = 'sqllogscout', @runtime = @runtime, @prevruntime = @prevruntime
-    	EXEC @#sp_perf_stats_ver 'sqllogscout', @runtime = @runtime, @prevruntime = @prevruntime, @IsLite=@IsLite
+      --EXEC dbo.#sp_perf_stats @appname = 'pssdiag', @runtime = @runtime, @prevruntime = @prevruntime
+    	EXEC @#sp_perf_stats_ver 'pssdiag', @runtime = @runtime, @prevruntime = @prevruntime, @IsLite=@IsLite
 
       -- Collect #sp_perf_stats_infrequent approximately every minute
       if DATEDIFF(SECOND, @previnfreqruntime,GETDATE()) > 59
