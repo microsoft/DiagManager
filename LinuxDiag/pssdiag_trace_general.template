@@ -1,4 +1,4 @@
--- this stored procedure is created from MSDiagprocs.sql
+-- this stored procedure is created from msdiagprocs.sql
 -- please make sure that script runs before launching this
 -- this trace will capture events that correspond to general performance template. See the Events parameter.
 

@@ -64,12 +64,21 @@ function Capture_network_info()
 }
 
 function capture_disk_info()
-{
-	capture_system_info_command "Checking Disk FUA Support" "dmesg 2>/dev/null | grep -i fua"
-	capture_system_info_command "Disk Information, lsblk" "lsblk -o NAME,MAJ:MIN,FSTYPE,MOUNTPOINT,PARTLABEL,SIZE,ALIGNMENT,PHY-SEC,LOG-SEC,MIN-IO,OPT-IO,ROTA,TYPE,RQ-SIZE,LABEL,MODEL,REV,VENDOR 2>/dev/null" 
-	capture_system_info_command "Disk Space Information, fdisk -l" "fdisk -l 2>/dev/null"
-    capture_system_info_command "Disk Space Information, df -TH" "df -TH 2>/dev/null"
+{  
+    capture_system_info_command "Disk Information, lshw -class disk" "lshw -class disk"
 	capture_system_info_command "Disk blockdev report Information" "blockdev --report 2>/dev/null"
+	capture_system_info_command "Disk Information, lsblk" "lsblk -o NAME,MAJ:MIN,FSTYPE,MOUNTPOINT,PARTLABEL,SIZE,ALIGNMENT,PHY-SEC,LOG-SEC,MIN-IO,OPT-IO,ROTA,TYPE,RQ-SIZE,LABEL,MODEL,REV,VENDOR 2>/dev/null" 
+    #cmd='df -T | awk '\''NR>1 && $1~/^\/dev\/sd[a-z][0-9]+$/ {print $1, $2}'\'' | while read fs type; do echo "Filesystem: $fs, Type: $type"; sg_modes -6 "$fs"; done'
+    cmd='df -T | awk '\''NR>1 && ($2 == "xfs" || $2 == "ext4") {print $1, $2}'\'' | while read fs type; do echo "Filesystem: $fs, Type: $type"; sg_modes_output=$(sg_modes -6 "$fs"); echo "$sg_modes_output"; done'
+    capture_system_info_command "Inspecting FUA support functionality as **claimed** by Disk, df -T ==> sg_modes" "$cmd"
+    capture_system_info_command "Inspecting Kernel Driver FUA disable and enable entries in dmesg | grep -i fua" "dmesg 2>/dev/null | grep -i fua"
+    #cmd='for d in /sys/block/sd*/queue/fua; do echo "cat $d"; cat "$d"; echo "----------------------"; done'
+    cmd='for d in /sys/block/*/queue/fua; do echo "cat $d"; cat "$d"; echo "----------------------"; done'
+    capture_system_info_command "Inspecting Kernel Driver FUA Status for each Disk, /sys/block/sd*/queue/fua" "$cmd"
+	capture_system_info_command "Disk Space Information, df -TH" "df -TH 2>/dev/null"
+    capture_system_info_command "Disk Space Information, fdisk -l" "fdisk -l 2>/dev/null"
+    capture_system_info_command "/etc/fstab" "cat /etc/fstab 2>/dev/null"
+    capture_system_info_command "mount" "mount"
 }
 
 
@@ -123,6 +132,13 @@ function capture_host_instance_service_mem_map_info()
 
 #Starting the script
 
+CONFIG_FILE="./pssdiag_collector.conf"
+if [[ -f $CONFIG_FILE ]]; then
+. $CONFIG_FILE
+fi
+
+COLLECT_CONTAINER=${COLLECT_CONTAINER:-"NO"}
+
 if [[ -d "$1" ]] ; then
 	outputdir="$1"
 else
@@ -132,85 +148,98 @@ else
 
    # Define files and locations
    outputdir="$working_dir/output"
+    if [ "$EUID" -eq 0 ]; then
+    group=$(id -gn "$SUDO_USER")
+    chown "$SUDO_USER:$group" "$outputdir" -R
+    else
+        chown $(id -u):$(id -g) "$outputdir" -R
+    fi
 fi
 
 pssdiag_log="$outputdir/pssdiag.log"
 
-echo -e "$(date -u +"%T %D") Starting machineconfig log collection..." | tee -a $pssdiag_log
-
+logger "Collecting machineconfig log collectors" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
 
 # Capture basic system information
 infolog_filename=$outputdir/${HOSTNAME}_os_machine_config.info
-echo -e "$(date -u +"%T %D") Collecting host configuration..." | tee -a $pssdiag_log
+logger "Collecting host configuration" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
 capture_system_info
+
+#workaround NexusLinuxImporter
+cp $infolog_filename $outputdir/${HOSTNAME}_machineconfig.info
 
 #Capture Network info
 infolog_filename=$outputdir/${HOSTNAME}_os_network.info
-echo -e "$(date -u +"%T %D") Collecting TCP/IP information and resolv.conf..." | tee -a $pssdiag_log
+logger "Collecting TCP/IP information and resolv.conf" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
 Capture_network_info
 
 # Capture Disk info
 infolog_filename=$outputdir/${HOSTNAME}_os_Disk_config.info
-echo -e "$(date -u +"%T %D") Collecting disk information..." | tee -a $pssdiag_log
+logger "Collecting disk information" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
 capture_disk_info
 
-#Capture sqlservr process info for continer instance
-#find the mapping between container sql child process and local sql child process, and get its information
-get_container_instance_status
-if [ "${is_container_runtime_service_active}" == "YES" ]; then
-    for pid in $(docker ps --no-trunc | grep -e '/opt/mssql/bin/sqlservr' | awk '{ print $1 }'); do 
-        #get container PID, this is going to be the parent local PID
-        local_container_sql_Parent_pid=$(docker inspect -f '{{.State.Pid}} {{.Name}}' $pid | tr -d '/' | awk '{print $1}')
-        dockername=$(docker inspect -f '{{.State.Pid}} {{.Name}}' $pid | tr -d '/' | awk '{print $2}')
-        container_sql_child_pid=$(pgrep -P $local_container_sql_Parent_pid | head -n 1)
-        echo -e "$(date -u +"%T %D") Collecting sqlservr process information for container instance : $dockername" | tee -a $pssdiag_log
-        infolog_filename=$outputdir/${dockername}_container_instance_${container_sql_child_pid}_process.info
-        capture_container_instance_process_info
-    done
+
+if [[ $COLLECT_CONTAINER != [Nn][Oo] ]] ; then 
+    #Capture sqlservr process info for continer instance
+    #find the mapping between container sql child process and local sql child process, and get its information
+    get_container_instance_status
+    if [ "${is_container_runtime_service_active}" == "YES" ]; then
         for pid in $(docker ps --no-trunc | grep -e '/opt/mssql/bin/sqlservr' | awk '{ print $1 }'); do 
-        #get container PID, this is going to be the parent local PID
-        local_container_sql_Parent_pid=$(docker inspect -f '{{.State.Pid}} {{.Name}}' $pid | tr -d '/' | awk '{print $1}')
-        dockername=$(docker inspect -f '{{.State.Pid}} {{.Name}}' $pid | tr -d '/' | awk '{print $2}')
-        container_sql_child_pid=$(pgrep -P $local_container_sql_Parent_pid | head -n 1)
-        echo -e "$(date -u +"%T %D") Collecting sqlservr process memory map for container instance : $dockername" | tee -a $pssdiag_log
-        infolog_filename=$outputdir/${dockername}_container_instance_${container_sql_child_pid}_process_mem_map_info
-        capture_container_instance_process_mem_map_info
-    done
+            #get container PID, this is going to be the parent local PID
+            local_container_sql_Parent_pid=$(docker inspect -f '{{.State.Pid}} {{.Name}}' $pid | tr -d '/' | awk '{print $1}')
+            dockername=$(docker inspect -f '{{.State.Pid}} {{.Name}}' $pid | tr -d '/' | awk '{print $2}')
+            container_sql_child_pid=$(pgrep -P $local_container_sql_Parent_pid | head -n 1)
+            logger "Collecting sqlservr process information for container instance : $dockername" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
+            infolog_filename=$outputdir/${dockername}_container_instance_${container_sql_child_pid}_process.info
+            capture_container_instance_process_info
+        done
+            for pid in $(docker ps --no-trunc | grep -e '/opt/mssql/bin/sqlservr' | awk '{ print $1 }'); do 
+            #get container PID, this is going to be the parent local PID
+            local_container_sql_Parent_pid=$(docker inspect -f '{{.State.Pid}} {{.Name}}' $pid | tr -d '/' | awk '{print $1}')
+            dockername=$(docker inspect -f '{{.State.Pid}} {{.Name}}' $pid | tr -d '/' | awk '{print $2}')
+            container_sql_child_pid=$(pgrep -P $local_container_sql_Parent_pid | head -n 1)
+            logger "Collecting sqlservr process memory map for container instance : $dockername" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
+            infolog_filename=$outputdir/${dockername}_container_instance_${container_sql_child_pid}_process_mem_map_info
+            capture_container_instance_process_mem_map_info
+        done
+    fi
 fi
 
 #Capture sqlservr process info for host instance
 get_host_instance_status
-if [ "${is_host_instnace_service_active}" == "YES" ]; then
+if [ "${is_host_instance_service_active}" == "YES" ]; then
     pid=$(pgrep -P $(systemctl show --property MainPID --value mssql-server.service | head -n 1))
-    echo -e "$(date -u +"%T %D") Collecting sqlservr process information for host instance : ${HOSTNAME}..." | tee -a $pssdiag_log
+    logger "Collecting sqlservr process information for host instance : ${HOSTNAME}" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
     infolog_filename=$outputdir/${HOSTNAME}_host_instance_${pid}_process.info
     capture_host_instance_service_info
-    echo -e "$(date -u +"%T %D") Collecting sqlservr process memory map for host instance : ${HOSTNAME}..." | tee -a $pssdiag_log
+    logger "Collecting sqlservr process memory map for host instance : ${HOSTNAME}" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
     infolog_filename=$outputdir/${HOSTNAME}_host_instance_${pid}_process.process_mem_map_info
     capture_host_instance_service_mem_map_info
 fi
 
 
 #Capture process list info
-echo -e "$(date -u +"%T %D") Collecting process list information..." | tee -a $pssdiag_log
-#ps -efaHjf >> $outputdir/${HOSTNAME}_processlist.info
+logger "Collecting process list information" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
 ps -aux --sort -rss >> $outputdir/${HOSTNAME}_os_processlist.info
 
 #Capture Cgroups top by memory and sql services
-echo -e "$(date -u +"%T %D") Collecting CGroup top usage..." | tee -a $pssdiag_log
+logger "Collecting CGroup top usage" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
 
 echo "======System totals======" >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info
 free -h >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info
 echo "" >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info
 
-get_container_instance_status
-if [ "${is_container_runtime_service_active}" == "YES" ]; then
-    echo "======Containers instance======" >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info
-    sudo docker stats --all --no-trunc --no-stream >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info   
-    echo "" >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info 
+if [[ $COLLECT_CONTAINER != [Nn][Oo] ]] ; then 
+    get_container_instance_status
+    if [ "${is_container_runtime_service_active}" == "YES" ]; then
+        echo "======Containers instance======" >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info
+        docker stats --all --no-trunc --no-stream >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info   
+        echo "" >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info 
+    fi
 fi
+
 get_host_instance_status
-if [ "${is_host_instnace_service_active}" == "YES" ]; then
+if [ "${is_host_instance_service_active}" == "YES" ]; then
     echo "======host instance : mssql-server.service ======" >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info
     systemctl status mssql-server.service | head -n 11 >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info
     echo "" >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info
@@ -228,5 +257,7 @@ echo "" >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info
 echo "======top======" >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info
 top -n 1 -b >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info
 echo "" >> $outputdir/${HOSTNAME}_os_systemd_cgroup_top.info
+
+exit 0
 
 

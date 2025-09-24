@@ -132,9 +132,55 @@ CREATE PROCEDURE sp_perf_stats_infrequent12 @runtime datetime, @firstrun int = 0
     SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
     IF @queryduration > @qrydurationwarnthreshold
       PRINT 'DebugPrint: perfstats2 qry6 - ' + CONVERT (varchar, @queryduration) + 'ms' + CHAR(13) + CHAR(10)
+
+    -- /* Resultset #7: sys.dm_pal_wait_stats */
+    -- PRINT ''
+    -- RAISERROR ('--sys.dm_pal_wait_stats--', 0, 1) WITH NOWAIT;
+    -- SET @querystarttime = GETDATE()
+
+    -- select CONVERT (varchar(30), @runtime, 126) AS 'runtime', * from sys.dm_pal_wait_stats
+
+    -- SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
+    -- IF @queryduration > @qrydurationwarnthreshold
+    --   PRINT 'DebugPrint: perfstats2 qry7 - ' + CONVERT (varchar, @queryduration) + 'ms' + CHAR(13) + CHAR(10)
+
+    -- /* Resultset #8: sys.dm_pal_spinlock_stats */
+    -- PRINT ''
+    -- RAISERROR ('--sys.dm_pal_spinlock_stats--', 0, 1) WITH NOWAIT;
+    -- SET @querystarttime = GETDATE()
+
+    -- select CONVERT (varchar(30), @runtime, 126) AS 'runtime', * from sys.dm_pal_spinlock_stats
+
+    -- SET @queryduration = DATEDIFF (ms, @querystarttime, GETDATE())
+    -- IF @queryduration > @qrydurationwarnthreshold
+    --   PRINT 'DebugPrint: perfstats2 qry8 - ' + CONVERT (varchar, @queryduration) + 'ms' + CHAR(13) + CHAR(10)
+
   END
 GO
   -- Main loop
+   
+  PRINT 'Starting SQL Server Linux Perf Stats Script...'
+  SET LANGUAGE us_english
+  PRINT '-- Script Source --'
+  SELECT 'SQL Server Linux Perf Stats Script' AS script_name, '17' AS revision
+  PRINT ''
+  PRINT '-- Script and Environment Details --'
+  PRINT 'Name                     Value'
+  PRINT '------------------------ ---------------------------------------------------'
+  PRINT 'SQL Server Name          ' + @@SERVERNAME
+  PRINT 'Machine Name             ' + CONVERT (varchar, SERVERPROPERTY ('MachineName'))
+  PRINT 'SQL Version (SP)         ' + CONVERT (varchar, SERVERPROPERTY ('ProductVersion')) + ' (' + CONVERT (varchar, SERVERPROPERTY ('ProductLevel')) + ')'
+  PRINT 'Edition                  ' + CONVERT (varchar, SERVERPROPERTY ('Edition'))
+  PRINT 'Script Name              SQL Server Linux Perf Stats Script'
+  PRINT 'Script File Name         File: sql_linux_perf_stats.sql'
+  PRINT 'Revision                 Revision: 17'
+  PRINT 'Last Modified            Date: 2025/9/19'
+  PRINT 'Script Begin Time        ' + CONVERT (varchar(30), GETDATE(), 126) 
+  PRINT 'Current Database         ' + DB_NAME()
+  PRINT '@@SPID                   ' + LTRIM(STR(@@SPID))
+  PRINT ''
+
+
   DECLARE @i int
   DECLARE @msg varchar(100)
   DECLARE @runtime datetime

@@ -1,6 +1,6 @@
--- this stored procedure is created from MSDiagprocs.sql
+-- this stored procedure is created from msdiagprocs.sql
 -- please make sure that script runs before launching this
--- this trace will capture only events that correspond to light performance capture. See the Events parameter.
+-- this trace will capture only events that correspond to lite performance capture. See the Events parameter.
 
 EXEC tempdb.dbo.sp_trace13 'ON'
 ,@Events='10,12'

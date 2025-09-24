@@ -1,0 +1,139 @@
+# PSSDiag scenario file.
+# Controls the collection type, collection levels, enable and disable individual collectors.
+# for consistency keep all settigns and thier values in CAPITAL letters.
+
+############################
+# SCENARIO COLLECTION TYPE # 
+############################
+
+# Specifies the scenario collection type, which can be either STATIC or PERF. When set to STATIC, only 'COLLECTOR TYPE: STATIC' will be able to run, and 'COLLECTOR TYPE: PERF' will be ignored even if they are enabled.
+SCENARIO_COLLECTION_TYPE=PERF
+
+#############################
+# Collection Levels Targets #
+#############################
+
+# SQL collectors can target and collect information from SQL Server instance running on host machine. 
+# Set to YES to enable collection level, or NO to disable.
+COLLECT_HOST_SQL_INSTANCE=YES
+
+# SQL collectors can target and collect information from SQL Containers running on host machine.
+# This value is either a specific Container Name (not ID)  or the value "ALL" which target all SQL containers running on host machine.
+COLLECT_CONTAINER=ALL
+
+# OS collectors can target and collect information from host OS.
+# Set to YES to enable collection, or NO to disable.
+COLLECT_HOST_OS_INFO=YES
+
+###############################
+# OPERATING SYSTEM COLLECTORS #
+###############################
+
+# Collect OS log files, Set to YES to enable collection, or NO to disable.
+# COLLECTOR TYPE: STATIC
+COLLECT_OS_LOGS=YES
+
+# Collects Operating System Configuration, Set to YES to enable collection, or NO to disable.
+# COLLECTOR TYPE: STATIC
+COLLECT_OS_CONFIG=YES
+
+# Collect OS HA related OS files and logs, Set to YES to enable collection, or NO to disable.
+# COLLECTOR TYPE: STATIC
+COLLECT_OS_HA_LOGS=YES
+
+# Collect OS security, encryption and AD files and logs, Set to YES to enable collection, or NO to disable.
+# COLLECTOR TYPE: STATIC
+COLLECT_OS_SEC_AD_LOGS=YES
+
+# Collects OS level counters (iostat,mpstats,cpustat,etc). Set to YES to enable collection, or NO to disable.
+# Interval of collection is in seconds
+# COLLECTOR_TYPE=PERF
+COLLECT_OS_COUNTERS=NO
+OS_COUNTERS_INTERVAL=15
+
+#########################
+# SQL SERVER COLLECTORS #
+#########################
+
+# Gets all SQL errorlogs, .xel files under the log folder ( system health etc). Set to YES to enable collection, or NO to disable.
+# COLLECTOR TYPE: STATIC
+COLLECT_SQL_LOGS=YES
+
+# Collects SQL Server Dump Files - Note output can be fairly large depending on the number of dumps, Set to YES to enable collection, or NO to disable.
+# COLLECTOR TYPE: STATIC
+COLLECT_SQL_DUMPS=YES
+
+# Collects SQL related HA logs, Set to YES to enable collection, or NO to disable.
+# COLLECTOR TYPE: STATIC
+COLLECT_SQL_HA_LOGS=YES
+
+# Collects SQL security, encryption and AD related settings and log, Set to YES to enable collection, or NO to disable.
+# COLLECTOR TYPE: STATIC
+COLLECT_SQL_SEC_AD_LOGS=YES
+
+# Collects SQL Configuration, Disk map, top execution plans, Set to YES to enable collection, or NO to disable.
+# COLLECTOR TYPE: STATIC
+COLLECT_SQL_CONFIG=YES
+
+# Collects SQL static perf information, Set to YES to enable collection, or NO to disable.
+# COLLECTOR TYPE: STATIC
+COLLECT_PERFSTATS_SNAPSHOT=YES
+
+# Specify whether we need to extract QDS/Query Store information from this server.
+# COLLECTOR TYPE: STATIC
+COLLECT_QUERY_STORE=NO
+
+# Collect SQL Server Best Practices, Set to YES to enable collection, or NO to disable.
+# COLLECTOR TYPE: STATIC
+COLLECT_SQL_BEST_PRACTICES=YES
+
+# Collects snapshots of sys.dm_os_performance_counters, Set to YES to enable collection, or NO to disable.
+# Interval is in seconds
+# COLLECTOR_TYPE=PERF
+COLLECT_SQL_COUNTERS=YES
+SQL_COUNTERS_INTERVAL=15
+
+# Collects SQL Server performance statistics , executing requests, snapshots of waitstats etc. Set to YES to enable collection, or NO to disable.
+# COLLECTOR_TYPE=PERF
+COLLECT_PERFSTATS=YES
+
+# Collects various memory related DMVS, Set to YES to enable collection, or NO to disable.
+# COLLECTOR_TYPE=PERF
+COLLECT_SQL_MEM_STATS=NO
+
+# Collects SQL Server High CPU related DMVs, Set to YES to enable collection, or NO to disable.
+# COLLECTOR_TYPE=PERF
+COLLECT_HIGHCPU_PERFSTATS=YES
+
+# Collects SQL Server High IO related DMVs, Set to YES to enable collection, or NO to disable.
+# COLLECTOR_TYPE=PERF
+COLLECT_HIGHIO_PERFSTATS=YES
+
+# Collects SQL Server PAL related DMVs, Set to YES to enable collection, or NO to disable.
+# COLLECTOR_TYPE=PERF
+COLLECT_LINUX_PERFSTATS=YES
+
+# If you want any other custom collection, set this to YES and change the my_custom_collector.sql file to include your queries.
+# COLLECTOR_TYPE=PERF
+CUSTOM_COLLECTOR=YES
+
+# Collect Extended Events, Set to YES to enable collection, or NO to disable.
+# COLLECTOR_TYPE=PERF
+COLLECT_EXTENDED_EVENTS=YES
+# Specify which template to use for Extended Events:  pssdiag_xevent_lite, pssdiag_xevent_general, pssdiag_xevent_detailed
+EXTENDED_EVENT_TEMPLATE=pssdiag_xevent_lite
+
+# Collect SQL Trace, Set to YES to enable collection, or NO to disable. this collector will be deprecated in the future 
+# COLLECTOR_TYPE=PERF
+COLLECT_SQL_TRACE=NO
+# Specify which template to use for SQL Trace: pssdiag_trace_lite, pssdiag_trace_general, pssdiag_trace_detailed, pssdiag_trace_replication
+SQL_TRACE_TEMPLATE=pssdiag_trace_lite
+
+################
+# Connectivity #
+################
+
+# Specify the authentication mode to use for connecting to SQL instance, with NONE pssdiag will ask which method to use, the case of multi-instance setup
+# Valid values : SQL / AD / NONE
+# Do not change, this is set dynamically by PSSDiag 
+SQL_CONNECT_AUTH_MODE=SQL
