@@ -48,7 +48,7 @@ COLLECT_OS_SEC_AD_LOGS=YES
 # Collects OS level counters (iostat,mpstats,cpustat,etc). Set to YES to enable collection, or NO to disable.
 # Interval of collection is in seconds
 # COLLECTOR_TYPE=PERF
-COLLECT_OS_COUNTERS=NO
+COLLECT_OS_COUNTERS=YES
 OS_COUNTERS_INTERVAL=15
 
 #########################
