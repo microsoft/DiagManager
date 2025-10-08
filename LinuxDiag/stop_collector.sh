@@ -141,15 +141,15 @@ pssdiag_inside_container_get_instance_status
 find_sqlcmd
 
 
-if grep -q "SUDO:YES" "$outputdir/pssdiag_intiated_as_user.log"; then
-    STARTED_WITH_SUDO=true
+if grep -q "ELEVATED_PERMISSIONS:YES" "$outputdir/pssdiag_intiated_as_user.log"; then
+    ELEVATED_PERMISSIONS=true
 fi
 
-# Checks: if we run with SUDO and not inside a container, and provide the warning.
-if [ -z "$SUDO_USER" ] && [ "$is_instance_inside_container_active" = "NO" ] && [ "$STARTED_WITH_SUDO" = true ]; then
-	echo -e "\e[31mWarning: PSSDiag was initiated with elevated (sudo) permissions.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
-        echo -e "\e[31mHowever, PSSDiag Stop was not initiated wtih elevated (sudo) permissions.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
-	echo -e "\e[31mElevated (sudo) permissions are required for PSSDiag to stop the collectors that are currently.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
+# Checks: if we run with user id 0 and not inside a container, and provide the warning and exit
+if [ "$EUID" -ne 0 ] && [ "$is_instance_inside_container_active" = "NO" ] && [ "$ELEVATED_PERMISSIONS" = true ]; then
+	echo -e "\e[31mWarning: PSSDiag was initiated with elevated permissions.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
+        echo -e "\e[31mHowever, PSSDiag Stop was not initiated with elevated permissions.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
+	echo -e "\e[31mElevated permissions are required for PSSDiag to stop the collectors that are currently.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
         echo -e "\e[31mexisting... .\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
         echo -e "" | tee -a "$pssdiag_log"
 	echo -e "\e[31mPlease run 'sudo ./stop_collector.sh' .\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
