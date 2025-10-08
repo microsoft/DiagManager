@@ -44,7 +44,7 @@ fi
 
 # home directory check , we do not want pssdiag to run from home, xel will fail if we run from home.
 current_dir="${PWD}"
-USER_HOME=$(eval echo ~${SUDO_USER})
+USER_HOME=$(eval echo ~$(id -un))
 if [[ "${current_dir}" == "${USER_HOME}"* ]]; then
 	home_directory_check=1
 else

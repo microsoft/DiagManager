@@ -209,8 +209,9 @@ fi
 mkdir -p $working_dir/output
 chmod a+w $working_dir/output
 if [ "$EUID" -eq 0 ]; then
-  group=$(id -gn "$SUDO_USER")
-  chown "$SUDO_USER:$group" "$outputdir" -R
+  ORIGINAL_USERNAME=$(logname)
+  ORIGINAL_GROUP=$(id -gn "$ORIGINAL_USERNAME")
+  chown "$ORIGINAL_USERNAME:$ORIGINAL_GROUP" "$outputdir" -R
 else
 	chown $(id -u):$(id -g) "$outputdir" -R
 fi
@@ -220,11 +221,11 @@ pssdiag_log="$outputdir/pssdiag.log"
 exec 2> >(tee -a $pssdiag_log >&2) 
 
 
-# Checks: if we run without SUDO and not inside a container, provide the warning of what would happen if we run without elevated permissions
-if [ -z "$SUDO_USER" ] && [ "$is_instance_inside_container_active" = "NO" ]; then
+# Checks: if we run without user id 0 and not inside a container, provide the warning of what would happen if we run without elevated permissions
+if [ "$EUID" -ne 0 ] && [ "$is_instance_inside_container_active" = "NO" ]; then
 	echo -e ""
-	echo -e "\e[31mWarning: PSSDiag was started without elevated (sudo) permissions.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
-	echo -e "\e[31mElevated (sudo) permissions are required for PSSDiag to collect complete diagnostic dataset.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
+	echo -e "\e[31mWarning: PSSDiag was started without elevated permissions.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
+	echo -e "\e[31mElevated permissions are required for PSSDiag to collect complete diagnostic dataset.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
 	echo -e "" | tee -a "$pssdiag_log"
 	echo -e "\e[31mWithout elevated permissions:\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
 	echo -e "\e[31m** PSSDiag will not able to read mssql.conf to get SQL log file location and port number.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
@@ -233,7 +234,7 @@ if [ -z "$SUDO_USER" ] && [ "$is_instance_inside_container_active" = "NO" ]; the
 	echo -e "\e[31m** All SQL container collectors will fail.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
 	echo -e "\e[31m** Only T-SQL based collectors will be able run for SQL host instance with default port 1433.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
 	echo -e "" | tee -a "$pssdiag_log"
-	echo -e "\e[33mIf you still prefer to run PSSDiag without elevated (sudo) permissions, please ensure the user executing PSSDiag has the following:.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
+	echo -e "\e[33mIf you still prefer to run PSSDiag without elevated permissions, please ensure the user executing PSSDiag has the following:.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
 	echo -e "\e[33m** Ownership of PSSDiag folder.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
 	echo -e "\e[33m** Read access to mssql.conf, as well as the SQL log and dump directories.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
 	echo -e "\e[33m** Membership in the Docker group (or an equivalent group), if data is being collected from containers.\e[0m" | tee >(sed -e 's/\x1b\[[0-9;]*m//g' >> "$pssdiag_log")
@@ -585,13 +586,15 @@ fi
 #get copy of current config, to output directory, it will be part of log collection.
 cp pssdiag*.conf $working_dir/output
 
-#get the user that started pssdiag and save it to log file in the current directory NOT the output directory
+#get the user that started pssdiag and save it to log file 
 if [ "$EUID" -eq 0 ]; then
-    echo "SUDO:YES" > "$outputdir/pssdiag_intiated_as_user.log"
-	chown $(id -u "$SUDO_USER"):$(id -g "$SUDO_USER") "$outputdir/pssdiag_intiated_as_user.log"
-	echo "SUDO_USER:$SUDO_USER" >> "$outputdir/pssdiag_intiated_as_user.log"
+    echo "ELEVATED_PERMISSIONS:YES" > "$outputdir/pssdiag_intiated_as_user.log"
+	ORIGINAL_USERNAME=$(logname)
+  	ORIGINAL_GROUP=$(id -gn "$ORIGINAL_USERNAME")
+	chown "$ORIGINAL_USERNAME:$ORIGINAL_GROUP" "$outputdir/pssdiag_intiated_as_user.log"
+	echo "USER:$ORIGINAL_USERNAME" >> "$outputdir/pssdiag_intiated_as_user.log"
 else
-    echo "SUDO:NO" > "$outputdir/pssdiag_intiated_as_user.log"
+    echo "ELEVATED_PERMISSIONS:NO" > "$outputdir/pssdiag_intiated_as_user.log"
 	chown $(id -u):$(id -g) "$outputdir/pssdiag_intiated_as_user.log"
 	echo "USER:$(id -un)" >> "$outputdir/pssdiag_intiated_as_user.log"
 	echo "GROUP:$(id -gn)" >> "$outputdir/pssdiag_intiated_as_user.log"
@@ -599,7 +602,7 @@ fi
 
 #Logging all the settings we are using for this run, or detected.
 logger "Detecting environment and execution context" "info" "1" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
-logger "PSSDiag Executed with sudo: $([ -n "$SUDO_USER" ] && echo "YES" || echo "NO")" "info" "0" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
+logger "PSSDiag Executed with elevated permissions? $([ "$EUID" -eq 0 ] && echo "YES" || echo "NO")" "info" "0" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
 logger "PSSDiag version: ${script_version}" "info" "0" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
 logger "Executing PSSDiag on: ${HOSTNAME}" "info" "0" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
 logger "Scenario file selected: ${scenario}" "info" "0" "1" "${pssdiag_log:-/dev/null}" "${0##*/}" 
