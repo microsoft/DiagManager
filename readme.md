@@ -14,7 +14,12 @@
 [forks]:https://github.com/Microsoft/DiagManager/network
 [issues]:https://github.com/Microsoft/DiagManager/issues
 
-Pssdiag/Sqldiag Manager is a graphic interface that provides customization capabilities to collect data for SQL Server using sqldiag collector engine. The data collected can be used by [SQL Nexus tool](https://github.com/Microsoft/SqlNexus)  which help you troubleshoot SQL Server performance problems.  This is the same tool Microsoft SQL Server support engineers use to for data collection to troubleshoot customer's performance problems.
+Pssdiag/Sqldiag Manager is a graphic interface that provides customization capabilities to collect data for SQL Server using [sqldiag collector engine](https://learn.microsoft.com/en-us/sql/tools/sqldiag-utility). The data collected can be used by [SQL Nexus tool](https://github.com/Microsoft/SqlNexus)  which help you troubleshoot SQL Server performance problems.
+
+
+## Notice of Retirement
+The pssidag Configuration Manager utility is no longer in active development and will not receive future updates or enhancements. This decision was made because its functionality has been superseded by more modern solutions.
+We recommend using [SQL LogScout](https://github.com/microsoft/sql_logscout) as the preferred alternative for similar diagnostic and configuration tasks going forward.
 
 ## Installation
  
